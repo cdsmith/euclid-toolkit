@@ -117,7 +117,7 @@ async def main(b):
     )
 
     # ---- not a lesson
-    bad = os.path.abspath('bad-lesson.json')
+    bad = os.path.abspath('bad-notebook.json')
     json.dump({'id': 'x', 'title': 'Nope'}, open(bad, 'w'))
     n0 = len((await S())['notebooks'])
     await pg.set_input_files('#notebookFile', bad)

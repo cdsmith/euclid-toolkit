@@ -24,7 +24,8 @@ is in localStorage, and the only outside requests are marked and KaTeX from jsde
     (open a lesson file as a notebook, edit, export, download); save an edited lesson over `site/lessons/<name>.json`.
 - `serve.py`: serves `site/`. Run it and open http://localhost:8000/ to use the app locally (a page opened as a file
   can't fetch its lessons).
-- `run_tests.py`: runs every suite. `python run_tests.py engine text scaffold` runs just those.
+- `run_tests.py`: runs every suite, all at once (so suites mustn't share files).
+  `python run_tests.py engine text scaffold` runs just those.
 - `tests/engine_test.js`: engine tests in Node (constructions, tools, problems, lessons). It imports the engine from
   `tests/engine.js`, which loads the lessons from `site/lessons/`.
 - `tests/*.py`: browser suites (Playwright, headless Chromium), one file each, built on `tests/harness.py`:
