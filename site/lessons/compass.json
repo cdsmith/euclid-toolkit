@@ -1,0 +1,6096 @@
+{
+ "id": "compass",
+ "title": "Compass Only",
+ "blurb": "No straightedge at all: reflect, invert, and find where lines meet, knowing each line only by two of its points. The Mohr–Mascheroni theorem says a compass is enough for everything.",
+ "tiers": [
+  "Reflections",
+  "Using Reflections",
+  "Lines and Circles"
+ ],
+ "toolbox": [
+  "point",
+  "circle"
+ ],
+ "tools": [],
+ "items": [
+  {
+   "kind": "problem",
+   "id": "compass.mirror",
+   "title": "Reflect Across a Line",
+   "subtitle": "",
+   "text": "There's no straightedge in this lesson: a line is known by two of its points, but it can't be drawn. Construct the reflection of $P$ across the line through $A$ and $B$.\n\n::: Hint\nEvery point on the line is as far from $P$ as from its reflection.\n:::",
+   "toolName": "Reflect across a line",
+   "diagram": {
+    "nodes": {
+     "n1": {
+      "op": "point",
+      "ins": [],
+      "x": -120,
+      "y": 60,
+      "id": "n1",
+      "seq": 1,
+      "outs": [
+       "e1"
+      ]
+     },
+     "n2": {
+      "op": "point",
+      "ins": [],
+      "x": 110,
+      "y": 20,
+      "id": "n2",
+      "seq": 2,
+      "outs": [
+       "e2"
+      ]
+     },
+     "n3": {
+      "op": "point",
+      "ins": [],
+      "x": -10,
+      "y": -60,
+      "id": "n3",
+      "seq": 3,
+      "outs": [
+       "e3"
+      ]
+     },
+     "n6": {
+      "op": "isect",
+      "ins": [
+       "e4",
+       "e5",
+       "e3"
+      ],
+      "id": "n6",
+      "seq": 6,
+      "outs": [
+       "e6"
+      ]
+     },
+     "n4": {
+      "op": "circle",
+      "ins": [
+       "e1",
+       "e3"
+      ],
+      "id": "n4",
+      "seq": 4,
+      "outs": [
+       "e4"
+      ]
+     },
+     "n5": {
+      "op": "circle",
+      "ins": [
+       "e2",
+       "e3"
+      ],
+      "id": "n5",
+      "seq": 5,
+      "outs": [
+       "e5"
+      ]
+     },
+     "n7": {
+      "op": "line",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n7",
+      "seq": 7,
+      "outs": [
+       "e7"
+      ]
+     },
+     "n8": {
+      "op": "segment",
+      "ins": [
+       "e3",
+       "e6"
+      ],
+      "id": "n8",
+      "seq": 8,
+      "outs": [
+       "e8"
+      ]
+     }
+    },
+    "elems": {
+     "e1": {
+      "id": "e1",
+      "node": "n1",
+      "kind": "point",
+      "label": "A"
+     },
+     "e2": {
+      "id": "e2",
+      "node": "n2",
+      "kind": "point",
+      "label": "B"
+     },
+     "e3": {
+      "id": "e3",
+      "node": "n3",
+      "kind": "point",
+      "label": "P"
+     },
+     "e6": {
+      "id": "e6",
+      "node": "n6",
+      "kind": "point",
+      "label": ""
+     },
+     "e4": {
+      "id": "e4",
+      "node": "n4",
+      "kind": "circle",
+      "label": ""
+     },
+     "e5": {
+      "id": "e5",
+      "node": "n5",
+      "kind": "circle",
+      "label": ""
+     },
+     "e7": {
+      "id": "e7",
+      "node": "n7",
+      "kind": "line",
+      "label": "",
+      "style": {
+       "dash": "dashed"
+      }
+     },
+     "e8": {
+      "id": "e8",
+      "node": "n8",
+      "kind": "line",
+      "label": "",
+      "style": {
+       "dash": "dashed"
+      }
+     }
+    },
+    "seq": 8
+   },
+   "givens": [
+    "e1",
+    "e2",
+    "e3"
+   ],
+   "scaffold": [],
+   "goals": [
+    "e6"
+   ],
+   "elaboration": [
+    "e7",
+    "e8"
+   ],
+   "tier": 0
+  },
+  {
+   "kind": "problem",
+   "id": "compass.double",
+   "title": "Reflect Through a Point",
+   "subtitle": "",
+   "text": "Construct the reflection of $P$ through $A$.\n\n::: Hint\nThe reflection is opposite $P$ on the circle centered at $A$ through $P$.\n:::\n\n::: Hint\nSix radii step exactly around a circle.\n:::",
+   "toolName": "Reflect through a point",
+   "diagram": {
+    "nodes": {
+     "n1": {
+      "op": "point",
+      "ins": [],
+      "x": 0,
+      "y": 0,
+      "id": "n1",
+      "seq": 1,
+      "outs": [
+       "e1"
+      ]
+     },
+     "n2": {
+      "op": "point",
+      "ins": [],
+      "x": -90,
+      "y": 20,
+      "id": "n2",
+      "seq": 2,
+      "outs": [
+       "e2"
+      ]
+     },
+     "n9": {
+      "op": "isect",
+      "ins": [
+       "e8",
+       "e3",
+       "e5"
+      ],
+      "id": "n9",
+      "seq": 9,
+      "outs": [
+       "e9"
+      ]
+     },
+     "n8": {
+      "op": "circle",
+      "ins": [
+       "e7",
+       "e1"
+      ],
+      "id": "n8",
+      "seq": 8,
+      "outs": [
+       "e8"
+      ]
+     },
+     "n7": {
+      "op": "isect",
+      "ins": [
+       "e6",
+       "e3",
+       "e2"
+      ],
+      "id": "n7",
+      "seq": 7,
+      "outs": [
+       "e7"
+      ]
+     },
+     "n6": {
+      "op": "circle",
+      "ins": [
+       "e5",
+       "e1"
+      ],
+      "id": "n6",
+      "seq": 6,
+      "outs": [
+       "e6"
+      ]
+     },
+     "n5": {
+      "op": "isect",
+      "ins": [
+       "e4",
+       "e3"
+      ],
+      "which": 1,
+      "id": "n5",
+      "seq": 5,
+      "outs": [
+       "e5"
+      ]
+     },
+     "n4": {
+      "op": "circle",
+      "ins": [
+       "e2",
+       "e1"
+      ],
+      "id": "n4",
+      "seq": 4,
+      "outs": [
+       "e4"
+      ]
+     },
+     "n3": {
+      "op": "circle",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n3",
+      "seq": 3,
+      "outs": [
+       "e3"
+      ]
+     },
+     "n10": {
+      "op": "segment",
+      "ins": [
+       "e2",
+       "e9"
+      ],
+      "id": "n10",
+      "seq": 10,
+      "outs": [
+       "e10"
+      ]
+     }
+    },
+    "elems": {
+     "e1": {
+      "id": "e1",
+      "node": "n1",
+      "kind": "point",
+      "label": "A"
+     },
+     "e2": {
+      "id": "e2",
+      "node": "n2",
+      "kind": "point",
+      "label": "P"
+     },
+     "e9": {
+      "id": "e9",
+      "node": "n9",
+      "kind": "point",
+      "label": ""
+     },
+     "e8": {
+      "id": "e8",
+      "node": "n8",
+      "kind": "circle",
+      "label": ""
+     },
+     "e7": {
+      "id": "e7",
+      "node": "n7",
+      "kind": "point",
+      "label": ""
+     },
+     "e6": {
+      "id": "e6",
+      "node": "n6",
+      "kind": "circle",
+      "label": ""
+     },
+     "e5": {
+      "id": "e5",
+      "node": "n5",
+      "kind": "point",
+      "label": ""
+     },
+     "e4": {
+      "id": "e4",
+      "node": "n4",
+      "kind": "circle",
+      "label": ""
+     },
+     "e3": {
+      "id": "e3",
+      "node": "n3",
+      "kind": "circle",
+      "label": ""
+     },
+     "e10": {
+      "id": "e10",
+      "node": "n10",
+      "kind": "line",
+      "label": "",
+      "style": {
+       "dash": "dashed"
+      }
+     }
+    },
+    "seq": 10
+   },
+   "givens": [
+    "e1",
+    "e2"
+   ],
+   "scaffold": [],
+   "goals": [
+    "e9"
+   ],
+   "elaboration": [
+    "e10"
+   ],
+   "tier": 0
+  },
+  {
+   "kind": "diagram",
+   "id": "compass.inversion",
+   "title": "Inversion",
+   "subtitle": "",
+   "text": "Reflection in a circle, or inversion, swaps the inside and outside of $\\omega$. Taking $\\omega$ as the unit circle, $P$ reflects to the point $P^*$ on ray $OP$ with $OP^* = 1/OP$.\n\nTriangles $OPD$ and $ODP^*$ are isosceles and share the base angle at $O$, so they have the same shape: $OP$ is to $1$ as $1$ is to $OP^*$.",
+   "diagram": {
+    "nodes": {
+     "n1": {
+      "op": "point",
+      "ins": [],
+      "x": 0,
+      "y": 0,
+      "id": "n1",
+      "seq": 1,
+      "outs": [
+       "e1"
+      ]
+     },
+     "n2": {
+      "op": "point",
+      "ins": [],
+      "x": -80.11436155469337,
+      "y": 59.847214410395644,
+      "id": "n2",
+      "seq": 2,
+      "outs": [
+       "e2"
+      ]
+     },
+     "n3": {
+      "op": "circle",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n3",
+      "seq": 3,
+      "outs": [
+       "e3"
+      ]
+     },
+     "n4": {
+      "op": "point",
+      "ins": [],
+      "x": 160,
+      "y": 20,
+      "id": "n4",
+      "seq": 4,
+      "outs": [
+       "e4"
+      ]
+     },
+     "n5": {
+      "op": "circle",
+      "ins": [
+       "e4",
+       "e1"
+      ],
+      "id": "n5",
+      "seq": 5,
+      "outs": [
+       "e5"
+      ]
+     },
+     "n6": {
+      "op": "isect",
+      "ins": [
+       "e5",
+       "e3"
+      ],
+      "which": 0,
+      "id": "n6",
+      "seq": 6,
+      "outs": [
+       "e6"
+      ]
+     },
+     "n7": {
+      "op": "line",
+      "ins": [
+       "e1",
+       "e4"
+      ],
+      "id": "n7",
+      "seq": 7,
+      "outs": [
+       "e7"
+      ]
+     },
+     "n8": {
+      "op": "circle",
+      "ins": [
+       "e6",
+       "e1"
+      ],
+      "id": "n8",
+      "seq": 8,
+      "outs": [
+       "e8"
+      ]
+     },
+     "n9": {
+      "op": "isect",
+      "ins": [
+       "e7",
+       "e8",
+       "e1"
+      ],
+      "id": "n9",
+      "seq": 9,
+      "outs": [
+       "e9"
+      ]
+     },
+     "n10": {
+      "op": "segment",
+      "ins": [
+       "e1",
+       "e4"
+      ],
+      "id": "n10",
+      "seq": 10,
+      "outs": [
+       "e10"
+      ]
+     },
+     "n11": {
+      "op": "segment",
+      "ins": [
+       "e4",
+       "e6"
+      ],
+      "id": "n11",
+      "seq": 11,
+      "outs": [
+       "e11"
+      ]
+     },
+     "n12": {
+      "op": "segment",
+      "ins": [
+       "e1",
+       "e6"
+      ],
+      "id": "n12",
+      "seq": 12,
+      "outs": [
+       "e12"
+      ]
+     },
+     "n13": {
+      "op": "segment",
+      "ins": [
+       "e6",
+       "e9"
+      ],
+      "id": "n13",
+      "seq": 13,
+      "outs": [
+       "e13"
+      ]
+     }
+    },
+    "elems": {
+     "e1": {
+      "id": "e1",
+      "node": "n1",
+      "kind": "point",
+      "label": "O"
+     },
+     "e2": {
+      "id": "e2",
+      "node": "n2",
+      "kind": "point",
+      "label": "",
+      "internal": true
+     },
+     "e3": {
+      "id": "e3",
+      "node": "n3",
+      "kind": "circle",
+      "label": "ω"
+     },
+     "e4": {
+      "id": "e4",
+      "node": "n4",
+      "kind": "point",
+      "label": "P"
+     },
+     "e5": {
+      "id": "e5",
+      "node": "n5",
+      "kind": "circle",
+      "label": "",
+      "internal": true
+     },
+     "e6": {
+      "id": "e6",
+      "node": "n6",
+      "kind": "point",
+      "label": "D"
+     },
+     "e7": {
+      "id": "e7",
+      "node": "n7",
+      "kind": "line",
+      "label": "",
+      "internal": true
+     },
+     "e8": {
+      "id": "e8",
+      "node": "n8",
+      "kind": "circle",
+      "label": "",
+      "internal": true
+     },
+     "e9": {
+      "id": "e9",
+      "node": "n9",
+      "kind": "point",
+      "label": "P*"
+     },
+     "e10": {
+      "id": "e10",
+      "node": "n10",
+      "kind": "line",
+      "label": "",
+      "style": {
+       "color": "violet"
+      }
+     },
+     "e11": {
+      "id": "e11",
+      "node": "n11",
+      "kind": "line",
+      "label": "",
+      "style": {
+       "color": "violet"
+      }
+     },
+     "e12": {
+      "id": "e12",
+      "node": "n12",
+      "kind": "line",
+      "label": "",
+      "style": {
+       "color": "orange"
+      }
+     },
+     "e13": {
+      "id": "e13",
+      "node": "n13",
+      "kind": "line",
+      "label": "",
+      "style": {
+       "color": "orange"
+      }
+     }
+    },
+    "seq": 13
+   },
+   "tier": 0
+  },
+  {
+   "kind": "problem",
+   "id": "compass.invert",
+   "title": "Reflect in a Circle",
+   "subtitle": "",
+   "text": "Construct the reflection of $P$ in $\\omega$.\n\nYour construction only needs to work when $P$ is more than half of $\\omega$’s radius from $O$.\n\n::: Hint\nAs in the diagram before this one, find $D$ on $\\omega$ as far from $P$ as $O$ is.\n:::\n\n::: Hint\nThere’s no line $OP$ to find $P^*$ on, but $P^*$ is the reflection of $O$ across a chord of $\\omega$.\n:::",
+   "toolName": "Reflect in a circle",
+   "diagram": {
+    "nodes": {
+     "n3": {
+      "op": "circle",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n3",
+      "seq": 3,
+      "outs": [
+       "e3"
+      ]
+     },
+     "n1": {
+      "op": "point",
+      "ins": [],
+      "x": 0,
+      "y": 0,
+      "id": "n1",
+      "seq": 1,
+      "outs": [
+       "e1"
+      ]
+     },
+     "n2": {
+      "op": "point",
+      "ins": [],
+      "x": 43.51269777894651,
+      "y": -54.83288367392384,
+      "id": "n2",
+      "seq": 2,
+      "outs": [
+       "e2"
+      ]
+     },
+     "n4": {
+      "op": "point",
+      "ins": [],
+      "x": 110,
+      "y": -40,
+      "id": "n4",
+      "seq": 4,
+      "outs": [
+       "e4"
+      ]
+     },
+     "n10": {
+      "op": "isect",
+      "ins": [
+       "e8",
+       "e9",
+       "e1"
+      ],
+      "id": "n10",
+      "seq": 10,
+      "outs": [
+       "e10"
+      ]
+     },
+     "n8": {
+      "op": "circle",
+      "ins": [
+       "e6",
+       "e1"
+      ],
+      "id": "n8",
+      "seq": 8,
+      "outs": [
+       "e8"
+      ]
+     },
+     "n6": {
+      "op": "isect",
+      "ins": [
+       "e5",
+       "e3"
+      ],
+      "which": 0,
+      "id": "n6",
+      "seq": 6,
+      "outs": [
+       "e6"
+      ]
+     },
+     "n5": {
+      "op": "circle",
+      "ins": [
+       "e4",
+       "e1"
+      ],
+      "id": "n5",
+      "seq": 5,
+      "outs": [
+       "e5"
+      ]
+     },
+     "n9": {
+      "op": "circle",
+      "ins": [
+       "e7",
+       "e1"
+      ],
+      "id": "n9",
+      "seq": 9,
+      "outs": [
+       "e9"
+      ]
+     },
+     "n7": {
+      "op": "isect",
+      "ins": [
+       "e5",
+       "e3",
+       "e6"
+      ],
+      "id": "n7",
+      "seq": 7,
+      "outs": [
+       "e7"
+      ]
+     },
+     "n11": {
+      "op": "line",
+      "ins": [
+       "e1",
+       "e4"
+      ],
+      "id": "n11",
+      "seq": 11,
+      "outs": [
+       "e11"
+      ]
+     }
+    },
+    "elems": {
+     "e3": {
+      "id": "e3",
+      "node": "n3",
+      "kind": "circle",
+      "label": "ω"
+     },
+     "e1": {
+      "id": "e1",
+      "node": "n1",
+      "kind": "point",
+      "label": "O"
+     },
+     "e2": {
+      "id": "e2",
+      "node": "n2",
+      "kind": "point",
+      "label": ""
+     },
+     "e4": {
+      "id": "e4",
+      "node": "n4",
+      "kind": "point",
+      "label": "P"
+     },
+     "e10": {
+      "id": "e10",
+      "node": "n10",
+      "kind": "point",
+      "label": ""
+     },
+     "e8": {
+      "id": "e8",
+      "node": "n8",
+      "kind": "circle",
+      "label": ""
+     },
+     "e6": {
+      "id": "e6",
+      "node": "n6",
+      "kind": "point",
+      "label": ""
+     },
+     "e5": {
+      "id": "e5",
+      "node": "n5",
+      "kind": "circle",
+      "label": ""
+     },
+     "e9": {
+      "id": "e9",
+      "node": "n9",
+      "kind": "circle",
+      "label": ""
+     },
+     "e7": {
+      "id": "e7",
+      "node": "n7",
+      "kind": "point",
+      "label": ""
+     },
+     "e11": {
+      "id": "e11",
+      "node": "n11",
+      "kind": "line",
+      "label": "",
+      "style": {
+       "dash": "dashed"
+      }
+     }
+    },
+    "seq": 11
+   },
+   "givens": [
+    "e3",
+    "e1",
+    "e4"
+   ],
+   "scaffold": [],
+   "goals": [
+    "e10"
+   ],
+   "elaboration": [
+    "e11"
+   ],
+   "tier": 0
+  },
+  {
+   "kind": "problem",
+   "id": "compass.midpoint",
+   "title": "Midpoint",
+   "subtitle": "",
+   "text": "Construct the midpoint of $AB$.\n\n::: Hint\nThe midpoint is the inverse of a point you can already construct, in a circle you can already draw.\n:::\n\n::: Hint\nIn the circle centered at $A$ through $B$, a point $2 \\cdot AB$ from $A$ inverts to the midpoint.\n:::",
+   "toolName": "Midpoint",
+   "diagram": {
+    "nodes": {
+     "n1": {
+      "op": "point",
+      "ins": [],
+      "x": -90,
+      "y": 20,
+      "id": "n1",
+      "seq": 1,
+      "outs": [
+       "e1"
+      ]
+     },
+     "n2": {
+      "op": "point",
+      "ins": [],
+      "x": 0,
+      "y": 0,
+      "id": "n2",
+      "seq": 2,
+      "outs": [
+       "e2"
+      ]
+     },
+     "n5.n10": {
+      "id": "n5.n10",
+      "op": "isect",
+      "ins": [
+       "n5.e8",
+       "n5.e9",
+       "e1"
+      ],
+      "outs": [
+       "e5"
+      ],
+      "seq": 5.857142857142857
+     },
+     "n5.n8": {
+      "id": "n5.n8",
+      "op": "circle",
+      "ins": [
+       "n5.e6",
+       "e1"
+      ],
+      "outs": [
+       "n5.e8"
+      ],
+      "seq": 5.571428571428571
+     },
+     "n5.n6": {
+      "id": "n5.n6",
+      "op": "isect",
+      "ins": [
+       "n5.e5",
+       "e4"
+      ],
+      "outs": [
+       "n5.e6"
+      ],
+      "seq": 5.285714285714286,
+      "which": 0
+     },
+     "n5.n5": {
+      "id": "n5.n5",
+      "op": "circle",
+      "ins": [
+       "e3",
+       "e1"
+      ],
+      "outs": [
+       "n5.e5"
+      ],
+      "seq": 5.142857142857143
+     },
+     "n3.n9": {
+      "id": "n3.n9",
+      "op": "isect",
+      "ins": [
+       "n3.e8",
+       "n3.e3",
+       "n3.e5"
+      ],
+      "outs": [
+       "e3"
+      ],
+      "seq": 3.875
+     },
+     "n3.n8": {
+      "id": "n3.n8",
+      "op": "circle",
+      "ins": [
+       "n3.e7",
+       "e2"
+      ],
+      "outs": [
+       "n3.e8"
+      ],
+      "seq": 3.75
+     },
+     "n3.n7": {
+      "id": "n3.n7",
+      "op": "isect",
+      "ins": [
+       "n3.e6",
+       "n3.e3",
+       "e1"
+      ],
+      "outs": [
+       "n3.e7"
+      ],
+      "seq": 3.625
+     },
+     "n3.n6": {
+      "id": "n3.n6",
+      "op": "circle",
+      "ins": [
+       "n3.e5",
+       "e2"
+      ],
+      "outs": [
+       "n3.e6"
+      ],
+      "seq": 3.5
+     },
+     "n3.n5": {
+      "id": "n3.n5",
+      "op": "isect",
+      "ins": [
+       "n3.e4",
+       "n3.e3"
+      ],
+      "outs": [
+       "n3.e5"
+      ],
+      "seq": 3.375,
+      "which": 1
+     },
+     "n3.n4": {
+      "id": "n3.n4",
+      "op": "circle",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "outs": [
+       "n3.e4"
+      ],
+      "seq": 3.25
+     },
+     "n3.n3": {
+      "id": "n3.n3",
+      "op": "circle",
+      "ins": [
+       "e2",
+       "e1"
+      ],
+      "outs": [
+       "n3.e3"
+      ],
+      "seq": 3.125
+     },
+     "n4": {
+      "op": "circle",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n4",
+      "seq": 4,
+      "outs": [
+       "e4"
+      ]
+     },
+     "n5.n9": {
+      "id": "n5.n9",
+      "op": "circle",
+      "ins": [
+       "n5.e7",
+       "e1"
+      ],
+      "outs": [
+       "n5.e9"
+      ],
+      "seq": 5.714285714285714
+     },
+     "n5.n7": {
+      "id": "n5.n7",
+      "op": "isect",
+      "ins": [
+       "n5.e5",
+       "e4",
+       "n5.e6"
+      ],
+      "outs": [
+       "n5.e7"
+      ],
+      "seq": 5.428571428571429
+     },
+     "n6": {
+      "op": "segment",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n6",
+      "seq": 6,
+      "outs": [
+       "e6"
+      ]
+     }
+    },
+    "elems": {
+     "e1": {
+      "id": "e1",
+      "node": "n1",
+      "kind": "point",
+      "label": "A"
+     },
+     "e2": {
+      "id": "e2",
+      "node": "n2",
+      "kind": "point",
+      "label": "B"
+     },
+     "e5": {
+      "id": "e5",
+      "node": "n5.n10",
+      "kind": "point",
+      "label": ""
+     },
+     "n5.e8": {
+      "id": "n5.e8",
+      "node": "n5.n8",
+      "kind": "circle",
+      "label": ""
+     },
+     "n5.e6": {
+      "id": "n5.e6",
+      "node": "n5.n6",
+      "kind": "point",
+      "label": ""
+     },
+     "n5.e5": {
+      "id": "n5.e5",
+      "node": "n5.n5",
+      "kind": "circle",
+      "label": ""
+     },
+     "e3": {
+      "id": "e3",
+      "node": "n3.n9",
+      "kind": "point",
+      "label": ""
+     },
+     "n3.e8": {
+      "id": "n3.e8",
+      "node": "n3.n8",
+      "kind": "circle",
+      "label": ""
+     },
+     "n3.e7": {
+      "id": "n3.e7",
+      "node": "n3.n7",
+      "kind": "point",
+      "label": ""
+     },
+     "n3.e6": {
+      "id": "n3.e6",
+      "node": "n3.n6",
+      "kind": "circle",
+      "label": ""
+     },
+     "n3.e5": {
+      "id": "n3.e5",
+      "node": "n3.n5",
+      "kind": "point",
+      "label": ""
+     },
+     "n3.e4": {
+      "id": "n3.e4",
+      "node": "n3.n4",
+      "kind": "circle",
+      "label": ""
+     },
+     "n3.e3": {
+      "id": "n3.e3",
+      "node": "n3.n3",
+      "kind": "circle",
+      "label": ""
+     },
+     "e4": {
+      "id": "e4",
+      "node": "n4",
+      "kind": "circle",
+      "label": ""
+     },
+     "n5.e9": {
+      "id": "n5.e9",
+      "node": "n5.n9",
+      "kind": "circle",
+      "label": ""
+     },
+     "n5.e7": {
+      "id": "n5.e7",
+      "node": "n5.n7",
+      "kind": "point",
+      "label": ""
+     },
+     "e6": {
+      "id": "e6",
+      "node": "n6",
+      "kind": "line",
+      "label": "",
+      "style": {
+       "dash": "dashed"
+      }
+     }
+    },
+    "seq": 6
+   },
+   "givens": [
+    "e1",
+    "e2"
+   ],
+   "scaffold": [],
+   "goals": [
+    "e5"
+   ],
+   "elaboration": [
+    "e6"
+   ],
+   "tier": 1
+  },
+  {
+   "kind": "problem",
+   "id": "compass.third",
+   "title": "One Third",
+   "subtitle": "",
+   "text": "Construct the point $T$ between $A$ and $B$ with $AT = AB / 3$.\n\n::: Hint\nInversion in the circle centered at $A$ through $B$ turns a point $3 \\cdot AB$ from $A$ into one $AB / 3$ from $A$.\n:::",
+   "toolName": "One third",
+   "diagram": {
+    "nodes": {
+     "n1": {
+      "op": "point",
+      "ins": [],
+      "x": -90,
+      "y": 20,
+      "id": "n1",
+      "seq": 1,
+      "outs": [
+       "e1"
+      ]
+     },
+     "n2": {
+      "op": "point",
+      "ins": [],
+      "x": -30,
+      "y": 10,
+      "id": "n2",
+      "seq": 2,
+      "outs": [
+       "e2"
+      ]
+     },
+     "n6.n10": {
+      "id": "n6.n10",
+      "op": "isect",
+      "ins": [
+       "n6.e8",
+       "n6.e9",
+       "e1"
+      ],
+      "outs": [
+       "e6"
+      ],
+      "seq": 6.857142857142857
+     },
+     "n6.n8": {
+      "id": "n6.n8",
+      "op": "circle",
+      "ins": [
+       "n6.e6",
+       "e1"
+      ],
+      "outs": [
+       "n6.e8"
+      ],
+      "seq": 6.571428571428571
+     },
+     "n6.n6": {
+      "id": "n6.n6",
+      "op": "isect",
+      "ins": [
+       "n6.e5",
+       "e5"
+      ],
+      "outs": [
+       "n6.e6"
+      ],
+      "seq": 6.285714285714286,
+      "which": 0
+     },
+     "n6.n5": {
+      "id": "n6.n5",
+      "op": "circle",
+      "ins": [
+       "e4",
+       "e1"
+      ],
+      "outs": [
+       "n6.e5"
+      ],
+      "seq": 6.142857142857143
+     },
+     "n4.n9": {
+      "id": "n4.n9",
+      "op": "isect",
+      "ins": [
+       "n4.e8",
+       "n4.e3",
+       "n4.e5"
+      ],
+      "outs": [
+       "e4"
+      ],
+      "seq": 4.875
+     },
+     "n4.n8": {
+      "id": "n4.n8",
+      "op": "circle",
+      "ins": [
+       "n4.e7",
+       "e3"
+      ],
+      "outs": [
+       "n4.e8"
+      ],
+      "seq": 4.75
+     },
+     "n4.n7": {
+      "id": "n4.n7",
+      "op": "isect",
+      "ins": [
+       "n4.e6",
+       "n4.e3",
+       "e2"
+      ],
+      "outs": [
+       "n4.e7"
+      ],
+      "seq": 4.625
+     },
+     "n4.n6": {
+      "id": "n4.n6",
+      "op": "circle",
+      "ins": [
+       "n4.e5",
+       "e3"
+      ],
+      "outs": [
+       "n4.e6"
+      ],
+      "seq": 4.5
+     },
+     "n4.n5": {
+      "id": "n4.n5",
+      "op": "isect",
+      "ins": [
+       "n4.e4",
+       "n4.e3"
+      ],
+      "outs": [
+       "n4.e5"
+      ],
+      "seq": 4.375,
+      "which": 1
+     },
+     "n4.n4": {
+      "id": "n4.n4",
+      "op": "circle",
+      "ins": [
+       "e2",
+       "e3"
+      ],
+      "outs": [
+       "n4.e4"
+      ],
+      "seq": 4.25
+     },
+     "n3.n9": {
+      "id": "n3.n9",
+      "op": "isect",
+      "ins": [
+       "n3.e8",
+       "n3.e3",
+       "n3.e5"
+      ],
+      "outs": [
+       "e3"
+      ],
+      "seq": 3.875
+     },
+     "n3.n8": {
+      "id": "n3.n8",
+      "op": "circle",
+      "ins": [
+       "n3.e7",
+       "e2"
+      ],
+      "outs": [
+       "n3.e8"
+      ],
+      "seq": 3.75
+     },
+     "n3.n7": {
+      "id": "n3.n7",
+      "op": "isect",
+      "ins": [
+       "n3.e6",
+       "n3.e3",
+       "e1"
+      ],
+      "outs": [
+       "n3.e7"
+      ],
+      "seq": 3.625
+     },
+     "n3.n6": {
+      "id": "n3.n6",
+      "op": "circle",
+      "ins": [
+       "n3.e5",
+       "e2"
+      ],
+      "outs": [
+       "n3.e6"
+      ],
+      "seq": 3.5
+     },
+     "n3.n5": {
+      "id": "n3.n5",
+      "op": "isect",
+      "ins": [
+       "n3.e4",
+       "n3.e3"
+      ],
+      "outs": [
+       "n3.e5"
+      ],
+      "seq": 3.375,
+      "which": 1
+     },
+     "n3.n4": {
+      "id": "n3.n4",
+      "op": "circle",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "outs": [
+       "n3.e4"
+      ],
+      "seq": 3.25
+     },
+     "n3.n3": {
+      "id": "n3.n3",
+      "op": "circle",
+      "ins": [
+       "e2",
+       "e1"
+      ],
+      "outs": [
+       "n3.e3"
+      ],
+      "seq": 3.125
+     },
+     "n4.n3": {
+      "id": "n4.n3",
+      "op": "circle",
+      "ins": [
+       "e3",
+       "e2"
+      ],
+      "outs": [
+       "n4.e3"
+      ],
+      "seq": 4.125
+     },
+     "n5": {
+      "op": "circle",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n5",
+      "seq": 5,
+      "outs": [
+       "e5"
+      ]
+     },
+     "n6.n9": {
+      "id": "n6.n9",
+      "op": "circle",
+      "ins": [
+       "n6.e7",
+       "e1"
+      ],
+      "outs": [
+       "n6.e9"
+      ],
+      "seq": 6.714285714285714
+     },
+     "n6.n7": {
+      "id": "n6.n7",
+      "op": "isect",
+      "ins": [
+       "n6.e5",
+       "e5",
+       "n6.e6"
+      ],
+      "outs": [
+       "n6.e7"
+      ],
+      "seq": 6.428571428571429
+     },
+     "n7": {
+      "op": "segment",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n7",
+      "seq": 7,
+      "outs": [
+       "e7"
+      ]
+     }
+    },
+    "elems": {
+     "e1": {
+      "id": "e1",
+      "node": "n1",
+      "kind": "point",
+      "label": "A"
+     },
+     "e2": {
+      "id": "e2",
+      "node": "n2",
+      "kind": "point",
+      "label": "B"
+     },
+     "e6": {
+      "id": "e6",
+      "node": "n6.n10",
+      "kind": "point",
+      "label": ""
+     },
+     "n6.e8": {
+      "id": "n6.e8",
+      "node": "n6.n8",
+      "kind": "circle",
+      "label": ""
+     },
+     "n6.e6": {
+      "id": "n6.e6",
+      "node": "n6.n6",
+      "kind": "point",
+      "label": ""
+     },
+     "n6.e5": {
+      "id": "n6.e5",
+      "node": "n6.n5",
+      "kind": "circle",
+      "label": ""
+     },
+     "e4": {
+      "id": "e4",
+      "node": "n4.n9",
+      "kind": "point",
+      "label": ""
+     },
+     "n4.e8": {
+      "id": "n4.e8",
+      "node": "n4.n8",
+      "kind": "circle",
+      "label": ""
+     },
+     "n4.e7": {
+      "id": "n4.e7",
+      "node": "n4.n7",
+      "kind": "point",
+      "label": ""
+     },
+     "n4.e6": {
+      "id": "n4.e6",
+      "node": "n4.n6",
+      "kind": "circle",
+      "label": ""
+     },
+     "n4.e5": {
+      "id": "n4.e5",
+      "node": "n4.n5",
+      "kind": "point",
+      "label": ""
+     },
+     "n4.e4": {
+      "id": "n4.e4",
+      "node": "n4.n4",
+      "kind": "circle",
+      "label": ""
+     },
+     "e3": {
+      "id": "e3",
+      "node": "n3.n9",
+      "kind": "point",
+      "label": ""
+     },
+     "n3.e8": {
+      "id": "n3.e8",
+      "node": "n3.n8",
+      "kind": "circle",
+      "label": ""
+     },
+     "n3.e7": {
+      "id": "n3.e7",
+      "node": "n3.n7",
+      "kind": "point",
+      "label": ""
+     },
+     "n3.e6": {
+      "id": "n3.e6",
+      "node": "n3.n6",
+      "kind": "circle",
+      "label": ""
+     },
+     "n3.e5": {
+      "id": "n3.e5",
+      "node": "n3.n5",
+      "kind": "point",
+      "label": ""
+     },
+     "n3.e4": {
+      "id": "n3.e4",
+      "node": "n3.n4",
+      "kind": "circle",
+      "label": ""
+     },
+     "n3.e3": {
+      "id": "n3.e3",
+      "node": "n3.n3",
+      "kind": "circle",
+      "label": ""
+     },
+     "n4.e3": {
+      "id": "n4.e3",
+      "node": "n4.n3",
+      "kind": "circle",
+      "label": ""
+     },
+     "e5": {
+      "id": "e5",
+      "node": "n5",
+      "kind": "circle",
+      "label": ""
+     },
+     "n6.e9": {
+      "id": "n6.e9",
+      "node": "n6.n9",
+      "kind": "circle",
+      "label": ""
+     },
+     "n6.e7": {
+      "id": "n6.e7",
+      "node": "n6.n7",
+      "kind": "point",
+      "label": ""
+     },
+     "e7": {
+      "id": "e7",
+      "node": "n7",
+      "kind": "line",
+      "label": "",
+      "style": {
+       "dash": "dashed"
+      }
+     }
+    },
+    "seq": 7
+   },
+   "givens": [
+    "e1",
+    "e2"
+   ],
+   "scaffold": [],
+   "goals": [
+    "e6"
+   ],
+   "elaboration": [
+    "e7"
+   ],
+   "tier": 1
+  },
+  {
+   "kind": "problem",
+   "id": "compass.foot",
+   "title": "Foot of the Perpendicular",
+   "subtitle": "",
+   "text": "Construct the point on the line through $A$ and $B$ that is nearest to $P$.\n\n::: Hint\nIt’s halfway between $P$ and its reflection.\n:::",
+   "toolName": "Foot",
+   "diagram": {
+    "nodes": {
+     "n1": {
+      "op": "point",
+      "ins": [],
+      "x": -120,
+      "y": 50,
+      "id": "n1",
+      "seq": 1,
+      "outs": [
+       "e1"
+      ]
+     },
+     "n2": {
+      "op": "point",
+      "ins": [],
+      "x": 110,
+      "y": 10,
+      "id": "n2",
+      "seq": 2,
+      "outs": [
+       "e2"
+      ]
+     },
+     "n3": {
+      "op": "point",
+      "ins": [],
+      "x": -20,
+      "y": -70,
+      "id": "n3",
+      "seq": 3,
+      "outs": [
+       "e3"
+      ]
+     },
+     "n5.n5.n10": {
+      "id": "n5.n5.n10",
+      "op": "isect",
+      "ins": [
+       "n5.n5.e8",
+       "n5.n5.e9",
+       "e3"
+      ],
+      "outs": [
+       "e5"
+      ],
+      "seq": 5.964285714285714
+     },
+     "n5.n5.n8": {
+      "id": "n5.n5.n8",
+      "op": "circle",
+      "ins": [
+       "n5.n5.e6",
+       "e3"
+      ],
+      "outs": [
+       "n5.n5.e8"
+      ],
+      "seq": 5.892857142857143
+     },
+     "n5.n5.n6": {
+      "id": "n5.n5.n6",
+      "op": "isect",
+      "ins": [
+       "n5.n5.e5",
+       "n5.e4"
+      ],
+      "outs": [
+       "n5.n5.e6"
+      ],
+      "seq": 5.821428571428571,
+      "which": 0
+     },
+     "n5.n5.n5": {
+      "id": "n5.n5.n5",
+      "op": "circle",
+      "ins": [
+       "n5.e3",
+       "e3"
+      ],
+      "outs": [
+       "n5.n5.e5"
+      ],
+      "seq": 5.785714285714286
+     },
+     "n5.n3.n9": {
+      "id": "n5.n3.n9",
+      "op": "isect",
+      "ins": [
+       "n5.n3.e8",
+       "n5.n3.e3",
+       "n5.n3.e5"
+      ],
+      "outs": [
+       "n5.e3"
+      ],
+      "seq": 5.46875
+     },
+     "n5.n3.n8": {
+      "id": "n5.n3.n8",
+      "op": "circle",
+      "ins": [
+       "n5.n3.e7",
+       "e4"
+      ],
+      "outs": [
+       "n5.n3.e8"
+      ],
+      "seq": 5.4375
+     },
+     "n5.n3.n7": {
+      "id": "n5.n3.n7",
+      "op": "isect",
+      "ins": [
+       "n5.n3.e6",
+       "n5.n3.e3",
+       "e3"
+      ],
+      "outs": [
+       "n5.n3.e7"
+      ],
+      "seq": 5.40625
+     },
+     "n5.n3.n6": {
+      "id": "n5.n3.n6",
+      "op": "circle",
+      "ins": [
+       "n5.n3.e5",
+       "e4"
+      ],
+      "outs": [
+       "n5.n3.e6"
+      ],
+      "seq": 5.375
+     },
+     "n5.n3.n5": {
+      "id": "n5.n3.n5",
+      "op": "isect",
+      "ins": [
+       "n5.n3.e4",
+       "n5.n3.e3"
+      ],
+      "outs": [
+       "n5.n3.e5"
+      ],
+      "seq": 5.34375,
+      "which": 1
+     },
+     "n5.n3.n4": {
+      "id": "n5.n3.n4",
+      "op": "circle",
+      "ins": [
+       "e3",
+       "e4"
+      ],
+      "outs": [
+       "n5.n3.e4"
+      ],
+      "seq": 5.3125
+     },
+     "n4.n6": {
+      "id": "n4.n6",
+      "op": "isect",
+      "ins": [
+       "n4.e4",
+       "n4.e5",
+       "e3"
+      ],
+      "outs": [
+       "e4"
+      ],
+      "seq": 4.75
+     },
+     "n4.n4": {
+      "id": "n4.n4",
+      "op": "circle",
+      "ins": [
+       "e1",
+       "e3"
+      ],
+      "outs": [
+       "n4.e4"
+      ],
+      "seq": 4.25
+     },
+     "n4.n5": {
+      "id": "n4.n5",
+      "op": "circle",
+      "ins": [
+       "e2",
+       "e3"
+      ],
+      "outs": [
+       "n4.e5"
+      ],
+      "seq": 4.5
+     },
+     "n5.n3.n3": {
+      "id": "n5.n3.n3",
+      "op": "circle",
+      "ins": [
+       "e4",
+       "e3"
+      ],
+      "outs": [
+       "n5.n3.e3"
+      ],
+      "seq": 5.28125
+     },
+     "n5.n4": {
+      "id": "n5.n4",
+      "op": "circle",
+      "ins": [
+       "e3",
+       "e4"
+      ],
+      "outs": [
+       "n5.e4"
+      ],
+      "seq": 5.5
+     },
+     "n5.n5.n9": {
+      "id": "n5.n5.n9",
+      "op": "circle",
+      "ins": [
+       "n5.n5.e7",
+       "e3"
+      ],
+      "outs": [
+       "n5.n5.e9"
+      ],
+      "seq": 5.928571428571429
+     },
+     "n5.n5.n7": {
+      "id": "n5.n5.n7",
+      "op": "isect",
+      "ins": [
+       "n5.n5.e5",
+       "n5.e4",
+       "n5.n5.e6"
+      ],
+      "outs": [
+       "n5.n5.e7"
+      ],
+      "seq": 5.857142857142857
+     },
+     "n6": {
+      "op": "line",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n6",
+      "seq": 6,
+      "outs": [
+       "e6"
+      ]
+     },
+     "n7": {
+      "op": "segment",
+      "ins": [
+       "e3",
+       "e5"
+      ],
+      "id": "n7",
+      "seq": 7,
+      "outs": [
+       "e7"
+      ]
+     }
+    },
+    "elems": {
+     "e1": {
+      "id": "e1",
+      "node": "n1",
+      "kind": "point",
+      "label": "A"
+     },
+     "e2": {
+      "id": "e2",
+      "node": "n2",
+      "kind": "point",
+      "label": "B"
+     },
+     "e3": {
+      "id": "e3",
+      "node": "n3",
+      "kind": "point",
+      "label": "P"
+     },
+     "e5": {
+      "id": "e5",
+      "node": "n5.n5.n10",
+      "kind": "point",
+      "label": ""
+     },
+     "n5.n5.e8": {
+      "id": "n5.n5.e8",
+      "node": "n5.n5.n8",
+      "kind": "circle",
+      "label": ""
+     },
+     "n5.n5.e6": {
+      "id": "n5.n5.e6",
+      "node": "n5.n5.n6",
+      "kind": "point",
+      "label": ""
+     },
+     "n5.n5.e5": {
+      "id": "n5.n5.e5",
+      "node": "n5.n5.n5",
+      "kind": "circle",
+      "label": ""
+     },
+     "n5.e3": {
+      "id": "n5.e3",
+      "node": "n5.n3.n9",
+      "kind": "point",
+      "label": ""
+     },
+     "n5.n3.e8": {
+      "id": "n5.n3.e8",
+      "node": "n5.n3.n8",
+      "kind": "circle",
+      "label": ""
+     },
+     "n5.n3.e7": {
+      "id": "n5.n3.e7",
+      "node": "n5.n3.n7",
+      "kind": "point",
+      "label": ""
+     },
+     "n5.n3.e6": {
+      "id": "n5.n3.e6",
+      "node": "n5.n3.n6",
+      "kind": "circle",
+      "label": ""
+     },
+     "n5.n3.e5": {
+      "id": "n5.n3.e5",
+      "node": "n5.n3.n5",
+      "kind": "point",
+      "label": ""
+     },
+     "n5.n3.e4": {
+      "id": "n5.n3.e4",
+      "node": "n5.n3.n4",
+      "kind": "circle",
+      "label": ""
+     },
+     "e4": {
+      "id": "e4",
+      "node": "n4.n6",
+      "kind": "point",
+      "label": ""
+     },
+     "n4.e4": {
+      "id": "n4.e4",
+      "node": "n4.n4",
+      "kind": "circle",
+      "label": ""
+     },
+     "n4.e5": {
+      "id": "n4.e5",
+      "node": "n4.n5",
+      "kind": "circle",
+      "label": ""
+     },
+     "n5.n3.e3": {
+      "id": "n5.n3.e3",
+      "node": "n5.n3.n3",
+      "kind": "circle",
+      "label": ""
+     },
+     "n5.e4": {
+      "id": "n5.e4",
+      "node": "n5.n4",
+      "kind": "circle",
+      "label": ""
+     },
+     "n5.n5.e9": {
+      "id": "n5.n5.e9",
+      "node": "n5.n5.n9",
+      "kind": "circle",
+      "label": ""
+     },
+     "n5.n5.e7": {
+      "id": "n5.n5.e7",
+      "node": "n5.n5.n7",
+      "kind": "point",
+      "label": ""
+     },
+     "e6": {
+      "id": "e6",
+      "node": "n6",
+      "kind": "line",
+      "label": "",
+      "style": {
+       "dash": "dashed"
+      }
+     },
+     "e7": {
+      "id": "e7",
+      "node": "n7",
+      "kind": "line",
+      "label": "",
+      "style": {
+       "dash": "dashed"
+      }
+     }
+    },
+    "seq": 7
+   },
+   "givens": [
+    "e1",
+    "e2",
+    "e3"
+   ],
+   "scaffold": [],
+   "goals": [
+    "e5"
+   ],
+   "elaboration": [
+    "e6",
+    "e7"
+   ],
+   "tier": 1
+  },
+  {
+   "kind": "problem",
+   "id": "compass.line-circle",
+   "title": "Line Meets Circle",
+   "subtitle": "",
+   "text": "Construct the two points where the line through $A$ and $B$ crosses $\\omega$, which is centered at $O$.\n\n::: Hint\nReflect the whole circle across the line.\n:::\n\n::: Hint\nA circle is fixed by its center and one of its points.\n:::",
+   "toolName": "Line meets circle",
+   "diagram": {
+    "nodes": {
+     "n3": {
+      "op": "circle",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n3",
+      "seq": 3,
+      "outs": [
+       "e3"
+      ]
+     },
+     "n1": {
+      "op": "point",
+      "ins": [],
+      "x": 0,
+      "y": 10,
+      "id": "n1",
+      "seq": 1,
+      "outs": [
+       "e1"
+      ]
+     },
+     "n2": {
+      "op": "point",
+      "ins": [],
+      "x": 57.18811708090112,
+      "y": -62.06607568572848,
+      "id": "n2",
+      "seq": 2,
+      "outs": [
+       "e2"
+      ]
+     },
+     "n4": {
+      "op": "point",
+      "ins": [],
+      "x": -150,
+      "y": 80,
+      "id": "n4",
+      "seq": 4,
+      "outs": [
+       "e4"
+      ]
+     },
+     "n5": {
+      "op": "point",
+      "ins": [],
+      "x": 140,
+      "y": 40,
+      "id": "n5",
+      "seq": 5,
+      "outs": [
+       "e5"
+      ]
+     },
+     "n10": {
+      "op": "isect",
+      "ins": [
+       "e9",
+       "e3"
+      ],
+      "which": 1,
+      "id": "n10",
+      "seq": 10,
+      "outs": [
+       "e10"
+      ]
+     },
+     "n9": {
+      "op": "circle",
+      "ins": [
+       "e7",
+       "e8"
+      ],
+      "id": "n9",
+      "seq": 9,
+      "outs": [
+       "e9"
+      ]
+     },
+     "n7.n6": {
+      "id": "n7.n6",
+      "op": "isect",
+      "ins": [
+       "n7.e4",
+       "n7.e5",
+       "e1"
+      ],
+      "outs": [
+       "e7"
+      ],
+      "seq": 7.75
+     },
+     "n7.n4": {
+      "id": "n7.n4",
+      "op": "circle",
+      "ins": [
+       "e4",
+       "e1"
+      ],
+      "outs": [
+       "n7.e4"
+      ],
+      "seq": 7.25
+     },
+     "n7.n5": {
+      "id": "n7.n5",
+      "op": "circle",
+      "ins": [
+       "e5",
+       "e1"
+      ],
+      "outs": [
+       "n7.e5"
+      ],
+      "seq": 7.5
+     },
+     "n8.n6": {
+      "id": "n8.n6",
+      "op": "isect",
+      "ins": [
+       "n8.e4",
+       "n8.e5",
+       "e6"
+      ],
+      "outs": [
+       "e8"
+      ],
+      "seq": 8.75
+     },
+     "n8.n4": {
+      "id": "n8.n4",
+      "op": "circle",
+      "ins": [
+       "e4",
+       "e6"
+      ],
+      "outs": [
+       "n8.e4"
+      ],
+      "seq": 8.25
+     },
+     "n6": {
+      "op": "point",
+      "ins": [
+       "e3"
+      ],
+      "a": 2.2,
+      "id": "n6",
+      "seq": 6,
+      "outs": [
+       "e6"
+      ]
+     },
+     "n8.n5": {
+      "id": "n8.n5",
+      "op": "circle",
+      "ins": [
+       "e5",
+       "e6"
+      ],
+      "outs": [
+       "n8.e5"
+      ],
+      "seq": 8.5
+     },
+     "n11": {
+      "op": "isect",
+      "ins": [
+       "e9",
+       "e3",
+       "e10"
+      ],
+      "id": "n11",
+      "seq": 11,
+      "outs": [
+       "e11"
+      ]
+     },
+     "n12": {
+      "op": "line",
+      "ins": [
+       "e4",
+       "e5"
+      ],
+      "id": "n12",
+      "seq": 12,
+      "outs": [
+       "e12"
+      ]
+     }
+    },
+    "elems": {
+     "e3": {
+      "id": "e3",
+      "node": "n3",
+      "kind": "circle",
+      "label": "ω"
+     },
+     "e1": {
+      "id": "e1",
+      "node": "n1",
+      "kind": "point",
+      "label": "O"
+     },
+     "e2": {
+      "id": "e2",
+      "node": "n2",
+      "kind": "point",
+      "label": ""
+     },
+     "e4": {
+      "id": "e4",
+      "node": "n4",
+      "kind": "point",
+      "label": "A"
+     },
+     "e5": {
+      "id": "e5",
+      "node": "n5",
+      "kind": "point",
+      "label": "B"
+     },
+     "e10": {
+      "id": "e10",
+      "node": "n10",
+      "kind": "point",
+      "label": ""
+     },
+     "e9": {
+      "id": "e9",
+      "node": "n9",
+      "kind": "circle",
+      "label": ""
+     },
+     "e7": {
+      "id": "e7",
+      "node": "n7.n6",
+      "kind": "point",
+      "label": ""
+     },
+     "n7.e4": {
+      "id": "n7.e4",
+      "node": "n7.n4",
+      "kind": "circle",
+      "label": ""
+     },
+     "n7.e5": {
+      "id": "n7.e5",
+      "node": "n7.n5",
+      "kind": "circle",
+      "label": ""
+     },
+     "e8": {
+      "id": "e8",
+      "node": "n8.n6",
+      "kind": "point",
+      "label": ""
+     },
+     "n8.e4": {
+      "id": "n8.e4",
+      "node": "n8.n4",
+      "kind": "circle",
+      "label": ""
+     },
+     "e6": {
+      "id": "e6",
+      "node": "n6",
+      "kind": "point",
+      "label": ""
+     },
+     "n8.e5": {
+      "id": "n8.e5",
+      "node": "n8.n5",
+      "kind": "circle",
+      "label": ""
+     },
+     "e11": {
+      "id": "e11",
+      "node": "n11",
+      "kind": "point",
+      "label": ""
+     },
+     "e12": {
+      "id": "e12",
+      "node": "n12",
+      "kind": "line",
+      "label": "",
+      "style": {
+       "dash": "dashed"
+      }
+     }
+    },
+    "seq": 12
+   },
+   "givens": [
+    "e3",
+    "e1",
+    "e4",
+    "e5"
+   ],
+   "scaffold": [],
+   "goals": [
+    "e10",
+    "e11"
+   ],
+   "elaboration": [
+    "e12"
+   ],
+   "tier": 1
+  },
+  {
+   "kind": "diagram",
+   "id": "compass.inverting-a-line",
+   "title": "Inverting a Line",
+   "subtitle": "",
+   "text": "Inversion turns a line that misses $O$ into a circle through $O$: $A$ goes to $A^*$, $B$ to $B^*$, and so on, and the circle turns back into the line.\n\nReflect $O$ across the line to get $Q$, and the circle’s center is $Q^*$.",
+   "diagram": {
+    "nodes": {
+     "n1": {
+      "op": "point",
+      "ins": [],
+      "x": 0,
+      "y": 0,
+      "id": "n1",
+      "seq": 1,
+      "outs": [
+       "e1"
+      ]
+     },
+     "n2": {
+      "op": "point",
+      "ins": [],
+      "x": -81.113308709537,
+      "y": -74.3009498606266,
+      "id": "n2",
+      "seq": 2,
+      "outs": [
+       "e2"
+      ]
+     },
+     "n3": {
+      "op": "circle",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n3",
+      "seq": 3,
+      "outs": [
+       "e3"
+      ]
+     },
+     "n4": {
+      "op": "point",
+      "ins": [],
+      "x": 134,
+      "y": -200,
+      "id": "n4",
+      "seq": 4,
+      "outs": [
+       "e4"
+      ]
+     },
+     "n5": {
+      "op": "point",
+      "ins": [],
+      "x": 146,
+      "y": 200,
+      "id": "n5",
+      "seq": 5,
+      "outs": [
+       "e5"
+      ]
+     },
+     "n6": {
+      "op": "line",
+      "ins": [
+       "e4",
+       "e5"
+      ],
+      "id": "n6",
+      "seq": 6,
+      "outs": [
+       "e6"
+      ]
+     },
+     "n7": {
+      "op": "point",
+      "ins": [
+       "e6"
+      ],
+      "t": 0.25,
+      "id": "n7",
+      "seq": 7,
+      "outs": [
+       "e7"
+      ]
+     },
+     "n8": {
+      "op": "point",
+      "ins": [
+       "e6"
+      ],
+      "t": 0.5,
+      "id": "n8",
+      "seq": 8,
+      "outs": [
+       "e8"
+      ]
+     },
+     "n9": {
+      "op": "point",
+      "ins": [
+       "e6"
+      ],
+      "t": 0.75,
+      "id": "n9",
+      "seq": 9,
+      "outs": [
+       "e9"
+      ]
+     },
+     "n10": {
+      "op": "circle",
+      "ins": [
+       "e4",
+       "e1"
+      ],
+      "id": "n10",
+      "seq": 10,
+      "outs": [
+       "e10"
+      ]
+     },
+     "n11": {
+      "op": "circle",
+      "ins": [
+       "e5",
+       "e1"
+      ],
+      "id": "n11",
+      "seq": 11,
+      "outs": [
+       "e11"
+      ]
+     },
+     "n12": {
+      "op": "isect",
+      "ins": [
+       "e10",
+       "e11",
+       "e1"
+      ],
+      "id": "n12",
+      "seq": 12,
+      "outs": [
+       "e12"
+      ]
+     },
+     "n13": {
+      "op": "line",
+      "ins": [
+       "e1",
+       "e4"
+      ],
+      "id": "n13",
+      "seq": 13,
+      "outs": [
+       "e13"
+      ]
+     },
+     "n14": {
+      "op": "line",
+      "ins": [
+       "e1",
+       "e7"
+      ],
+      "id": "n14",
+      "seq": 14,
+      "outs": [
+       "e14"
+      ]
+     },
+     "n15": {
+      "op": "line",
+      "ins": [
+       "e1",
+       "e8"
+      ],
+      "id": "n15",
+      "seq": 15,
+      "outs": [
+       "e15"
+      ]
+     },
+     "n16": {
+      "op": "line",
+      "ins": [
+       "e1",
+       "e9"
+      ],
+      "id": "n16",
+      "seq": 16,
+      "outs": [
+       "e16"
+      ]
+     },
+     "n17": {
+      "op": "line",
+      "ins": [
+       "e1",
+       "e5"
+      ],
+      "id": "n17",
+      "seq": 17,
+      "outs": [
+       "e17"
+      ]
+     },
+     "n18": {
+      "op": "line",
+      "ins": [
+       "e1",
+       "e12"
+      ],
+      "id": "n18",
+      "seq": 18,
+      "outs": [
+       "e18"
+      ]
+     },
+     "n19": {
+      "op": "line",
+      "ins": [
+       "e1",
+       "e4"
+      ],
+      "id": "n19",
+      "seq": 19,
+      "outs": [
+       "e19"
+      ]
+     },
+     "n20": {
+      "op": "circle",
+      "ins": [
+       "e1",
+       "e4"
+      ],
+      "id": "n20",
+      "seq": 20,
+      "outs": [
+       "e20"
+      ]
+     },
+     "n21": {
+      "op": "isect",
+      "ins": [
+       "e19",
+       "e20",
+       "e4"
+      ],
+      "id": "n21",
+      "seq": 21,
+      "outs": [
+       "e21"
+      ]
+     },
+     "n22": {
+      "op": "circle",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n22",
+      "seq": 22,
+      "outs": [
+       "e22"
+      ]
+     },
+     "n23": {
+      "op": "circle",
+      "ins": [
+       "e4",
+       "e21"
+      ],
+      "id": "n23",
+      "seq": 23,
+      "outs": [
+       "e23"
+      ]
+     },
+     "n24": {
+      "op": "circle",
+      "ins": [
+       "e21",
+       "e4"
+      ],
+      "id": "n24",
+      "seq": 24,
+      "outs": [
+       "e24"
+      ]
+     },
+     "n25": {
+      "op": "isect",
+      "ins": [
+       "e23",
+       "e24"
+      ],
+      "which": 0,
+      "id": "n25",
+      "seq": 25,
+      "outs": [
+       "e25"
+      ]
+     },
+     "n26": {
+      "op": "isect",
+      "ins": [
+       "e23",
+       "e24",
+       "e25"
+      ],
+      "id": "n26",
+      "seq": 26,
+      "outs": [
+       "e26"
+      ]
+     },
+     "n27": {
+      "op": "line",
+      "ins": [
+       "e25",
+       "e26"
+      ],
+      "id": "n27",
+      "seq": 27,
+      "outs": [
+       "e27"
+      ]
+     },
+     "n28": {
+      "op": "isect",
+      "ins": [
+       "e27",
+       "e22"
+      ],
+      "which": 0,
+      "id": "n28",
+      "seq": 28,
+      "outs": [
+       "e28"
+      ]
+     },
+     "n29": {
+      "op": "line",
+      "ins": [
+       "e21",
+       "e28"
+      ],
+      "id": "n29",
+      "seq": 29,
+      "outs": [
+       "e29"
+      ]
+     },
+     "n30": {
+      "op": "circle",
+      "ins": [
+       "e28",
+       "e21"
+      ],
+      "id": "n30",
+      "seq": 30,
+      "outs": [
+       "e30"
+      ]
+     },
+     "n31": {
+      "op": "isect",
+      "ins": [
+       "e29",
+       "e30",
+       "e21"
+      ],
+      "id": "n31",
+      "seq": 31,
+      "outs": [
+       "e31"
+      ]
+     },
+     "n32": {
+      "op": "circle",
+      "ins": [
+       "e21",
+       "e31"
+      ],
+      "id": "n32",
+      "seq": 32,
+      "outs": [
+       "e32"
+      ]
+     },
+     "n33": {
+      "op": "circle",
+      "ins": [
+       "e31",
+       "e21"
+      ],
+      "id": "n33",
+      "seq": 33,
+      "outs": [
+       "e33"
+      ]
+     },
+     "n34": {
+      "op": "isect",
+      "ins": [
+       "e32",
+       "e33"
+      ],
+      "which": 1,
+      "id": "n34",
+      "seq": 34,
+      "outs": [
+       "e34"
+      ]
+     },
+     "n35": {
+      "op": "isect",
+      "ins": [
+       "e32",
+       "e33",
+       "e34"
+      ],
+      "id": "n35",
+      "seq": 35,
+      "outs": [
+       "e35"
+      ]
+     },
+     "n36": {
+      "op": "line",
+      "ins": [
+       "e34",
+       "e35"
+      ],
+      "id": "n36",
+      "seq": 36,
+      "outs": [
+       "e36"
+      ]
+     },
+     "n37": {
+      "op": "isect",
+      "ins": [
+       "e36",
+       "e19"
+      ],
+      "which": 0,
+      "id": "n37",
+      "seq": 37,
+      "outs": [
+       "e37"
+      ]
+     },
+     "n38": {
+      "op": "line",
+      "ins": [
+       "e1",
+       "e7"
+      ],
+      "id": "n38",
+      "seq": 38,
+      "outs": [
+       "e38"
+      ]
+     },
+     "n39": {
+      "op": "circle",
+      "ins": [
+       "e1",
+       "e7"
+      ],
+      "id": "n39",
+      "seq": 39,
+      "outs": [
+       "e39"
+      ]
+     },
+     "n40": {
+      "op": "isect",
+      "ins": [
+       "e38",
+       "e39",
+       "e7"
+      ],
+      "id": "n40",
+      "seq": 40,
+      "outs": [
+       "e40"
+      ]
+     },
+     "n41": {
+      "op": "circle",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n41",
+      "seq": 41,
+      "outs": [
+       "e41"
+      ]
+     },
+     "n42": {
+      "op": "circle",
+      "ins": [
+       "e7",
+       "e40"
+      ],
+      "id": "n42",
+      "seq": 42,
+      "outs": [
+       "e42"
+      ]
+     },
+     "n43": {
+      "op": "circle",
+      "ins": [
+       "e40",
+       "e7"
+      ],
+      "id": "n43",
+      "seq": 43,
+      "outs": [
+       "e43"
+      ]
+     },
+     "n44": {
+      "op": "isect",
+      "ins": [
+       "e42",
+       "e43"
+      ],
+      "which": 0,
+      "id": "n44",
+      "seq": 44,
+      "outs": [
+       "e44"
+      ]
+     },
+     "n45": {
+      "op": "isect",
+      "ins": [
+       "e42",
+       "e43",
+       "e44"
+      ],
+      "id": "n45",
+      "seq": 45,
+      "outs": [
+       "e45"
+      ]
+     },
+     "n46": {
+      "op": "line",
+      "ins": [
+       "e44",
+       "e45"
+      ],
+      "id": "n46",
+      "seq": 46,
+      "outs": [
+       "e46"
+      ]
+     },
+     "n47": {
+      "op": "isect",
+      "ins": [
+       "e46",
+       "e41"
+      ],
+      "which": 0,
+      "id": "n47",
+      "seq": 47,
+      "outs": [
+       "e47"
+      ]
+     },
+     "n48": {
+      "op": "line",
+      "ins": [
+       "e40",
+       "e47"
+      ],
+      "id": "n48",
+      "seq": 48,
+      "outs": [
+       "e48"
+      ]
+     },
+     "n49": {
+      "op": "circle",
+      "ins": [
+       "e47",
+       "e40"
+      ],
+      "id": "n49",
+      "seq": 49,
+      "outs": [
+       "e49"
+      ]
+     },
+     "n50": {
+      "op": "isect",
+      "ins": [
+       "e48",
+       "e49",
+       "e40"
+      ],
+      "id": "n50",
+      "seq": 50,
+      "outs": [
+       "e50"
+      ]
+     },
+     "n51": {
+      "op": "circle",
+      "ins": [
+       "e40",
+       "e50"
+      ],
+      "id": "n51",
+      "seq": 51,
+      "outs": [
+       "e51"
+      ]
+     },
+     "n52": {
+      "op": "circle",
+      "ins": [
+       "e50",
+       "e40"
+      ],
+      "id": "n52",
+      "seq": 52,
+      "outs": [
+       "e52"
+      ]
+     },
+     "n53": {
+      "op": "isect",
+      "ins": [
+       "e51",
+       "e52"
+      ],
+      "which": 1,
+      "id": "n53",
+      "seq": 53,
+      "outs": [
+       "e53"
+      ]
+     },
+     "n54": {
+      "op": "isect",
+      "ins": [
+       "e51",
+       "e52",
+       "e53"
+      ],
+      "id": "n54",
+      "seq": 54,
+      "outs": [
+       "e54"
+      ]
+     },
+     "n55": {
+      "op": "line",
+      "ins": [
+       "e53",
+       "e54"
+      ],
+      "id": "n55",
+      "seq": 55,
+      "outs": [
+       "e55"
+      ]
+     },
+     "n56": {
+      "op": "isect",
+      "ins": [
+       "e55",
+       "e38"
+      ],
+      "which": 0,
+      "id": "n56",
+      "seq": 56,
+      "outs": [
+       "e56"
+      ]
+     },
+     "n57": {
+      "op": "line",
+      "ins": [
+       "e1",
+       "e8"
+      ],
+      "id": "n57",
+      "seq": 57,
+      "outs": [
+       "e57"
+      ]
+     },
+     "n58": {
+      "op": "circle",
+      "ins": [
+       "e1",
+       "e8"
+      ],
+      "id": "n58",
+      "seq": 58,
+      "outs": [
+       "e58"
+      ]
+     },
+     "n59": {
+      "op": "isect",
+      "ins": [
+       "e57",
+       "e58",
+       "e8"
+      ],
+      "id": "n59",
+      "seq": 59,
+      "outs": [
+       "e59"
+      ]
+     },
+     "n60": {
+      "op": "circle",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n60",
+      "seq": 60,
+      "outs": [
+       "e60"
+      ]
+     },
+     "n61": {
+      "op": "circle",
+      "ins": [
+       "e8",
+       "e59"
+      ],
+      "id": "n61",
+      "seq": 61,
+      "outs": [
+       "e61"
+      ]
+     },
+     "n62": {
+      "op": "circle",
+      "ins": [
+       "e59",
+       "e8"
+      ],
+      "id": "n62",
+      "seq": 62,
+      "outs": [
+       "e62"
+      ]
+     },
+     "n63": {
+      "op": "isect",
+      "ins": [
+       "e61",
+       "e62"
+      ],
+      "which": 0,
+      "id": "n63",
+      "seq": 63,
+      "outs": [
+       "e63"
+      ]
+     },
+     "n64": {
+      "op": "isect",
+      "ins": [
+       "e61",
+       "e62",
+       "e63"
+      ],
+      "id": "n64",
+      "seq": 64,
+      "outs": [
+       "e64"
+      ]
+     },
+     "n65": {
+      "op": "line",
+      "ins": [
+       "e63",
+       "e64"
+      ],
+      "id": "n65",
+      "seq": 65,
+      "outs": [
+       "e65"
+      ]
+     },
+     "n66": {
+      "op": "isect",
+      "ins": [
+       "e65",
+       "e60"
+      ],
+      "which": 0,
+      "id": "n66",
+      "seq": 66,
+      "outs": [
+       "e66"
+      ]
+     },
+     "n67": {
+      "op": "line",
+      "ins": [
+       "e59",
+       "e66"
+      ],
+      "id": "n67",
+      "seq": 67,
+      "outs": [
+       "e67"
+      ]
+     },
+     "n68": {
+      "op": "circle",
+      "ins": [
+       "e66",
+       "e59"
+      ],
+      "id": "n68",
+      "seq": 68,
+      "outs": [
+       "e68"
+      ]
+     },
+     "n69": {
+      "op": "isect",
+      "ins": [
+       "e67",
+       "e68",
+       "e59"
+      ],
+      "id": "n69",
+      "seq": 69,
+      "outs": [
+       "e69"
+      ]
+     },
+     "n70": {
+      "op": "circle",
+      "ins": [
+       "e59",
+       "e69"
+      ],
+      "id": "n70",
+      "seq": 70,
+      "outs": [
+       "e70"
+      ]
+     },
+     "n71": {
+      "op": "circle",
+      "ins": [
+       "e69",
+       "e59"
+      ],
+      "id": "n71",
+      "seq": 71,
+      "outs": [
+       "e71"
+      ]
+     },
+     "n72": {
+      "op": "isect",
+      "ins": [
+       "e70",
+       "e71"
+      ],
+      "which": 1,
+      "id": "n72",
+      "seq": 72,
+      "outs": [
+       "e72"
+      ]
+     },
+     "n73": {
+      "op": "isect",
+      "ins": [
+       "e70",
+       "e71",
+       "e72"
+      ],
+      "id": "n73",
+      "seq": 73,
+      "outs": [
+       "e73"
+      ]
+     },
+     "n74": {
+      "op": "line",
+      "ins": [
+       "e72",
+       "e73"
+      ],
+      "id": "n74",
+      "seq": 74,
+      "outs": [
+       "e74"
+      ]
+     },
+     "n75": {
+      "op": "isect",
+      "ins": [
+       "e74",
+       "e57"
+      ],
+      "which": 0,
+      "id": "n75",
+      "seq": 75,
+      "outs": [
+       "e75"
+      ]
+     },
+     "n76": {
+      "op": "line",
+      "ins": [
+       "e1",
+       "e9"
+      ],
+      "id": "n76",
+      "seq": 76,
+      "outs": [
+       "e76"
+      ]
+     },
+     "n77": {
+      "op": "circle",
+      "ins": [
+       "e1",
+       "e9"
+      ],
+      "id": "n77",
+      "seq": 77,
+      "outs": [
+       "e77"
+      ]
+     },
+     "n78": {
+      "op": "isect",
+      "ins": [
+       "e76",
+       "e77",
+       "e9"
+      ],
+      "id": "n78",
+      "seq": 78,
+      "outs": [
+       "e78"
+      ]
+     },
+     "n79": {
+      "op": "circle",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n79",
+      "seq": 79,
+      "outs": [
+       "e79"
+      ]
+     },
+     "n80": {
+      "op": "circle",
+      "ins": [
+       "e9",
+       "e78"
+      ],
+      "id": "n80",
+      "seq": 80,
+      "outs": [
+       "e80"
+      ]
+     },
+     "n81": {
+      "op": "circle",
+      "ins": [
+       "e78",
+       "e9"
+      ],
+      "id": "n81",
+      "seq": 81,
+      "outs": [
+       "e81"
+      ]
+     },
+     "n82": {
+      "op": "isect",
+      "ins": [
+       "e80",
+       "e81"
+      ],
+      "which": 0,
+      "id": "n82",
+      "seq": 82,
+      "outs": [
+       "e82"
+      ]
+     },
+     "n83": {
+      "op": "isect",
+      "ins": [
+       "e80",
+       "e81",
+       "e82"
+      ],
+      "id": "n83",
+      "seq": 83,
+      "outs": [
+       "e83"
+      ]
+     },
+     "n84": {
+      "op": "line",
+      "ins": [
+       "e82",
+       "e83"
+      ],
+      "id": "n84",
+      "seq": 84,
+      "outs": [
+       "e84"
+      ]
+     },
+     "n85": {
+      "op": "isect",
+      "ins": [
+       "e84",
+       "e79"
+      ],
+      "which": 0,
+      "id": "n85",
+      "seq": 85,
+      "outs": [
+       "e85"
+      ]
+     },
+     "n86": {
+      "op": "line",
+      "ins": [
+       "e78",
+       "e85"
+      ],
+      "id": "n86",
+      "seq": 86,
+      "outs": [
+       "e86"
+      ]
+     },
+     "n87": {
+      "op": "circle",
+      "ins": [
+       "e85",
+       "e78"
+      ],
+      "id": "n87",
+      "seq": 87,
+      "outs": [
+       "e87"
+      ]
+     },
+     "n88": {
+      "op": "isect",
+      "ins": [
+       "e86",
+       "e87",
+       "e78"
+      ],
+      "id": "n88",
+      "seq": 88,
+      "outs": [
+       "e88"
+      ]
+     },
+     "n89": {
+      "op": "circle",
+      "ins": [
+       "e78",
+       "e88"
+      ],
+      "id": "n89",
+      "seq": 89,
+      "outs": [
+       "e89"
+      ]
+     },
+     "n90": {
+      "op": "circle",
+      "ins": [
+       "e88",
+       "e78"
+      ],
+      "id": "n90",
+      "seq": 90,
+      "outs": [
+       "e90"
+      ]
+     },
+     "n91": {
+      "op": "isect",
+      "ins": [
+       "e89",
+       "e90"
+      ],
+      "which": 1,
+      "id": "n91",
+      "seq": 91,
+      "outs": [
+       "e91"
+      ]
+     },
+     "n92": {
+      "op": "isect",
+      "ins": [
+       "e89",
+       "e90",
+       "e91"
+      ],
+      "id": "n92",
+      "seq": 92,
+      "outs": [
+       "e92"
+      ]
+     },
+     "n93": {
+      "op": "line",
+      "ins": [
+       "e91",
+       "e92"
+      ],
+      "id": "n93",
+      "seq": 93,
+      "outs": [
+       "e93"
+      ]
+     },
+     "n94": {
+      "op": "isect",
+      "ins": [
+       "e93",
+       "e76"
+      ],
+      "which": 0,
+      "id": "n94",
+      "seq": 94,
+      "outs": [
+       "e94"
+      ]
+     },
+     "n95": {
+      "op": "line",
+      "ins": [
+       "e1",
+       "e5"
+      ],
+      "id": "n95",
+      "seq": 95,
+      "outs": [
+       "e95"
+      ]
+     },
+     "n96": {
+      "op": "circle",
+      "ins": [
+       "e1",
+       "e5"
+      ],
+      "id": "n96",
+      "seq": 96,
+      "outs": [
+       "e96"
+      ]
+     },
+     "n97": {
+      "op": "isect",
+      "ins": [
+       "e95",
+       "e96",
+       "e5"
+      ],
+      "id": "n97",
+      "seq": 97,
+      "outs": [
+       "e97"
+      ]
+     },
+     "n98": {
+      "op": "circle",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n98",
+      "seq": 98,
+      "outs": [
+       "e98"
+      ]
+     },
+     "n99": {
+      "op": "circle",
+      "ins": [
+       "e5",
+       "e97"
+      ],
+      "id": "n99",
+      "seq": 99,
+      "outs": [
+       "e99"
+      ]
+     },
+     "n100": {
+      "op": "circle",
+      "ins": [
+       "e97",
+       "e5"
+      ],
+      "id": "n100",
+      "seq": 100,
+      "outs": [
+       "e100"
+      ]
+     },
+     "n101": {
+      "op": "isect",
+      "ins": [
+       "e99",
+       "e100"
+      ],
+      "which": 0,
+      "id": "n101",
+      "seq": 101,
+      "outs": [
+       "e101"
+      ]
+     },
+     "n102": {
+      "op": "isect",
+      "ins": [
+       "e99",
+       "e100",
+       "e101"
+      ],
+      "id": "n102",
+      "seq": 102,
+      "outs": [
+       "e102"
+      ]
+     },
+     "n103": {
+      "op": "line",
+      "ins": [
+       "e101",
+       "e102"
+      ],
+      "id": "n103",
+      "seq": 103,
+      "outs": [
+       "e103"
+      ]
+     },
+     "n104": {
+      "op": "isect",
+      "ins": [
+       "e103",
+       "e98"
+      ],
+      "which": 0,
+      "id": "n104",
+      "seq": 104,
+      "outs": [
+       "e104"
+      ]
+     },
+     "n105": {
+      "op": "line",
+      "ins": [
+       "e97",
+       "e104"
+      ],
+      "id": "n105",
+      "seq": 105,
+      "outs": [
+       "e105"
+      ]
+     },
+     "n106": {
+      "op": "circle",
+      "ins": [
+       "e104",
+       "e97"
+      ],
+      "id": "n106",
+      "seq": 106,
+      "outs": [
+       "e106"
+      ]
+     },
+     "n107": {
+      "op": "isect",
+      "ins": [
+       "e105",
+       "e106",
+       "e97"
+      ],
+      "id": "n107",
+      "seq": 107,
+      "outs": [
+       "e107"
+      ]
+     },
+     "n108": {
+      "op": "circle",
+      "ins": [
+       "e97",
+       "e107"
+      ],
+      "id": "n108",
+      "seq": 108,
+      "outs": [
+       "e108"
+      ]
+     },
+     "n109": {
+      "op": "circle",
+      "ins": [
+       "e107",
+       "e97"
+      ],
+      "id": "n109",
+      "seq": 109,
+      "outs": [
+       "e109"
+      ]
+     },
+     "n110": {
+      "op": "isect",
+      "ins": [
+       "e108",
+       "e109"
+      ],
+      "which": 1,
+      "id": "n110",
+      "seq": 110,
+      "outs": [
+       "e110"
+      ]
+     },
+     "n111": {
+      "op": "isect",
+      "ins": [
+       "e108",
+       "e109",
+       "e110"
+      ],
+      "id": "n111",
+      "seq": 111,
+      "outs": [
+       "e111"
+      ]
+     },
+     "n112": {
+      "op": "line",
+      "ins": [
+       "e110",
+       "e111"
+      ],
+      "id": "n112",
+      "seq": 112,
+      "outs": [
+       "e112"
+      ]
+     },
+     "n113": {
+      "op": "isect",
+      "ins": [
+       "e112",
+       "e95"
+      ],
+      "which": 0,
+      "id": "n113",
+      "seq": 113,
+      "outs": [
+       "e113"
+      ]
+     },
+     "n114": {
+      "op": "line",
+      "ins": [
+       "e1",
+       "e12"
+      ],
+      "id": "n114",
+      "seq": 114,
+      "outs": [
+       "e114"
+      ]
+     },
+     "n115": {
+      "op": "circle",
+      "ins": [
+       "e1",
+       "e12"
+      ],
+      "id": "n115",
+      "seq": 115,
+      "outs": [
+       "e115"
+      ]
+     },
+     "n116": {
+      "op": "isect",
+      "ins": [
+       "e114",
+       "e115",
+       "e12"
+      ],
+      "id": "n116",
+      "seq": 116,
+      "outs": [
+       "e116"
+      ]
+     },
+     "n117": {
+      "op": "circle",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n117",
+      "seq": 117,
+      "outs": [
+       "e117"
+      ]
+     },
+     "n118": {
+      "op": "circle",
+      "ins": [
+       "e12",
+       "e116"
+      ],
+      "id": "n118",
+      "seq": 118,
+      "outs": [
+       "e118"
+      ]
+     },
+     "n119": {
+      "op": "circle",
+      "ins": [
+       "e116",
+       "e12"
+      ],
+      "id": "n119",
+      "seq": 119,
+      "outs": [
+       "e119"
+      ]
+     },
+     "n120": {
+      "op": "isect",
+      "ins": [
+       "e118",
+       "e119"
+      ],
+      "which": 0,
+      "id": "n120",
+      "seq": 120,
+      "outs": [
+       "e120"
+      ]
+     },
+     "n121": {
+      "op": "isect",
+      "ins": [
+       "e118",
+       "e119",
+       "e120"
+      ],
+      "id": "n121",
+      "seq": 121,
+      "outs": [
+       "e121"
+      ]
+     },
+     "n122": {
+      "op": "line",
+      "ins": [
+       "e120",
+       "e121"
+      ],
+      "id": "n122",
+      "seq": 122,
+      "outs": [
+       "e122"
+      ]
+     },
+     "n123": {
+      "op": "isect",
+      "ins": [
+       "e122",
+       "e117"
+      ],
+      "which": 0,
+      "id": "n123",
+      "seq": 123,
+      "outs": [
+       "e123"
+      ]
+     },
+     "n124": {
+      "op": "line",
+      "ins": [
+       "e116",
+       "e123"
+      ],
+      "id": "n124",
+      "seq": 124,
+      "outs": [
+       "e124"
+      ]
+     },
+     "n125": {
+      "op": "circle",
+      "ins": [
+       "e123",
+       "e116"
+      ],
+      "id": "n125",
+      "seq": 125,
+      "outs": [
+       "e125"
+      ]
+     },
+     "n126": {
+      "op": "isect",
+      "ins": [
+       "e124",
+       "e125",
+       "e116"
+      ],
+      "id": "n126",
+      "seq": 126,
+      "outs": [
+       "e126"
+      ]
+     },
+     "n127": {
+      "op": "circle",
+      "ins": [
+       "e116",
+       "e126"
+      ],
+      "id": "n127",
+      "seq": 127,
+      "outs": [
+       "e127"
+      ]
+     },
+     "n128": {
+      "op": "circle",
+      "ins": [
+       "e126",
+       "e116"
+      ],
+      "id": "n128",
+      "seq": 128,
+      "outs": [
+       "e128"
+      ]
+     },
+     "n129": {
+      "op": "isect",
+      "ins": [
+       "e127",
+       "e128"
+      ],
+      "which": 1,
+      "id": "n129",
+      "seq": 129,
+      "outs": [
+       "e129"
+      ]
+     },
+     "n130": {
+      "op": "isect",
+      "ins": [
+       "e127",
+       "e128",
+       "e129"
+      ],
+      "id": "n130",
+      "seq": 130,
+      "outs": [
+       "e130"
+      ]
+     },
+     "n131": {
+      "op": "line",
+      "ins": [
+       "e129",
+       "e130"
+      ],
+      "id": "n131",
+      "seq": 131,
+      "outs": [
+       "e131"
+      ]
+     },
+     "n132": {
+      "op": "isect",
+      "ins": [
+       "e131",
+       "e114"
+      ],
+      "which": 0,
+      "id": "n132",
+      "seq": 132,
+      "outs": [
+       "e132"
+      ]
+     },
+     "n133": {
+      "op": "circle",
+      "ins": [
+       "e132",
+       "e1"
+      ],
+      "id": "n133",
+      "seq": 133,
+      "outs": [
+       "e133"
+      ]
+     }
+    },
+    "elems": {
+     "e1": {
+      "id": "e1",
+      "node": "n1",
+      "kind": "point",
+      "label": "O"
+     },
+     "e2": {
+      "id": "e2",
+      "node": "n2",
+      "kind": "point",
+      "label": "",
+      "internal": true
+     },
+     "e3": {
+      "id": "e3",
+      "node": "n3",
+      "kind": "circle",
+      "label": ""
+     },
+     "e4": {
+      "id": "e4",
+      "node": "n4",
+      "kind": "point",
+      "label": "A"
+     },
+     "e5": {
+      "id": "e5",
+      "node": "n5",
+      "kind": "point",
+      "label": "E"
+     },
+     "e6": {
+      "id": "e6",
+      "node": "n6",
+      "kind": "line",
+      "label": ""
+     },
+     "e7": {
+      "id": "e7",
+      "node": "n7",
+      "kind": "point",
+      "label": "B"
+     },
+     "e8": {
+      "id": "e8",
+      "node": "n8",
+      "kind": "point",
+      "label": "C"
+     },
+     "e9": {
+      "id": "e9",
+      "node": "n9",
+      "kind": "point",
+      "label": "D"
+     },
+     "e10": {
+      "id": "e10",
+      "node": "n10",
+      "kind": "circle",
+      "label": "",
+      "internal": true
+     },
+     "e11": {
+      "id": "e11",
+      "node": "n11",
+      "kind": "circle",
+      "label": "",
+      "internal": true
+     },
+     "e12": {
+      "id": "e12",
+      "node": "n12",
+      "kind": "point",
+      "label": "Q"
+     },
+     "e13": {
+      "id": "e13",
+      "node": "n13",
+      "kind": "line",
+      "label": "",
+      "style": {
+       "color": "gray",
+       "weight": "thin"
+      }
+     },
+     "e14": {
+      "id": "e14",
+      "node": "n14",
+      "kind": "line",
+      "label": "",
+      "style": {
+       "color": "gray",
+       "weight": "thin"
+      }
+     },
+     "e15": {
+      "id": "e15",
+      "node": "n15",
+      "kind": "line",
+      "label": "",
+      "style": {
+       "color": "gray",
+       "weight": "thin"
+      }
+     },
+     "e16": {
+      "id": "e16",
+      "node": "n16",
+      "kind": "line",
+      "label": "",
+      "style": {
+       "color": "gray",
+       "weight": "thin"
+      }
+     },
+     "e17": {
+      "id": "e17",
+      "node": "n17",
+      "kind": "line",
+      "label": "",
+      "style": {
+       "color": "gray",
+       "weight": "thin"
+      }
+     },
+     "e18": {
+      "id": "e18",
+      "node": "n18",
+      "kind": "line",
+      "label": "",
+      "style": {
+       "color": "gray",
+       "weight": "thin"
+      }
+     },
+     "e19": {
+      "id": "e19",
+      "node": "n19",
+      "kind": "line",
+      "label": "",
+      "internal": true
+     },
+     "e20": {
+      "id": "e20",
+      "node": "n20",
+      "kind": "circle",
+      "label": "",
+      "internal": true
+     },
+     "e21": {
+      "id": "e21",
+      "node": "n21",
+      "kind": "point",
+      "label": "",
+      "internal": true
+     },
+     "e22": {
+      "id": "e22",
+      "node": "n22",
+      "kind": "circle",
+      "label": "",
+      "internal": true
+     },
+     "e23": {
+      "id": "e23",
+      "node": "n23",
+      "kind": "circle",
+      "label": "",
+      "internal": true
+     },
+     "e24": {
+      "id": "e24",
+      "node": "n24",
+      "kind": "circle",
+      "label": "",
+      "internal": true
+     },
+     "e25": {
+      "id": "e25",
+      "node": "n25",
+      "kind": "point",
+      "label": "",
+      "internal": true
+     },
+     "e26": {
+      "id": "e26",
+      "node": "n26",
+      "kind": "point",
+      "label": "",
+      "internal": true
+     },
+     "e27": {
+      "id": "e27",
+      "node": "n27",
+      "kind": "line",
+      "label": "",
+      "internal": true
+     },
+     "e28": {
+      "id": "e28",
+      "node": "n28",
+      "kind": "point",
+      "label": "",
+      "internal": true
+     },
+     "e29": {
+      "id": "e29",
+      "node": "n29",
+      "kind": "line",
+      "label": "",
+      "internal": true
+     },
+     "e30": {
+      "id": "e30",
+      "node": "n30",
+      "kind": "circle",
+      "label": "",
+      "internal": true
+     },
+     "e31": {
+      "id": "e31",
+      "node": "n31",
+      "kind": "point",
+      "label": "",
+      "internal": true
+     },
+     "e32": {
+      "id": "e32",
+      "node": "n32",
+      "kind": "circle",
+      "label": "",
+      "internal": true
+     },
+     "e33": {
+      "id": "e33",
+      "node": "n33",
+      "kind": "circle",
+      "label": "",
+      "internal": true
+     },
+     "e34": {
+      "id": "e34",
+      "node": "n34",
+      "kind": "point",
+      "label": "",
+      "internal": true
+     },
+     "e35": {
+      "id": "e35",
+      "node": "n35",
+      "kind": "point",
+      "label": "",
+      "internal": true
+     },
+     "e36": {
+      "id": "e36",
+      "node": "n36",
+      "kind": "line",
+      "label": "",
+      "internal": true
+     },
+     "e37": {
+      "id": "e37",
+      "node": "n37",
+      "kind": "point",
+      "label": "A*",
+      "style": {
+       "color": "orange"
+      }
+     },
+     "e38": {
+      "id": "e38",
+      "node": "n38",
+      "kind": "line",
+      "label": "",
+      "internal": true
+     },
+     "e39": {
+      "id": "e39",
+      "node": "n39",
+      "kind": "circle",
+      "label": "",
+      "internal": true
+     },
+     "e40": {
+      "id": "e40",
+      "node": "n40",
+      "kind": "point",
+      "label": "",
+      "internal": true
+     },
+     "e41": {
+      "id": "e41",
+      "node": "n41",
+      "kind": "circle",
+      "label": "",
+      "internal": true
+     },
+     "e42": {
+      "id": "e42",
+      "node": "n42",
+      "kind": "circle",
+      "label": "",
+      "internal": true
+     },
+     "e43": {
+      "id": "e43",
+      "node": "n43",
+      "kind": "circle",
+      "label": "",
+      "internal": true
+     },
+     "e44": {
+      "id": "e44",
+      "node": "n44",
+      "kind": "point",
+      "label": "",
+      "internal": true
+     },
+     "e45": {
+      "id": "e45",
+      "node": "n45",
+      "kind": "point",
+      "label": "",
+      "internal": true
+     },
+     "e46": {
+      "id": "e46",
+      "node": "n46",
+      "kind": "line",
+      "label": "",
+      "internal": true
+     },
+     "e47": {
+      "id": "e47",
+      "node": "n47",
+      "kind": "point",
+      "label": "",
+      "internal": true
+     },
+     "e48": {
+      "id": "e48",
+      "node": "n48",
+      "kind": "line",
+      "label": "",
+      "internal": true
+     },
+     "e49": {
+      "id": "e49",
+      "node": "n49",
+      "kind": "circle",
+      "label": "",
+      "internal": true
+     },
+     "e50": {
+      "id": "e50",
+      "node": "n50",
+      "kind": "point",
+      "label": "",
+      "internal": true
+     },
+     "e51": {
+      "id": "e51",
+      "node": "n51",
+      "kind": "circle",
+      "label": "",
+      "internal": true
+     },
+     "e52": {
+      "id": "e52",
+      "node": "n52",
+      "kind": "circle",
+      "label": "",
+      "internal": true
+     },
+     "e53": {
+      "id": "e53",
+      "node": "n53",
+      "kind": "point",
+      "label": "",
+      "internal": true
+     },
+     "e54": {
+      "id": "e54",
+      "node": "n54",
+      "kind": "point",
+      "label": "",
+      "internal": true
+     },
+     "e55": {
+      "id": "e55",
+      "node": "n55",
+      "kind": "line",
+      "label": "",
+      "internal": true
+     },
+     "e56": {
+      "id": "e56",
+      "node": "n56",
+      "kind": "point",
+      "label": "B*",
+      "style": {
+       "color": "orange"
+      }
+     },
+     "e57": {
+      "id": "e57",
+      "node": "n57",
+      "kind": "line",
+      "label": "",
+      "internal": true
+     },
+     "e58": {
+      "id": "e58",
+      "node": "n58",
+      "kind": "circle",
+      "label": "",
+      "internal": true
+     },
+     "e59": {
+      "id": "e59",
+      "node": "n59",
+      "kind": "point",
+      "label": "",
+      "internal": true
+     },
+     "e60": {
+      "id": "e60",
+      "node": "n60",
+      "kind": "circle",
+      "label": "",
+      "internal": true
+     },
+     "e61": {
+      "id": "e61",
+      "node": "n61",
+      "kind": "circle",
+      "label": "",
+      "internal": true
+     },
+     "e62": {
+      "id": "e62",
+      "node": "n62",
+      "kind": "circle",
+      "label": "",
+      "internal": true
+     },
+     "e63": {
+      "id": "e63",
+      "node": "n63",
+      "kind": "point",
+      "label": "",
+      "internal": true
+     },
+     "e64": {
+      "id": "e64",
+      "node": "n64",
+      "kind": "point",
+      "label": "",
+      "internal": true
+     },
+     "e65": {
+      "id": "e65",
+      "node": "n65",
+      "kind": "line",
+      "label": "",
+      "internal": true
+     },
+     "e66": {
+      "id": "e66",
+      "node": "n66",
+      "kind": "point",
+      "label": "",
+      "internal": true
+     },
+     "e67": {
+      "id": "e67",
+      "node": "n67",
+      "kind": "line",
+      "label": "",
+      "internal": true
+     },
+     "e68": {
+      "id": "e68",
+      "node": "n68",
+      "kind": "circle",
+      "label": "",
+      "internal": true
+     },
+     "e69": {
+      "id": "e69",
+      "node": "n69",
+      "kind": "point",
+      "label": "",
+      "internal": true
+     },
+     "e70": {
+      "id": "e70",
+      "node": "n70",
+      "kind": "circle",
+      "label": "",
+      "internal": true
+     },
+     "e71": {
+      "id": "e71",
+      "node": "n71",
+      "kind": "circle",
+      "label": "",
+      "internal": true
+     },
+     "e72": {
+      "id": "e72",
+      "node": "n72",
+      "kind": "point",
+      "label": "",
+      "internal": true
+     },
+     "e73": {
+      "id": "e73",
+      "node": "n73",
+      "kind": "point",
+      "label": "",
+      "internal": true
+     },
+     "e74": {
+      "id": "e74",
+      "node": "n74",
+      "kind": "line",
+      "label": "",
+      "internal": true
+     },
+     "e75": {
+      "id": "e75",
+      "node": "n75",
+      "kind": "point",
+      "label": "C*",
+      "style": {
+       "color": "orange"
+      }
+     },
+     "e76": {
+      "id": "e76",
+      "node": "n76",
+      "kind": "line",
+      "label": "",
+      "internal": true
+     },
+     "e77": {
+      "id": "e77",
+      "node": "n77",
+      "kind": "circle",
+      "label": "",
+      "internal": true
+     },
+     "e78": {
+      "id": "e78",
+      "node": "n78",
+      "kind": "point",
+      "label": "",
+      "internal": true
+     },
+     "e79": {
+      "id": "e79",
+      "node": "n79",
+      "kind": "circle",
+      "label": "",
+      "internal": true
+     },
+     "e80": {
+      "id": "e80",
+      "node": "n80",
+      "kind": "circle",
+      "label": "",
+      "internal": true
+     },
+     "e81": {
+      "id": "e81",
+      "node": "n81",
+      "kind": "circle",
+      "label": "",
+      "internal": true
+     },
+     "e82": {
+      "id": "e82",
+      "node": "n82",
+      "kind": "point",
+      "label": "",
+      "internal": true
+     },
+     "e83": {
+      "id": "e83",
+      "node": "n83",
+      "kind": "point",
+      "label": "",
+      "internal": true
+     },
+     "e84": {
+      "id": "e84",
+      "node": "n84",
+      "kind": "line",
+      "label": "",
+      "internal": true
+     },
+     "e85": {
+      "id": "e85",
+      "node": "n85",
+      "kind": "point",
+      "label": "",
+      "internal": true
+     },
+     "e86": {
+      "id": "e86",
+      "node": "n86",
+      "kind": "line",
+      "label": "",
+      "internal": true
+     },
+     "e87": {
+      "id": "e87",
+      "node": "n87",
+      "kind": "circle",
+      "label": "",
+      "internal": true
+     },
+     "e88": {
+      "id": "e88",
+      "node": "n88",
+      "kind": "point",
+      "label": "",
+      "internal": true
+     },
+     "e89": {
+      "id": "e89",
+      "node": "n89",
+      "kind": "circle",
+      "label": "",
+      "internal": true
+     },
+     "e90": {
+      "id": "e90",
+      "node": "n90",
+      "kind": "circle",
+      "label": "",
+      "internal": true
+     },
+     "e91": {
+      "id": "e91",
+      "node": "n91",
+      "kind": "point",
+      "label": "",
+      "internal": true
+     },
+     "e92": {
+      "id": "e92",
+      "node": "n92",
+      "kind": "point",
+      "label": "",
+      "internal": true
+     },
+     "e93": {
+      "id": "e93",
+      "node": "n93",
+      "kind": "line",
+      "label": "",
+      "internal": true
+     },
+     "e94": {
+      "id": "e94",
+      "node": "n94",
+      "kind": "point",
+      "label": "D*",
+      "style": {
+       "color": "orange"
+      }
+     },
+     "e95": {
+      "id": "e95",
+      "node": "n95",
+      "kind": "line",
+      "label": "",
+      "internal": true
+     },
+     "e96": {
+      "id": "e96",
+      "node": "n96",
+      "kind": "circle",
+      "label": "",
+      "internal": true
+     },
+     "e97": {
+      "id": "e97",
+      "node": "n97",
+      "kind": "point",
+      "label": "",
+      "internal": true
+     },
+     "e98": {
+      "id": "e98",
+      "node": "n98",
+      "kind": "circle",
+      "label": "",
+      "internal": true
+     },
+     "e99": {
+      "id": "e99",
+      "node": "n99",
+      "kind": "circle",
+      "label": "",
+      "internal": true
+     },
+     "e100": {
+      "id": "e100",
+      "node": "n100",
+      "kind": "circle",
+      "label": "",
+      "internal": true
+     },
+     "e101": {
+      "id": "e101",
+      "node": "n101",
+      "kind": "point",
+      "label": "",
+      "internal": true
+     },
+     "e102": {
+      "id": "e102",
+      "node": "n102",
+      "kind": "point",
+      "label": "",
+      "internal": true
+     },
+     "e103": {
+      "id": "e103",
+      "node": "n103",
+      "kind": "line",
+      "label": "",
+      "internal": true
+     },
+     "e104": {
+      "id": "e104",
+      "node": "n104",
+      "kind": "point",
+      "label": "",
+      "internal": true
+     },
+     "e105": {
+      "id": "e105",
+      "node": "n105",
+      "kind": "line",
+      "label": "",
+      "internal": true
+     },
+     "e106": {
+      "id": "e106",
+      "node": "n106",
+      "kind": "circle",
+      "label": "",
+      "internal": true
+     },
+     "e107": {
+      "id": "e107",
+      "node": "n107",
+      "kind": "point",
+      "label": "",
+      "internal": true
+     },
+     "e108": {
+      "id": "e108",
+      "node": "n108",
+      "kind": "circle",
+      "label": "",
+      "internal": true
+     },
+     "e109": {
+      "id": "e109",
+      "node": "n109",
+      "kind": "circle",
+      "label": "",
+      "internal": true
+     },
+     "e110": {
+      "id": "e110",
+      "node": "n110",
+      "kind": "point",
+      "label": "",
+      "internal": true
+     },
+     "e111": {
+      "id": "e111",
+      "node": "n111",
+      "kind": "point",
+      "label": "",
+      "internal": true
+     },
+     "e112": {
+      "id": "e112",
+      "node": "n112",
+      "kind": "line",
+      "label": "",
+      "internal": true
+     },
+     "e113": {
+      "id": "e113",
+      "node": "n113",
+      "kind": "point",
+      "label": "E*",
+      "style": {
+       "color": "orange"
+      }
+     },
+     "e114": {
+      "id": "e114",
+      "node": "n114",
+      "kind": "line",
+      "label": "",
+      "internal": true
+     },
+     "e115": {
+      "id": "e115",
+      "node": "n115",
+      "kind": "circle",
+      "label": "",
+      "internal": true
+     },
+     "e116": {
+      "id": "e116",
+      "node": "n116",
+      "kind": "point",
+      "label": "",
+      "internal": true
+     },
+     "e117": {
+      "id": "e117",
+      "node": "n117",
+      "kind": "circle",
+      "label": "",
+      "internal": true
+     },
+     "e118": {
+      "id": "e118",
+      "node": "n118",
+      "kind": "circle",
+      "label": "",
+      "internal": true
+     },
+     "e119": {
+      "id": "e119",
+      "node": "n119",
+      "kind": "circle",
+      "label": "",
+      "internal": true
+     },
+     "e120": {
+      "id": "e120",
+      "node": "n120",
+      "kind": "point",
+      "label": "",
+      "internal": true
+     },
+     "e121": {
+      "id": "e121",
+      "node": "n121",
+      "kind": "point",
+      "label": "",
+      "internal": true
+     },
+     "e122": {
+      "id": "e122",
+      "node": "n122",
+      "kind": "line",
+      "label": "",
+      "internal": true
+     },
+     "e123": {
+      "id": "e123",
+      "node": "n123",
+      "kind": "point",
+      "label": "",
+      "internal": true
+     },
+     "e124": {
+      "id": "e124",
+      "node": "n124",
+      "kind": "line",
+      "label": "",
+      "internal": true
+     },
+     "e125": {
+      "id": "e125",
+      "node": "n125",
+      "kind": "circle",
+      "label": "",
+      "internal": true
+     },
+     "e126": {
+      "id": "e126",
+      "node": "n126",
+      "kind": "point",
+      "label": "",
+      "internal": true
+     },
+     "e127": {
+      "id": "e127",
+      "node": "n127",
+      "kind": "circle",
+      "label": "",
+      "internal": true
+     },
+     "e128": {
+      "id": "e128",
+      "node": "n128",
+      "kind": "circle",
+      "label": "",
+      "internal": true
+     },
+     "e129": {
+      "id": "e129",
+      "node": "n129",
+      "kind": "point",
+      "label": "",
+      "internal": true
+     },
+     "e130": {
+      "id": "e130",
+      "node": "n130",
+      "kind": "point",
+      "label": "",
+      "internal": true
+     },
+     "e131": {
+      "id": "e131",
+      "node": "n131",
+      "kind": "line",
+      "label": "",
+      "internal": true
+     },
+     "e132": {
+      "id": "e132",
+      "node": "n132",
+      "kind": "point",
+      "label": "Q*",
+      "style": {
+       "color": "orange"
+      }
+     },
+     "e133": {
+      "id": "e133",
+      "node": "n133",
+      "kind": "circle",
+      "label": "",
+      "style": {
+       "color": "orange"
+      }
+     }
+    },
+    "seq": 133
+   },
+   "tier": 2
+  },
+  {
+   "kind": "problem",
+   "id": "compass.two-lines",
+   "title": "Two Lines Meet",
+   "subtitle": "",
+   "text": "Construct the point where the line through $A$ and $B$ crosses the line through $C$ and $D$.\n\n::: Hint\nThe circles the two lines invert to meet at the center of inversion and at the inverse of the answer.\n:::",
+   "toolName": "Lines meet",
+   "diagram": {
+    "nodes": {
+     "n1": {
+      "op": "point",
+      "ins": [],
+      "x": -150,
+      "y": 60,
+      "id": "n1",
+      "seq": 1,
+      "outs": [
+       "e1"
+      ]
+     },
+     "n2": {
+      "op": "point",
+      "ins": [],
+      "x": 140,
+      "y": 20,
+      "id": "n2",
+      "seq": 2,
+      "outs": [
+       "e2"
+      ]
+     },
+     "n3": {
+      "op": "point",
+      "ins": [],
+      "x": -60,
+      "y": -90,
+      "id": "n3",
+      "seq": 3,
+      "outs": [
+       "e3"
+      ]
+     },
+     "n4": {
+      "op": "point",
+      "ins": [],
+      "x": 40,
+      "y": 110,
+      "id": "n4",
+      "seq": 4,
+      "outs": [
+       "e4"
+      ]
+     },
+     "n15.n10": {
+      "id": "n15.n10",
+      "op": "isect",
+      "ins": [
+       "n15.e8",
+       "n15.e9",
+       "e5"
+      ],
+      "outs": [
+       "e15"
+      ],
+      "seq": 15.857142857142858
+     },
+     "n15.n8": {
+      "id": "n15.n8",
+      "op": "circle",
+      "ins": [
+       "n15.e6",
+       "e5"
+      ],
+      "outs": [
+       "n15.e8"
+      ],
+      "seq": 15.571428571428571
+     },
+     "n15.n6": {
+      "id": "n15.n6",
+      "op": "isect",
+      "ins": [
+       "n15.e5",
+       "e7"
+      ],
+      "outs": [
+       "n15.e6"
+      ],
+      "seq": 15.285714285714286,
+      "which": 0
+     },
+     "n15.n5": {
+      "id": "n15.n5",
+      "op": "circle",
+      "ins": [
+       "e14",
+       "e5"
+      ],
+      "outs": [
+       "n15.e5"
+      ],
+      "seq": 15.142857142857142
+     },
+     "n14": {
+      "op": "isect",
+      "ins": [
+       "e10",
+       "e13",
+       "e5"
+      ],
+      "id": "n14",
+      "seq": 14,
+      "outs": [
+       "e14"
+      ]
+     },
+     "n10": {
+      "op": "circle",
+      "ins": [
+       "e9",
+       "e5"
+      ],
+      "id": "n10",
+      "seq": 10,
+      "outs": [
+       "e10"
+      ]
+     },
+     "n9.n10": {
+      "id": "n9.n10",
+      "op": "isect",
+      "ins": [
+       "n9.e8",
+       "n9.e9",
+       "e5"
+      ],
+      "outs": [
+       "e9"
+      ],
+      "seq": 9.857142857142858
+     },
+     "n9.n8": {
+      "id": "n9.n8",
+      "op": "circle",
+      "ins": [
+       "n9.e6",
+       "e5"
+      ],
+      "outs": [
+       "n9.e8"
+      ],
+      "seq": 9.571428571428571
+     },
+     "n9.n6": {
+      "id": "n9.n6",
+      "op": "isect",
+      "ins": [
+       "n9.e5",
+       "e7"
+      ],
+      "outs": [
+       "n9.e6"
+      ],
+      "seq": 9.285714285714286,
+      "which": 0
+     },
+     "n9.n5": {
+      "id": "n9.n5",
+      "op": "circle",
+      "ins": [
+       "e8",
+       "e5"
+      ],
+      "outs": [
+       "n9.e5"
+      ],
+      "seq": 9.142857142857142
+     },
+     "n8.n6": {
+      "id": "n8.n6",
+      "op": "isect",
+      "ins": [
+       "n8.e4",
+       "n8.e5",
+       "e5"
+      ],
+      "outs": [
+       "e8"
+      ],
+      "seq": 8.75
+     },
+     "n8.n4": {
+      "id": "n8.n4",
+      "op": "circle",
+      "ins": [
+       "e1",
+       "e5"
+      ],
+      "outs": [
+       "n8.e4"
+      ],
+      "seq": 8.25
+     },
+     "n5": {
+      "op": "point",
+      "ins": [],
+      "x": 60,
+      "y": -40,
+      "id": "n5",
+      "seq": 5,
+      "outs": [
+       "e5"
+      ]
+     },
+     "n8.n5": {
+      "id": "n8.n5",
+      "op": "circle",
+      "ins": [
+       "e2",
+       "e5"
+      ],
+      "outs": [
+       "n8.e5"
+      ],
+      "seq": 8.5
+     },
+     "n7": {
+      "op": "circle",
+      "ins": [
+       "e5",
+       "e6"
+      ],
+      "id": "n7",
+      "seq": 7,
+      "outs": [
+       "e7"
+      ]
+     },
+     "n6": {
+      "op": "point",
+      "ins": [],
+      "x": 130,
+      "y": -40,
+      "id": "n6",
+      "seq": 6,
+      "outs": [
+       "e6"
+      ]
+     },
+     "n9.n9": {
+      "id": "n9.n9",
+      "op": "circle",
+      "ins": [
+       "n9.e7",
+       "e5"
+      ],
+      "outs": [
+       "n9.e9"
+      ],
+      "seq": 9.714285714285714
+     },
+     "n9.n7": {
+      "id": "n9.n7",
+      "op": "isect",
+      "ins": [
+       "n9.e5",
+       "e7",
+       "n9.e6"
+      ],
+      "outs": [
+       "n9.e7"
+      ],
+      "seq": 9.428571428571429
+     },
+     "n13": {
+      "op": "circle",
+      "ins": [
+       "e12",
+       "e5"
+      ],
+      "id": "n13",
+      "seq": 13,
+      "outs": [
+       "e13"
+      ]
+     },
+     "n12.n10": {
+      "id": "n12.n10",
+      "op": "isect",
+      "ins": [
+       "n12.e8",
+       "n12.e9",
+       "e5"
+      ],
+      "outs": [
+       "e12"
+      ],
+      "seq": 12.857142857142858
+     },
+     "n12.n8": {
+      "id": "n12.n8",
+      "op": "circle",
+      "ins": [
+       "n12.e6",
+       "e5"
+      ],
+      "outs": [
+       "n12.e8"
+      ],
+      "seq": 12.571428571428571
+     },
+     "n12.n6": {
+      "id": "n12.n6",
+      "op": "isect",
+      "ins": [
+       "n12.e5",
+       "e7"
+      ],
+      "outs": [
+       "n12.e6"
+      ],
+      "seq": 12.285714285714286,
+      "which": 0
+     },
+     "n12.n5": {
+      "id": "n12.n5",
+      "op": "circle",
+      "ins": [
+       "e11",
+       "e5"
+      ],
+      "outs": [
+       "n12.e5"
+      ],
+      "seq": 12.142857142857142
+     },
+     "n11.n6": {
+      "id": "n11.n6",
+      "op": "isect",
+      "ins": [
+       "n11.e4",
+       "n11.e5",
+       "e5"
+      ],
+      "outs": [
+       "e11"
+      ],
+      "seq": 11.75
+     },
+     "n11.n4": {
+      "id": "n11.n4",
+      "op": "circle",
+      "ins": [
+       "e3",
+       "e5"
+      ],
+      "outs": [
+       "n11.e4"
+      ],
+      "seq": 11.25
+     },
+     "n11.n5": {
+      "id": "n11.n5",
+      "op": "circle",
+      "ins": [
+       "e4",
+       "e5"
+      ],
+      "outs": [
+       "n11.e5"
+      ],
+      "seq": 11.5
+     },
+     "n12.n9": {
+      "id": "n12.n9",
+      "op": "circle",
+      "ins": [
+       "n12.e7",
+       "e5"
+      ],
+      "outs": [
+       "n12.e9"
+      ],
+      "seq": 12.714285714285714
+     },
+     "n12.n7": {
+      "id": "n12.n7",
+      "op": "isect",
+      "ins": [
+       "n12.e5",
+       "e7",
+       "n12.e6"
+      ],
+      "outs": [
+       "n12.e7"
+      ],
+      "seq": 12.428571428571429
+     },
+     "n15.n9": {
+      "id": "n15.n9",
+      "op": "circle",
+      "ins": [
+       "n15.e7",
+       "e5"
+      ],
+      "outs": [
+       "n15.e9"
+      ],
+      "seq": 15.714285714285714
+     },
+     "n15.n7": {
+      "id": "n15.n7",
+      "op": "isect",
+      "ins": [
+       "n15.e5",
+       "e7",
+       "n15.e6"
+      ],
+      "outs": [
+       "n15.e7"
+      ],
+      "seq": 15.428571428571429
+     },
+     "n16": {
+      "op": "line",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n16",
+      "seq": 16,
+      "outs": [
+       "e16"
+      ]
+     },
+     "n17": {
+      "op": "line",
+      "ins": [
+       "e3",
+       "e4"
+      ],
+      "id": "n17",
+      "seq": 17,
+      "outs": [
+       "e17"
+      ]
+     }
+    },
+    "elems": {
+     "e1": {
+      "id": "e1",
+      "node": "n1",
+      "kind": "point",
+      "label": "A"
+     },
+     "e2": {
+      "id": "e2",
+      "node": "n2",
+      "kind": "point",
+      "label": "B"
+     },
+     "e3": {
+      "id": "e3",
+      "node": "n3",
+      "kind": "point",
+      "label": "C"
+     },
+     "e4": {
+      "id": "e4",
+      "node": "n4",
+      "kind": "point",
+      "label": "D"
+     },
+     "e15": {
+      "id": "e15",
+      "node": "n15.n10",
+      "kind": "point",
+      "label": ""
+     },
+     "n15.e8": {
+      "id": "n15.e8",
+      "node": "n15.n8",
+      "kind": "circle",
+      "label": ""
+     },
+     "n15.e6": {
+      "id": "n15.e6",
+      "node": "n15.n6",
+      "kind": "point",
+      "label": ""
+     },
+     "n15.e5": {
+      "id": "n15.e5",
+      "node": "n15.n5",
+      "kind": "circle",
+      "label": ""
+     },
+     "e14": {
+      "id": "e14",
+      "node": "n14",
+      "kind": "point",
+      "label": ""
+     },
+     "e10": {
+      "id": "e10",
+      "node": "n10",
+      "kind": "circle",
+      "label": ""
+     },
+     "e9": {
+      "id": "e9",
+      "node": "n9.n10",
+      "kind": "point",
+      "label": ""
+     },
+     "n9.e8": {
+      "id": "n9.e8",
+      "node": "n9.n8",
+      "kind": "circle",
+      "label": ""
+     },
+     "n9.e6": {
+      "id": "n9.e6",
+      "node": "n9.n6",
+      "kind": "point",
+      "label": ""
+     },
+     "n9.e5": {
+      "id": "n9.e5",
+      "node": "n9.n5",
+      "kind": "circle",
+      "label": ""
+     },
+     "e8": {
+      "id": "e8",
+      "node": "n8.n6",
+      "kind": "point",
+      "label": ""
+     },
+     "n8.e4": {
+      "id": "n8.e4",
+      "node": "n8.n4",
+      "kind": "circle",
+      "label": ""
+     },
+     "e5": {
+      "id": "e5",
+      "node": "n5",
+      "kind": "point",
+      "label": ""
+     },
+     "n8.e5": {
+      "id": "n8.e5",
+      "node": "n8.n5",
+      "kind": "circle",
+      "label": ""
+     },
+     "e7": {
+      "id": "e7",
+      "node": "n7",
+      "kind": "circle",
+      "label": ""
+     },
+     "e6": {
+      "id": "e6",
+      "node": "n6",
+      "kind": "point",
+      "label": ""
+     },
+     "n9.e9": {
+      "id": "n9.e9",
+      "node": "n9.n9",
+      "kind": "circle",
+      "label": ""
+     },
+     "n9.e7": {
+      "id": "n9.e7",
+      "node": "n9.n7",
+      "kind": "point",
+      "label": ""
+     },
+     "e13": {
+      "id": "e13",
+      "node": "n13",
+      "kind": "circle",
+      "label": ""
+     },
+     "e12": {
+      "id": "e12",
+      "node": "n12.n10",
+      "kind": "point",
+      "label": ""
+     },
+     "n12.e8": {
+      "id": "n12.e8",
+      "node": "n12.n8",
+      "kind": "circle",
+      "label": ""
+     },
+     "n12.e6": {
+      "id": "n12.e6",
+      "node": "n12.n6",
+      "kind": "point",
+      "label": ""
+     },
+     "n12.e5": {
+      "id": "n12.e5",
+      "node": "n12.n5",
+      "kind": "circle",
+      "label": ""
+     },
+     "e11": {
+      "id": "e11",
+      "node": "n11.n6",
+      "kind": "point",
+      "label": ""
+     },
+     "n11.e4": {
+      "id": "n11.e4",
+      "node": "n11.n4",
+      "kind": "circle",
+      "label": ""
+     },
+     "n11.e5": {
+      "id": "n11.e5",
+      "node": "n11.n5",
+      "kind": "circle",
+      "label": ""
+     },
+     "n12.e9": {
+      "id": "n12.e9",
+      "node": "n12.n9",
+      "kind": "circle",
+      "label": ""
+     },
+     "n12.e7": {
+      "id": "n12.e7",
+      "node": "n12.n7",
+      "kind": "point",
+      "label": ""
+     },
+     "n15.e9": {
+      "id": "n15.e9",
+      "node": "n15.n9",
+      "kind": "circle",
+      "label": ""
+     },
+     "n15.e7": {
+      "id": "n15.e7",
+      "node": "n15.n7",
+      "kind": "point",
+      "label": ""
+     },
+     "e16": {
+      "id": "e16",
+      "node": "n16",
+      "kind": "line",
+      "label": "",
+      "style": {
+       "dash": "dashed"
+      }
+     },
+     "e17": {
+      "id": "e17",
+      "node": "n17",
+      "kind": "line",
+      "label": "",
+      "style": {
+       "dash": "dashed"
+      }
+     }
+    },
+    "seq": 17
+   },
+   "givens": [
+    "e1",
+    "e2",
+    "e3",
+    "e4"
+   ],
+   "scaffold": [],
+   "goals": [
+    "e15"
+   ],
+   "elaboration": [
+    "e16",
+    "e17"
+   ],
+   "tier": 2
+  },
+  {
+   "kind": "problem",
+   "id": "compass.center",
+   "title": "Find the Center",
+   "subtitle": "Napoleon’s problem",
+   "text": "Construct the center of circle $\\omega$.\n\n::: Hint\nInvert in a circle centered at a point of $\\omega$: $\\omega$ becomes a line.\n:::\n\n::: Hint\nThat line goes through the two points where the circles cross.\n:::\n\n::: Hint\nYou’ve seen, the other way around, how a circle through the center of inversion relates to the line it comes from.\n:::",
+   "toolName": "Center",
+   "diagram": {
+    "nodes": {
+     "n3": {
+      "op": "circle",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n3",
+      "seq": 3,
+      "outs": [
+       "e3"
+      ]
+     },
+     "n1": {
+      "op": "point",
+      "ins": [],
+      "x": 0,
+      "y": 0,
+      "id": "n1",
+      "seq": 1,
+      "outs": [
+       "e1"
+      ]
+     },
+     "n2": {
+      "op": "point",
+      "ins": [],
+      "x": 55.94489714435979,
+      "y": -70.49942186647351,
+      "id": "n2",
+      "seq": 2,
+      "outs": [
+       "e2"
+      ]
+     },
+     "n10.n10": {
+      "id": "n10.n10",
+      "op": "isect",
+      "ins": [
+       "n10.e8",
+       "n10.e9",
+       "e4"
+      ],
+      "outs": [
+       "e10"
+      ],
+      "seq": 10.857142857142858
+     },
+     "n10.n8": {
+      "id": "n10.n8",
+      "op": "circle",
+      "ins": [
+       "n10.e6",
+       "e4"
+      ],
+      "outs": [
+       "n10.e8"
+      ],
+      "seq": 10.571428571428571
+     },
+     "n10.n6": {
+      "id": "n10.n6",
+      "op": "isect",
+      "ins": [
+       "n10.e5",
+       "e6"
+      ],
+      "outs": [
+       "n10.e6"
+      ],
+      "seq": 10.285714285714286,
+      "which": 0
+     },
+     "n10.n5": {
+      "id": "n10.n5",
+      "op": "circle",
+      "ins": [
+       "e9",
+       "e4"
+      ],
+      "outs": [
+       "n10.e5"
+      ],
+      "seq": 10.142857142857142
+     },
+     "n9.n6": {
+      "id": "n9.n6",
+      "op": "isect",
+      "ins": [
+       "n9.e4",
+       "n9.e5",
+       "e4"
+      ],
+      "outs": [
+       "e9"
+      ],
+      "seq": 9.75
+     },
+     "n9.n4": {
+      "id": "n9.n4",
+      "op": "circle",
+      "ins": [
+       "e7",
+       "e4"
+      ],
+      "outs": [
+       "n9.e4"
+      ],
+      "seq": 9.25
+     },
+     "n7": {
+      "op": "isect",
+      "ins": [
+       "e6",
+       "e3"
+      ],
+      "which": 1,
+      "id": "n7",
+      "seq": 7,
+      "outs": [
+       "e7"
+      ]
+     },
+     "n6": {
+      "op": "circle",
+      "ins": [
+       "e4",
+       "e5"
+      ],
+      "id": "n6",
+      "seq": 6,
+      "outs": [
+       "e6"
+      ]
+     },
+     "n4": {
+      "op": "point",
+      "ins": [
+       "e3"
+      ],
+      "a": 2.4,
+      "id": "n4",
+      "seq": 4,
+      "outs": [
+       "e4"
+      ]
+     },
+     "n5": {
+      "op": "point",
+      "ins": [],
+      "x": 14,
+      "y": 21,
+      "id": "n5",
+      "seq": 5,
+      "outs": [
+       "e5"
+      ]
+     },
+     "n9.n5": {
+      "id": "n9.n5",
+      "op": "circle",
+      "ins": [
+       "e8",
+       "e4"
+      ],
+      "outs": [
+       "n9.e5"
+      ],
+      "seq": 9.5
+     },
+     "n8": {
+      "op": "isect",
+      "ins": [
+       "e6",
+       "e3",
+       "e7"
+      ],
+      "id": "n8",
+      "seq": 8,
+      "outs": [
+       "e8"
+      ]
+     },
+     "n10.n9": {
+      "id": "n10.n9",
+      "op": "circle",
+      "ins": [
+       "n10.e7",
+       "e4"
+      ],
+      "outs": [
+       "n10.e9"
+      ],
+      "seq": 10.714285714285714
+     },
+     "n10.n7": {
+      "id": "n10.n7",
+      "op": "isect",
+      "ins": [
+       "n10.e5",
+       "e6",
+       "n10.e6"
+      ],
+      "outs": [
+       "n10.e7"
+      ],
+      "seq": 10.428571428571429
+     }
+    },
+    "elems": {
+     "e3": {
+      "id": "e3",
+      "node": "n3",
+      "kind": "circle",
+      "label": "ω"
+     },
+     "e1": {
+      "id": "e1",
+      "node": "n1",
+      "kind": "point",
+      "label": "O"
+     },
+     "e2": {
+      "id": "e2",
+      "node": "n2",
+      "kind": "point",
+      "label": ""
+     },
+     "e10": {
+      "id": "e10",
+      "node": "n10.n10",
+      "kind": "point",
+      "label": ""
+     },
+     "n10.e8": {
+      "id": "n10.e8",
+      "node": "n10.n8",
+      "kind": "circle",
+      "label": ""
+     },
+     "n10.e6": {
+      "id": "n10.e6",
+      "node": "n10.n6",
+      "kind": "point",
+      "label": ""
+     },
+     "n10.e5": {
+      "id": "n10.e5",
+      "node": "n10.n5",
+      "kind": "circle",
+      "label": ""
+     },
+     "e9": {
+      "id": "e9",
+      "node": "n9.n6",
+      "kind": "point",
+      "label": ""
+     },
+     "n9.e4": {
+      "id": "n9.e4",
+      "node": "n9.n4",
+      "kind": "circle",
+      "label": ""
+     },
+     "e7": {
+      "id": "e7",
+      "node": "n7",
+      "kind": "point",
+      "label": ""
+     },
+     "e6": {
+      "id": "e6",
+      "node": "n6",
+      "kind": "circle",
+      "label": ""
+     },
+     "e4": {
+      "id": "e4",
+      "node": "n4",
+      "kind": "point",
+      "label": ""
+     },
+     "e5": {
+      "id": "e5",
+      "node": "n5",
+      "kind": "point",
+      "label": ""
+     },
+     "n9.e5": {
+      "id": "n9.e5",
+      "node": "n9.n5",
+      "kind": "circle",
+      "label": ""
+     },
+     "e8": {
+      "id": "e8",
+      "node": "n8",
+      "kind": "point",
+      "label": ""
+     },
+     "n10.e9": {
+      "id": "n10.e9",
+      "node": "n10.n9",
+      "kind": "circle",
+      "label": ""
+     },
+     "n10.e7": {
+      "id": "n10.e7",
+      "node": "n10.n7",
+      "kind": "point",
+      "label": ""
+     }
+    },
+    "seq": 10
+   },
+   "givens": [
+    "e3"
+   ],
+   "scaffold": [],
+   "goals": [
+    "e10"
+   ],
+   "elaboration": [],
+   "tier": 2
+  }
+ ]
+}

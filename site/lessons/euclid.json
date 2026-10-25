@@ -1,0 +1,4776 @@
+{
+ "id": "euclid",
+ "title": "Euclid's Constructions",
+ "blurb": "Sixteen classic compass-and-straightedge problems, from the equilateral triangle to the regular pentagon.",
+ "tiers": [
+  "Foundations",
+  "Right Angles & Parallels",
+  "Measure",
+  "Circles",
+  "Polygons"
+ ],
+ "toolbox": [
+  "point",
+  "line",
+  "circle"
+ ],
+ "tools": [],
+ "items": [
+  {
+   "kind": "problem",
+   "id": "equilateral",
+   "tier": 0,
+   "title": "Equilateral Triangle",
+   "subtitle": "Euclid I.1",
+   "text": "Construct a point $C$ so that triangle $ABC$ is equilateral, with $A$, $B$ and $C$ going counterclockwise.\n\n::: Hint\nEvery point on the circle centered at $A$ through $B$ is exactly $AB$ away from $A$.\n:::",
+   "toolName": "Equilateral apex",
+   "diagram": {
+    "nodes": {
+     "n1": {
+      "op": "point",
+      "ins": [],
+      "x": -70,
+      "y": 30,
+      "id": "n1",
+      "seq": 1,
+      "outs": [
+       "e1"
+      ]
+     },
+     "n2": {
+      "op": "point",
+      "ins": [],
+      "x": 70,
+      "y": 30,
+      "id": "n2",
+      "seq": 2,
+      "outs": [
+       "e2"
+      ]
+     },
+     "n3": {
+      "op": "circle",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n3",
+      "seq": 3,
+      "outs": [
+       "e3"
+      ]
+     },
+     "n4": {
+      "op": "circle",
+      "ins": [
+       "e2",
+       "e1"
+      ],
+      "id": "n4",
+      "seq": 4,
+      "outs": [
+       "e4"
+      ]
+     },
+     "n5": {
+      "op": "isect",
+      "ins": [
+       "e3",
+       "e4"
+      ],
+      "which": 1,
+      "id": "n5",
+      "seq": 5,
+      "outs": [
+       "e5"
+      ]
+     },
+     "n6": {
+      "op": "segment",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n6",
+      "seq": 6,
+      "outs": [
+       "e6"
+      ]
+     },
+     "n7": {
+      "op": "segment",
+      "ins": [
+       "e2",
+       "e5"
+      ],
+      "id": "n7",
+      "seq": 7,
+      "outs": [
+       "e7"
+      ]
+     },
+     "n8": {
+      "op": "segment",
+      "ins": [
+       "e5",
+       "e1"
+      ],
+      "id": "n8",
+      "seq": 8,
+      "outs": [
+       "e8"
+      ]
+     }
+    },
+    "elems": {
+     "e1": {
+      "id": "e1",
+      "node": "n1",
+      "kind": "point",
+      "label": "A"
+     },
+     "e2": {
+      "id": "e2",
+      "node": "n2",
+      "kind": "point",
+      "label": "B"
+     },
+     "e3": {
+      "id": "e3",
+      "node": "n3",
+      "kind": "circle",
+      "label": ""
+     },
+     "e4": {
+      "id": "e4",
+      "node": "n4",
+      "kind": "circle",
+      "label": ""
+     },
+     "e5": {
+      "id": "e5",
+      "node": "n5",
+      "kind": "point",
+      "label": ""
+     },
+     "e6": {
+      "id": "e6",
+      "node": "n6",
+      "kind": "line",
+      "label": ""
+     },
+     "e7": {
+      "id": "e7",
+      "node": "n7",
+      "kind": "line",
+      "label": ""
+     },
+     "e8": {
+      "id": "e8",
+      "node": "n8",
+      "kind": "line",
+      "label": ""
+     }
+    },
+    "seq": 8
+   },
+   "givens": [
+    "e1",
+    "e2"
+   ],
+   "scaffold": [],
+   "goals": [
+    "e5"
+   ],
+   "elaboration": [
+    "e6",
+    "e7",
+    "e8"
+   ]
+  },
+  {
+   "kind": "problem",
+   "id": "perp-bisector",
+   "tier": 0,
+   "title": "Perpendicular Bisector",
+   "subtitle": "",
+   "text": "Construct the line that crosses segment $AB$ at right angles through its midpoint.\n\n::: Hint\nEvery point on that line is the same distance from $A$ as from $B$.\n:::",
+   "toolName": "Perpendicular bisector",
+   "diagram": {
+    "nodes": {
+     "n1": {
+      "op": "point",
+      "ins": [],
+      "x": -80,
+      "y": 30,
+      "id": "n1",
+      "seq": 1,
+      "outs": [
+       "e1"
+      ]
+     },
+     "n2": {
+      "op": "point",
+      "ins": [],
+      "x": 65,
+      "y": -15,
+      "id": "n2",
+      "seq": 2,
+      "outs": [
+       "e2"
+      ]
+     },
+     "n3": {
+      "op": "circle",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n3",
+      "seq": 3,
+      "outs": [
+       "e3"
+      ]
+     },
+     "n4": {
+      "op": "circle",
+      "ins": [
+       "e2",
+       "e1"
+      ],
+      "id": "n4",
+      "seq": 4,
+      "outs": [
+       "e4"
+      ]
+     },
+     "n5": {
+      "op": "isect",
+      "ins": [
+       "e3",
+       "e4"
+      ],
+      "which": 0,
+      "id": "n5",
+      "seq": 5,
+      "outs": [
+       "e5"
+      ]
+     },
+     "n6": {
+      "op": "isect",
+      "ins": [
+       "e3",
+       "e4"
+      ],
+      "which": 1,
+      "id": "n6",
+      "seq": 6,
+      "outs": [
+       "e6"
+      ]
+     },
+     "n7": {
+      "op": "line",
+      "ins": [
+       "e5",
+       "e6"
+      ],
+      "id": "n7",
+      "seq": 7,
+      "outs": [
+       "e7"
+      ]
+     },
+     "n8": {
+      "op": "segment",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n8",
+      "seq": 8,
+      "outs": [
+       "e8"
+      ]
+     }
+    },
+    "elems": {
+     "e1": {
+      "id": "e1",
+      "node": "n1",
+      "kind": "point",
+      "label": "A"
+     },
+     "e2": {
+      "id": "e2",
+      "node": "n2",
+      "kind": "point",
+      "label": "B"
+     },
+     "e3": {
+      "id": "e3",
+      "node": "n3",
+      "kind": "circle",
+      "label": ""
+     },
+     "e4": {
+      "id": "e4",
+      "node": "n4",
+      "kind": "circle",
+      "label": ""
+     },
+     "e5": {
+      "id": "e5",
+      "node": "n5",
+      "kind": "point",
+      "label": ""
+     },
+     "e6": {
+      "id": "e6",
+      "node": "n6",
+      "kind": "point",
+      "label": ""
+     },
+     "e7": {
+      "id": "e7",
+      "node": "n7",
+      "kind": "line",
+      "label": ""
+     },
+     "e8": {
+      "id": "e8",
+      "node": "n8",
+      "kind": "line",
+      "label": ""
+     }
+    },
+    "seq": 8
+   },
+   "givens": [
+    "e1",
+    "e2"
+   ],
+   "scaffold": [
+    "e8"
+   ],
+   "goals": [
+    "e7"
+   ],
+   "elaboration": []
+  },
+  {
+   "kind": "problem",
+   "id": "midpoint",
+   "tier": 0,
+   "title": "Midpoint",
+   "subtitle": "Euclid I.10",
+   "text": "Construct the midpoint of segment $AB$.\n\n::: Hint\nThe perpendicular bisector crosses $AB$ at the midpoint.\n:::",
+   "toolName": "Midpoint",
+   "diagram": {
+    "nodes": {
+     "n1": {
+      "op": "point",
+      "ins": [],
+      "x": -90,
+      "y": 25,
+      "id": "n1",
+      "seq": 1,
+      "outs": [
+       "e1"
+      ]
+     },
+     "n2": {
+      "op": "point",
+      "ins": [],
+      "x": 85,
+      "y": -20,
+      "id": "n2",
+      "seq": 2,
+      "outs": [
+       "e2"
+      ]
+     },
+     "n3": {
+      "op": "circle",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n3",
+      "seq": 3,
+      "outs": [
+       "e3"
+      ]
+     },
+     "n4": {
+      "op": "circle",
+      "ins": [
+       "e2",
+       "e1"
+      ],
+      "id": "n4",
+      "seq": 4,
+      "outs": [
+       "e4"
+      ]
+     },
+     "n5": {
+      "op": "isect",
+      "ins": [
+       "e3",
+       "e4"
+      ],
+      "which": 0,
+      "id": "n5",
+      "seq": 5,
+      "outs": [
+       "e5"
+      ]
+     },
+     "n6": {
+      "op": "isect",
+      "ins": [
+       "e3",
+       "e4"
+      ],
+      "which": 1,
+      "id": "n6",
+      "seq": 6,
+      "outs": [
+       "e6"
+      ]
+     },
+     "n7": {
+      "op": "line",
+      "ins": [
+       "e5",
+       "e6"
+      ],
+      "id": "n7",
+      "seq": 7,
+      "outs": [
+       "e7"
+      ]
+     },
+     "n8": {
+      "op": "line",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n8",
+      "seq": 8,
+      "outs": [
+       "e8"
+      ]
+     },
+     "n9": {
+      "op": "isect",
+      "ins": [
+       "e7",
+       "e8"
+      ],
+      "which": 0,
+      "id": "n9",
+      "seq": 9,
+      "outs": [
+       "e9"
+      ]
+     },
+     "n10": {
+      "op": "segment",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n10",
+      "seq": 10,
+      "outs": [
+       "e10"
+      ]
+     }
+    },
+    "elems": {
+     "e1": {
+      "id": "e1",
+      "node": "n1",
+      "kind": "point",
+      "label": "A"
+     },
+     "e2": {
+      "id": "e2",
+      "node": "n2",
+      "kind": "point",
+      "label": "B"
+     },
+     "e3": {
+      "id": "e3",
+      "node": "n3",
+      "kind": "circle",
+      "label": ""
+     },
+     "e4": {
+      "id": "e4",
+      "node": "n4",
+      "kind": "circle",
+      "label": ""
+     },
+     "e5": {
+      "id": "e5",
+      "node": "n5",
+      "kind": "point",
+      "label": ""
+     },
+     "e6": {
+      "id": "e6",
+      "node": "n6",
+      "kind": "point",
+      "label": ""
+     },
+     "e7": {
+      "id": "e7",
+      "node": "n7",
+      "kind": "line",
+      "label": ""
+     },
+     "e8": {
+      "id": "e8",
+      "node": "n8",
+      "kind": "line",
+      "label": ""
+     },
+     "e9": {
+      "id": "e9",
+      "node": "n9",
+      "kind": "point",
+      "label": ""
+     },
+     "e10": {
+      "id": "e10",
+      "node": "n10",
+      "kind": "line",
+      "label": ""
+     }
+    },
+    "seq": 10
+   },
+   "givens": [
+    "e1",
+    "e2"
+   ],
+   "scaffold": [
+    "e10"
+   ],
+   "goals": [
+    "e9"
+   ],
+   "elaboration": []
+  },
+  {
+   "kind": "problem",
+   "id": "perpendicular",
+   "tier": 1,
+   "title": "Perpendicular Through a Point",
+   "subtitle": "Euclid I.11–12",
+   "text": "Construct the line through $P$ at right angles to $\\ell$.\n\n::: Hint\nA circle centered at $P$ crosses $\\ell$ at two points that are the same distance from $P$.\n:::",
+   "toolName": "Perpendicular",
+   "diagram": {
+    "nodes": {
+     "n1": {
+      "op": "point",
+      "ins": [],
+      "x": -170,
+      "y": 50,
+      "id": "n1",
+      "seq": 1,
+      "outs": [
+       "e1"
+      ]
+     },
+     "n2": {
+      "op": "point",
+      "ins": [],
+      "x": 170,
+      "y": 75,
+      "id": "n2",
+      "seq": 2,
+      "outs": [
+       "e2"
+      ]
+     },
+     "n3": {
+      "op": "line",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n3",
+      "seq": 3,
+      "outs": [
+       "e3"
+      ]
+     },
+     "n4": {
+      "op": "point",
+      "ins": [],
+      "x": -30,
+      "y": -70,
+      "id": "n4",
+      "seq": 4,
+      "outs": [
+       "e4"
+      ]
+     },
+     "n5": {
+      "op": "point",
+      "ins": [],
+      "x": 60,
+      "y": 140,
+      "id": "n5",
+      "seq": 5,
+      "outs": [
+       "e5"
+      ]
+     },
+     "n6": {
+      "op": "circle",
+      "ins": [
+       "e4",
+       "e5"
+      ],
+      "id": "n6",
+      "seq": 6,
+      "outs": [
+       "e6"
+      ]
+     },
+     "n7": {
+      "op": "isect",
+      "ins": [
+       "e3",
+       "e6"
+      ],
+      "which": 0,
+      "id": "n7",
+      "seq": 7,
+      "outs": [
+       "e7"
+      ]
+     },
+     "n8": {
+      "op": "isect",
+      "ins": [
+       "e3",
+       "e6"
+      ],
+      "which": 1,
+      "id": "n8",
+      "seq": 8,
+      "outs": [
+       "e8"
+      ]
+     },
+     "n9": {
+      "op": "circle",
+      "ins": [
+       "e7",
+       "e8"
+      ],
+      "id": "n9",
+      "seq": 9,
+      "outs": [
+       "e9"
+      ]
+     },
+     "n10": {
+      "op": "circle",
+      "ins": [
+       "e8",
+       "e7"
+      ],
+      "id": "n10",
+      "seq": 10,
+      "outs": [
+       "e10"
+      ]
+     },
+     "n11": {
+      "op": "isect",
+      "ins": [
+       "e9",
+       "e10"
+      ],
+      "which": 0,
+      "id": "n11",
+      "seq": 11,
+      "outs": [
+       "e11"
+      ]
+     },
+     "n12": {
+      "op": "isect",
+      "ins": [
+       "e9",
+       "e10"
+      ],
+      "which": 1,
+      "id": "n12",
+      "seq": 12,
+      "outs": [
+       "e12"
+      ]
+     },
+     "n13": {
+      "op": "line",
+      "ins": [
+       "e11",
+       "e12"
+      ],
+      "id": "n13",
+      "seq": 13,
+      "outs": [
+       "e13"
+      ]
+     }
+    },
+    "elems": {
+     "e1": {
+      "id": "e1",
+      "node": "n1",
+      "kind": "point",
+      "label": ""
+     },
+     "e2": {
+      "id": "e2",
+      "node": "n2",
+      "kind": "point",
+      "label": ""
+     },
+     "e3": {
+      "id": "e3",
+      "node": "n3",
+      "kind": "line",
+      "label": "ℓ"
+     },
+     "e4": {
+      "id": "e4",
+      "node": "n4",
+      "kind": "point",
+      "label": "P"
+     },
+     "e5": {
+      "id": "e5",
+      "node": "n5",
+      "kind": "point",
+      "label": ""
+     },
+     "e6": {
+      "id": "e6",
+      "node": "n6",
+      "kind": "circle",
+      "label": ""
+     },
+     "e7": {
+      "id": "e7",
+      "node": "n7",
+      "kind": "point",
+      "label": ""
+     },
+     "e8": {
+      "id": "e8",
+      "node": "n8",
+      "kind": "point",
+      "label": ""
+     },
+     "e9": {
+      "id": "e9",
+      "node": "n9",
+      "kind": "circle",
+      "label": ""
+     },
+     "e10": {
+      "id": "e10",
+      "node": "n10",
+      "kind": "circle",
+      "label": ""
+     },
+     "e11": {
+      "id": "e11",
+      "node": "n11",
+      "kind": "point",
+      "label": ""
+     },
+     "e12": {
+      "id": "e12",
+      "node": "n12",
+      "kind": "point",
+      "label": ""
+     },
+     "e13": {
+      "id": "e13",
+      "node": "n13",
+      "kind": "line",
+      "label": ""
+     }
+    },
+    "seq": 13
+   },
+   "givens": [
+    "e3",
+    "e4"
+   ],
+   "scaffold": [],
+   "goals": [
+    "e13"
+   ],
+   "elaboration": []
+  },
+  {
+   "kind": "problem",
+   "id": "mirror",
+   "tier": 1,
+   "title": "Mirror Image",
+   "subtitle": "",
+   "text": "Reflect point $P$ across line $\\ell$.\n\n::: Hint\nThe reflection lies on the perpendicular to $\\ell$ through $P$, as far from $\\ell$ as $P$ is.\n:::",
+   "toolName": "Reflect",
+   "diagram": {
+    "nodes": {
+     "n1": {
+      "op": "point",
+      "ins": [],
+      "x": -170,
+      "y": 55,
+      "id": "n1",
+      "seq": 1,
+      "outs": [
+       "e1"
+      ]
+     },
+     "n2": {
+      "op": "point",
+      "ins": [],
+      "x": 170,
+      "y": 10,
+      "id": "n2",
+      "seq": 2,
+      "outs": [
+       "e2"
+      ]
+     },
+     "n3": {
+      "op": "line",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n3",
+      "seq": 3,
+      "outs": [
+       "e3"
+      ]
+     },
+     "n4": {
+      "op": "point",
+      "ins": [],
+      "x": -25,
+      "y": -60,
+      "id": "n4",
+      "seq": 4,
+      "outs": [
+       "e4"
+      ]
+     },
+     "n5": {
+      "op": "point",
+      "ins": [
+       "e3"
+      ],
+      "t": 0.3,
+      "id": "n5",
+      "seq": 5,
+      "outs": [
+       "e5"
+      ]
+     },
+     "n6": {
+      "op": "point",
+      "ins": [
+       "e3"
+      ],
+      "t": 0.7,
+      "id": "n6",
+      "seq": 6,
+      "outs": [
+       "e6"
+      ]
+     },
+     "n7": {
+      "op": "circle",
+      "ins": [
+       "e5",
+       "e4"
+      ],
+      "id": "n7",
+      "seq": 7,
+      "outs": [
+       "e7"
+      ]
+     },
+     "n8": {
+      "op": "circle",
+      "ins": [
+       "e6",
+       "e4"
+      ],
+      "id": "n8",
+      "seq": 8,
+      "outs": [
+       "e8"
+      ]
+     },
+     "n9": {
+      "op": "isect",
+      "ins": [
+       "e7",
+       "e8",
+       "e4"
+      ],
+      "id": "n9",
+      "seq": 9,
+      "outs": [
+       "e9"
+      ]
+     },
+     "n10": {
+      "op": "segment",
+      "ins": [
+       "e4",
+       "e9"
+      ],
+      "id": "n10",
+      "seq": 10,
+      "outs": [
+       "e10"
+      ]
+     }
+    },
+    "elems": {
+     "e1": {
+      "id": "e1",
+      "node": "n1",
+      "kind": "point",
+      "label": ""
+     },
+     "e2": {
+      "id": "e2",
+      "node": "n2",
+      "kind": "point",
+      "label": ""
+     },
+     "e3": {
+      "id": "e3",
+      "node": "n3",
+      "kind": "line",
+      "label": "ℓ"
+     },
+     "e4": {
+      "id": "e4",
+      "node": "n4",
+      "kind": "point",
+      "label": "P"
+     },
+     "e5": {
+      "id": "e5",
+      "node": "n5",
+      "kind": "point",
+      "label": ""
+     },
+     "e6": {
+      "id": "e6",
+      "node": "n6",
+      "kind": "point",
+      "label": ""
+     },
+     "e7": {
+      "id": "e7",
+      "node": "n7",
+      "kind": "circle",
+      "label": ""
+     },
+     "e8": {
+      "id": "e8",
+      "node": "n8",
+      "kind": "circle",
+      "label": ""
+     },
+     "e9": {
+      "id": "e9",
+      "node": "n9",
+      "kind": "point",
+      "label": ""
+     },
+     "e10": {
+      "id": "e10",
+      "node": "n10",
+      "kind": "line",
+      "label": ""
+     }
+    },
+    "seq": 10
+   },
+   "givens": [
+    "e3",
+    "e4"
+   ],
+   "scaffold": [],
+   "goals": [
+    "e9"
+   ],
+   "elaboration": [
+    "e10"
+   ]
+  },
+  {
+   "kind": "problem",
+   "id": "parallel",
+   "tier": 1,
+   "title": "Parallel Line",
+   "subtitle": "Euclid I.31",
+   "text": "Construct the line through $P$ parallel to $\\ell$.\n\n::: Hint\nOpposite sides of a rhombus are parallel, and all four of its sides use one compass setting.\n:::",
+   "toolName": "Parallel",
+   "diagram": {
+    "nodes": {
+     "n1": {
+      "op": "point",
+      "ins": [],
+      "x": -170,
+      "y": 60,
+      "id": "n1",
+      "seq": 1,
+      "outs": [
+       "e1"
+      ]
+     },
+     "n2": {
+      "op": "point",
+      "ins": [],
+      "x": 170,
+      "y": 30,
+      "id": "n2",
+      "seq": 2,
+      "outs": [
+       "e2"
+      ]
+     },
+     "n3": {
+      "op": "line",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n3",
+      "seq": 3,
+      "outs": [
+       "e3"
+      ]
+     },
+     "n4": {
+      "op": "point",
+      "ins": [],
+      "x": 25,
+      "y": -55,
+      "id": "n4",
+      "seq": 4,
+      "outs": [
+       "e4"
+      ]
+     },
+     "n5": {
+      "op": "point",
+      "ins": [
+       "e3"
+      ],
+      "t": 0.35,
+      "id": "n5",
+      "seq": 5,
+      "outs": [
+       "e5"
+      ]
+     },
+     "n6": {
+      "op": "circle",
+      "ins": [
+       "e5",
+       "e4"
+      ],
+      "id": "n6",
+      "seq": 6,
+      "outs": [
+       "e6"
+      ]
+     },
+     "n7": {
+      "op": "isect",
+      "ins": [
+       "e3",
+       "e6"
+      ],
+      "which": 1,
+      "id": "n7",
+      "seq": 7,
+      "outs": [
+       "e7"
+      ]
+     },
+     "n8": {
+      "op": "circle",
+      "ins": [
+       "e7",
+       "e5"
+      ],
+      "id": "n8",
+      "seq": 8,
+      "outs": [
+       "e8"
+      ]
+     },
+     "n9": {
+      "op": "circle",
+      "ins": [
+       "e4",
+       "e5"
+      ],
+      "id": "n9",
+      "seq": 9,
+      "outs": [
+       "e9"
+      ]
+     },
+     "n10": {
+      "op": "isect",
+      "ins": [
+       "e8",
+       "e9",
+       "e5"
+      ],
+      "id": "n10",
+      "seq": 10,
+      "outs": [
+       "e10"
+      ]
+     },
+     "n11": {
+      "op": "line",
+      "ins": [
+       "e4",
+       "e10"
+      ],
+      "id": "n11",
+      "seq": 11,
+      "outs": [
+       "e11"
+      ]
+     }
+    },
+    "elems": {
+     "e1": {
+      "id": "e1",
+      "node": "n1",
+      "kind": "point",
+      "label": ""
+     },
+     "e2": {
+      "id": "e2",
+      "node": "n2",
+      "kind": "point",
+      "label": ""
+     },
+     "e3": {
+      "id": "e3",
+      "node": "n3",
+      "kind": "line",
+      "label": "ℓ"
+     },
+     "e4": {
+      "id": "e4",
+      "node": "n4",
+      "kind": "point",
+      "label": "P"
+     },
+     "e5": {
+      "id": "e5",
+      "node": "n5",
+      "kind": "point",
+      "label": ""
+     },
+     "e6": {
+      "id": "e6",
+      "node": "n6",
+      "kind": "circle",
+      "label": ""
+     },
+     "e7": {
+      "id": "e7",
+      "node": "n7",
+      "kind": "point",
+      "label": ""
+     },
+     "e8": {
+      "id": "e8",
+      "node": "n8",
+      "kind": "circle",
+      "label": ""
+     },
+     "e9": {
+      "id": "e9",
+      "node": "n9",
+      "kind": "circle",
+      "label": ""
+     },
+     "e10": {
+      "id": "e10",
+      "node": "n10",
+      "kind": "point",
+      "label": ""
+     },
+     "e11": {
+      "id": "e11",
+      "node": "n11",
+      "kind": "line",
+      "label": ""
+     }
+    },
+    "seq": 11
+   },
+   "givens": [
+    "e3",
+    "e4"
+   ],
+   "scaffold": [],
+   "goals": [
+    "e11"
+   ],
+   "elaboration": []
+  },
+  {
+   "kind": "problem",
+   "id": "angle-bisector",
+   "tier": 1,
+   "title": "Angle Bisector",
+   "subtitle": "Euclid I.9",
+   "text": "Construct the line that bisects the acute angle between $\\ell$ and $m$.\n\n::: Hint\nMark off equal distances along both lines from the point where they cross.\n:::",
+   "toolName": "Angle bisector",
+   "diagram": {
+    "nodes": {
+     "n1": {
+      "op": "point",
+      "ins": [],
+      "x": -170,
+      "y": 80,
+      "id": "n1",
+      "seq": 1,
+      "outs": [
+       "e1"
+      ]
+     },
+     "n2": {
+      "op": "point",
+      "ins": [],
+      "x": 170,
+      "y": 20,
+      "id": "n2",
+      "seq": 2,
+      "outs": [
+       "e2"
+      ]
+     },
+     "n3": {
+      "op": "line",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n3",
+      "seq": 3,
+      "outs": [
+       "e3"
+      ]
+     },
+     "n4": {
+      "op": "point",
+      "ins": [],
+      "x": -60,
+      "y": 140,
+      "id": "n4",
+      "seq": 4,
+      "outs": [
+       "e4"
+      ]
+     },
+     "n5": {
+      "op": "point",
+      "ins": [],
+      "x": 60,
+      "y": -110,
+      "id": "n5",
+      "seq": 5,
+      "outs": [
+       "e5"
+      ]
+     },
+     "n6": {
+      "op": "line",
+      "ins": [
+       "e4",
+       "e5"
+      ],
+      "id": "n6",
+      "seq": 6,
+      "outs": [
+       "e6"
+      ]
+     },
+     "n7": {
+      "op": "isect",
+      "ins": [
+       "e3",
+       "e6"
+      ],
+      "which": 0,
+      "id": "n7",
+      "seq": 7,
+      "outs": [
+       "e7"
+      ]
+     },
+     "n8": {
+      "op": "point",
+      "ins": [
+       "e3"
+      ],
+      "t": 0.85,
+      "id": "n8",
+      "seq": 8,
+      "outs": [
+       "e8"
+      ]
+     },
+     "n9": {
+      "op": "circle",
+      "ins": [
+       "e7",
+       "e8"
+      ],
+      "id": "n9",
+      "seq": 9,
+      "outs": [
+       "e9"
+      ]
+     },
+     "n10": {
+      "op": "isect",
+      "ins": [
+       "e6",
+       "e9"
+      ],
+      "which": 1,
+      "id": "n10",
+      "seq": 10,
+      "outs": [
+       "e10"
+      ]
+     },
+     "n11": {
+      "op": "circle",
+      "ins": [
+       "e8",
+       "e7"
+      ],
+      "id": "n11",
+      "seq": 11,
+      "outs": [
+       "e11"
+      ]
+     },
+     "n12": {
+      "op": "circle",
+      "ins": [
+       "e10",
+       "e7"
+      ],
+      "id": "n12",
+      "seq": 12,
+      "outs": [
+       "e12"
+      ]
+     },
+     "n13": {
+      "op": "isect",
+      "ins": [
+       "e11",
+       "e12",
+       "e7"
+      ],
+      "id": "n13",
+      "seq": 13,
+      "outs": [
+       "e13"
+      ]
+     },
+     "n14": {
+      "op": "line",
+      "ins": [
+       "e7",
+       "e13"
+      ],
+      "id": "n14",
+      "seq": 14,
+      "outs": [
+       "e14"
+      ]
+     }
+    },
+    "elems": {
+     "e1": {
+      "id": "e1",
+      "node": "n1",
+      "kind": "point",
+      "label": ""
+     },
+     "e2": {
+      "id": "e2",
+      "node": "n2",
+      "kind": "point",
+      "label": ""
+     },
+     "e3": {
+      "id": "e3",
+      "node": "n3",
+      "kind": "line",
+      "label": "ℓ"
+     },
+     "e4": {
+      "id": "e4",
+      "node": "n4",
+      "kind": "point",
+      "label": ""
+     },
+     "e5": {
+      "id": "e5",
+      "node": "n5",
+      "kind": "point",
+      "label": ""
+     },
+     "e6": {
+      "id": "e6",
+      "node": "n6",
+      "kind": "line",
+      "label": "m"
+     },
+     "e7": {
+      "id": "e7",
+      "node": "n7",
+      "kind": "point",
+      "label": ""
+     },
+     "e8": {
+      "id": "e8",
+      "node": "n8",
+      "kind": "point",
+      "label": ""
+     },
+     "e9": {
+      "id": "e9",
+      "node": "n9",
+      "kind": "circle",
+      "label": ""
+     },
+     "e10": {
+      "id": "e10",
+      "node": "n10",
+      "kind": "point",
+      "label": ""
+     },
+     "e11": {
+      "id": "e11",
+      "node": "n11",
+      "kind": "circle",
+      "label": ""
+     },
+     "e12": {
+      "id": "e12",
+      "node": "n12",
+      "kind": "circle",
+      "label": ""
+     },
+     "e13": {
+      "id": "e13",
+      "node": "n13",
+      "kind": "point",
+      "label": ""
+     },
+     "e14": {
+      "id": "e14",
+      "node": "n14",
+      "kind": "line",
+      "label": ""
+     }
+    },
+    "seq": 14
+   },
+   "givens": [
+    "e3",
+    "e6"
+   ],
+   "scaffold": [],
+   "goals": [
+    "e14"
+   ],
+   "elaboration": []
+  },
+  {
+   "kind": "problem",
+   "id": "transfer",
+   "tier": 2,
+   "title": "Transfer a Distance",
+   "subtitle": "Euclid I.2",
+   "text": "Construct the circle centered at $C$ with radius $AB$. The compass collapses when lifted, so the distance can't be carried over directly.\n\n::: Hint\nReflect $B$ across the perpendicular bisector of $AC$.\n:::",
+   "toolName": "Rigid compass",
+   "diagram": {
+    "nodes": {
+     "n1": {
+      "op": "point",
+      "ins": [],
+      "x": -130,
+      "y": 55,
+      "id": "n1",
+      "seq": 1,
+      "outs": [
+       "e1"
+      ]
+     },
+     "n2": {
+      "op": "point",
+      "ins": [],
+      "x": -55,
+      "y": 95,
+      "id": "n2",
+      "seq": 2,
+      "outs": [
+       "e2"
+      ]
+     },
+     "n3": {
+      "op": "point",
+      "ins": [],
+      "x": 65,
+      "y": -35,
+      "id": "n3",
+      "seq": 3,
+      "outs": [
+       "e3"
+      ]
+     },
+     "n4": {
+      "op": "circle",
+      "ins": [
+       "e1",
+       "e3"
+      ],
+      "id": "n4",
+      "seq": 4,
+      "outs": [
+       "e4"
+      ]
+     },
+     "n5": {
+      "op": "circle",
+      "ins": [
+       "e3",
+       "e1"
+      ],
+      "id": "n5",
+      "seq": 5,
+      "outs": [
+       "e5"
+      ]
+     },
+     "n6": {
+      "op": "isect",
+      "ins": [
+       "e4",
+       "e5"
+      ],
+      "which": 0,
+      "id": "n6",
+      "seq": 6,
+      "outs": [
+       "e6"
+      ]
+     },
+     "n7": {
+      "op": "circle",
+      "ins": [
+       "e6",
+       "e2"
+      ],
+      "id": "n7",
+      "seq": 7,
+      "outs": [
+       "e7"
+      ]
+     },
+     "n8": {
+      "op": "isect",
+      "ins": [
+       "e4",
+       "e5"
+      ],
+      "which": 1,
+      "id": "n8",
+      "seq": 8,
+      "outs": [
+       "e8"
+      ]
+     },
+     "n9": {
+      "op": "circle",
+      "ins": [
+       "e8",
+       "e2"
+      ],
+      "id": "n9",
+      "seq": 9,
+      "outs": [
+       "e9"
+      ]
+     },
+     "n10": {
+      "op": "isect",
+      "ins": [
+       "e7",
+       "e9",
+       "e2"
+      ],
+      "id": "n10",
+      "seq": 10,
+      "outs": [
+       "e10"
+      ]
+     },
+     "n11": {
+      "op": "circle",
+      "ins": [
+       "e3",
+       "e10"
+      ],
+      "id": "n11",
+      "seq": 11,
+      "outs": [
+       "e11"
+      ]
+     }
+    },
+    "elems": {
+     "e1": {
+      "id": "e1",
+      "node": "n1",
+      "kind": "point",
+      "label": "A"
+     },
+     "e2": {
+      "id": "e2",
+      "node": "n2",
+      "kind": "point",
+      "label": "B"
+     },
+     "e3": {
+      "id": "e3",
+      "node": "n3",
+      "kind": "point",
+      "label": "C"
+     },
+     "e4": {
+      "id": "e4",
+      "node": "n4",
+      "kind": "circle",
+      "label": ""
+     },
+     "e5": {
+      "id": "e5",
+      "node": "n5",
+      "kind": "circle",
+      "label": ""
+     },
+     "e6": {
+      "id": "e6",
+      "node": "n6",
+      "kind": "point",
+      "label": ""
+     },
+     "e7": {
+      "id": "e7",
+      "node": "n7",
+      "kind": "circle",
+      "label": ""
+     },
+     "e8": {
+      "id": "e8",
+      "node": "n8",
+      "kind": "point",
+      "label": ""
+     },
+     "e9": {
+      "id": "e9",
+      "node": "n9",
+      "kind": "circle",
+      "label": ""
+     },
+     "e10": {
+      "id": "e10",
+      "node": "n10",
+      "kind": "point",
+      "label": ""
+     },
+     "e11": {
+      "id": "e11",
+      "node": "n11",
+      "kind": "circle",
+      "label": ""
+     }
+    },
+    "seq": 11
+   },
+   "givens": [
+    "e1",
+    "e2",
+    "e3"
+   ],
+   "scaffold": [],
+   "goals": [
+    "e11"
+   ],
+   "elaboration": []
+  },
+  {
+   "kind": "problem",
+   "id": "trisect",
+   "tier": 2,
+   "title": "Trisect a Segment",
+   "subtitle": "Euclid VI.9",
+   "text": "Construct the two points that divide $AB$ into three equal parts.\n\n::: Hint\nIn any triangle, the medians cross one third of the way along each one.\n:::",
+   "toolName": "Trisect",
+   "diagram": {
+    "nodes": {
+     "n1": {
+      "op": "point",
+      "ins": [],
+      "x": -120,
+      "y": 25,
+      "id": "n1",
+      "seq": 1,
+      "outs": [
+       "e1"
+      ]
+     },
+     "n2": {
+      "op": "point",
+      "ins": [],
+      "x": 120,
+      "y": -10,
+      "id": "n2",
+      "seq": 2,
+      "outs": [
+       "e2"
+      ]
+     },
+     "n3": {
+      "op": "circle",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n3",
+      "seq": 3,
+      "outs": [
+       "e3"
+      ]
+     },
+     "n4": {
+      "op": "circle",
+      "ins": [
+       "e2",
+       "e1"
+      ],
+      "id": "n4",
+      "seq": 4,
+      "outs": [
+       "e4"
+      ]
+     },
+     "n5": {
+      "op": "isect",
+      "ins": [
+       "e3",
+       "e4"
+      ],
+      "which": 0,
+      "id": "n5",
+      "seq": 5,
+      "outs": [
+       "e5"
+      ]
+     },
+     "n6": {
+      "op": "isect",
+      "ins": [
+       "e3",
+       "e4"
+      ],
+      "which": 1,
+      "id": "n6",
+      "seq": 6,
+      "outs": [
+       "e6"
+      ]
+     },
+     "n7": {
+      "op": "circle",
+      "ins": [
+       "e6",
+       "e1"
+      ],
+      "id": "n7",
+      "seq": 7,
+      "outs": [
+       "e7"
+      ]
+     },
+     "n8": {
+      "op": "isect",
+      "ins": [
+       "e3",
+       "e7",
+       "e2"
+      ],
+      "id": "n8",
+      "seq": 8,
+      "outs": [
+       "e8"
+      ]
+     },
+     "n9": {
+      "op": "line",
+      "ins": [
+       "e2",
+       "e8"
+      ],
+      "id": "n9",
+      "seq": 9,
+      "outs": [
+       "e9"
+      ]
+     },
+     "n10": {
+      "op": "line",
+      "ins": [
+       "e1",
+       "e6"
+      ],
+      "id": "n10",
+      "seq": 10,
+      "outs": [
+       "e10"
+      ]
+     },
+     "n11": {
+      "op": "isect",
+      "ins": [
+       "e9",
+       "e10"
+      ],
+      "which": 0,
+      "id": "n11",
+      "seq": 11,
+      "outs": [
+       "e11"
+      ]
+     },
+     "n12": {
+      "op": "line",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n12",
+      "seq": 12,
+      "outs": [
+       "e12"
+      ]
+     },
+     "n13": {
+      "op": "line",
+      "ins": [
+       "e5",
+       "e11"
+      ],
+      "id": "n13",
+      "seq": 13,
+      "outs": [
+       "e13"
+      ]
+     },
+     "n14": {
+      "op": "isect",
+      "ins": [
+       "e13",
+       "e12"
+      ],
+      "which": 0,
+      "id": "n14",
+      "seq": 14,
+      "outs": [
+       "e14"
+      ]
+     },
+     "n15": {
+      "op": "circle",
+      "ins": [
+       "e14",
+       "e1"
+      ],
+      "id": "n15",
+      "seq": 15,
+      "outs": [
+       "e15"
+      ]
+     },
+     "n16": {
+      "op": "isect",
+      "ins": [
+       "e15",
+       "e12",
+       "e1"
+      ],
+      "id": "n16",
+      "seq": 16,
+      "outs": [
+       "e16"
+      ]
+     },
+     "n17": {
+      "op": "segment",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n17",
+      "seq": 17,
+      "outs": [
+       "e17"
+      ]
+     }
+    },
+    "elems": {
+     "e1": {
+      "id": "e1",
+      "node": "n1",
+      "kind": "point",
+      "label": "A"
+     },
+     "e2": {
+      "id": "e2",
+      "node": "n2",
+      "kind": "point",
+      "label": "B"
+     },
+     "e3": {
+      "id": "e3",
+      "node": "n3",
+      "kind": "circle",
+      "label": ""
+     },
+     "e4": {
+      "id": "e4",
+      "node": "n4",
+      "kind": "circle",
+      "label": ""
+     },
+     "e5": {
+      "id": "e5",
+      "node": "n5",
+      "kind": "point",
+      "label": ""
+     },
+     "e6": {
+      "id": "e6",
+      "node": "n6",
+      "kind": "point",
+      "label": ""
+     },
+     "e7": {
+      "id": "e7",
+      "node": "n7",
+      "kind": "circle",
+      "label": ""
+     },
+     "e8": {
+      "id": "e8",
+      "node": "n8",
+      "kind": "point",
+      "label": ""
+     },
+     "e9": {
+      "id": "e9",
+      "node": "n9",
+      "kind": "line",
+      "label": ""
+     },
+     "e10": {
+      "id": "e10",
+      "node": "n10",
+      "kind": "line",
+      "label": ""
+     },
+     "e11": {
+      "id": "e11",
+      "node": "n11",
+      "kind": "point",
+      "label": ""
+     },
+     "e12": {
+      "id": "e12",
+      "node": "n12",
+      "kind": "line",
+      "label": ""
+     },
+     "e13": {
+      "id": "e13",
+      "node": "n13",
+      "kind": "line",
+      "label": ""
+     },
+     "e14": {
+      "id": "e14",
+      "node": "n14",
+      "kind": "point",
+      "label": ""
+     },
+     "e15": {
+      "id": "e15",
+      "node": "n15",
+      "kind": "circle",
+      "label": ""
+     },
+     "e16": {
+      "id": "e16",
+      "node": "n16",
+      "kind": "point",
+      "label": ""
+     },
+     "e17": {
+      "id": "e17",
+      "node": "n17",
+      "kind": "line",
+      "label": ""
+     }
+    },
+    "seq": 17
+   },
+   "givens": [
+    "e1",
+    "e2"
+   ],
+   "scaffold": [
+    "e17"
+   ],
+   "goals": [
+    "e14",
+    "e16"
+   ],
+   "elaboration": []
+  },
+  {
+   "kind": "problem",
+   "id": "circumcircle",
+   "tier": 3,
+   "title": "Circle Through Three Points",
+   "subtitle": "Euclid IV.5",
+   "text": "Construct the circle that passes through $A$, $B$ and $C$.\n\n::: Hint\nIts center is the same distance from all three points.\n:::",
+   "toolName": "Circumcircle",
+   "diagram": {
+    "nodes": {
+     "n1": {
+      "op": "point",
+      "ins": [],
+      "x": -95,
+      "y": 55,
+      "id": "n1",
+      "seq": 1,
+      "outs": [
+       "e1"
+      ]
+     },
+     "n2": {
+      "op": "point",
+      "ins": [],
+      "x": 100,
+      "y": 75,
+      "id": "n2",
+      "seq": 2,
+      "outs": [
+       "e2"
+      ]
+     },
+     "n3": {
+      "op": "point",
+      "ins": [],
+      "x": 15,
+      "y": -90,
+      "id": "n3",
+      "seq": 3,
+      "outs": [
+       "e3"
+      ]
+     },
+     "n4": {
+      "op": "circle",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n4",
+      "seq": 4,
+      "outs": [
+       "e4"
+      ]
+     },
+     "n5": {
+      "op": "circle",
+      "ins": [
+       "e2",
+       "e1"
+      ],
+      "id": "n5",
+      "seq": 5,
+      "outs": [
+       "e5"
+      ]
+     },
+     "n6": {
+      "op": "isect",
+      "ins": [
+       "e4",
+       "e5"
+      ],
+      "which": 0,
+      "id": "n6",
+      "seq": 6,
+      "outs": [
+       "e6"
+      ]
+     },
+     "n7": {
+      "op": "isect",
+      "ins": [
+       "e4",
+       "e5"
+      ],
+      "which": 1,
+      "id": "n7",
+      "seq": 7,
+      "outs": [
+       "e7"
+      ]
+     },
+     "n8": {
+      "op": "line",
+      "ins": [
+       "e6",
+       "e7"
+      ],
+      "id": "n8",
+      "seq": 8,
+      "outs": [
+       "e8"
+      ]
+     },
+     "n9": {
+      "op": "circle",
+      "ins": [
+       "e2",
+       "e3"
+      ],
+      "id": "n9",
+      "seq": 9,
+      "outs": [
+       "e9"
+      ]
+     },
+     "n10": {
+      "op": "circle",
+      "ins": [
+       "e3",
+       "e2"
+      ],
+      "id": "n10",
+      "seq": 10,
+      "outs": [
+       "e10"
+      ]
+     },
+     "n11": {
+      "op": "isect",
+      "ins": [
+       "e9",
+       "e10"
+      ],
+      "which": 0,
+      "id": "n11",
+      "seq": 11,
+      "outs": [
+       "e11"
+      ]
+     },
+     "n12": {
+      "op": "isect",
+      "ins": [
+       "e9",
+       "e10"
+      ],
+      "which": 1,
+      "id": "n12",
+      "seq": 12,
+      "outs": [
+       "e12"
+      ]
+     },
+     "n13": {
+      "op": "line",
+      "ins": [
+       "e11",
+       "e12"
+      ],
+      "id": "n13",
+      "seq": 13,
+      "outs": [
+       "e13"
+      ]
+     },
+     "n14": {
+      "op": "isect",
+      "ins": [
+       "e8",
+       "e13"
+      ],
+      "which": 0,
+      "id": "n14",
+      "seq": 14,
+      "outs": [
+       "e14"
+      ]
+     },
+     "n15": {
+      "op": "circle",
+      "ins": [
+       "e14",
+       "e1"
+      ],
+      "id": "n15",
+      "seq": 15,
+      "outs": [
+       "e15"
+      ]
+     },
+     "n16": {
+      "op": "segment",
+      "ins": [
+       "e14",
+       "e1"
+      ],
+      "id": "n16",
+      "seq": 16,
+      "outs": [
+       "e16"
+      ]
+     },
+     "n17": {
+      "op": "segment",
+      "ins": [
+       "e14",
+       "e2"
+      ],
+      "id": "n17",
+      "seq": 17,
+      "outs": [
+       "e17"
+      ]
+     },
+     "n18": {
+      "op": "segment",
+      "ins": [
+       "e14",
+       "e3"
+      ],
+      "id": "n18",
+      "seq": 18,
+      "outs": [
+       "e18"
+      ]
+     }
+    },
+    "elems": {
+     "e1": {
+      "id": "e1",
+      "node": "n1",
+      "kind": "point",
+      "label": "A"
+     },
+     "e2": {
+      "id": "e2",
+      "node": "n2",
+      "kind": "point",
+      "label": "B"
+     },
+     "e3": {
+      "id": "e3",
+      "node": "n3",
+      "kind": "point",
+      "label": "C"
+     },
+     "e4": {
+      "id": "e4",
+      "node": "n4",
+      "kind": "circle",
+      "label": ""
+     },
+     "e5": {
+      "id": "e5",
+      "node": "n5",
+      "kind": "circle",
+      "label": ""
+     },
+     "e6": {
+      "id": "e6",
+      "node": "n6",
+      "kind": "point",
+      "label": ""
+     },
+     "e7": {
+      "id": "e7",
+      "node": "n7",
+      "kind": "point",
+      "label": ""
+     },
+     "e8": {
+      "id": "e8",
+      "node": "n8",
+      "kind": "line",
+      "label": ""
+     },
+     "e9": {
+      "id": "e9",
+      "node": "n9",
+      "kind": "circle",
+      "label": ""
+     },
+     "e10": {
+      "id": "e10",
+      "node": "n10",
+      "kind": "circle",
+      "label": ""
+     },
+     "e11": {
+      "id": "e11",
+      "node": "n11",
+      "kind": "point",
+      "label": ""
+     },
+     "e12": {
+      "id": "e12",
+      "node": "n12",
+      "kind": "point",
+      "label": ""
+     },
+     "e13": {
+      "id": "e13",
+      "node": "n13",
+      "kind": "line",
+      "label": ""
+     },
+     "e14": {
+      "id": "e14",
+      "node": "n14",
+      "kind": "point",
+      "label": "O"
+     },
+     "e15": {
+      "id": "e15",
+      "node": "n15",
+      "kind": "circle",
+      "label": ""
+     },
+     "e16": {
+      "id": "e16",
+      "node": "n16",
+      "kind": "line",
+      "label": "",
+      "style": {
+       "dash": "dashed"
+      }
+     },
+     "e17": {
+      "id": "e17",
+      "node": "n17",
+      "kind": "line",
+      "label": "",
+      "style": {
+       "dash": "dashed"
+      }
+     },
+     "e18": {
+      "id": "e18",
+      "node": "n18",
+      "kind": "line",
+      "label": "",
+      "style": {
+       "dash": "dashed"
+      }
+     }
+    },
+    "seq": 18
+   },
+   "givens": [
+    "e1",
+    "e2",
+    "e3"
+   ],
+   "scaffold": [],
+   "goals": [
+    "e15"
+   ],
+   "elaboration": [
+    "e14",
+    "e16",
+    "e17",
+    "e18"
+   ]
+  },
+  {
+   "kind": "problem",
+   "id": "center",
+   "tier": 3,
+   "title": "Find the Center",
+   "subtitle": "Euclid III.1",
+   "text": "Construct the center of circle $\\omega$.\n\n::: Hint\nThe perpendicular bisector of any chord passes through the center. Use the Point tool to put points on $\\omega$.\n:::",
+   "toolName": "Center of a circle",
+   "diagram": {
+    "nodes": {
+     "n1": {
+      "op": "point",
+      "ins": [],
+      "x": 10,
+      "y": 0,
+      "id": "n1",
+      "seq": 1,
+      "outs": [
+       "e1"
+      ]
+     },
+     "n2": {
+      "op": "point",
+      "ins": [],
+      "x": 125,
+      "y": -35,
+      "id": "n2",
+      "seq": 2,
+      "outs": [
+       "e2"
+      ]
+     },
+     "n3": {
+      "op": "circle",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n3",
+      "seq": 3,
+      "outs": [
+       "e3"
+      ]
+     },
+     "n4": {
+      "op": "point",
+      "ins": [
+       "e3"
+      ],
+      "a": -2.2,
+      "id": "n4",
+      "seq": 4,
+      "outs": [
+       "e4"
+      ]
+     },
+     "n5": {
+      "op": "point",
+      "ins": [
+       "e3"
+      ],
+      "a": -0.9,
+      "id": "n5",
+      "seq": 5,
+      "outs": [
+       "e5"
+      ]
+     },
+     "n6": {
+      "op": "circle",
+      "ins": [
+       "e4",
+       "e5"
+      ],
+      "id": "n6",
+      "seq": 6,
+      "outs": [
+       "e6"
+      ]
+     },
+     "n7": {
+      "op": "isect",
+      "ins": [
+       "e6",
+       "e3",
+       "e5"
+      ],
+      "id": "n7",
+      "seq": 7,
+      "outs": [
+       "e7"
+      ]
+     },
+     "n8": {
+      "op": "circle",
+      "ins": [
+       "e5",
+       "e4"
+      ],
+      "id": "n8",
+      "seq": 8,
+      "outs": [
+       "e8"
+      ]
+     },
+     "n9": {
+      "op": "circle",
+      "ins": [
+       "e7",
+       "e4"
+      ],
+      "id": "n9",
+      "seq": 9,
+      "outs": [
+       "e9"
+      ]
+     },
+     "n10": {
+      "op": "isect",
+      "ins": [
+       "e8",
+       "e9",
+       "e4"
+      ],
+      "id": "n10",
+      "seq": 10,
+      "outs": [
+       "e10"
+      ]
+     },
+     "n11": {
+      "op": "circle",
+      "ins": [
+       "e4",
+       "e5"
+      ],
+      "id": "n11",
+      "seq": 11,
+      "outs": [
+       "e11"
+      ]
+     },
+     "n12": {
+      "op": "circle",
+      "ins": [
+       "e5",
+       "e4"
+      ],
+      "id": "n12",
+      "seq": 12,
+      "outs": [
+       "e12"
+      ]
+     },
+     "n13": {
+      "op": "isect",
+      "ins": [
+       "e11",
+       "e12"
+      ],
+      "which": 0,
+      "id": "n13",
+      "seq": 13,
+      "outs": [
+       "e13"
+      ]
+     },
+     "n14": {
+      "op": "isect",
+      "ins": [
+       "e11",
+       "e12"
+      ],
+      "which": 1,
+      "id": "n14",
+      "seq": 14,
+      "outs": [
+       "e14"
+      ]
+     },
+     "n15": {
+      "op": "line",
+      "ins": [
+       "e13",
+       "e14"
+      ],
+      "id": "n15",
+      "seq": 15,
+      "outs": [
+       "e15"
+      ]
+     },
+     "n16": {
+      "op": "line",
+      "ins": [
+       "e4",
+       "e10"
+      ],
+      "id": "n16",
+      "seq": 16,
+      "outs": [
+       "e16"
+      ]
+     },
+     "n17": {
+      "op": "isect",
+      "ins": [
+       "e15",
+       "e16"
+      ],
+      "which": 0,
+      "id": "n17",
+      "seq": 17,
+      "outs": [
+       "e17"
+      ]
+     }
+    },
+    "elems": {
+     "e1": {
+      "id": "e1",
+      "node": "n1",
+      "kind": "point",
+      "label": ""
+     },
+     "e2": {
+      "id": "e2",
+      "node": "n2",
+      "kind": "point",
+      "label": ""
+     },
+     "e3": {
+      "id": "e3",
+      "node": "n3",
+      "kind": "circle",
+      "label": "ω"
+     },
+     "e4": {
+      "id": "e4",
+      "node": "n4",
+      "kind": "point",
+      "label": ""
+     },
+     "e5": {
+      "id": "e5",
+      "node": "n5",
+      "kind": "point",
+      "label": ""
+     },
+     "e6": {
+      "id": "e6",
+      "node": "n6",
+      "kind": "circle",
+      "label": ""
+     },
+     "e7": {
+      "id": "e7",
+      "node": "n7",
+      "kind": "point",
+      "label": ""
+     },
+     "e8": {
+      "id": "e8",
+      "node": "n8",
+      "kind": "circle",
+      "label": ""
+     },
+     "e9": {
+      "id": "e9",
+      "node": "n9",
+      "kind": "circle",
+      "label": ""
+     },
+     "e10": {
+      "id": "e10",
+      "node": "n10",
+      "kind": "point",
+      "label": ""
+     },
+     "e11": {
+      "id": "e11",
+      "node": "n11",
+      "kind": "circle",
+      "label": ""
+     },
+     "e12": {
+      "id": "e12",
+      "node": "n12",
+      "kind": "circle",
+      "label": ""
+     },
+     "e13": {
+      "id": "e13",
+      "node": "n13",
+      "kind": "point",
+      "label": ""
+     },
+     "e14": {
+      "id": "e14",
+      "node": "n14",
+      "kind": "point",
+      "label": ""
+     },
+     "e15": {
+      "id": "e15",
+      "node": "n15",
+      "kind": "line",
+      "label": ""
+     },
+     "e16": {
+      "id": "e16",
+      "node": "n16",
+      "kind": "line",
+      "label": ""
+     },
+     "e17": {
+      "id": "e17",
+      "node": "n17",
+      "kind": "point",
+      "label": ""
+     }
+    },
+    "seq": 17
+   },
+   "givens": [
+    "e3"
+   ],
+   "scaffold": [],
+   "goals": [
+    "e17"
+   ],
+   "elaboration": []
+  },
+  {
+   "kind": "problem",
+   "id": "tangents",
+   "tier": 3,
+   "title": "Tangents From a Point",
+   "subtitle": "Euclid III.17",
+   "text": "Construct both lines through $P$ that touch circle $\\omega$, which is centered at $O$.\n\n::: Hint\nThe radius to the point of contact is perpendicular to the tangent, so that point sees segment $OP$ at a right angle.\n:::",
+   "toolName": "Tangents",
+   "diagram": {
+    "nodes": {
+     "n1": {
+      "op": "point",
+      "ins": [],
+      "x": -60,
+      "y": 15,
+      "id": "n1",
+      "seq": 1,
+      "outs": [
+       "e1"
+      ]
+     },
+     "n2": {
+      "op": "point",
+      "ins": [],
+      "x": -102,
+      "y": 89,
+      "id": "n2",
+      "seq": 2,
+      "outs": [
+       "e2"
+      ]
+     },
+     "n3": {
+      "op": "circle",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n3",
+      "seq": 3,
+      "outs": [
+       "e3"
+      ]
+     },
+     "n4": {
+      "op": "point",
+      "ins": [],
+      "x": 150,
+      "y": -45,
+      "id": "n4",
+      "seq": 4,
+      "outs": [
+       "e4"
+      ]
+     },
+     "n5": {
+      "op": "circle",
+      "ins": [
+       "e1",
+       "e4"
+      ],
+      "id": "n5",
+      "seq": 5,
+      "outs": [
+       "e5"
+      ]
+     },
+     "n6": {
+      "op": "circle",
+      "ins": [
+       "e4",
+       "e1"
+      ],
+      "id": "n6",
+      "seq": 6,
+      "outs": [
+       "e6"
+      ]
+     },
+     "n7": {
+      "op": "isect",
+      "ins": [
+       "e5",
+       "e6"
+      ],
+      "which": 0,
+      "id": "n7",
+      "seq": 7,
+      "outs": [
+       "e7"
+      ]
+     },
+     "n8": {
+      "op": "isect",
+      "ins": [
+       "e5",
+       "e6"
+      ],
+      "which": 1,
+      "id": "n8",
+      "seq": 8,
+      "outs": [
+       "e8"
+      ]
+     },
+     "n9": {
+      "op": "line",
+      "ins": [
+       "e7",
+       "e8"
+      ],
+      "id": "n9",
+      "seq": 9,
+      "outs": [
+       "e9"
+      ]
+     },
+     "n10": {
+      "op": "line",
+      "ins": [
+       "e1",
+       "e4"
+      ],
+      "id": "n10",
+      "seq": 10,
+      "outs": [
+       "e10"
+      ]
+     },
+     "n11": {
+      "op": "isect",
+      "ins": [
+       "e9",
+       "e10"
+      ],
+      "which": 0,
+      "id": "n11",
+      "seq": 11,
+      "outs": [
+       "e11"
+      ]
+     },
+     "n12": {
+      "op": "circle",
+      "ins": [
+       "e11",
+       "e1"
+      ],
+      "id": "n12",
+      "seq": 12,
+      "outs": [
+       "e12"
+      ]
+     },
+     "n13": {
+      "op": "isect",
+      "ins": [
+       "e12",
+       "e3"
+      ],
+      "which": 0,
+      "id": "n13",
+      "seq": 13,
+      "outs": [
+       "e13"
+      ]
+     },
+     "n14": {
+      "op": "line",
+      "ins": [
+       "e4",
+       "e13"
+      ],
+      "id": "n14",
+      "seq": 14,
+      "outs": [
+       "e14"
+      ]
+     },
+     "n15": {
+      "op": "isect",
+      "ins": [
+       "e12",
+       "e3"
+      ],
+      "which": 1,
+      "id": "n15",
+      "seq": 15,
+      "outs": [
+       "e15"
+      ]
+     },
+     "n16": {
+      "op": "line",
+      "ins": [
+       "e4",
+       "e15"
+      ],
+      "id": "n16",
+      "seq": 16,
+      "outs": [
+       "e16"
+      ]
+     },
+     "n17": {
+      "op": "segment",
+      "ins": [
+       "e1",
+       "e13"
+      ],
+      "id": "n17",
+      "seq": 17,
+      "outs": [
+       "e17"
+      ]
+     },
+     "n18": {
+      "op": "segment",
+      "ins": [
+       "e1",
+       "e15"
+      ],
+      "id": "n18",
+      "seq": 18,
+      "outs": [
+       "e18"
+      ]
+     }
+    },
+    "elems": {
+     "e1": {
+      "id": "e1",
+      "node": "n1",
+      "kind": "point",
+      "label": "O"
+     },
+     "e2": {
+      "id": "e2",
+      "node": "n2",
+      "kind": "point",
+      "label": ""
+     },
+     "e3": {
+      "id": "e3",
+      "node": "n3",
+      "kind": "circle",
+      "label": "ω"
+     },
+     "e4": {
+      "id": "e4",
+      "node": "n4",
+      "kind": "point",
+      "label": "P"
+     },
+     "e5": {
+      "id": "e5",
+      "node": "n5",
+      "kind": "circle",
+      "label": ""
+     },
+     "e6": {
+      "id": "e6",
+      "node": "n6",
+      "kind": "circle",
+      "label": ""
+     },
+     "e7": {
+      "id": "e7",
+      "node": "n7",
+      "kind": "point",
+      "label": ""
+     },
+     "e8": {
+      "id": "e8",
+      "node": "n8",
+      "kind": "point",
+      "label": ""
+     },
+     "e9": {
+      "id": "e9",
+      "node": "n9",
+      "kind": "line",
+      "label": ""
+     },
+     "e10": {
+      "id": "e10",
+      "node": "n10",
+      "kind": "line",
+      "label": ""
+     },
+     "e11": {
+      "id": "e11",
+      "node": "n11",
+      "kind": "point",
+      "label": ""
+     },
+     "e12": {
+      "id": "e12",
+      "node": "n12",
+      "kind": "circle",
+      "label": "",
+      "style": {
+       "dash": "dashed"
+      }
+     },
+     "e13": {
+      "id": "e13",
+      "node": "n13",
+      "kind": "point",
+      "label": ""
+     },
+     "e14": {
+      "id": "e14",
+      "node": "n14",
+      "kind": "line",
+      "label": ""
+     },
+     "e15": {
+      "id": "e15",
+      "node": "n15",
+      "kind": "point",
+      "label": ""
+     },
+     "e16": {
+      "id": "e16",
+      "node": "n16",
+      "kind": "line",
+      "label": ""
+     },
+     "e17": {
+      "id": "e17",
+      "node": "n17",
+      "kind": "line",
+      "label": "",
+      "style": {
+       "dash": "dashed"
+      }
+     },
+     "e18": {
+      "id": "e18",
+      "node": "n18",
+      "kind": "line",
+      "label": "",
+      "style": {
+       "dash": "dashed"
+      }
+     }
+    },
+    "seq": 18
+   },
+   "givens": [
+    "e3",
+    "e1",
+    "e4"
+   ],
+   "scaffold": [],
+   "goals": [
+    "e14",
+    "e16"
+   ],
+   "elaboration": [
+    "e12",
+    "e17",
+    "e18",
+    "e13",
+    "e15"
+   ]
+  },
+  {
+   "kind": "problem",
+   "id": "hexagon",
+   "tier": 4,
+   "title": "Regular Hexagon",
+   "subtitle": "Euclid IV.15",
+   "text": "Inscribe a regular hexagon in circle $\\omega$, which is centered at $O$, with a vertex at $A$. Construct the other five vertices.\n\n::: Hint\nA regular hexagon's side equals the radius of its circle.\n:::",
+   "toolName": "Hexagon",
+   "diagram": {
+    "nodes": {
+     "n1": {
+      "op": "point",
+      "ins": [],
+      "x": 0,
+      "y": 0,
+      "id": "n1",
+      "seq": 1,
+      "outs": [
+       "e1"
+      ]
+     },
+     "n2": {
+      "op": "point",
+      "ins": [],
+      "x": 0,
+      "y": -105,
+      "id": "n2",
+      "seq": 2,
+      "outs": [
+       "e2"
+      ]
+     },
+     "n3": {
+      "op": "circle",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n3",
+      "seq": 3,
+      "outs": [
+       "e3"
+      ]
+     },
+     "n4": {
+      "op": "line",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n4",
+      "seq": 4,
+      "outs": [
+       "e4"
+      ]
+     },
+     "n5": {
+      "op": "isect",
+      "ins": [
+       "e4",
+       "e3",
+       "e2"
+      ],
+      "id": "n5",
+      "seq": 5,
+      "outs": [
+       "e5"
+      ]
+     },
+     "n6": {
+      "op": "circle",
+      "ins": [
+       "e2",
+       "e1"
+      ],
+      "id": "n6",
+      "seq": 6,
+      "outs": [
+       "e6"
+      ]
+     },
+     "n7": {
+      "op": "circle",
+      "ins": [
+       "e5",
+       "e1"
+      ],
+      "id": "n7",
+      "seq": 7,
+      "outs": [
+       "e7"
+      ]
+     },
+     "n8": {
+      "op": "isect",
+      "ins": [
+       "e6",
+       "e3"
+      ],
+      "which": 0,
+      "id": "n8",
+      "seq": 8,
+      "outs": [
+       "e8"
+      ]
+     },
+     "n9": {
+      "op": "isect",
+      "ins": [
+       "e7",
+       "e3"
+      ],
+      "which": 0,
+      "id": "n9",
+      "seq": 9,
+      "outs": [
+       "e9"
+      ]
+     },
+     "n10": {
+      "op": "isect",
+      "ins": [
+       "e7",
+       "e3"
+      ],
+      "which": 1,
+      "id": "n10",
+      "seq": 10,
+      "outs": [
+       "e10"
+      ]
+     },
+     "n11": {
+      "op": "isect",
+      "ins": [
+       "e6",
+       "e3"
+      ],
+      "which": 1,
+      "id": "n11",
+      "seq": 11,
+      "outs": [
+       "e11"
+      ]
+     },
+     "n12": {
+      "op": "segment",
+      "ins": [
+       "e8",
+       "e2"
+      ],
+      "id": "n12",
+      "seq": 12,
+      "outs": [
+       "e12"
+      ]
+     },
+     "n13": {
+      "op": "segment",
+      "ins": [
+       "e2",
+       "e11"
+      ],
+      "id": "n13",
+      "seq": 13,
+      "outs": [
+       "e13"
+      ]
+     },
+     "n14": {
+      "op": "segment",
+      "ins": [
+       "e11",
+       "e9"
+      ],
+      "id": "n14",
+      "seq": 14,
+      "outs": [
+       "e14"
+      ]
+     },
+     "n15": {
+      "op": "segment",
+      "ins": [
+       "e9",
+       "e5"
+      ],
+      "id": "n15",
+      "seq": 15,
+      "outs": [
+       "e15"
+      ]
+     },
+     "n16": {
+      "op": "segment",
+      "ins": [
+       "e5",
+       "e10"
+      ],
+      "id": "n16",
+      "seq": 16,
+      "outs": [
+       "e16"
+      ]
+     },
+     "n17": {
+      "op": "segment",
+      "ins": [
+       "e10",
+       "e8"
+      ],
+      "id": "n17",
+      "seq": 17,
+      "outs": [
+       "e17"
+      ]
+     }
+    },
+    "elems": {
+     "e1": {
+      "id": "e1",
+      "node": "n1",
+      "kind": "point",
+      "label": "O"
+     },
+     "e2": {
+      "id": "e2",
+      "node": "n2",
+      "kind": "point",
+      "label": "A"
+     },
+     "e3": {
+      "id": "e3",
+      "node": "n3",
+      "kind": "circle",
+      "label": "ω"
+     },
+     "e4": {
+      "id": "e4",
+      "node": "n4",
+      "kind": "line",
+      "label": ""
+     },
+     "e5": {
+      "id": "e5",
+      "node": "n5",
+      "kind": "point",
+      "label": ""
+     },
+     "e6": {
+      "id": "e6",
+      "node": "n6",
+      "kind": "circle",
+      "label": ""
+     },
+     "e7": {
+      "id": "e7",
+      "node": "n7",
+      "kind": "circle",
+      "label": ""
+     },
+     "e8": {
+      "id": "e8",
+      "node": "n8",
+      "kind": "point",
+      "label": ""
+     },
+     "e9": {
+      "id": "e9",
+      "node": "n9",
+      "kind": "point",
+      "label": ""
+     },
+     "e10": {
+      "id": "e10",
+      "node": "n10",
+      "kind": "point",
+      "label": ""
+     },
+     "e11": {
+      "id": "e11",
+      "node": "n11",
+      "kind": "point",
+      "label": ""
+     },
+     "e12": {
+      "id": "e12",
+      "node": "n12",
+      "kind": "line",
+      "label": ""
+     },
+     "e13": {
+      "id": "e13",
+      "node": "n13",
+      "kind": "line",
+      "label": ""
+     },
+     "e14": {
+      "id": "e14",
+      "node": "n14",
+      "kind": "line",
+      "label": ""
+     },
+     "e15": {
+      "id": "e15",
+      "node": "n15",
+      "kind": "line",
+      "label": ""
+     },
+     "e16": {
+      "id": "e16",
+      "node": "n16",
+      "kind": "line",
+      "label": ""
+     },
+     "e17": {
+      "id": "e17",
+      "node": "n17",
+      "kind": "line",
+      "label": ""
+     }
+    },
+    "seq": 17
+   },
+   "givens": [
+    "e3",
+    "e1",
+    "e2"
+   ],
+   "scaffold": [],
+   "goals": [
+    "e8",
+    "e9",
+    "e5",
+    "e10",
+    "e11"
+   ],
+   "elaboration": [
+    "e12",
+    "e13",
+    "e14",
+    "e15",
+    "e16",
+    "e17"
+   ]
+  },
+  {
+   "kind": "problem",
+   "id": "square-in-circle",
+   "tier": 4,
+   "title": "Square in a Circle",
+   "subtitle": "Euclid IV.6",
+   "text": "Inscribe a square in circle $\\omega$, which is centered at $O$, with a vertex at $A$. Construct the other three vertices.\n\n::: Hint\nThe diagonals of a square are perpendicular diameters.\n:::",
+   "toolName": "Square in circle",
+   "diagram": {
+    "nodes": {
+     "n1": {
+      "op": "point",
+      "ins": [],
+      "x": 0,
+      "y": 0,
+      "id": "n1",
+      "seq": 1,
+      "outs": [
+       "e1"
+      ]
+     },
+     "n2": {
+      "op": "point",
+      "ins": [],
+      "x": 80,
+      "y": -70,
+      "id": "n2",
+      "seq": 2,
+      "outs": [
+       "e2"
+      ]
+     },
+     "n3": {
+      "op": "circle",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n3",
+      "seq": 3,
+      "outs": [
+       "e3"
+      ]
+     },
+     "n4": {
+      "op": "line",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n4",
+      "seq": 4,
+      "outs": [
+       "e4"
+      ]
+     },
+     "n5": {
+      "op": "isect",
+      "ins": [
+       "e4",
+       "e3",
+       "e2"
+      ],
+      "id": "n5",
+      "seq": 5,
+      "outs": [
+       "e5"
+      ]
+     },
+     "n6": {
+      "op": "circle",
+      "ins": [
+       "e2",
+       "e5"
+      ],
+      "id": "n6",
+      "seq": 6,
+      "outs": [
+       "e6"
+      ]
+     },
+     "n7": {
+      "op": "circle",
+      "ins": [
+       "e5",
+       "e2"
+      ],
+      "id": "n7",
+      "seq": 7,
+      "outs": [
+       "e7"
+      ]
+     },
+     "n8": {
+      "op": "isect",
+      "ins": [
+       "e6",
+       "e7"
+      ],
+      "which": 0,
+      "id": "n8",
+      "seq": 8,
+      "outs": [
+       "e8"
+      ]
+     },
+     "n9": {
+      "op": "isect",
+      "ins": [
+       "e6",
+       "e7"
+      ],
+      "which": 1,
+      "id": "n9",
+      "seq": 9,
+      "outs": [
+       "e9"
+      ]
+     },
+     "n10": {
+      "op": "line",
+      "ins": [
+       "e8",
+       "e9"
+      ],
+      "id": "n10",
+      "seq": 10,
+      "outs": [
+       "e10"
+      ]
+     },
+     "n11": {
+      "op": "isect",
+      "ins": [
+       "e10",
+       "e3"
+      ],
+      "which": 0,
+      "id": "n11",
+      "seq": 11,
+      "outs": [
+       "e11"
+      ]
+     },
+     "n12": {
+      "op": "isect",
+      "ins": [
+       "e10",
+       "e3"
+      ],
+      "which": 1,
+      "id": "n12",
+      "seq": 12,
+      "outs": [
+       "e12"
+      ]
+     },
+     "n13": {
+      "op": "segment",
+      "ins": [
+       "e11",
+       "e2"
+      ],
+      "id": "n13",
+      "seq": 13,
+      "outs": [
+       "e13"
+      ]
+     },
+     "n14": {
+      "op": "segment",
+      "ins": [
+       "e2",
+       "e12"
+      ],
+      "id": "n14",
+      "seq": 14,
+      "outs": [
+       "e14"
+      ]
+     },
+     "n15": {
+      "op": "segment",
+      "ins": [
+       "e12",
+       "e5"
+      ],
+      "id": "n15",
+      "seq": 15,
+      "outs": [
+       "e15"
+      ]
+     },
+     "n16": {
+      "op": "segment",
+      "ins": [
+       "e5",
+       "e11"
+      ],
+      "id": "n16",
+      "seq": 16,
+      "outs": [
+       "e16"
+      ]
+     }
+    },
+    "elems": {
+     "e1": {
+      "id": "e1",
+      "node": "n1",
+      "kind": "point",
+      "label": "O"
+     },
+     "e2": {
+      "id": "e2",
+      "node": "n2",
+      "kind": "point",
+      "label": "A"
+     },
+     "e3": {
+      "id": "e3",
+      "node": "n3",
+      "kind": "circle",
+      "label": "ω"
+     },
+     "e4": {
+      "id": "e4",
+      "node": "n4",
+      "kind": "line",
+      "label": ""
+     },
+     "e5": {
+      "id": "e5",
+      "node": "n5",
+      "kind": "point",
+      "label": ""
+     },
+     "e6": {
+      "id": "e6",
+      "node": "n6",
+      "kind": "circle",
+      "label": ""
+     },
+     "e7": {
+      "id": "e7",
+      "node": "n7",
+      "kind": "circle",
+      "label": ""
+     },
+     "e8": {
+      "id": "e8",
+      "node": "n8",
+      "kind": "point",
+      "label": ""
+     },
+     "e9": {
+      "id": "e9",
+      "node": "n9",
+      "kind": "point",
+      "label": ""
+     },
+     "e10": {
+      "id": "e10",
+      "node": "n10",
+      "kind": "line",
+      "label": ""
+     },
+     "e11": {
+      "id": "e11",
+      "node": "n11",
+      "kind": "point",
+      "label": ""
+     },
+     "e12": {
+      "id": "e12",
+      "node": "n12",
+      "kind": "point",
+      "label": ""
+     },
+     "e13": {
+      "id": "e13",
+      "node": "n13",
+      "kind": "line",
+      "label": ""
+     },
+     "e14": {
+      "id": "e14",
+      "node": "n14",
+      "kind": "line",
+      "label": ""
+     },
+     "e15": {
+      "id": "e15",
+      "node": "n15",
+      "kind": "line",
+      "label": ""
+     },
+     "e16": {
+      "id": "e16",
+      "node": "n16",
+      "kind": "line",
+      "label": ""
+     }
+    },
+    "seq": 16
+   },
+   "givens": [
+    "e3",
+    "e1",
+    "e2"
+   ],
+   "scaffold": [],
+   "goals": [
+    "e11",
+    "e5",
+    "e12"
+   ],
+   "elaboration": [
+    "e13",
+    "e14",
+    "e15",
+    "e16"
+   ]
+  },
+  {
+   "kind": "problem",
+   "id": "square-on-segment",
+   "tier": 4,
+   "title": "Square on a Segment",
+   "subtitle": "Euclid I.46",
+   "text": "Construct points $C$ and $D$ so that $ABCD$ is a square, with its corners going counterclockwise.\n\n::: Hint\nRaise a perpendicular at $B$ and mark off the length $BA$ along it.\n:::",
+   "toolName": "Square on segment",
+   "diagram": {
+    "nodes": {
+     "n1": {
+      "op": "point",
+      "ins": [],
+      "x": -65,
+      "y": 55,
+      "id": "n1",
+      "seq": 1,
+      "outs": [
+       "e1"
+      ]
+     },
+     "n2": {
+      "op": "point",
+      "ins": [],
+      "x": 55,
+      "y": 75,
+      "id": "n2",
+      "seq": 2,
+      "outs": [
+       "e2"
+      ]
+     },
+     "n3": {
+      "op": "circle",
+      "ins": [
+       "e2",
+       "e1"
+      ],
+      "id": "n3",
+      "seq": 3,
+      "outs": [
+       "e3"
+      ]
+     },
+     "n4": {
+      "op": "line",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n4",
+      "seq": 4,
+      "outs": [
+       "e4"
+      ]
+     },
+     "n5": {
+      "op": "isect",
+      "ins": [
+       "e4",
+       "e3",
+       "e1"
+      ],
+      "id": "n5",
+      "seq": 5,
+      "outs": [
+       "e5"
+      ]
+     },
+     "n6": {
+      "op": "circle",
+      "ins": [
+       "e1",
+       "e5"
+      ],
+      "id": "n6",
+      "seq": 6,
+      "outs": [
+       "e6"
+      ]
+     },
+     "n7": {
+      "op": "circle",
+      "ins": [
+       "e5",
+       "e1"
+      ],
+      "id": "n7",
+      "seq": 7,
+      "outs": [
+       "e7"
+      ]
+     },
+     "n8": {
+      "op": "isect",
+      "ins": [
+       "e6",
+       "e7"
+      ],
+      "which": 0,
+      "id": "n8",
+      "seq": 8,
+      "outs": [
+       "e8"
+      ]
+     },
+     "n9": {
+      "op": "isect",
+      "ins": [
+       "e6",
+       "e7"
+      ],
+      "which": 1,
+      "id": "n9",
+      "seq": 9,
+      "outs": [
+       "e9"
+      ]
+     },
+     "n10": {
+      "op": "line",
+      "ins": [
+       "e8",
+       "e9"
+      ],
+      "id": "n10",
+      "seq": 10,
+      "outs": [
+       "e10"
+      ]
+     },
+     "n11": {
+      "op": "isect",
+      "ins": [
+       "e10",
+       "e3"
+      ],
+      "which": 1,
+      "id": "n11",
+      "seq": 11,
+      "outs": [
+       "e11"
+      ]
+     },
+     "n12": {
+      "op": "circle",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n12",
+      "seq": 12,
+      "outs": [
+       "e12"
+      ]
+     },
+     "n13": {
+      "op": "circle",
+      "ins": [
+       "e11",
+       "e2"
+      ],
+      "id": "n13",
+      "seq": 13,
+      "outs": [
+       "e13"
+      ]
+     },
+     "n14": {
+      "op": "isect",
+      "ins": [
+       "e12",
+       "e13",
+       "e2"
+      ],
+      "id": "n14",
+      "seq": 14,
+      "outs": [
+       "e14"
+      ]
+     },
+     "n15": {
+      "op": "segment",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n15",
+      "seq": 15,
+      "outs": [
+       "e15"
+      ]
+     },
+     "n16": {
+      "op": "segment",
+      "ins": [
+       "e2",
+       "e11"
+      ],
+      "id": "n16",
+      "seq": 16,
+      "outs": [
+       "e16"
+      ]
+     },
+     "n17": {
+      "op": "segment",
+      "ins": [
+       "e11",
+       "e14"
+      ],
+      "id": "n17",
+      "seq": 17,
+      "outs": [
+       "e17"
+      ]
+     },
+     "n18": {
+      "op": "segment",
+      "ins": [
+       "e14",
+       "e1"
+      ],
+      "id": "n18",
+      "seq": 18,
+      "outs": [
+       "e18"
+      ]
+     }
+    },
+    "elems": {
+     "e1": {
+      "id": "e1",
+      "node": "n1",
+      "kind": "point",
+      "label": "A"
+     },
+     "e2": {
+      "id": "e2",
+      "node": "n2",
+      "kind": "point",
+      "label": "B"
+     },
+     "e3": {
+      "id": "e3",
+      "node": "n3",
+      "kind": "circle",
+      "label": ""
+     },
+     "e4": {
+      "id": "e4",
+      "node": "n4",
+      "kind": "line",
+      "label": ""
+     },
+     "e5": {
+      "id": "e5",
+      "node": "n5",
+      "kind": "point",
+      "label": ""
+     },
+     "e6": {
+      "id": "e6",
+      "node": "n6",
+      "kind": "circle",
+      "label": ""
+     },
+     "e7": {
+      "id": "e7",
+      "node": "n7",
+      "kind": "circle",
+      "label": ""
+     },
+     "e8": {
+      "id": "e8",
+      "node": "n8",
+      "kind": "point",
+      "label": ""
+     },
+     "e9": {
+      "id": "e9",
+      "node": "n9",
+      "kind": "point",
+      "label": ""
+     },
+     "e10": {
+      "id": "e10",
+      "node": "n10",
+      "kind": "line",
+      "label": ""
+     },
+     "e11": {
+      "id": "e11",
+      "node": "n11",
+      "kind": "point",
+      "label": ""
+     },
+     "e12": {
+      "id": "e12",
+      "node": "n12",
+      "kind": "circle",
+      "label": ""
+     },
+     "e13": {
+      "id": "e13",
+      "node": "n13",
+      "kind": "circle",
+      "label": ""
+     },
+     "e14": {
+      "id": "e14",
+      "node": "n14",
+      "kind": "point",
+      "label": ""
+     },
+     "e15": {
+      "id": "e15",
+      "node": "n15",
+      "kind": "line",
+      "label": ""
+     },
+     "e16": {
+      "id": "e16",
+      "node": "n16",
+      "kind": "line",
+      "label": ""
+     },
+     "e17": {
+      "id": "e17",
+      "node": "n17",
+      "kind": "line",
+      "label": ""
+     },
+     "e18": {
+      "id": "e18",
+      "node": "n18",
+      "kind": "line",
+      "label": ""
+     }
+    },
+    "seq": 18
+   },
+   "givens": [
+    "e1",
+    "e2"
+   ],
+   "scaffold": [
+    "e15"
+   ],
+   "goals": [
+    "e11",
+    "e14"
+   ],
+   "elaboration": [
+    "e16",
+    "e17",
+    "e18"
+   ]
+  },
+  {
+   "kind": "problem",
+   "id": "pentagon",
+   "tier": 4,
+   "title": "Regular Pentagon",
+   "subtitle": "Euclid IV.11",
+   "text": "Inscribe a regular pentagon in circle $\\omega$, which is centered at $O$, with a vertex at $A$. Construct the other four vertices.\n\n::: Hint\nDraw the diameter perpendicular to $OA$ and find the midpoint $M$ of one of its radii. The circle centered at $M$ through $A$ cuts that diameter at a point whose distance from $A$ is the pentagon's side.\n:::",
+   "toolName": "Pentagon",
+   "diagram": {
+    "nodes": {
+     "n1": {
+      "op": "point",
+      "ins": [],
+      "x": 0,
+      "y": 0,
+      "id": "n1",
+      "seq": 1,
+      "outs": [
+       "e1"
+      ]
+     },
+     "n2": {
+      "op": "point",
+      "ins": [],
+      "x": 0,
+      "y": -105,
+      "id": "n2",
+      "seq": 2,
+      "outs": [
+       "e2"
+      ]
+     },
+     "n3": {
+      "op": "circle",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n3",
+      "seq": 3,
+      "outs": [
+       "e3"
+      ]
+     },
+     "n4": {
+      "op": "line",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n4",
+      "seq": 4,
+      "outs": [
+       "e4"
+      ]
+     },
+     "n5": {
+      "op": "isect",
+      "ins": [
+       "e4",
+       "e3",
+       "e2"
+      ],
+      "id": "n5",
+      "seq": 5,
+      "outs": [
+       "e5"
+      ]
+     },
+     "n6": {
+      "op": "circle",
+      "ins": [
+       "e2",
+       "e5"
+      ],
+      "id": "n6",
+      "seq": 6,
+      "outs": [
+       "e6"
+      ]
+     },
+     "n7": {
+      "op": "circle",
+      "ins": [
+       "e5",
+       "e2"
+      ],
+      "id": "n7",
+      "seq": 7,
+      "outs": [
+       "e7"
+      ]
+     },
+     "n8": {
+      "op": "isect",
+      "ins": [
+       "e6",
+       "e7"
+      ],
+      "which": 0,
+      "id": "n8",
+      "seq": 8,
+      "outs": [
+       "e8"
+      ]
+     },
+     "n9": {
+      "op": "isect",
+      "ins": [
+       "e6",
+       "e7"
+      ],
+      "which": 1,
+      "id": "n9",
+      "seq": 9,
+      "outs": [
+       "e9"
+      ]
+     },
+     "n10": {
+      "op": "line",
+      "ins": [
+       "e8",
+       "e9"
+      ],
+      "id": "n10",
+      "seq": 10,
+      "outs": [
+       "e10"
+      ]
+     },
+     "n11": {
+      "op": "isect",
+      "ins": [
+       "e10",
+       "e3"
+      ],
+      "which": 0,
+      "id": "n11",
+      "seq": 11,
+      "outs": [
+       "e11"
+      ]
+     },
+     "n12": {
+      "op": "circle",
+      "ins": [
+       "e11",
+       "e1"
+      ],
+      "id": "n12",
+      "seq": 12,
+      "outs": [
+       "e12"
+      ]
+     },
+     "n13": {
+      "op": "isect",
+      "ins": [
+       "e12",
+       "e3"
+      ],
+      "which": 0,
+      "id": "n13",
+      "seq": 13,
+      "outs": [
+       "e13"
+      ]
+     },
+     "n14": {
+      "op": "isect",
+      "ins": [
+       "e12",
+       "e3"
+      ],
+      "which": 1,
+      "id": "n14",
+      "seq": 14,
+      "outs": [
+       "e14"
+      ]
+     },
+     "n15": {
+      "op": "line",
+      "ins": [
+       "e13",
+       "e14"
+      ],
+      "id": "n15",
+      "seq": 15,
+      "outs": [
+       "e15"
+      ]
+     },
+     "n16": {
+      "op": "isect",
+      "ins": [
+       "e15",
+       "e10"
+      ],
+      "which": 0,
+      "id": "n16",
+      "seq": 16,
+      "outs": [
+       "e16"
+      ]
+     },
+     "n17": {
+      "op": "circle",
+      "ins": [
+       "e16",
+       "e2"
+      ],
+      "id": "n17",
+      "seq": 17,
+      "outs": [
+       "e17"
+      ]
+     },
+     "n18": {
+      "op": "isect",
+      "ins": [
+       "e17",
+       "e10"
+      ],
+      "which": 0,
+      "id": "n18",
+      "seq": 18,
+      "outs": [
+       "e18"
+      ]
+     },
+     "n19": {
+      "op": "circle",
+      "ins": [
+       "e2",
+       "e18"
+      ],
+      "id": "n19",
+      "seq": 19,
+      "outs": [
+       "e19"
+      ]
+     },
+     "n20": {
+      "op": "isect",
+      "ins": [
+       "e19",
+       "e3"
+      ],
+      "which": 0,
+      "id": "n20",
+      "seq": 20,
+      "outs": [
+       "e20"
+      ]
+     },
+     "n21": {
+      "op": "isect",
+      "ins": [
+       "e19",
+       "e3"
+      ],
+      "which": 1,
+      "id": "n21",
+      "seq": 21,
+      "outs": [
+       "e21"
+      ]
+     },
+     "n22": {
+      "op": "circle",
+      "ins": [
+       "e20",
+       "e2"
+      ],
+      "id": "n22",
+      "seq": 22,
+      "outs": [
+       "e22"
+      ]
+     },
+     "n23": {
+      "op": "isect",
+      "ins": [
+       "e22",
+       "e3",
+       "e2"
+      ],
+      "id": "n23",
+      "seq": 23,
+      "outs": [
+       "e23"
+      ]
+     },
+     "n24": {
+      "op": "circle",
+      "ins": [
+       "e21",
+       "e2"
+      ],
+      "id": "n24",
+      "seq": 24,
+      "outs": [
+       "e24"
+      ]
+     },
+     "n25": {
+      "op": "isect",
+      "ins": [
+       "e24",
+       "e3",
+       "e2"
+      ],
+      "id": "n25",
+      "seq": 25,
+      "outs": [
+       "e25"
+      ]
+     },
+     "n26": {
+      "op": "segment",
+      "ins": [
+       "e25",
+       "e2"
+      ],
+      "id": "n26",
+      "seq": 26,
+      "outs": [
+       "e26"
+      ]
+     },
+     "n27": {
+      "op": "segment",
+      "ins": [
+       "e2",
+       "e23"
+      ],
+      "id": "n27",
+      "seq": 27,
+      "outs": [
+       "e27"
+      ]
+     },
+     "n28": {
+      "op": "segment",
+      "ins": [
+       "e23",
+       "e21"
+      ],
+      "id": "n28",
+      "seq": 28,
+      "outs": [
+       "e28"
+      ]
+     },
+     "n29": {
+      "op": "segment",
+      "ins": [
+       "e21",
+       "e20"
+      ],
+      "id": "n29",
+      "seq": 29,
+      "outs": [
+       "e29"
+      ]
+     },
+     "n30": {
+      "op": "segment",
+      "ins": [
+       "e20",
+       "e25"
+      ],
+      "id": "n30",
+      "seq": 30,
+      "outs": [
+       "e30"
+      ]
+     }
+    },
+    "elems": {
+     "e1": {
+      "id": "e1",
+      "node": "n1",
+      "kind": "point",
+      "label": "O"
+     },
+     "e2": {
+      "id": "e2",
+      "node": "n2",
+      "kind": "point",
+      "label": "A"
+     },
+     "e3": {
+      "id": "e3",
+      "node": "n3",
+      "kind": "circle",
+      "label": "ω"
+     },
+     "e4": {
+      "id": "e4",
+      "node": "n4",
+      "kind": "line",
+      "label": ""
+     },
+     "e5": {
+      "id": "e5",
+      "node": "n5",
+      "kind": "point",
+      "label": ""
+     },
+     "e6": {
+      "id": "e6",
+      "node": "n6",
+      "kind": "circle",
+      "label": ""
+     },
+     "e7": {
+      "id": "e7",
+      "node": "n7",
+      "kind": "circle",
+      "label": ""
+     },
+     "e8": {
+      "id": "e8",
+      "node": "n8",
+      "kind": "point",
+      "label": ""
+     },
+     "e9": {
+      "id": "e9",
+      "node": "n9",
+      "kind": "point",
+      "label": ""
+     },
+     "e10": {
+      "id": "e10",
+      "node": "n10",
+      "kind": "line",
+      "label": ""
+     },
+     "e11": {
+      "id": "e11",
+      "node": "n11",
+      "kind": "point",
+      "label": ""
+     },
+     "e12": {
+      "id": "e12",
+      "node": "n12",
+      "kind": "circle",
+      "label": ""
+     },
+     "e13": {
+      "id": "e13",
+      "node": "n13",
+      "kind": "point",
+      "label": ""
+     },
+     "e14": {
+      "id": "e14",
+      "node": "n14",
+      "kind": "point",
+      "label": ""
+     },
+     "e15": {
+      "id": "e15",
+      "node": "n15",
+      "kind": "line",
+      "label": ""
+     },
+     "e16": {
+      "id": "e16",
+      "node": "n16",
+      "kind": "point",
+      "label": ""
+     },
+     "e17": {
+      "id": "e17",
+      "node": "n17",
+      "kind": "circle",
+      "label": ""
+     },
+     "e18": {
+      "id": "e18",
+      "node": "n18",
+      "kind": "point",
+      "label": ""
+     },
+     "e19": {
+      "id": "e19",
+      "node": "n19",
+      "kind": "circle",
+      "label": ""
+     },
+     "e20": {
+      "id": "e20",
+      "node": "n20",
+      "kind": "point",
+      "label": ""
+     },
+     "e21": {
+      "id": "e21",
+      "node": "n21",
+      "kind": "point",
+      "label": ""
+     },
+     "e22": {
+      "id": "e22",
+      "node": "n22",
+      "kind": "circle",
+      "label": ""
+     },
+     "e23": {
+      "id": "e23",
+      "node": "n23",
+      "kind": "point",
+      "label": ""
+     },
+     "e24": {
+      "id": "e24",
+      "node": "n24",
+      "kind": "circle",
+      "label": ""
+     },
+     "e25": {
+      "id": "e25",
+      "node": "n25",
+      "kind": "point",
+      "label": ""
+     },
+     "e26": {
+      "id": "e26",
+      "node": "n26",
+      "kind": "line",
+      "label": ""
+     },
+     "e27": {
+      "id": "e27",
+      "node": "n27",
+      "kind": "line",
+      "label": ""
+     },
+     "e28": {
+      "id": "e28",
+      "node": "n28",
+      "kind": "line",
+      "label": ""
+     },
+     "e29": {
+      "id": "e29",
+      "node": "n29",
+      "kind": "line",
+      "label": ""
+     },
+     "e30": {
+      "id": "e30",
+      "node": "n30",
+      "kind": "line",
+      "label": ""
+     }
+    },
+    "seq": 30
+   },
+   "givens": [
+    "e3",
+    "e1",
+    "e2"
+   ],
+   "scaffold": [],
+   "goals": [
+    "e20",
+    "e23",
+    "e25",
+    "e21"
+   ],
+   "elaboration": [
+    "e26",
+    "e27",
+    "e28",
+    "e29",
+    "e30"
+   ]
+  }
+ ]
+}

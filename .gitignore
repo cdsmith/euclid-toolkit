@@ -1,0 +1,11 @@
+node_modules/
+__pycache__/
+*.png
+tests/deps-tools.json
+tests/deps-lesson.json
+tests/deps-bad.json
+tests/bad-lesson.json
+tests/se-download.json
+tests/lesson-download.json
+tests/all-solved.json
+.firebase/

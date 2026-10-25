@@ -1,0 +1,12 @@
+{
+  "hosting": {
+    "public": "site",
+    "ignore": ["**/.*"],
+    "headers": [
+      {
+        "source": "**",
+        "headers": [{ "key": "Cache-Control", "value": "no-cache" }]
+      }
+    ]
+  }
+}

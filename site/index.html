@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Euclid's Toolkit</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&family=STIX+Two+Text:ital,wght@0,400;1,400;1,600&display=swap"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.47/dist/katex.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app" id="app">
+      <header class="head">
+        <button
+          class="nav-toggle"
+          id="navToggle"
+          data-act="nav-open"
+          aria-controls="nav"
+          aria-expanded="false"
+        >
+          <svg viewBox="0 0 16 16" aria-hidden="true">
+            <path
+              d="M2 4h12M2 8h12M2 12h12"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+            /></svg
+          >Menu
+        </button>
+        <div class="brand">
+          <svg viewBox="0 0 28 28" aria-hidden="true">
+            <circle cx="14" cy="5" r="2.3" fill="none" stroke="currentColor" stroke-width="1.6" />
+            <path
+              d="M12.9 7.1L6 24.5M15.1 7.1L22 24.5"
+              stroke="currentColor"
+              stroke-width="1.9"
+              stroke-linecap="round"
+            />
+            <path
+              d="M3.5 21A13 13 0 0 0 24.5 21"
+              fill="none"
+              style="stroke: var(--accent)"
+              stroke-width="1.6"
+              stroke-dasharray="2.4 2.4"
+            />
+          </svg>
+          <span>Euclid's Toolkit</span>
+        </div>
+        <div class="head-meta"><span class="sum" id="headSum"></span></div>
+      </header>
+
+      <nav class="nav" id="nav" aria-label="Notebooks and lessons"></nav>
+      <div class="scrim" id="scrim" data-act="nav-close" hidden></div>
+      <input type="file" id="lessonFile" accept=".json,application/json" hidden />
+      <input type="file" id="notebookFile" accept=".json,application/json" hidden />
+
+      <main class="sheet">
+        <section class="titleblock" id="titleblock" aria-live="polite"></section>
+        <div class="stage" id="stage">
+          <canvas id="cv" aria-label="Construction canvas"></canvas>
+          <div class="prompt" id="prompt" hidden></div>
+          <div class="legend" id="legend" aria-hidden="true">
+            <span><i style="border-color: var(--ink)"></i>given</span>
+            <span><i style="border-color: var(--blue)"></i>constructed</span>
+            <span id="legendGoal"><i class="fuzz"></i>goal</span>
+          </div>
+          <div class="viewbar">
+            <button class="btn" data-act="undo" id="bUndo" title="Undo (Ctrl+Z)">Undo</button>
+            <button class="btn" data-act="redo" id="bRedo" title="Redo (Ctrl+Shift+Z)">Redo</button>
+            <button class="btn" data-act="fit" title="Fit the construction in view">Fit</button>
+            <button
+              class="btn"
+              data-act="goal-toggle"
+              id="bGoal"
+              aria-pressed="true"
+              title="Show where the goal is"
+            >
+              Goal
+            </button>
+            <button class="btn" data-act="sheet-clear" id="bClear" title="Clear your construction">
+              Clear
+            </button>
+          </div>
+          <div class="toast" id="toast" hidden></div>
+        </div>
+        <section class="home" id="home" hidden></section>
+      </main>
+
+      <aside class="kit" id="kit" aria-label="Toolkit">
+        <section class="kit-sec" id="selSec" hidden></section>
+        <section class="kit-sec" id="toolSec">
+          <h2>Tools</h2>
+          <p class="box-name" id="boxName"></p>
+          <div class="tools" id="tools"></div>
+        </section>
+        <section class="kit-sec" id="defSec" hidden></section>
+        <section class="kit-sec" id="logSec">
+          <h2>Construction</h2>
+          <ol class="log" id="log"></ol>
+        </section>
+        <section class="kit-sec" id="lookSec" hidden>
+          <h2>Diagram</h2>
+          <p class="note">
+            Drag its points to see how it moves. Nothing you do here is kept: come back, and it's as
+            it was.
+          </p>
+        </section>
+      </aside>
+    </div>
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>

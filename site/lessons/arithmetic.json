@@ -1,0 +1,5638 @@
+{
+ "id": "arithmetic",
+ "title": "Arithmetic",
+ "blurb": "Add, subtract, multiply, divide and take square roots of lengths on a number line, with parallels, perpendiculars and a rigid compass ready to hand.",
+ "tiers": [
+  "Adding",
+  "Multiplying",
+  "Roots"
+ ],
+ "toolbox": [
+  "point",
+  "line",
+  "circle",
+  "arithmetic.parallel",
+  "arithmetic.perpendicular",
+  "arithmetic.midpoint",
+  "arithmetic.transfer"
+ ],
+ "tools": [
+  {
+   "id": "arithmetic.parallel",
+   "name": "Parallel",
+   "box": "arithmetic",
+   "ins": [
+    {
+     "kind": "line",
+     "label": "ℓ"
+    },
+    {
+     "kind": "point",
+     "label": "P"
+    }
+   ],
+   "outs": [
+    {
+     "kind": "line",
+     "label": "ℓ₁"
+    }
+   ],
+   "graph": {
+    "rel": true,
+    "nodes": {
+     "in0": {
+      "id": "in0",
+      "op": "input",
+      "idx": 0,
+      "ins": [],
+      "outs": [
+       "e3"
+      ],
+      "seq": -1000
+     },
+     "in1": {
+      "id": "in1",
+      "op": "input",
+      "idx": 1,
+      "ins": [],
+      "outs": [
+       "e4"
+      ],
+      "seq": -999
+     },
+     "n5": {
+      "id": "n5",
+      "op": "point",
+      "ins": [
+       "e3"
+      ],
+      "outs": [
+       "e5"
+      ],
+      "seq": 5,
+      "t": 0.3
+     },
+     "n6": {
+      "id": "n6",
+      "op": "circle",
+      "ins": [
+       "e5",
+       "e4"
+      ],
+      "outs": [
+       "e6"
+      ],
+      "seq": 6
+     },
+     "n7": {
+      "id": "n7",
+      "op": "isect",
+      "ins": [
+       "e3",
+       "e6"
+      ],
+      "outs": [
+       "e7"
+      ],
+      "seq": 7,
+      "which": 1
+     },
+     "n8": {
+      "id": "n8",
+      "op": "circle",
+      "ins": [
+       "e7",
+       "e5"
+      ],
+      "outs": [
+       "e8"
+      ],
+      "seq": 8
+     },
+     "n9": {
+      "id": "n9",
+      "op": "circle",
+      "ins": [
+       "e4",
+       "e5"
+      ],
+      "outs": [
+       "e9"
+      ],
+      "seq": 9
+     },
+     "n10": {
+      "id": "n10",
+      "op": "isect",
+      "ins": [
+       "e8",
+       "e9",
+       "e5"
+      ],
+      "outs": [
+       "e10"
+      ],
+      "seq": 10
+     },
+     "n11": {
+      "id": "n11",
+      "op": "line",
+      "ins": [
+       "e4",
+       "e10"
+      ],
+      "outs": [
+       "e11"
+      ],
+      "seq": 11
+     }
+    },
+    "elems": {
+     "e3": {
+      "id": "e3",
+      "node": "in0",
+      "kind": "line",
+      "label": "ℓ"
+     },
+     "e4": {
+      "id": "e4",
+      "node": "in1",
+      "kind": "point",
+      "label": "P"
+     },
+     "e5": {
+      "id": "e5",
+      "node": "n5",
+      "kind": "point",
+      "label": ""
+     },
+     "e6": {
+      "id": "e6",
+      "node": "n6",
+      "kind": "circle",
+      "label": ""
+     },
+     "e7": {
+      "id": "e7",
+      "node": "n7",
+      "kind": "point",
+      "label": ""
+     },
+     "e8": {
+      "id": "e8",
+      "node": "n8",
+      "kind": "circle",
+      "label": ""
+     },
+     "e9": {
+      "id": "e9",
+      "node": "n9",
+      "kind": "circle",
+      "label": ""
+     },
+     "e10": {
+      "id": "e10",
+      "node": "n10",
+      "kind": "point",
+      "label": ""
+     },
+     "e11": {
+      "id": "e11",
+      "node": "n11",
+      "kind": "line",
+      "label": ""
+     }
+    },
+    "seq": 12
+   },
+   "inIds": [
+    "e3",
+    "e4"
+   ],
+   "outIds": [
+    "e11"
+   ],
+   "sample": [
+    {
+     "kind": "line",
+     "x1": -80,
+     "y1": 40,
+     "x2": 90,
+     "y2": 20
+    },
+    {
+     "kind": "point",
+     "x": 10,
+     "y": -60
+    }
+   ]
+  },
+  {
+   "id": "arithmetic.perpendicular",
+   "name": "Perpendicular",
+   "box": "arithmetic",
+   "ins": [
+    {
+     "kind": "line",
+     "label": "ℓ"
+    },
+    {
+     "kind": "point",
+     "label": "P"
+    }
+   ],
+   "outs": [
+    {
+     "kind": "line",
+     "label": "ℓ₁"
+    }
+   ],
+   "graph": {
+    "rel": true,
+    "nodes": {
+     "in0": {
+      "id": "in0",
+      "op": "input",
+      "idx": 0,
+      "ins": [],
+      "outs": [
+       "e3"
+      ],
+      "seq": -1000
+     },
+     "in1": {
+      "id": "in1",
+      "op": "input",
+      "idx": 1,
+      "ins": [],
+      "outs": [
+       "e4"
+      ],
+      "seq": -999
+     },
+     "n5": {
+      "id": "n5",
+      "op": "point",
+      "ins": [
+       "e3"
+      ],
+      "outs": [
+       "e5"
+      ],
+      "seq": 5,
+      "t": 0.25
+     },
+     "n6": {
+      "id": "n6",
+      "op": "circle",
+      "ins": [
+       "e4",
+       "e5"
+      ],
+      "outs": [
+       "e6"
+      ],
+      "seq": 6
+     },
+     "n7": {
+      "id": "n7",
+      "op": "isect",
+      "ins": [
+       "e3",
+       "e6",
+       "e5"
+      ],
+      "outs": [
+       "e7"
+      ],
+      "seq": 7
+     },
+     "n8": {
+      "id": "n8",
+      "op": "circle",
+      "ins": [
+       "e5",
+       "e7"
+      ],
+      "outs": [
+       "e8"
+      ],
+      "seq": 8
+     },
+     "n9": {
+      "id": "n9",
+      "op": "circle",
+      "ins": [
+       "e7",
+       "e5"
+      ],
+      "outs": [
+       "e9"
+      ],
+      "seq": 9
+     },
+     "n10": {
+      "id": "n10",
+      "op": "isect",
+      "ins": [
+       "e8",
+       "e9"
+      ],
+      "outs": [
+       "e10"
+      ],
+      "seq": 10,
+      "which": 1
+     },
+     "n11": {
+      "id": "n11",
+      "op": "isect",
+      "ins": [
+       "e8",
+       "e9",
+       "e10"
+      ],
+      "outs": [
+       "e11"
+      ],
+      "seq": 11
+     },
+     "n12": {
+      "id": "n12",
+      "op": "line",
+      "ins": [
+       "e10",
+       "e11"
+      ],
+      "outs": [
+       "e12"
+      ],
+      "seq": 12
+     }
+    },
+    "elems": {
+     "e3": {
+      "id": "e3",
+      "node": "in0",
+      "kind": "line",
+      "label": "ℓ"
+     },
+     "e4": {
+      "id": "e4",
+      "node": "in1",
+      "kind": "point",
+      "label": "P"
+     },
+     "e5": {
+      "id": "e5",
+      "node": "n5",
+      "kind": "point",
+      "label": ""
+     },
+     "e6": {
+      "id": "e6",
+      "node": "n6",
+      "kind": "circle",
+      "label": ""
+     },
+     "e7": {
+      "id": "e7",
+      "node": "n7",
+      "kind": "point",
+      "label": ""
+     },
+     "e8": {
+      "id": "e8",
+      "node": "n8",
+      "kind": "circle",
+      "label": ""
+     },
+     "e9": {
+      "id": "e9",
+      "node": "n9",
+      "kind": "circle",
+      "label": ""
+     },
+     "e10": {
+      "id": "e10",
+      "node": "n10",
+      "kind": "point",
+      "label": ""
+     },
+     "e11": {
+      "id": "e11",
+      "node": "n11",
+      "kind": "point",
+      "label": ""
+     },
+     "e12": {
+      "id": "e12",
+      "node": "n12",
+      "kind": "line",
+      "label": ""
+     }
+    },
+    "seq": 13
+   },
+   "inIds": [
+    "e3",
+    "e4"
+   ],
+   "outIds": [
+    "e12"
+   ],
+   "sample": [
+    {
+     "kind": "line",
+     "x1": -80,
+     "y1": 40,
+     "x2": 90,
+     "y2": 20
+    },
+    {
+     "kind": "point",
+     "x": 10,
+     "y": -60
+    }
+   ]
+  },
+  {
+   "id": "arithmetic.midpoint",
+   "name": "Midpoint",
+   "box": "arithmetic",
+   "ins": [
+    {
+     "kind": "point",
+     "label": "A"
+    },
+    {
+     "kind": "point",
+     "label": "B"
+    }
+   ],
+   "outs": [
+    {
+     "kind": "point",
+     "label": "M"
+    }
+   ],
+   "graph": {
+    "rel": true,
+    "nodes": {
+     "in0": {
+      "id": "in0",
+      "op": "input",
+      "idx": 0,
+      "ins": [],
+      "outs": [
+       "e1"
+      ],
+      "seq": -1000
+     },
+     "in1": {
+      "id": "in1",
+      "op": "input",
+      "idx": 1,
+      "ins": [],
+      "outs": [
+       "e2"
+      ],
+      "seq": -999
+     },
+     "n3": {
+      "id": "n3",
+      "op": "circle",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "outs": [
+       "e3"
+      ],
+      "seq": 3
+     },
+     "n4": {
+      "id": "n4",
+      "op": "circle",
+      "ins": [
+       "e2",
+       "e1"
+      ],
+      "outs": [
+       "e4"
+      ],
+      "seq": 4
+     },
+     "n5": {
+      "id": "n5",
+      "op": "isect",
+      "ins": [
+       "e3",
+       "e4"
+      ],
+      "outs": [
+       "e5"
+      ],
+      "seq": 5,
+      "which": 1
+     },
+     "n6": {
+      "id": "n6",
+      "op": "isect",
+      "ins": [
+       "e3",
+       "e4",
+       "e5"
+      ],
+      "outs": [
+       "e6"
+      ],
+      "seq": 6
+     },
+     "n7": {
+      "id": "n7",
+      "op": "line",
+      "ins": [
+       "e5",
+       "e6"
+      ],
+      "outs": [
+       "e7"
+      ],
+      "seq": 7
+     },
+     "n8": {
+      "id": "n8",
+      "op": "line",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "outs": [
+       "e8"
+      ],
+      "seq": 8
+     },
+     "n9": {
+      "id": "n9",
+      "op": "isect",
+      "ins": [
+       "e7",
+       "e8"
+      ],
+      "outs": [
+       "e9"
+      ],
+      "seq": 9,
+      "which": 0
+     }
+    },
+    "elems": {
+     "e1": {
+      "id": "e1",
+      "node": "in0",
+      "kind": "point",
+      "label": "A"
+     },
+     "e2": {
+      "id": "e2",
+      "node": "in1",
+      "kind": "point",
+      "label": "B"
+     },
+     "e3": {
+      "id": "e3",
+      "node": "n3",
+      "kind": "circle",
+      "label": ""
+     },
+     "e4": {
+      "id": "e4",
+      "node": "n4",
+      "kind": "circle",
+      "label": ""
+     },
+     "e5": {
+      "id": "e5",
+      "node": "n5",
+      "kind": "point",
+      "label": ""
+     },
+     "e6": {
+      "id": "e6",
+      "node": "n6",
+      "kind": "point",
+      "label": ""
+     },
+     "e7": {
+      "id": "e7",
+      "node": "n7",
+      "kind": "line",
+      "label": ""
+     },
+     "e8": {
+      "id": "e8",
+      "node": "n8",
+      "kind": "line",
+      "label": ""
+     },
+     "e9": {
+      "id": "e9",
+      "node": "n9",
+      "kind": "point",
+      "label": "M"
+     }
+    },
+    "seq": 10
+   },
+   "inIds": [
+    "e1",
+    "e2"
+   ],
+   "outIds": [
+    "e9"
+   ],
+   "sample": [
+    {
+     "kind": "point",
+     "x": -60,
+     "y": 20
+    },
+    {
+     "kind": "point",
+     "x": 70,
+     "y": -10
+    }
+   ]
+  },
+  {
+   "id": "arithmetic.transfer",
+   "name": "Transfer distance",
+   "box": "arithmetic",
+   "ins": [
+    {
+     "kind": "point",
+     "label": "A"
+    },
+    {
+     "kind": "point",
+     "label": "B"
+    },
+    {
+     "kind": "point",
+     "label": "C"
+    }
+   ],
+   "outs": [
+    {
+     "kind": "circle",
+     "label": "ω"
+    }
+   ],
+   "graph": {
+    "rel": true,
+    "nodes": {
+     "in0": {
+      "id": "in0",
+      "op": "input",
+      "idx": 0,
+      "ins": [],
+      "outs": [
+       "e1"
+      ],
+      "seq": -1000
+     },
+     "in1": {
+      "id": "in1",
+      "op": "input",
+      "idx": 1,
+      "ins": [],
+      "outs": [
+       "e2"
+      ],
+      "seq": -999
+     },
+     "in2": {
+      "id": "in2",
+      "op": "input",
+      "idx": 2,
+      "ins": [],
+      "outs": [
+       "e3"
+      ],
+      "seq": -998
+     },
+     "n4": {
+      "id": "n4",
+      "op": "circle",
+      "ins": [
+       "e1",
+       "e3"
+      ],
+      "outs": [
+       "e4"
+      ],
+      "seq": 4
+     },
+     "n5": {
+      "id": "n5",
+      "op": "circle",
+      "ins": [
+       "e3",
+       "e1"
+      ],
+      "outs": [
+       "e5"
+      ],
+      "seq": 5
+     },
+     "n6": {
+      "id": "n6",
+      "op": "isect",
+      "ins": [
+       "e4",
+       "e5"
+      ],
+      "outs": [
+       "e6"
+      ],
+      "seq": 6,
+      "which": 1
+     },
+     "n7": {
+      "id": "n7",
+      "op": "isect",
+      "ins": [
+       "e4",
+       "e5",
+       "e6"
+      ],
+      "outs": [
+       "e7"
+      ],
+      "seq": 7
+     },
+     "n8": {
+      "id": "n8",
+      "op": "circle",
+      "ins": [
+       "e6",
+       "e2"
+      ],
+      "outs": [
+       "e8"
+      ],
+      "seq": 8
+     },
+     "n9": {
+      "id": "n9",
+      "op": "circle",
+      "ins": [
+       "e7",
+       "e2"
+      ],
+      "outs": [
+       "e9"
+      ],
+      "seq": 9
+     },
+     "n10": {
+      "id": "n10",
+      "op": "isect",
+      "ins": [
+       "e8",
+       "e9",
+       "e2"
+      ],
+      "outs": [
+       "e10"
+      ],
+      "seq": 10
+     },
+     "n11": {
+      "id": "n11",
+      "op": "circle",
+      "ins": [
+       "e3",
+       "e10"
+      ],
+      "outs": [
+       "e11"
+      ],
+      "seq": 11
+     }
+    },
+    "elems": {
+     "e1": {
+      "id": "e1",
+      "node": "in0",
+      "kind": "point",
+      "label": "A"
+     },
+     "e2": {
+      "id": "e2",
+      "node": "in1",
+      "kind": "point",
+      "label": "B"
+     },
+     "e3": {
+      "id": "e3",
+      "node": "in2",
+      "kind": "point",
+      "label": "C"
+     },
+     "e4": {
+      "id": "e4",
+      "node": "n4",
+      "kind": "circle",
+      "label": ""
+     },
+     "e5": {
+      "id": "e5",
+      "node": "n5",
+      "kind": "circle",
+      "label": ""
+     },
+     "e6": {
+      "id": "e6",
+      "node": "n6",
+      "kind": "point",
+      "label": ""
+     },
+     "e7": {
+      "id": "e7",
+      "node": "n7",
+      "kind": "point",
+      "label": ""
+     },
+     "e8": {
+      "id": "e8",
+      "node": "n8",
+      "kind": "circle",
+      "label": ""
+     },
+     "e9": {
+      "id": "e9",
+      "node": "n9",
+      "kind": "circle",
+      "label": ""
+     },
+     "e10": {
+      "id": "e10",
+      "node": "n10",
+      "kind": "point",
+      "label": ""
+     },
+     "e11": {
+      "id": "e11",
+      "node": "n11",
+      "kind": "circle",
+      "label": "ω"
+     }
+    },
+    "seq": 12
+   },
+   "inIds": [
+    "e1",
+    "e2",
+    "e3"
+   ],
+   "outIds": [
+    "e11"
+   ],
+   "sample": [
+    {
+     "kind": "point",
+     "x": -130,
+     "y": 55
+    },
+    {
+     "kind": "point",
+     "x": -55,
+     "y": 95
+    },
+    {
+     "kind": "point",
+     "x": 65,
+     "y": -35
+    }
+   ]
+  }
+ ],
+ "items": [
+  {
+   "kind": "problem",
+   "id": "arithmetic.count",
+   "title": "Two and Three",
+   "subtitle": "",
+   "text": "Line $\\ell$ is a number line, with $O$ at 0 and $U$ at 1. Construct the points at 2 and 3.\n\n::: Hint\nA circle centered at $U$ through $O$ crosses $\\ell$ again one unit past $U$.\n:::",
+   "toolName": "Count on",
+   "diagram": {
+    "nodes": {
+     "n3": {
+      "op": "line",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n3",
+      "seq": 3,
+      "outs": [
+       "e3"
+      ]
+     },
+     "n1": {
+      "op": "point",
+      "ins": [],
+      "x": -60,
+      "y": 50,
+      "id": "n1",
+      "seq": 1,
+      "outs": [
+       "e1"
+      ]
+     },
+     "n2": {
+      "op": "point",
+      "ins": [],
+      "x": -20,
+      "y": 50,
+      "id": "n2",
+      "seq": 2,
+      "outs": [
+       "e2"
+      ]
+     },
+     "n7": {
+      "op": "isect",
+      "ins": [
+       "e6",
+       "e3",
+       "e1"
+      ],
+      "id": "n7",
+      "seq": 7,
+      "outs": [
+       "e7"
+      ]
+     },
+     "n6": {
+      "op": "circle",
+      "ins": [
+       "e2",
+       "e1"
+      ],
+      "id": "n6",
+      "seq": 6,
+      "outs": [
+       "e6"
+      ]
+     },
+     "n9": {
+      "op": "isect",
+      "ins": [
+       "e8",
+       "e3",
+       "e2"
+      ],
+      "id": "n9",
+      "seq": 9,
+      "outs": [
+       "e9"
+      ]
+     },
+     "n8": {
+      "op": "circle",
+      "ins": [
+       "e7",
+       "e2"
+      ],
+      "id": "n8",
+      "seq": 8,
+      "outs": [
+       "e8"
+      ]
+     }
+    },
+    "elems": {
+     "e3": {
+      "id": "e3",
+      "node": "n3",
+      "kind": "line",
+      "label": "ℓ"
+     },
+     "e1": {
+      "id": "e1",
+      "node": "n1",
+      "kind": "point",
+      "label": "O"
+     },
+     "e2": {
+      "id": "e2",
+      "node": "n2",
+      "kind": "point",
+      "label": "U"
+     },
+     "e7": {
+      "id": "e7",
+      "node": "n7",
+      "kind": "point",
+      "label": ""
+     },
+     "e6": {
+      "id": "e6",
+      "node": "n6",
+      "kind": "circle",
+      "label": ""
+     },
+     "e9": {
+      "id": "e9",
+      "node": "n9",
+      "kind": "point",
+      "label": ""
+     },
+     "e8": {
+      "id": "e8",
+      "node": "n8",
+      "kind": "circle",
+      "label": ""
+     }
+    },
+    "seq": 9
+   },
+   "givens": [
+    "e3",
+    "e1",
+    "e2"
+   ],
+   "scaffold": [],
+   "goals": [
+    "e7",
+    "e9"
+   ],
+   "elaboration": [],
+   "tier": 0
+  },
+  {
+   "kind": "problem",
+   "id": "arithmetic.negate",
+   "title": "Negatives",
+   "subtitle": "",
+   "text": "Construct the point $X$ on $\\ell$, on the other side of $O$ from $A$, with $OX = OA$. If $A$ is at $a$, $X$ is at $-a$.\n\n::: Hint\n$X$ is as far from $O$ as $A$ is.\n:::",
+   "toolName": "Negate",
+   "diagram": {
+    "nodes": {
+     "n3": {
+      "op": "line",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n3",
+      "seq": 3,
+      "outs": [
+       "e3"
+      ]
+     },
+     "n1": {
+      "op": "point",
+      "ins": [],
+      "x": -60,
+      "y": 50,
+      "id": "n1",
+      "seq": 1,
+      "outs": [
+       "e1"
+      ]
+     },
+     "n2": {
+      "op": "point",
+      "ins": [],
+      "x": -20,
+      "y": 50,
+      "id": "n2",
+      "seq": 2,
+      "outs": [
+       "e2"
+      ]
+     },
+     "n4": {
+      "op": "point",
+      "ins": [
+       "e3"
+      ],
+      "t": 2.4,
+      "id": "n4",
+      "seq": 4,
+      "outs": [
+       "e4"
+      ]
+     },
+     "n7": {
+      "op": "isect",
+      "ins": [
+       "e6",
+       "e3",
+       "e4"
+      ],
+      "id": "n7",
+      "seq": 7,
+      "outs": [
+       "e7"
+      ]
+     },
+     "n6": {
+      "op": "circle",
+      "ins": [
+       "e1",
+       "e4"
+      ],
+      "id": "n6",
+      "seq": 6,
+      "outs": [
+       "e6"
+      ]
+     }
+    },
+    "elems": {
+     "e3": {
+      "id": "e3",
+      "node": "n3",
+      "kind": "line",
+      "label": "ℓ"
+     },
+     "e1": {
+      "id": "e1",
+      "node": "n1",
+      "kind": "point",
+      "label": "O"
+     },
+     "e2": {
+      "id": "e2",
+      "node": "n2",
+      "kind": "point",
+      "label": "U"
+     },
+     "e4": {
+      "id": "e4",
+      "node": "n4",
+      "kind": "point",
+      "label": "A"
+     },
+     "e7": {
+      "id": "e7",
+      "node": "n7",
+      "kind": "point",
+      "label": ""
+     },
+     "e6": {
+      "id": "e6",
+      "node": "n6",
+      "kind": "circle",
+      "label": ""
+     }
+    },
+    "seq": 7
+   },
+   "givens": [
+    "e3",
+    "e1",
+    "e4"
+   ],
+   "scaffold": [],
+   "goals": [
+    "e7"
+   ],
+   "elaboration": [],
+   "tier": 0
+  },
+  {
+   "kind": "problem",
+   "id": "arithmetic.add",
+   "title": "Add",
+   "subtitle": "",
+   "text": "Construct the point $X$ on $\\ell$, beyond $A$, with $OX = OA + OB$.\n\n::: Hint\nMeasure $OB$ with Transfer distance, and lay it off from $A$.\n:::",
+   "toolName": "Add",
+   "diagram": {
+    "nodes": {
+     "n3": {
+      "op": "line",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n3",
+      "seq": 3,
+      "outs": [
+       "e3"
+      ]
+     },
+     "n1": {
+      "op": "point",
+      "ins": [],
+      "x": -60,
+      "y": 50,
+      "id": "n1",
+      "seq": 1,
+      "outs": [
+       "e1"
+      ]
+     },
+     "n2": {
+      "op": "point",
+      "ins": [],
+      "x": -20,
+      "y": 50,
+      "id": "n2",
+      "seq": 2,
+      "outs": [
+       "e2"
+      ]
+     },
+     "n4": {
+      "op": "point",
+      "ins": [
+       "e3"
+      ],
+      "t": 2.4,
+      "id": "n4",
+      "seq": 4,
+      "outs": [
+       "e4"
+      ]
+     },
+     "n5": {
+      "op": "point",
+      "ins": [
+       "e3"
+      ],
+      "t": 1.5,
+      "id": "n5",
+      "seq": 5,
+      "outs": [
+       "e5"
+      ]
+     },
+     "n7": {
+      "op": "isect",
+      "ins": [
+       "e6",
+       "e3"
+      ],
+      "which": 1,
+      "id": "n7",
+      "seq": 7,
+      "outs": [
+       "e7"
+      ]
+     },
+     "n6.n11": {
+      "id": "n6.n11",
+      "op": "circle",
+      "ins": [
+       "e4",
+       "n6.e10"
+      ],
+      "outs": [
+       "e6"
+      ],
+      "seq": 6.888888888888889
+     },
+     "n6.n10": {
+      "id": "n6.n10",
+      "op": "isect",
+      "ins": [
+       "n6.e8",
+       "n6.e9",
+       "e5"
+      ],
+      "outs": [
+       "n6.e10"
+      ],
+      "seq": 6.777777777777778
+     },
+     "n6.n8": {
+      "id": "n6.n8",
+      "op": "circle",
+      "ins": [
+       "n6.e6",
+       "e5"
+      ],
+      "outs": [
+       "n6.e8"
+      ],
+      "seq": 6.555555555555555
+     },
+     "n6.n6": {
+      "id": "n6.n6",
+      "op": "isect",
+      "ins": [
+       "n6.e4",
+       "n6.e5"
+      ],
+      "outs": [
+       "n6.e6"
+      ],
+      "seq": 6.333333333333333,
+      "which": 1
+     },
+     "n6.n4": {
+      "id": "n6.n4",
+      "op": "circle",
+      "ins": [
+       "e1",
+       "e4"
+      ],
+      "outs": [
+       "n6.e4"
+      ],
+      "seq": 6.111111111111111
+     },
+     "n6.n5": {
+      "id": "n6.n5",
+      "op": "circle",
+      "ins": [
+       "e4",
+       "e1"
+      ],
+      "outs": [
+       "n6.e5"
+      ],
+      "seq": 6.222222222222222
+     },
+     "n6.n9": {
+      "id": "n6.n9",
+      "op": "circle",
+      "ins": [
+       "n6.e7",
+       "e5"
+      ],
+      "outs": [
+       "n6.e9"
+      ],
+      "seq": 6.666666666666667
+     },
+     "n6.n7": {
+      "id": "n6.n7",
+      "op": "isect",
+      "ins": [
+       "n6.e4",
+       "n6.e5",
+       "n6.e6"
+      ],
+      "outs": [
+       "n6.e7"
+      ],
+      "seq": 6.444444444444445
+     }
+    },
+    "elems": {
+     "e3": {
+      "id": "e3",
+      "node": "n3",
+      "kind": "line",
+      "label": "ℓ"
+     },
+     "e1": {
+      "id": "e1",
+      "node": "n1",
+      "kind": "point",
+      "label": "O"
+     },
+     "e2": {
+      "id": "e2",
+      "node": "n2",
+      "kind": "point",
+      "label": "U"
+     },
+     "e4": {
+      "id": "e4",
+      "node": "n4",
+      "kind": "point",
+      "label": "A"
+     },
+     "e5": {
+      "id": "e5",
+      "node": "n5",
+      "kind": "point",
+      "label": "B"
+     },
+     "e7": {
+      "id": "e7",
+      "node": "n7",
+      "kind": "point",
+      "label": ""
+     },
+     "e6": {
+      "id": "e6",
+      "node": "n6.n11",
+      "kind": "circle",
+      "label": ""
+     },
+     "n6.e10": {
+      "id": "n6.e10",
+      "node": "n6.n10",
+      "kind": "point",
+      "label": ""
+     },
+     "n6.e8": {
+      "id": "n6.e8",
+      "node": "n6.n8",
+      "kind": "circle",
+      "label": ""
+     },
+     "n6.e6": {
+      "id": "n6.e6",
+      "node": "n6.n6",
+      "kind": "point",
+      "label": ""
+     },
+     "n6.e4": {
+      "id": "n6.e4",
+      "node": "n6.n4",
+      "kind": "circle",
+      "label": ""
+     },
+     "n6.e5": {
+      "id": "n6.e5",
+      "node": "n6.n5",
+      "kind": "circle",
+      "label": ""
+     },
+     "n6.e9": {
+      "id": "n6.e9",
+      "node": "n6.n9",
+      "kind": "circle",
+      "label": ""
+     },
+     "n6.e7": {
+      "id": "n6.e7",
+      "node": "n6.n7",
+      "kind": "point",
+      "label": ""
+     }
+    },
+    "seq": 7
+   },
+   "givens": [
+    "e3",
+    "e1",
+    "e4",
+    "e5"
+   ],
+   "scaffold": [],
+   "goals": [
+    "e7"
+   ],
+   "elaboration": [],
+   "tier": 0
+  },
+  {
+   "kind": "problem",
+   "id": "arithmetic.subtract",
+   "title": "Subtract",
+   "subtitle": "",
+   "text": "Construct the point $X$ between $O$ and $A$ with $OX = OA - OB$.\n\n::: Hint\nLay off $OB$ from $A$, back toward $O$.\n:::",
+   "toolName": "Subtract",
+   "diagram": {
+    "nodes": {
+     "n3": {
+      "op": "line",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n3",
+      "seq": 3,
+      "outs": [
+       "e3"
+      ]
+     },
+     "n1": {
+      "op": "point",
+      "ins": [],
+      "x": -60,
+      "y": 50,
+      "id": "n1",
+      "seq": 1,
+      "outs": [
+       "e1"
+      ]
+     },
+     "n2": {
+      "op": "point",
+      "ins": [],
+      "x": -20,
+      "y": 50,
+      "id": "n2",
+      "seq": 2,
+      "outs": [
+       "e2"
+      ]
+     },
+     "n4": {
+      "op": "point",
+      "ins": [
+       "e3"
+      ],
+      "t": 2.4,
+      "id": "n4",
+      "seq": 4,
+      "outs": [
+       "e4"
+      ]
+     },
+     "n5": {
+      "op": "point",
+      "ins": [
+       "e3"
+      ],
+      "t": 1.5,
+      "id": "n5",
+      "seq": 5,
+      "outs": [
+       "e5"
+      ]
+     },
+     "n7": {
+      "op": "isect",
+      "ins": [
+       "e6",
+       "e3"
+      ],
+      "which": 0,
+      "id": "n7",
+      "seq": 7,
+      "outs": [
+       "e7"
+      ]
+     },
+     "n6.n11": {
+      "id": "n6.n11",
+      "op": "circle",
+      "ins": [
+       "e4",
+       "n6.e10"
+      ],
+      "outs": [
+       "e6"
+      ],
+      "seq": 6.888888888888889
+     },
+     "n6.n10": {
+      "id": "n6.n10",
+      "op": "isect",
+      "ins": [
+       "n6.e8",
+       "n6.e9",
+       "e5"
+      ],
+      "outs": [
+       "n6.e10"
+      ],
+      "seq": 6.777777777777778
+     },
+     "n6.n8": {
+      "id": "n6.n8",
+      "op": "circle",
+      "ins": [
+       "n6.e6",
+       "e5"
+      ],
+      "outs": [
+       "n6.e8"
+      ],
+      "seq": 6.555555555555555
+     },
+     "n6.n6": {
+      "id": "n6.n6",
+      "op": "isect",
+      "ins": [
+       "n6.e4",
+       "n6.e5"
+      ],
+      "outs": [
+       "n6.e6"
+      ],
+      "seq": 6.333333333333333,
+      "which": 1
+     },
+     "n6.n4": {
+      "id": "n6.n4",
+      "op": "circle",
+      "ins": [
+       "e1",
+       "e4"
+      ],
+      "outs": [
+       "n6.e4"
+      ],
+      "seq": 6.111111111111111
+     },
+     "n6.n5": {
+      "id": "n6.n5",
+      "op": "circle",
+      "ins": [
+       "e4",
+       "e1"
+      ],
+      "outs": [
+       "n6.e5"
+      ],
+      "seq": 6.222222222222222
+     },
+     "n6.n9": {
+      "id": "n6.n9",
+      "op": "circle",
+      "ins": [
+       "n6.e7",
+       "e5"
+      ],
+      "outs": [
+       "n6.e9"
+      ],
+      "seq": 6.666666666666667
+     },
+     "n6.n7": {
+      "id": "n6.n7",
+      "op": "isect",
+      "ins": [
+       "n6.e4",
+       "n6.e5",
+       "n6.e6"
+      ],
+      "outs": [
+       "n6.e7"
+      ],
+      "seq": 6.444444444444445
+     }
+    },
+    "elems": {
+     "e3": {
+      "id": "e3",
+      "node": "n3",
+      "kind": "line",
+      "label": "ℓ"
+     },
+     "e1": {
+      "id": "e1",
+      "node": "n1",
+      "kind": "point",
+      "label": "O"
+     },
+     "e2": {
+      "id": "e2",
+      "node": "n2",
+      "kind": "point",
+      "label": "U"
+     },
+     "e4": {
+      "id": "e4",
+      "node": "n4",
+      "kind": "point",
+      "label": "A"
+     },
+     "e5": {
+      "id": "e5",
+      "node": "n5",
+      "kind": "point",
+      "label": "B"
+     },
+     "e7": {
+      "id": "e7",
+      "node": "n7",
+      "kind": "point",
+      "label": ""
+     },
+     "e6": {
+      "id": "e6",
+      "node": "n6.n11",
+      "kind": "circle",
+      "label": ""
+     },
+     "n6.e10": {
+      "id": "n6.e10",
+      "node": "n6.n10",
+      "kind": "point",
+      "label": ""
+     },
+     "n6.e8": {
+      "id": "n6.e8",
+      "node": "n6.n8",
+      "kind": "circle",
+      "label": ""
+     },
+     "n6.e6": {
+      "id": "n6.e6",
+      "node": "n6.n6",
+      "kind": "point",
+      "label": ""
+     },
+     "n6.e4": {
+      "id": "n6.e4",
+      "node": "n6.n4",
+      "kind": "circle",
+      "label": ""
+     },
+     "n6.e5": {
+      "id": "n6.e5",
+      "node": "n6.n5",
+      "kind": "circle",
+      "label": ""
+     },
+     "n6.e9": {
+      "id": "n6.e9",
+      "node": "n6.n9",
+      "kind": "circle",
+      "label": ""
+     },
+     "n6.e7": {
+      "id": "n6.e7",
+      "node": "n6.n7",
+      "kind": "point",
+      "label": ""
+     }
+    },
+    "seq": 7
+   },
+   "givens": [
+    "e3",
+    "e1",
+    "e4",
+    "e5"
+   ],
+   "scaffold": [],
+   "goals": [
+    "e7"
+   ],
+   "elaboration": [],
+   "tier": 0
+  },
+  {
+   "kind": "problem",
+   "id": "arithmetic.multiply",
+   "title": "Multiply",
+   "subtitle": "",
+   "text": "Taking $OU$ as the unit, construct the point $X$ on $\\ell$, on the same side of $O$ as $A$, with $OX = OA \\cdot OB$.\n\n::: Hint\nDraw another line through $O$ and mark 1 and $OB$ on it. Join the 1 to $A$, and draw the parallel through the other mark: the triangles are similar.\n:::",
+   "toolName": "Multiply",
+   "diagram": {
+    "nodes": {
+     "n3": {
+      "op": "line",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n3",
+      "seq": 3,
+      "outs": [
+       "e3"
+      ]
+     },
+     "n1": {
+      "op": "point",
+      "ins": [],
+      "x": -60,
+      "y": 50,
+      "id": "n1",
+      "seq": 1,
+      "outs": [
+       "e1"
+      ]
+     },
+     "n2": {
+      "op": "point",
+      "ins": [],
+      "x": -20,
+      "y": 50,
+      "id": "n2",
+      "seq": 2,
+      "outs": [
+       "e2"
+      ]
+     },
+     "n4": {
+      "op": "point",
+      "ins": [
+       "e3"
+      ],
+      "t": 2.4,
+      "id": "n4",
+      "seq": 4,
+      "outs": [
+       "e4"
+      ]
+     },
+     "n5": {
+      "op": "point",
+      "ins": [
+       "e3"
+      ],
+      "t": 1.5,
+      "id": "n5",
+      "seq": 5,
+      "outs": [
+       "e5"
+      ]
+     },
+     "n14": {
+      "op": "isect",
+      "ins": [
+       "e13",
+       "e3"
+      ],
+      "which": 0,
+      "id": "n14",
+      "seq": 14,
+      "outs": [
+       "e14"
+      ]
+     },
+     "n13.n11": {
+      "id": "n13.n11",
+      "op": "line",
+      "ins": [
+       "e11",
+       "n13.e10"
+      ],
+      "outs": [
+       "e13"
+      ],
+      "seq": 13.875
+     },
+     "n11": {
+      "op": "isect",
+      "ins": [
+       "e10",
+       "e7"
+      ],
+      "which": 1,
+      "id": "n11",
+      "seq": 11,
+      "outs": [
+       "e11"
+      ]
+     },
+     "n10": {
+      "op": "circle",
+      "ins": [
+       "e1",
+       "e5"
+      ],
+      "id": "n10",
+      "seq": 10,
+      "outs": [
+       "e10"
+      ]
+     },
+     "n7": {
+      "op": "line",
+      "ins": [
+       "e1",
+       "e6"
+      ],
+      "id": "n7",
+      "seq": 7,
+      "outs": [
+       "e7"
+      ]
+     },
+     "n6": {
+      "op": "point",
+      "ins": [],
+      "x": -25,
+      "y": -45,
+      "id": "n6",
+      "seq": 6,
+      "outs": [
+       "e6"
+      ]
+     },
+     "n13.n10": {
+      "id": "n13.n10",
+      "op": "isect",
+      "ins": [
+       "n13.e8",
+       "n13.e9",
+       "n13.e5"
+      ],
+      "outs": [
+       "n13.e10"
+      ],
+      "seq": 13.75
+     },
+     "n13.n8": {
+      "id": "n13.n8",
+      "op": "circle",
+      "ins": [
+       "n13.e7",
+       "n13.e5"
+      ],
+      "outs": [
+       "n13.e8"
+      ],
+      "seq": 13.5
+     },
+     "n13.n7": {
+      "id": "n13.n7",
+      "op": "isect",
+      "ins": [
+       "e12",
+       "n13.e6"
+      ],
+      "outs": [
+       "n13.e7"
+      ],
+      "seq": 13.375,
+      "which": 1
+     },
+     "n12": {
+      "op": "line",
+      "ins": [
+       "e9",
+       "e4"
+      ],
+      "id": "n12",
+      "seq": 12,
+      "outs": [
+       "e12"
+      ]
+     },
+     "n9": {
+      "op": "isect",
+      "ins": [
+       "e8",
+       "e7"
+      ],
+      "which": 1,
+      "id": "n9",
+      "seq": 9,
+      "outs": [
+       "e9"
+      ]
+     },
+     "n8": {
+      "op": "circle",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n8",
+      "seq": 8,
+      "outs": [
+       "e8"
+      ]
+     },
+     "n13.n6": {
+      "id": "n13.n6",
+      "op": "circle",
+      "ins": [
+       "n13.e5",
+       "e11"
+      ],
+      "outs": [
+       "n13.e6"
+      ],
+      "seq": 13.25
+     },
+     "n13.n5": {
+      "id": "n13.n5",
+      "op": "point",
+      "ins": [
+       "e12"
+      ],
+      "outs": [
+       "n13.e5"
+      ],
+      "seq": 13.125,
+      "t": 0.3
+     },
+     "n13.n9": {
+      "id": "n13.n9",
+      "op": "circle",
+      "ins": [
+       "e11",
+       "n13.e5"
+      ],
+      "outs": [
+       "n13.e9"
+      ],
+      "seq": 13.625
+     }
+    },
+    "elems": {
+     "e3": {
+      "id": "e3",
+      "node": "n3",
+      "kind": "line",
+      "label": "ℓ"
+     },
+     "e1": {
+      "id": "e1",
+      "node": "n1",
+      "kind": "point",
+      "label": "O"
+     },
+     "e2": {
+      "id": "e2",
+      "node": "n2",
+      "kind": "point",
+      "label": "U"
+     },
+     "e4": {
+      "id": "e4",
+      "node": "n4",
+      "kind": "point",
+      "label": "A"
+     },
+     "e5": {
+      "id": "e5",
+      "node": "n5",
+      "kind": "point",
+      "label": "B"
+     },
+     "e14": {
+      "id": "e14",
+      "node": "n14",
+      "kind": "point",
+      "label": ""
+     },
+     "e13": {
+      "id": "e13",
+      "node": "n13.n11",
+      "kind": "line",
+      "label": ""
+     },
+     "e11": {
+      "id": "e11",
+      "node": "n11",
+      "kind": "point",
+      "label": ""
+     },
+     "e10": {
+      "id": "e10",
+      "node": "n10",
+      "kind": "circle",
+      "label": ""
+     },
+     "e7": {
+      "id": "e7",
+      "node": "n7",
+      "kind": "line",
+      "label": ""
+     },
+     "e6": {
+      "id": "e6",
+      "node": "n6",
+      "kind": "point",
+      "label": ""
+     },
+     "n13.e10": {
+      "id": "n13.e10",
+      "node": "n13.n10",
+      "kind": "point",
+      "label": ""
+     },
+     "n13.e8": {
+      "id": "n13.e8",
+      "node": "n13.n8",
+      "kind": "circle",
+      "label": ""
+     },
+     "n13.e7": {
+      "id": "n13.e7",
+      "node": "n13.n7",
+      "kind": "point",
+      "label": ""
+     },
+     "e12": {
+      "id": "e12",
+      "node": "n12",
+      "kind": "line",
+      "label": ""
+     },
+     "e9": {
+      "id": "e9",
+      "node": "n9",
+      "kind": "point",
+      "label": ""
+     },
+     "e8": {
+      "id": "e8",
+      "node": "n8",
+      "kind": "circle",
+      "label": ""
+     },
+     "n13.e6": {
+      "id": "n13.e6",
+      "node": "n13.n6",
+      "kind": "circle",
+      "label": ""
+     },
+     "n13.e5": {
+      "id": "n13.e5",
+      "node": "n13.n5",
+      "kind": "point",
+      "label": ""
+     },
+     "n13.e9": {
+      "id": "n13.e9",
+      "node": "n13.n9",
+      "kind": "circle",
+      "label": ""
+     }
+    },
+    "seq": 14
+   },
+   "givens": [
+    "e3",
+    "e1",
+    "e2",
+    "e4",
+    "e5"
+   ],
+   "scaffold": [],
+   "goals": [
+    "e14"
+   ],
+   "elaboration": [],
+   "tier": 1
+  },
+  {
+   "kind": "problem",
+   "id": "arithmetic.reciprocal",
+   "title": "Reciprocal",
+   "subtitle": "",
+   "text": "Taking $OU$ as the unit, construct the point $X$ on $\\ell$, on the same side of $O$ as $A$, with $OX = 1 / OA$.\n\n::: Hint\nAs for multiplying: mark $OA$ and 1 on another line through $O$, join $OA$’s mark to $U$, and draw the parallel through the 1.\n:::",
+   "toolName": "Reciprocal",
+   "diagram": {
+    "nodes": {
+     "n3": {
+      "op": "line",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n3",
+      "seq": 3,
+      "outs": [
+       "e3"
+      ]
+     },
+     "n1": {
+      "op": "point",
+      "ins": [],
+      "x": -60,
+      "y": 50,
+      "id": "n1",
+      "seq": 1,
+      "outs": [
+       "e1"
+      ]
+     },
+     "n2": {
+      "op": "point",
+      "ins": [],
+      "x": -20,
+      "y": 50,
+      "id": "n2",
+      "seq": 2,
+      "outs": [
+       "e2"
+      ]
+     },
+     "n4": {
+      "op": "point",
+      "ins": [
+       "e3"
+      ],
+      "t": 2.4,
+      "id": "n4",
+      "seq": 4,
+      "outs": [
+       "e4"
+      ]
+     },
+     "n14": {
+      "op": "isect",
+      "ins": [
+       "e13",
+       "e3"
+      ],
+      "which": 0,
+      "id": "n14",
+      "seq": 14,
+      "outs": [
+       "e14"
+      ]
+     },
+     "n13.n11": {
+      "id": "n13.n11",
+      "op": "line",
+      "ins": [
+       "e9",
+       "n13.e10"
+      ],
+      "outs": [
+       "e13"
+      ],
+      "seq": 13.875
+     },
+     "n9": {
+      "op": "isect",
+      "ins": [
+       "e8",
+       "e7"
+      ],
+      "which": 1,
+      "id": "n9",
+      "seq": 9,
+      "outs": [
+       "e9"
+      ]
+     },
+     "n8": {
+      "op": "circle",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n8",
+      "seq": 8,
+      "outs": [
+       "e8"
+      ]
+     },
+     "n7": {
+      "op": "line",
+      "ins": [
+       "e1",
+       "e6"
+      ],
+      "id": "n7",
+      "seq": 7,
+      "outs": [
+       "e7"
+      ]
+     },
+     "n6": {
+      "op": "point",
+      "ins": [],
+      "x": -25,
+      "y": -45,
+      "id": "n6",
+      "seq": 6,
+      "outs": [
+       "e6"
+      ]
+     },
+     "n13.n10": {
+      "id": "n13.n10",
+      "op": "isect",
+      "ins": [
+       "n13.e8",
+       "n13.e9",
+       "n13.e5"
+      ],
+      "outs": [
+       "n13.e10"
+      ],
+      "seq": 13.75
+     },
+     "n13.n8": {
+      "id": "n13.n8",
+      "op": "circle",
+      "ins": [
+       "n13.e7",
+       "n13.e5"
+      ],
+      "outs": [
+       "n13.e8"
+      ],
+      "seq": 13.5
+     },
+     "n13.n7": {
+      "id": "n13.n7",
+      "op": "isect",
+      "ins": [
+       "e12",
+       "n13.e6"
+      ],
+      "outs": [
+       "n13.e7"
+      ],
+      "seq": 13.375,
+      "which": 1
+     },
+     "n12": {
+      "op": "line",
+      "ins": [
+       "e11",
+       "e2"
+      ],
+      "id": "n12",
+      "seq": 12,
+      "outs": [
+       "e12"
+      ]
+     },
+     "n11": {
+      "op": "isect",
+      "ins": [
+       "e10",
+       "e7"
+      ],
+      "which": 1,
+      "id": "n11",
+      "seq": 11,
+      "outs": [
+       "e11"
+      ]
+     },
+     "n10": {
+      "op": "circle",
+      "ins": [
+       "e1",
+       "e4"
+      ],
+      "id": "n10",
+      "seq": 10,
+      "outs": [
+       "e10"
+      ]
+     },
+     "n13.n6": {
+      "id": "n13.n6",
+      "op": "circle",
+      "ins": [
+       "n13.e5",
+       "e9"
+      ],
+      "outs": [
+       "n13.e6"
+      ],
+      "seq": 13.25
+     },
+     "n13.n5": {
+      "id": "n13.n5",
+      "op": "point",
+      "ins": [
+       "e12"
+      ],
+      "outs": [
+       "n13.e5"
+      ],
+      "seq": 13.125,
+      "t": 0.3
+     },
+     "n13.n9": {
+      "id": "n13.n9",
+      "op": "circle",
+      "ins": [
+       "e9",
+       "n13.e5"
+      ],
+      "outs": [
+       "n13.e9"
+      ],
+      "seq": 13.625
+     }
+    },
+    "elems": {
+     "e3": {
+      "id": "e3",
+      "node": "n3",
+      "kind": "line",
+      "label": "ℓ"
+     },
+     "e1": {
+      "id": "e1",
+      "node": "n1",
+      "kind": "point",
+      "label": "O"
+     },
+     "e2": {
+      "id": "e2",
+      "node": "n2",
+      "kind": "point",
+      "label": "U"
+     },
+     "e4": {
+      "id": "e4",
+      "node": "n4",
+      "kind": "point",
+      "label": "A"
+     },
+     "e14": {
+      "id": "e14",
+      "node": "n14",
+      "kind": "point",
+      "label": ""
+     },
+     "e13": {
+      "id": "e13",
+      "node": "n13.n11",
+      "kind": "line",
+      "label": ""
+     },
+     "e9": {
+      "id": "e9",
+      "node": "n9",
+      "kind": "point",
+      "label": ""
+     },
+     "e8": {
+      "id": "e8",
+      "node": "n8",
+      "kind": "circle",
+      "label": ""
+     },
+     "e7": {
+      "id": "e7",
+      "node": "n7",
+      "kind": "line",
+      "label": ""
+     },
+     "e6": {
+      "id": "e6",
+      "node": "n6",
+      "kind": "point",
+      "label": ""
+     },
+     "n13.e10": {
+      "id": "n13.e10",
+      "node": "n13.n10",
+      "kind": "point",
+      "label": ""
+     },
+     "n13.e8": {
+      "id": "n13.e8",
+      "node": "n13.n8",
+      "kind": "circle",
+      "label": ""
+     },
+     "n13.e7": {
+      "id": "n13.e7",
+      "node": "n13.n7",
+      "kind": "point",
+      "label": ""
+     },
+     "e12": {
+      "id": "e12",
+      "node": "n12",
+      "kind": "line",
+      "label": ""
+     },
+     "e11": {
+      "id": "e11",
+      "node": "n11",
+      "kind": "point",
+      "label": ""
+     },
+     "e10": {
+      "id": "e10",
+      "node": "n10",
+      "kind": "circle",
+      "label": ""
+     },
+     "n13.e6": {
+      "id": "n13.e6",
+      "node": "n13.n6",
+      "kind": "circle",
+      "label": ""
+     },
+     "n13.e5": {
+      "id": "n13.e5",
+      "node": "n13.n5",
+      "kind": "point",
+      "label": ""
+     },
+     "n13.e9": {
+      "id": "n13.e9",
+      "node": "n13.n9",
+      "kind": "circle",
+      "label": ""
+     }
+    },
+    "seq": 14
+   },
+   "givens": [
+    "e3",
+    "e1",
+    "e2",
+    "e4"
+   ],
+   "scaffold": [],
+   "goals": [
+    "e14"
+   ],
+   "elaboration": [],
+   "tier": 1
+  },
+  {
+   "kind": "problem",
+   "id": "arithmetic.divide",
+   "title": "Divide",
+   "subtitle": "",
+   "text": "Taking $OU$ as the unit, construct the point $X$ on $\\ell$, on the same side of $O$ as $A$, with $OX = OA / OB$.\n\n::: Hint\nMark $OB$ and 1 on another line through $O$. Join $OB$’s mark to $A$, and draw the parallel through the 1.\n:::",
+   "toolName": "Divide",
+   "diagram": {
+    "nodes": {
+     "n3": {
+      "op": "line",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n3",
+      "seq": 3,
+      "outs": [
+       "e3"
+      ]
+     },
+     "n1": {
+      "op": "point",
+      "ins": [],
+      "x": -60,
+      "y": 50,
+      "id": "n1",
+      "seq": 1,
+      "outs": [
+       "e1"
+      ]
+     },
+     "n2": {
+      "op": "point",
+      "ins": [],
+      "x": -20,
+      "y": 50,
+      "id": "n2",
+      "seq": 2,
+      "outs": [
+       "e2"
+      ]
+     },
+     "n4": {
+      "op": "point",
+      "ins": [
+       "e3"
+      ],
+      "t": 2.4,
+      "id": "n4",
+      "seq": 4,
+      "outs": [
+       "e4"
+      ]
+     },
+     "n5": {
+      "op": "point",
+      "ins": [
+       "e3"
+      ],
+      "t": 1.5,
+      "id": "n5",
+      "seq": 5,
+      "outs": [
+       "e5"
+      ]
+     },
+     "n14": {
+      "op": "isect",
+      "ins": [
+       "e13",
+       "e3"
+      ],
+      "which": 0,
+      "id": "n14",
+      "seq": 14,
+      "outs": [
+       "e14"
+      ]
+     },
+     "n13.n11": {
+      "id": "n13.n11",
+      "op": "line",
+      "ins": [
+       "e9",
+       "n13.e10"
+      ],
+      "outs": [
+       "e13"
+      ],
+      "seq": 13.875
+     },
+     "n9": {
+      "op": "isect",
+      "ins": [
+       "e8",
+       "e7"
+      ],
+      "which": 1,
+      "id": "n9",
+      "seq": 9,
+      "outs": [
+       "e9"
+      ]
+     },
+     "n8": {
+      "op": "circle",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n8",
+      "seq": 8,
+      "outs": [
+       "e8"
+      ]
+     },
+     "n7": {
+      "op": "line",
+      "ins": [
+       "e1",
+       "e6"
+      ],
+      "id": "n7",
+      "seq": 7,
+      "outs": [
+       "e7"
+      ]
+     },
+     "n6": {
+      "op": "point",
+      "ins": [],
+      "x": -25,
+      "y": -45,
+      "id": "n6",
+      "seq": 6,
+      "outs": [
+       "e6"
+      ]
+     },
+     "n13.n10": {
+      "id": "n13.n10",
+      "op": "isect",
+      "ins": [
+       "n13.e8",
+       "n13.e9",
+       "n13.e5"
+      ],
+      "outs": [
+       "n13.e10"
+      ],
+      "seq": 13.75
+     },
+     "n13.n8": {
+      "id": "n13.n8",
+      "op": "circle",
+      "ins": [
+       "n13.e7",
+       "n13.e5"
+      ],
+      "outs": [
+       "n13.e8"
+      ],
+      "seq": 13.5
+     },
+     "n13.n7": {
+      "id": "n13.n7",
+      "op": "isect",
+      "ins": [
+       "e12",
+       "n13.e6"
+      ],
+      "outs": [
+       "n13.e7"
+      ],
+      "seq": 13.375,
+      "which": 1
+     },
+     "n12": {
+      "op": "line",
+      "ins": [
+       "e11",
+       "e4"
+      ],
+      "id": "n12",
+      "seq": 12,
+      "outs": [
+       "e12"
+      ]
+     },
+     "n11": {
+      "op": "isect",
+      "ins": [
+       "e10",
+       "e7"
+      ],
+      "which": 1,
+      "id": "n11",
+      "seq": 11,
+      "outs": [
+       "e11"
+      ]
+     },
+     "n10": {
+      "op": "circle",
+      "ins": [
+       "e1",
+       "e5"
+      ],
+      "id": "n10",
+      "seq": 10,
+      "outs": [
+       "e10"
+      ]
+     },
+     "n13.n6": {
+      "id": "n13.n6",
+      "op": "circle",
+      "ins": [
+       "n13.e5",
+       "e9"
+      ],
+      "outs": [
+       "n13.e6"
+      ],
+      "seq": 13.25
+     },
+     "n13.n5": {
+      "id": "n13.n5",
+      "op": "point",
+      "ins": [
+       "e12"
+      ],
+      "outs": [
+       "n13.e5"
+      ],
+      "seq": 13.125,
+      "t": 0.3
+     },
+     "n13.n9": {
+      "id": "n13.n9",
+      "op": "circle",
+      "ins": [
+       "e9",
+       "n13.e5"
+      ],
+      "outs": [
+       "n13.e9"
+      ],
+      "seq": 13.625
+     }
+    },
+    "elems": {
+     "e3": {
+      "id": "e3",
+      "node": "n3",
+      "kind": "line",
+      "label": "ℓ"
+     },
+     "e1": {
+      "id": "e1",
+      "node": "n1",
+      "kind": "point",
+      "label": "O"
+     },
+     "e2": {
+      "id": "e2",
+      "node": "n2",
+      "kind": "point",
+      "label": "U"
+     },
+     "e4": {
+      "id": "e4",
+      "node": "n4",
+      "kind": "point",
+      "label": "A"
+     },
+     "e5": {
+      "id": "e5",
+      "node": "n5",
+      "kind": "point",
+      "label": "B"
+     },
+     "e14": {
+      "id": "e14",
+      "node": "n14",
+      "kind": "point",
+      "label": ""
+     },
+     "e13": {
+      "id": "e13",
+      "node": "n13.n11",
+      "kind": "line",
+      "label": ""
+     },
+     "e9": {
+      "id": "e9",
+      "node": "n9",
+      "kind": "point",
+      "label": ""
+     },
+     "e8": {
+      "id": "e8",
+      "node": "n8",
+      "kind": "circle",
+      "label": ""
+     },
+     "e7": {
+      "id": "e7",
+      "node": "n7",
+      "kind": "line",
+      "label": ""
+     },
+     "e6": {
+      "id": "e6",
+      "node": "n6",
+      "kind": "point",
+      "label": ""
+     },
+     "n13.e10": {
+      "id": "n13.e10",
+      "node": "n13.n10",
+      "kind": "point",
+      "label": ""
+     },
+     "n13.e8": {
+      "id": "n13.e8",
+      "node": "n13.n8",
+      "kind": "circle",
+      "label": ""
+     },
+     "n13.e7": {
+      "id": "n13.e7",
+      "node": "n13.n7",
+      "kind": "point",
+      "label": ""
+     },
+     "e12": {
+      "id": "e12",
+      "node": "n12",
+      "kind": "line",
+      "label": ""
+     },
+     "e11": {
+      "id": "e11",
+      "node": "n11",
+      "kind": "point",
+      "label": ""
+     },
+     "e10": {
+      "id": "e10",
+      "node": "n10",
+      "kind": "circle",
+      "label": ""
+     },
+     "n13.e6": {
+      "id": "n13.e6",
+      "node": "n13.n6",
+      "kind": "circle",
+      "label": ""
+     },
+     "n13.e5": {
+      "id": "n13.e5",
+      "node": "n13.n5",
+      "kind": "point",
+      "label": ""
+     },
+     "n13.e9": {
+      "id": "n13.e9",
+      "node": "n13.n9",
+      "kind": "circle",
+      "label": ""
+     }
+    },
+    "seq": 14
+   },
+   "givens": [
+    "e3",
+    "e1",
+    "e2",
+    "e4",
+    "e5"
+   ],
+   "scaffold": [],
+   "goals": [
+    "e14"
+   ],
+   "elaboration": [],
+   "tier": 1
+  },
+  {
+   "kind": "problem",
+   "id": "arithmetic.thirds",
+   "title": "Thirds",
+   "subtitle": "",
+   "text": "Construct the points at $1/3$ and $2/3$, between $O$ and $U$.\n\n::: Hint\nStep off three equal lengths along another line through $O$, join the last step to $U$, and draw parallels through the other two.\n:::",
+   "toolName": "Thirds",
+   "diagram": {
+    "nodes": {
+     "n3": {
+      "op": "line",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n3",
+      "seq": 3,
+      "outs": [
+       "e3"
+      ]
+     },
+     "n1": {
+      "op": "point",
+      "ins": [],
+      "x": -60,
+      "y": 50,
+      "id": "n1",
+      "seq": 1,
+      "outs": [
+       "e1"
+      ]
+     },
+     "n2": {
+      "op": "point",
+      "ins": [],
+      "x": -20,
+      "y": 50,
+      "id": "n2",
+      "seq": 2,
+      "outs": [
+       "e2"
+      ]
+     },
+     "n16": {
+      "op": "isect",
+      "ins": [
+       "e15",
+       "e3"
+      ],
+      "which": 0,
+      "id": "n16",
+      "seq": 16,
+      "outs": [
+       "e16"
+      ]
+     },
+     "n15.n11": {
+      "id": "n15.n11",
+      "op": "line",
+      "ins": [
+       "e9",
+       "n15.e10"
+      ],
+      "outs": [
+       "e15"
+      ],
+      "seq": 15.875
+     },
+     "n9": {
+      "op": "isect",
+      "ins": [
+       "e8",
+       "e7"
+      ],
+      "which": 1,
+      "id": "n9",
+      "seq": 9,
+      "outs": [
+       "e9"
+      ]
+     },
+     "n8": {
+      "op": "circle",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n8",
+      "seq": 8,
+      "outs": [
+       "e8"
+      ]
+     },
+     "n7": {
+      "op": "line",
+      "ins": [
+       "e1",
+       "e6"
+      ],
+      "id": "n7",
+      "seq": 7,
+      "outs": [
+       "e7"
+      ]
+     },
+     "n6": {
+      "op": "point",
+      "ins": [],
+      "x": -25,
+      "y": -45,
+      "id": "n6",
+      "seq": 6,
+      "outs": [
+       "e6"
+      ]
+     },
+     "n15.n10": {
+      "id": "n15.n10",
+      "op": "isect",
+      "ins": [
+       "n15.e8",
+       "n15.e9",
+       "n15.e5"
+      ],
+      "outs": [
+       "n15.e10"
+      ],
+      "seq": 15.75
+     },
+     "n15.n8": {
+      "id": "n15.n8",
+      "op": "circle",
+      "ins": [
+       "n15.e7",
+       "n15.e5"
+      ],
+      "outs": [
+       "n15.e8"
+      ],
+      "seq": 15.5
+     },
+     "n15.n7": {
+      "id": "n15.n7",
+      "op": "isect",
+      "ins": [
+       "e14",
+       "n15.e6"
+      ],
+      "outs": [
+       "n15.e7"
+      ],
+      "seq": 15.375,
+      "which": 1
+     },
+     "n14": {
+      "op": "line",
+      "ins": [
+       "e13",
+       "e2"
+      ],
+      "id": "n14",
+      "seq": 14,
+      "outs": [
+       "e14"
+      ]
+     },
+     "n13": {
+      "op": "isect",
+      "ins": [
+       "e12",
+       "e7",
+       "e9"
+      ],
+      "id": "n13",
+      "seq": 13,
+      "outs": [
+       "e13"
+      ]
+     },
+     "n12": {
+      "op": "circle",
+      "ins": [
+       "e11",
+       "e9"
+      ],
+      "id": "n12",
+      "seq": 12,
+      "outs": [
+       "e12"
+      ]
+     },
+     "n11": {
+      "op": "isect",
+      "ins": [
+       "e10",
+       "e7",
+       "e1"
+      ],
+      "id": "n11",
+      "seq": 11,
+      "outs": [
+       "e11"
+      ]
+     },
+     "n10": {
+      "op": "circle",
+      "ins": [
+       "e9",
+       "e1"
+      ],
+      "id": "n10",
+      "seq": 10,
+      "outs": [
+       "e10"
+      ]
+     },
+     "n15.n6": {
+      "id": "n15.n6",
+      "op": "circle",
+      "ins": [
+       "n15.e5",
+       "e9"
+      ],
+      "outs": [
+       "n15.e6"
+      ],
+      "seq": 15.25
+     },
+     "n15.n5": {
+      "id": "n15.n5",
+      "op": "point",
+      "ins": [
+       "e14"
+      ],
+      "outs": [
+       "n15.e5"
+      ],
+      "seq": 15.125,
+      "t": 0.3
+     },
+     "n15.n9": {
+      "id": "n15.n9",
+      "op": "circle",
+      "ins": [
+       "e9",
+       "n15.e5"
+      ],
+      "outs": [
+       "n15.e9"
+      ],
+      "seq": 15.625
+     },
+     "n18": {
+      "op": "isect",
+      "ins": [
+       "e17",
+       "e3"
+      ],
+      "which": 0,
+      "id": "n18",
+      "seq": 18,
+      "outs": [
+       "e18"
+      ]
+     },
+     "n17.n11": {
+      "id": "n17.n11",
+      "op": "line",
+      "ins": [
+       "e11",
+       "n17.e10"
+      ],
+      "outs": [
+       "e17"
+      ],
+      "seq": 17.875
+     },
+     "n17.n10": {
+      "id": "n17.n10",
+      "op": "isect",
+      "ins": [
+       "n17.e8",
+       "n17.e9",
+       "n17.e5"
+      ],
+      "outs": [
+       "n17.e10"
+      ],
+      "seq": 17.75
+     },
+     "n17.n8": {
+      "id": "n17.n8",
+      "op": "circle",
+      "ins": [
+       "n17.e7",
+       "n17.e5"
+      ],
+      "outs": [
+       "n17.e8"
+      ],
+      "seq": 17.5
+     },
+     "n17.n7": {
+      "id": "n17.n7",
+      "op": "isect",
+      "ins": [
+       "e14",
+       "n17.e6"
+      ],
+      "outs": [
+       "n17.e7"
+      ],
+      "seq": 17.375,
+      "which": 1
+     },
+     "n17.n6": {
+      "id": "n17.n6",
+      "op": "circle",
+      "ins": [
+       "n17.e5",
+       "e11"
+      ],
+      "outs": [
+       "n17.e6"
+      ],
+      "seq": 17.25
+     },
+     "n17.n5": {
+      "id": "n17.n5",
+      "op": "point",
+      "ins": [
+       "e14"
+      ],
+      "outs": [
+       "n17.e5"
+      ],
+      "seq": 17.125,
+      "t": 0.3
+     },
+     "n17.n9": {
+      "id": "n17.n9",
+      "op": "circle",
+      "ins": [
+       "e11",
+       "n17.e5"
+      ],
+      "outs": [
+       "n17.e9"
+      ],
+      "seq": 17.625
+     }
+    },
+    "elems": {
+     "e3": {
+      "id": "e3",
+      "node": "n3",
+      "kind": "line",
+      "label": "ℓ"
+     },
+     "e1": {
+      "id": "e1",
+      "node": "n1",
+      "kind": "point",
+      "label": "O"
+     },
+     "e2": {
+      "id": "e2",
+      "node": "n2",
+      "kind": "point",
+      "label": "U"
+     },
+     "e16": {
+      "id": "e16",
+      "node": "n16",
+      "kind": "point",
+      "label": ""
+     },
+     "e15": {
+      "id": "e15",
+      "node": "n15.n11",
+      "kind": "line",
+      "label": ""
+     },
+     "e9": {
+      "id": "e9",
+      "node": "n9",
+      "kind": "point",
+      "label": ""
+     },
+     "e8": {
+      "id": "e8",
+      "node": "n8",
+      "kind": "circle",
+      "label": ""
+     },
+     "e7": {
+      "id": "e7",
+      "node": "n7",
+      "kind": "line",
+      "label": ""
+     },
+     "e6": {
+      "id": "e6",
+      "node": "n6",
+      "kind": "point",
+      "label": ""
+     },
+     "n15.e10": {
+      "id": "n15.e10",
+      "node": "n15.n10",
+      "kind": "point",
+      "label": ""
+     },
+     "n15.e8": {
+      "id": "n15.e8",
+      "node": "n15.n8",
+      "kind": "circle",
+      "label": ""
+     },
+     "n15.e7": {
+      "id": "n15.e7",
+      "node": "n15.n7",
+      "kind": "point",
+      "label": ""
+     },
+     "e14": {
+      "id": "e14",
+      "node": "n14",
+      "kind": "line",
+      "label": ""
+     },
+     "e13": {
+      "id": "e13",
+      "node": "n13",
+      "kind": "point",
+      "label": ""
+     },
+     "e12": {
+      "id": "e12",
+      "node": "n12",
+      "kind": "circle",
+      "label": ""
+     },
+     "e11": {
+      "id": "e11",
+      "node": "n11",
+      "kind": "point",
+      "label": ""
+     },
+     "e10": {
+      "id": "e10",
+      "node": "n10",
+      "kind": "circle",
+      "label": ""
+     },
+     "n15.e6": {
+      "id": "n15.e6",
+      "node": "n15.n6",
+      "kind": "circle",
+      "label": ""
+     },
+     "n15.e5": {
+      "id": "n15.e5",
+      "node": "n15.n5",
+      "kind": "point",
+      "label": ""
+     },
+     "n15.e9": {
+      "id": "n15.e9",
+      "node": "n15.n9",
+      "kind": "circle",
+      "label": ""
+     },
+     "e18": {
+      "id": "e18",
+      "node": "n18",
+      "kind": "point",
+      "label": ""
+     },
+     "e17": {
+      "id": "e17",
+      "node": "n17.n11",
+      "kind": "line",
+      "label": ""
+     },
+     "n17.e10": {
+      "id": "n17.e10",
+      "node": "n17.n10",
+      "kind": "point",
+      "label": ""
+     },
+     "n17.e8": {
+      "id": "n17.e8",
+      "node": "n17.n8",
+      "kind": "circle",
+      "label": ""
+     },
+     "n17.e7": {
+      "id": "n17.e7",
+      "node": "n17.n7",
+      "kind": "point",
+      "label": ""
+     },
+     "n17.e6": {
+      "id": "n17.e6",
+      "node": "n17.n6",
+      "kind": "circle",
+      "label": ""
+     },
+     "n17.e5": {
+      "id": "n17.e5",
+      "node": "n17.n5",
+      "kind": "point",
+      "label": ""
+     },
+     "n17.e9": {
+      "id": "n17.e9",
+      "node": "n17.n9",
+      "kind": "circle",
+      "label": ""
+     }
+    },
+    "seq": 18
+   },
+   "givens": [
+    "e3",
+    "e1",
+    "e2"
+   ],
+   "scaffold": [],
+   "goals": [
+    "e16",
+    "e18"
+   ],
+   "elaboration": [],
+   "tier": 1
+  },
+  {
+   "kind": "problem",
+   "id": "arithmetic.root-two",
+   "title": "Root Two",
+   "subtitle": "",
+   "text": "Taking $OU$ as the unit, construct the point $X$ on $\\ell$, on the same side of $O$ as $U$, with $OX = \\sqrt 2$.\n\n::: Hint\n$\\sqrt 2$ is the diagonal of a square with sides of 1.\n:::",
+   "toolName": "Root two",
+   "diagram": {
+    "nodes": {
+     "n3": {
+      "op": "line",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n3",
+      "seq": 3,
+      "outs": [
+       "e3"
+      ]
+     },
+     "n1": {
+      "op": "point",
+      "ins": [],
+      "x": -60,
+      "y": 50,
+      "id": "n1",
+      "seq": 1,
+      "outs": [
+       "e1"
+      ]
+     },
+     "n2": {
+      "op": "point",
+      "ins": [],
+      "x": -20,
+      "y": 50,
+      "id": "n2",
+      "seq": 2,
+      "outs": [
+       "e2"
+      ]
+     },
+     "n10": {
+      "op": "isect",
+      "ins": [
+       "e9",
+       "e3"
+      ],
+      "which": 1,
+      "id": "n10",
+      "seq": 10,
+      "outs": [
+       "e10"
+      ]
+     },
+     "n9": {
+      "op": "circle",
+      "ins": [
+       "e1",
+       "e8"
+      ],
+      "id": "n9",
+      "seq": 9,
+      "outs": [
+       "e9"
+      ]
+     },
+     "n8": {
+      "op": "isect",
+      "ins": [
+       "e6",
+       "e7"
+      ],
+      "which": 0,
+      "id": "n8",
+      "seq": 8,
+      "outs": [
+       "e8"
+      ]
+     },
+     "n6": {
+      "op": "circle",
+      "ins": [
+       "e2",
+       "e1"
+      ],
+      "id": "n6",
+      "seq": 6,
+      "outs": [
+       "e6"
+      ]
+     },
+     "n7.n12": {
+      "id": "n7.n12",
+      "op": "line",
+      "ins": [
+       "n7.e10",
+       "n7.e11"
+      ],
+      "outs": [
+       "e7"
+      ],
+      "seq": 7.888888888888889
+     },
+     "n7.n10": {
+      "id": "n7.n10",
+      "op": "isect",
+      "ins": [
+       "n7.e8",
+       "n7.e9"
+      ],
+      "outs": [
+       "n7.e10"
+      ],
+      "seq": 7.666666666666667,
+      "which": 1
+     },
+     "n7.n8": {
+      "id": "n7.n8",
+      "op": "circle",
+      "ins": [
+       "n7.e5",
+       "n7.e7"
+      ],
+      "outs": [
+       "n7.e8"
+      ],
+      "seq": 7.444444444444445
+     },
+     "n7.n5": {
+      "id": "n7.n5",
+      "op": "point",
+      "ins": [
+       "e3"
+      ],
+      "outs": [
+       "n7.e5"
+      ],
+      "seq": 7.111111111111111,
+      "t": 0.25
+     },
+     "n7.n7": {
+      "id": "n7.n7",
+      "op": "isect",
+      "ins": [
+       "e3",
+       "n7.e6",
+       "n7.e5"
+      ],
+      "outs": [
+       "n7.e7"
+      ],
+      "seq": 7.333333333333333
+     },
+     "n7.n6": {
+      "id": "n7.n6",
+      "op": "circle",
+      "ins": [
+       "e2",
+       "n7.e5"
+      ],
+      "outs": [
+       "n7.e6"
+      ],
+      "seq": 7.222222222222222
+     },
+     "n7.n9": {
+      "id": "n7.n9",
+      "op": "circle",
+      "ins": [
+       "n7.e7",
+       "n7.e5"
+      ],
+      "outs": [
+       "n7.e9"
+      ],
+      "seq": 7.555555555555555
+     },
+     "n7.n11": {
+      "id": "n7.n11",
+      "op": "isect",
+      "ins": [
+       "n7.e8",
+       "n7.e9",
+       "n7.e10"
+      ],
+      "outs": [
+       "n7.e11"
+      ],
+      "seq": 7.777777777777778
+     }
+    },
+    "elems": {
+     "e3": {
+      "id": "e3",
+      "node": "n3",
+      "kind": "line",
+      "label": "ℓ"
+     },
+     "e1": {
+      "id": "e1",
+      "node": "n1",
+      "kind": "point",
+      "label": "O"
+     },
+     "e2": {
+      "id": "e2",
+      "node": "n2",
+      "kind": "point",
+      "label": "U"
+     },
+     "e10": {
+      "id": "e10",
+      "node": "n10",
+      "kind": "point",
+      "label": ""
+     },
+     "e9": {
+      "id": "e9",
+      "node": "n9",
+      "kind": "circle",
+      "label": ""
+     },
+     "e8": {
+      "id": "e8",
+      "node": "n8",
+      "kind": "point",
+      "label": ""
+     },
+     "e6": {
+      "id": "e6",
+      "node": "n6",
+      "kind": "circle",
+      "label": ""
+     },
+     "e7": {
+      "id": "e7",
+      "node": "n7.n12",
+      "kind": "line",
+      "label": ""
+     },
+     "n7.e10": {
+      "id": "n7.e10",
+      "node": "n7.n10",
+      "kind": "point",
+      "label": ""
+     },
+     "n7.e8": {
+      "id": "n7.e8",
+      "node": "n7.n8",
+      "kind": "circle",
+      "label": ""
+     },
+     "n7.e5": {
+      "id": "n7.e5",
+      "node": "n7.n5",
+      "kind": "point",
+      "label": ""
+     },
+     "n7.e7": {
+      "id": "n7.e7",
+      "node": "n7.n7",
+      "kind": "point",
+      "label": ""
+     },
+     "n7.e6": {
+      "id": "n7.e6",
+      "node": "n7.n6",
+      "kind": "circle",
+      "label": ""
+     },
+     "n7.e9": {
+      "id": "n7.e9",
+      "node": "n7.n9",
+      "kind": "circle",
+      "label": ""
+     },
+     "n7.e11": {
+      "id": "n7.e11",
+      "node": "n7.n11",
+      "kind": "point",
+      "label": ""
+     }
+    },
+    "seq": 10
+   },
+   "givens": [
+    "e3",
+    "e1",
+    "e2"
+   ],
+   "scaffold": [],
+   "goals": [
+    "e10"
+   ],
+   "elaboration": [],
+   "tier": 2
+  },
+  {
+   "kind": "problem",
+   "id": "arithmetic.square-root",
+   "title": "Square Root",
+   "subtitle": "",
+   "text": "Taking $OU$ as the unit, construct the point $X$ on $\\ell$, on the same side of $O$ as $A$, with $OX = \\sqrt{OA}$.\n\n::: Hint\nThe perpendicular from the hypotenuse of a right triangle to the right angle divides the hypotenuse in two parts, and the square of its length is equal to the product of those parts.\n:::\n\n::: Hint\nA right angle lying on a circle subtends a diameter.\n:::",
+   "toolName": "Square root",
+   "diagram": {
+    "nodes": {
+     "n3": {
+      "op": "line",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n3",
+      "seq": 3,
+      "outs": [
+       "e3"
+      ]
+     },
+     "n1": {
+      "op": "point",
+      "ins": [],
+      "x": -60,
+      "y": 50,
+      "id": "n1",
+      "seq": 1,
+      "outs": [
+       "e1"
+      ]
+     },
+     "n2": {
+      "op": "point",
+      "ins": [],
+      "x": -20,
+      "y": 50,
+      "id": "n2",
+      "seq": 2,
+      "outs": [
+       "e2"
+      ]
+     },
+     "n4": {
+      "op": "point",
+      "ins": [
+       "e3"
+      ],
+      "t": 2.4,
+      "id": "n4",
+      "seq": 4,
+      "outs": [
+       "e4"
+      ]
+     },
+     "n13": {
+      "op": "isect",
+      "ins": [
+       "e12",
+       "e3"
+      ],
+      "which": 1,
+      "id": "n13",
+      "seq": 13,
+      "outs": [
+       "e13"
+      ]
+     },
+     "n12": {
+      "op": "circle",
+      "ins": [
+       "e1",
+       "e11"
+      ],
+      "id": "n12",
+      "seq": 12,
+      "outs": [
+       "e12"
+      ]
+     },
+     "n11": {
+      "op": "isect",
+      "ins": [
+       "e9",
+       "e10"
+      ],
+      "which": 1,
+      "id": "n11",
+      "seq": 11,
+      "outs": [
+       "e11"
+      ]
+     },
+     "n9": {
+      "op": "circle",
+      "ins": [
+       "e8",
+       "e4"
+      ],
+      "id": "n9",
+      "seq": 9,
+      "outs": [
+       "e9"
+      ]
+     },
+     "n8.n9": {
+      "id": "n8.n9",
+      "op": "isect",
+      "ins": [
+       "n8.e7",
+       "n8.e8"
+      ],
+      "outs": [
+       "e8"
+      ],
+      "seq": 8.875,
+      "which": 0
+     },
+     "n8.n7": {
+      "id": "n8.n7",
+      "op": "line",
+      "ins": [
+       "n8.e5",
+       "n8.e6"
+      ],
+      "outs": [
+       "n8.e7"
+      ],
+      "seq": 8.625
+     },
+     "n8.n5": {
+      "id": "n8.n5",
+      "op": "isect",
+      "ins": [
+       "n8.e3",
+       "n8.e4"
+      ],
+      "outs": [
+       "n8.e5"
+      ],
+      "seq": 8.375,
+      "which": 1
+     },
+     "n8.n3": {
+      "id": "n8.n3",
+      "op": "circle",
+      "ins": [
+       "e7",
+       "e4"
+      ],
+      "outs": [
+       "n8.e3"
+      ],
+      "seq": 8.125
+     },
+     "n7": {
+      "op": "isect",
+      "ins": [
+       "e6",
+       "e3",
+       "e2"
+      ],
+      "id": "n7",
+      "seq": 7,
+      "outs": [
+       "e7"
+      ]
+     },
+     "n6": {
+      "op": "circle",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n6",
+      "seq": 6,
+      "outs": [
+       "e6"
+      ]
+     },
+     "n8.n4": {
+      "id": "n8.n4",
+      "op": "circle",
+      "ins": [
+       "e4",
+       "e7"
+      ],
+      "outs": [
+       "n8.e4"
+      ],
+      "seq": 8.25
+     },
+     "n8.n6": {
+      "id": "n8.n6",
+      "op": "isect",
+      "ins": [
+       "n8.e3",
+       "n8.e4",
+       "n8.e5"
+      ],
+      "outs": [
+       "n8.e6"
+      ],
+      "seq": 8.5
+     },
+     "n8.n8": {
+      "id": "n8.n8",
+      "op": "line",
+      "ins": [
+       "e7",
+       "e4"
+      ],
+      "outs": [
+       "n8.e8"
+      ],
+      "seq": 8.75
+     },
+     "n10.n12": {
+      "id": "n10.n12",
+      "op": "line",
+      "ins": [
+       "n10.e10",
+       "n10.e11"
+      ],
+      "outs": [
+       "e10"
+      ],
+      "seq": 10.88888888888889
+     },
+     "n10.n10": {
+      "id": "n10.n10",
+      "op": "isect",
+      "ins": [
+       "n10.e8",
+       "n10.e9"
+      ],
+      "outs": [
+       "n10.e10"
+      ],
+      "seq": 10.666666666666666,
+      "which": 1
+     },
+     "n10.n8": {
+      "id": "n10.n8",
+      "op": "circle",
+      "ins": [
+       "n10.e5",
+       "n10.e7"
+      ],
+      "outs": [
+       "n10.e8"
+      ],
+      "seq": 10.444444444444445
+     },
+     "n10.n5": {
+      "id": "n10.n5",
+      "op": "point",
+      "ins": [
+       "e3"
+      ],
+      "outs": [
+       "n10.e5"
+      ],
+      "seq": 10.11111111111111,
+      "t": 0.25
+     },
+     "n10.n7": {
+      "id": "n10.n7",
+      "op": "isect",
+      "ins": [
+       "e3",
+       "n10.e6",
+       "n10.e5"
+      ],
+      "outs": [
+       "n10.e7"
+      ],
+      "seq": 10.333333333333334
+     },
+     "n10.n6": {
+      "id": "n10.n6",
+      "op": "circle",
+      "ins": [
+       "e1",
+       "n10.e5"
+      ],
+      "outs": [
+       "n10.e6"
+      ],
+      "seq": 10.222222222222221
+     },
+     "n10.n9": {
+      "id": "n10.n9",
+      "op": "circle",
+      "ins": [
+       "n10.e7",
+       "n10.e5"
+      ],
+      "outs": [
+       "n10.e9"
+      ],
+      "seq": 10.555555555555555
+     },
+     "n10.n11": {
+      "id": "n10.n11",
+      "op": "isect",
+      "ins": [
+       "n10.e8",
+       "n10.e9",
+       "n10.e10"
+      ],
+      "outs": [
+       "n10.e11"
+      ],
+      "seq": 10.777777777777779
+     }
+    },
+    "elems": {
+     "e3": {
+      "id": "e3",
+      "node": "n3",
+      "kind": "line",
+      "label": "ℓ"
+     },
+     "e1": {
+      "id": "e1",
+      "node": "n1",
+      "kind": "point",
+      "label": "O"
+     },
+     "e2": {
+      "id": "e2",
+      "node": "n2",
+      "kind": "point",
+      "label": "U"
+     },
+     "e4": {
+      "id": "e4",
+      "node": "n4",
+      "kind": "point",
+      "label": "A"
+     },
+     "e13": {
+      "id": "e13",
+      "node": "n13",
+      "kind": "point",
+      "label": ""
+     },
+     "e12": {
+      "id": "e12",
+      "node": "n12",
+      "kind": "circle",
+      "label": ""
+     },
+     "e11": {
+      "id": "e11",
+      "node": "n11",
+      "kind": "point",
+      "label": ""
+     },
+     "e9": {
+      "id": "e9",
+      "node": "n9",
+      "kind": "circle",
+      "label": ""
+     },
+     "e8": {
+      "id": "e8",
+      "node": "n8.n9",
+      "kind": "point",
+      "label": ""
+     },
+     "n8.e7": {
+      "id": "n8.e7",
+      "node": "n8.n7",
+      "kind": "line",
+      "label": ""
+     },
+     "n8.e5": {
+      "id": "n8.e5",
+      "node": "n8.n5",
+      "kind": "point",
+      "label": ""
+     },
+     "n8.e3": {
+      "id": "n8.e3",
+      "node": "n8.n3",
+      "kind": "circle",
+      "label": ""
+     },
+     "e7": {
+      "id": "e7",
+      "node": "n7",
+      "kind": "point",
+      "label": ""
+     },
+     "e6": {
+      "id": "e6",
+      "node": "n6",
+      "kind": "circle",
+      "label": ""
+     },
+     "n8.e4": {
+      "id": "n8.e4",
+      "node": "n8.n4",
+      "kind": "circle",
+      "label": ""
+     },
+     "n8.e6": {
+      "id": "n8.e6",
+      "node": "n8.n6",
+      "kind": "point",
+      "label": ""
+     },
+     "n8.e8": {
+      "id": "n8.e8",
+      "node": "n8.n8",
+      "kind": "line",
+      "label": ""
+     },
+     "e10": {
+      "id": "e10",
+      "node": "n10.n12",
+      "kind": "line",
+      "label": ""
+     },
+     "n10.e10": {
+      "id": "n10.e10",
+      "node": "n10.n10",
+      "kind": "point",
+      "label": ""
+     },
+     "n10.e8": {
+      "id": "n10.e8",
+      "node": "n10.n8",
+      "kind": "circle",
+      "label": ""
+     },
+     "n10.e5": {
+      "id": "n10.e5",
+      "node": "n10.n5",
+      "kind": "point",
+      "label": ""
+     },
+     "n10.e7": {
+      "id": "n10.e7",
+      "node": "n10.n7",
+      "kind": "point",
+      "label": ""
+     },
+     "n10.e6": {
+      "id": "n10.e6",
+      "node": "n10.n6",
+      "kind": "circle",
+      "label": ""
+     },
+     "n10.e9": {
+      "id": "n10.e9",
+      "node": "n10.n9",
+      "kind": "circle",
+      "label": ""
+     },
+     "n10.e11": {
+      "id": "n10.e11",
+      "node": "n10.n11",
+      "kind": "point",
+      "label": ""
+     }
+    },
+    "seq": 13
+   },
+   "givens": [
+    "e3",
+    "e1",
+    "e2",
+    "e4"
+   ],
+   "scaffold": [],
+   "goals": [
+    "e13"
+   ],
+   "elaboration": [],
+   "tier": 2
+  },
+  {
+   "kind": "problem",
+   "id": "arithmetic.mean",
+   "title": "Geometric Mean",
+   "subtitle": "",
+   "text": "Construct the point $X$ on $\\ell$, on the same side of $O$ as $A$, with $OX = \\sqrt{OA \\cdot OB}$. This one needs no unit.\n\n::: Hint\nAs for a square root, with the point at $-OB$ in place of $-1$.\n:::",
+   "toolName": "Geometric mean",
+   "diagram": {
+    "nodes": {
+     "n3": {
+      "op": "line",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n3",
+      "seq": 3,
+      "outs": [
+       "e3"
+      ]
+     },
+     "n1": {
+      "op": "point",
+      "ins": [],
+      "x": -60,
+      "y": 50,
+      "id": "n1",
+      "seq": 1,
+      "outs": [
+       "e1"
+      ]
+     },
+     "n2": {
+      "op": "point",
+      "ins": [],
+      "x": -20,
+      "y": 50,
+      "id": "n2",
+      "seq": 2,
+      "outs": [
+       "e2"
+      ]
+     },
+     "n4": {
+      "op": "point",
+      "ins": [
+       "e3"
+      ],
+      "t": 2.4,
+      "id": "n4",
+      "seq": 4,
+      "outs": [
+       "e4"
+      ]
+     },
+     "n5": {
+      "op": "point",
+      "ins": [
+       "e3"
+      ],
+      "t": 1.5,
+      "id": "n5",
+      "seq": 5,
+      "outs": [
+       "e5"
+      ]
+     },
+     "n13": {
+      "op": "isect",
+      "ins": [
+       "e12",
+       "e3"
+      ],
+      "which": 1,
+      "id": "n13",
+      "seq": 13,
+      "outs": [
+       "e13"
+      ]
+     },
+     "n12": {
+      "op": "circle",
+      "ins": [
+       "e1",
+       "e11"
+      ],
+      "id": "n12",
+      "seq": 12,
+      "outs": [
+       "e12"
+      ]
+     },
+     "n11": {
+      "op": "isect",
+      "ins": [
+       "e9",
+       "e10"
+      ],
+      "which": 1,
+      "id": "n11",
+      "seq": 11,
+      "outs": [
+       "e11"
+      ]
+     },
+     "n9": {
+      "op": "circle",
+      "ins": [
+       "e8",
+       "e4"
+      ],
+      "id": "n9",
+      "seq": 9,
+      "outs": [
+       "e9"
+      ]
+     },
+     "n8.n9": {
+      "id": "n8.n9",
+      "op": "isect",
+      "ins": [
+       "n8.e7",
+       "n8.e8"
+      ],
+      "outs": [
+       "e8"
+      ],
+      "seq": 8.875,
+      "which": 0
+     },
+     "n8.n7": {
+      "id": "n8.n7",
+      "op": "line",
+      "ins": [
+       "n8.e5",
+       "n8.e6"
+      ],
+      "outs": [
+       "n8.e7"
+      ],
+      "seq": 8.625
+     },
+     "n8.n5": {
+      "id": "n8.n5",
+      "op": "isect",
+      "ins": [
+       "n8.e3",
+       "n8.e4"
+      ],
+      "outs": [
+       "n8.e5"
+      ],
+      "seq": 8.375,
+      "which": 1
+     },
+     "n8.n3": {
+      "id": "n8.n3",
+      "op": "circle",
+      "ins": [
+       "e7",
+       "e4"
+      ],
+      "outs": [
+       "n8.e3"
+      ],
+      "seq": 8.125
+     },
+     "n7": {
+      "op": "isect",
+      "ins": [
+       "e6",
+       "e3",
+       "e5"
+      ],
+      "id": "n7",
+      "seq": 7,
+      "outs": [
+       "e7"
+      ]
+     },
+     "n6": {
+      "op": "circle",
+      "ins": [
+       "e1",
+       "e5"
+      ],
+      "id": "n6",
+      "seq": 6,
+      "outs": [
+       "e6"
+      ]
+     },
+     "n8.n4": {
+      "id": "n8.n4",
+      "op": "circle",
+      "ins": [
+       "e4",
+       "e7"
+      ],
+      "outs": [
+       "n8.e4"
+      ],
+      "seq": 8.25
+     },
+     "n8.n6": {
+      "id": "n8.n6",
+      "op": "isect",
+      "ins": [
+       "n8.e3",
+       "n8.e4",
+       "n8.e5"
+      ],
+      "outs": [
+       "n8.e6"
+      ],
+      "seq": 8.5
+     },
+     "n8.n8": {
+      "id": "n8.n8",
+      "op": "line",
+      "ins": [
+       "e7",
+       "e4"
+      ],
+      "outs": [
+       "n8.e8"
+      ],
+      "seq": 8.75
+     },
+     "n10.n12": {
+      "id": "n10.n12",
+      "op": "line",
+      "ins": [
+       "n10.e10",
+       "n10.e11"
+      ],
+      "outs": [
+       "e10"
+      ],
+      "seq": 10.88888888888889
+     },
+     "n10.n10": {
+      "id": "n10.n10",
+      "op": "isect",
+      "ins": [
+       "n10.e8",
+       "n10.e9"
+      ],
+      "outs": [
+       "n10.e10"
+      ],
+      "seq": 10.666666666666666,
+      "which": 1
+     },
+     "n10.n8": {
+      "id": "n10.n8",
+      "op": "circle",
+      "ins": [
+       "n10.e5",
+       "n10.e7"
+      ],
+      "outs": [
+       "n10.e8"
+      ],
+      "seq": 10.444444444444445
+     },
+     "n10.n5": {
+      "id": "n10.n5",
+      "op": "point",
+      "ins": [
+       "e3"
+      ],
+      "outs": [
+       "n10.e5"
+      ],
+      "seq": 10.11111111111111,
+      "t": 0.25
+     },
+     "n10.n7": {
+      "id": "n10.n7",
+      "op": "isect",
+      "ins": [
+       "e3",
+       "n10.e6",
+       "n10.e5"
+      ],
+      "outs": [
+       "n10.e7"
+      ],
+      "seq": 10.333333333333334
+     },
+     "n10.n6": {
+      "id": "n10.n6",
+      "op": "circle",
+      "ins": [
+       "e1",
+       "n10.e5"
+      ],
+      "outs": [
+       "n10.e6"
+      ],
+      "seq": 10.222222222222221
+     },
+     "n10.n9": {
+      "id": "n10.n9",
+      "op": "circle",
+      "ins": [
+       "n10.e7",
+       "n10.e5"
+      ],
+      "outs": [
+       "n10.e9"
+      ],
+      "seq": 10.555555555555555
+     },
+     "n10.n11": {
+      "id": "n10.n11",
+      "op": "isect",
+      "ins": [
+       "n10.e8",
+       "n10.e9",
+       "n10.e10"
+      ],
+      "outs": [
+       "n10.e11"
+      ],
+      "seq": 10.777777777777779
+     }
+    },
+    "elems": {
+     "e3": {
+      "id": "e3",
+      "node": "n3",
+      "kind": "line",
+      "label": "ℓ"
+     },
+     "e1": {
+      "id": "e1",
+      "node": "n1",
+      "kind": "point",
+      "label": "O"
+     },
+     "e2": {
+      "id": "e2",
+      "node": "n2",
+      "kind": "point",
+      "label": "U"
+     },
+     "e4": {
+      "id": "e4",
+      "node": "n4",
+      "kind": "point",
+      "label": "A"
+     },
+     "e5": {
+      "id": "e5",
+      "node": "n5",
+      "kind": "point",
+      "label": "B"
+     },
+     "e13": {
+      "id": "e13",
+      "node": "n13",
+      "kind": "point",
+      "label": ""
+     },
+     "e12": {
+      "id": "e12",
+      "node": "n12",
+      "kind": "circle",
+      "label": ""
+     },
+     "e11": {
+      "id": "e11",
+      "node": "n11",
+      "kind": "point",
+      "label": ""
+     },
+     "e9": {
+      "id": "e9",
+      "node": "n9",
+      "kind": "circle",
+      "label": ""
+     },
+     "e8": {
+      "id": "e8",
+      "node": "n8.n9",
+      "kind": "point",
+      "label": ""
+     },
+     "n8.e7": {
+      "id": "n8.e7",
+      "node": "n8.n7",
+      "kind": "line",
+      "label": ""
+     },
+     "n8.e5": {
+      "id": "n8.e5",
+      "node": "n8.n5",
+      "kind": "point",
+      "label": ""
+     },
+     "n8.e3": {
+      "id": "n8.e3",
+      "node": "n8.n3",
+      "kind": "circle",
+      "label": ""
+     },
+     "e7": {
+      "id": "e7",
+      "node": "n7",
+      "kind": "point",
+      "label": ""
+     },
+     "e6": {
+      "id": "e6",
+      "node": "n6",
+      "kind": "circle",
+      "label": ""
+     },
+     "n8.e4": {
+      "id": "n8.e4",
+      "node": "n8.n4",
+      "kind": "circle",
+      "label": ""
+     },
+     "n8.e6": {
+      "id": "n8.e6",
+      "node": "n8.n6",
+      "kind": "point",
+      "label": ""
+     },
+     "n8.e8": {
+      "id": "n8.e8",
+      "node": "n8.n8",
+      "kind": "line",
+      "label": ""
+     },
+     "e10": {
+      "id": "e10",
+      "node": "n10.n12",
+      "kind": "line",
+      "label": ""
+     },
+     "n10.e10": {
+      "id": "n10.e10",
+      "node": "n10.n10",
+      "kind": "point",
+      "label": ""
+     },
+     "n10.e8": {
+      "id": "n10.e8",
+      "node": "n10.n8",
+      "kind": "circle",
+      "label": ""
+     },
+     "n10.e5": {
+      "id": "n10.e5",
+      "node": "n10.n5",
+      "kind": "point",
+      "label": ""
+     },
+     "n10.e7": {
+      "id": "n10.e7",
+      "node": "n10.n7",
+      "kind": "point",
+      "label": ""
+     },
+     "n10.e6": {
+      "id": "n10.e6",
+      "node": "n10.n6",
+      "kind": "circle",
+      "label": ""
+     },
+     "n10.e9": {
+      "id": "n10.e9",
+      "node": "n10.n9",
+      "kind": "circle",
+      "label": ""
+     },
+     "n10.e11": {
+      "id": "n10.e11",
+      "node": "n10.n11",
+      "kind": "point",
+      "label": ""
+     }
+    },
+    "seq": 13
+   },
+   "givens": [
+    "e3",
+    "e1",
+    "e4",
+    "e5"
+   ],
+   "scaffold": [],
+   "goals": [
+    "e13"
+   ],
+   "elaboration": [],
+   "tier": 2
+  },
+  {
+   "kind": "problem",
+   "id": "arithmetic.hypotenuse",
+   "title": "Hypotenuse",
+   "subtitle": "",
+   "text": "Construct the point $X$ on $\\ell$, on the same side of $O$ as $A$, with $OX = \\sqrt{OA^2 + OB^2}$.\n\n::: Hint\nStand $OB$ up at right angles to $\\ell$ at $O$. Its top is the answer’s distance from $A$.\n:::",
+   "toolName": "Hypotenuse",
+   "diagram": {
+    "nodes": {
+     "n3": {
+      "op": "line",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n3",
+      "seq": 3,
+      "outs": [
+       "e3"
+      ]
+     },
+     "n1": {
+      "op": "point",
+      "ins": [],
+      "x": -60,
+      "y": 50,
+      "id": "n1",
+      "seq": 1,
+      "outs": [
+       "e1"
+      ]
+     },
+     "n2": {
+      "op": "point",
+      "ins": [],
+      "x": -20,
+      "y": 50,
+      "id": "n2",
+      "seq": 2,
+      "outs": [
+       "e2"
+      ]
+     },
+     "n4": {
+      "op": "point",
+      "ins": [
+       "e3"
+      ],
+      "t": 2.4,
+      "id": "n4",
+      "seq": 4,
+      "outs": [
+       "e4"
+      ]
+     },
+     "n5": {
+      "op": "point",
+      "ins": [
+       "e3"
+      ],
+      "t": 1.5,
+      "id": "n5",
+      "seq": 5,
+      "outs": [
+       "e5"
+      ]
+     },
+     "n10": {
+      "op": "isect",
+      "ins": [
+       "e9",
+       "e3"
+      ],
+      "which": 1,
+      "id": "n10",
+      "seq": 10,
+      "outs": [
+       "e10"
+      ]
+     },
+     "n9.n11": {
+      "id": "n9.n11",
+      "op": "circle",
+      "ins": [
+       "e1",
+       "n9.e10"
+      ],
+      "outs": [
+       "e9"
+      ],
+      "seq": 9.88888888888889
+     },
+     "n9.n10": {
+      "id": "n9.n10",
+      "op": "isect",
+      "ins": [
+       "n9.e8",
+       "n9.e9",
+       "e8"
+      ],
+      "outs": [
+       "n9.e10"
+      ],
+      "seq": 9.777777777777779
+     },
+     "n9.n8": {
+      "id": "n9.n8",
+      "op": "circle",
+      "ins": [
+       "n9.e6",
+       "e8"
+      ],
+      "outs": [
+       "n9.e8"
+      ],
+      "seq": 9.555555555555555
+     },
+     "n9.n6": {
+      "id": "n9.n6",
+      "op": "isect",
+      "ins": [
+       "n9.e4",
+       "n9.e5"
+      ],
+      "outs": [
+       "n9.e6"
+      ],
+      "seq": 9.333333333333334,
+      "which": 1
+     },
+     "n9.n4": {
+      "id": "n9.n4",
+      "op": "circle",
+      "ins": [
+       "e4",
+       "e1"
+      ],
+      "outs": [
+       "n9.e4"
+      ],
+      "seq": 9.11111111111111
+     },
+     "n9.n5": {
+      "id": "n9.n5",
+      "op": "circle",
+      "ins": [
+       "e1",
+       "e4"
+      ],
+      "outs": [
+       "n9.e5"
+      ],
+      "seq": 9.222222222222221
+     },
+     "n8": {
+      "op": "isect",
+      "ins": [
+       "e6",
+       "e7"
+      ],
+      "which": 1,
+      "id": "n8",
+      "seq": 8,
+      "outs": [
+       "e8"
+      ]
+     },
+     "n6": {
+      "op": "circle",
+      "ins": [
+       "e1",
+       "e5"
+      ],
+      "id": "n6",
+      "seq": 6,
+      "outs": [
+       "e6"
+      ]
+     },
+     "n7.n12": {
+      "id": "n7.n12",
+      "op": "line",
+      "ins": [
+       "n7.e10",
+       "n7.e11"
+      ],
+      "outs": [
+       "e7"
+      ],
+      "seq": 7.888888888888889
+     },
+     "n7.n10": {
+      "id": "n7.n10",
+      "op": "isect",
+      "ins": [
+       "n7.e8",
+       "n7.e9"
+      ],
+      "outs": [
+       "n7.e10"
+      ],
+      "seq": 7.666666666666667,
+      "which": 1
+     },
+     "n7.n8": {
+      "id": "n7.n8",
+      "op": "circle",
+      "ins": [
+       "n7.e5",
+       "n7.e7"
+      ],
+      "outs": [
+       "n7.e8"
+      ],
+      "seq": 7.444444444444445
+     },
+     "n7.n5": {
+      "id": "n7.n5",
+      "op": "point",
+      "ins": [
+       "e3"
+      ],
+      "outs": [
+       "n7.e5"
+      ],
+      "seq": 7.111111111111111,
+      "t": 0.25
+     },
+     "n7.n7": {
+      "id": "n7.n7",
+      "op": "isect",
+      "ins": [
+       "e3",
+       "n7.e6",
+       "n7.e5"
+      ],
+      "outs": [
+       "n7.e7"
+      ],
+      "seq": 7.333333333333333
+     },
+     "n7.n6": {
+      "id": "n7.n6",
+      "op": "circle",
+      "ins": [
+       "e1",
+       "n7.e5"
+      ],
+      "outs": [
+       "n7.e6"
+      ],
+      "seq": 7.222222222222222
+     },
+     "n7.n9": {
+      "id": "n7.n9",
+      "op": "circle",
+      "ins": [
+       "n7.e7",
+       "n7.e5"
+      ],
+      "outs": [
+       "n7.e9"
+      ],
+      "seq": 7.555555555555555
+     },
+     "n7.n11": {
+      "id": "n7.n11",
+      "op": "isect",
+      "ins": [
+       "n7.e8",
+       "n7.e9",
+       "n7.e10"
+      ],
+      "outs": [
+       "n7.e11"
+      ],
+      "seq": 7.777777777777778
+     },
+     "n9.n9": {
+      "id": "n9.n9",
+      "op": "circle",
+      "ins": [
+       "n9.e7",
+       "e8"
+      ],
+      "outs": [
+       "n9.e9"
+      ],
+      "seq": 9.666666666666666
+     },
+     "n9.n7": {
+      "id": "n9.n7",
+      "op": "isect",
+      "ins": [
+       "n9.e4",
+       "n9.e5",
+       "n9.e6"
+      ],
+      "outs": [
+       "n9.e7"
+      ],
+      "seq": 9.444444444444445
+     }
+    },
+    "elems": {
+     "e3": {
+      "id": "e3",
+      "node": "n3",
+      "kind": "line",
+      "label": "ℓ"
+     },
+     "e1": {
+      "id": "e1",
+      "node": "n1",
+      "kind": "point",
+      "label": "O"
+     },
+     "e2": {
+      "id": "e2",
+      "node": "n2",
+      "kind": "point",
+      "label": "U"
+     },
+     "e4": {
+      "id": "e4",
+      "node": "n4",
+      "kind": "point",
+      "label": "A"
+     },
+     "e5": {
+      "id": "e5",
+      "node": "n5",
+      "kind": "point",
+      "label": "B"
+     },
+     "e10": {
+      "id": "e10",
+      "node": "n10",
+      "kind": "point",
+      "label": ""
+     },
+     "e9": {
+      "id": "e9",
+      "node": "n9.n11",
+      "kind": "circle",
+      "label": ""
+     },
+     "n9.e10": {
+      "id": "n9.e10",
+      "node": "n9.n10",
+      "kind": "point",
+      "label": ""
+     },
+     "n9.e8": {
+      "id": "n9.e8",
+      "node": "n9.n8",
+      "kind": "circle",
+      "label": ""
+     },
+     "n9.e6": {
+      "id": "n9.e6",
+      "node": "n9.n6",
+      "kind": "point",
+      "label": ""
+     },
+     "n9.e4": {
+      "id": "n9.e4",
+      "node": "n9.n4",
+      "kind": "circle",
+      "label": ""
+     },
+     "n9.e5": {
+      "id": "n9.e5",
+      "node": "n9.n5",
+      "kind": "circle",
+      "label": ""
+     },
+     "e8": {
+      "id": "e8",
+      "node": "n8",
+      "kind": "point",
+      "label": ""
+     },
+     "e6": {
+      "id": "e6",
+      "node": "n6",
+      "kind": "circle",
+      "label": ""
+     },
+     "e7": {
+      "id": "e7",
+      "node": "n7.n12",
+      "kind": "line",
+      "label": ""
+     },
+     "n7.e10": {
+      "id": "n7.e10",
+      "node": "n7.n10",
+      "kind": "point",
+      "label": ""
+     },
+     "n7.e8": {
+      "id": "n7.e8",
+      "node": "n7.n8",
+      "kind": "circle",
+      "label": ""
+     },
+     "n7.e5": {
+      "id": "n7.e5",
+      "node": "n7.n5",
+      "kind": "point",
+      "label": ""
+     },
+     "n7.e7": {
+      "id": "n7.e7",
+      "node": "n7.n7",
+      "kind": "point",
+      "label": ""
+     },
+     "n7.e6": {
+      "id": "n7.e6",
+      "node": "n7.n6",
+      "kind": "circle",
+      "label": ""
+     },
+     "n7.e9": {
+      "id": "n7.e9",
+      "node": "n7.n9",
+      "kind": "circle",
+      "label": ""
+     },
+     "n7.e11": {
+      "id": "n7.e11",
+      "node": "n7.n11",
+      "kind": "point",
+      "label": ""
+     },
+     "n9.e9": {
+      "id": "n9.e9",
+      "node": "n9.n9",
+      "kind": "circle",
+      "label": ""
+     },
+     "n9.e7": {
+      "id": "n9.e7",
+      "node": "n9.n7",
+      "kind": "point",
+      "label": ""
+     }
+    },
+    "seq": 10
+   },
+   "givens": [
+    "e3",
+    "e1",
+    "e4",
+    "e5"
+   ],
+   "scaffold": [],
+   "goals": [
+    "e10"
+   ],
+   "elaboration": [],
+   "tier": 2
+  },
+  {
+   "kind": "problem",
+   "id": "arithmetic.golden",
+   "title": "Golden Ratio",
+   "subtitle": "",
+   "text": "Taking $OU$ as the unit, construct the point $X$ on $\\ell$, on the same side of $O$ as $U$, at the golden ratio: $OX = (1 + \\sqrt 5) / 2$.\n\n::: Hint\nFrom the midpoint of $OU$, the corner one unit above $U$ is $\\sqrt 5 / 2$ away.\n:::",
+   "toolName": "Golden ratio",
+   "diagram": {
+    "nodes": {
+     "n3": {
+      "op": "line",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "id": "n3",
+      "seq": 3,
+      "outs": [
+       "e3"
+      ]
+     },
+     "n1": {
+      "op": "point",
+      "ins": [],
+      "x": -60,
+      "y": 50,
+      "id": "n1",
+      "seq": 1,
+      "outs": [
+       "e1"
+      ]
+     },
+     "n2": {
+      "op": "point",
+      "ins": [],
+      "x": -20,
+      "y": 50,
+      "id": "n2",
+      "seq": 2,
+      "outs": [
+       "e2"
+      ]
+     },
+     "n11": {
+      "op": "isect",
+      "ins": [
+       "e10",
+       "e3"
+      ],
+      "which": 1,
+      "id": "n11",
+      "seq": 11,
+      "outs": [
+       "e11"
+      ]
+     },
+     "n10": {
+      "op": "circle",
+      "ins": [
+       "e6",
+       "e9"
+      ],
+      "id": "n10",
+      "seq": 10,
+      "outs": [
+       "e10"
+      ]
+     },
+     "n6.n9": {
+      "id": "n6.n9",
+      "op": "isect",
+      "ins": [
+       "n6.e7",
+       "n6.e8"
+      ],
+      "outs": [
+       "e6"
+      ],
+      "seq": 6.875,
+      "which": 0
+     },
+     "n6.n7": {
+      "id": "n6.n7",
+      "op": "line",
+      "ins": [
+       "n6.e5",
+       "n6.e6"
+      ],
+      "outs": [
+       "n6.e7"
+      ],
+      "seq": 6.625
+     },
+     "n6.n5": {
+      "id": "n6.n5",
+      "op": "isect",
+      "ins": [
+       "n6.e3",
+       "n6.e4"
+      ],
+      "outs": [
+       "n6.e5"
+      ],
+      "seq": 6.375,
+      "which": 1
+     },
+     "n6.n3": {
+      "id": "n6.n3",
+      "op": "circle",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "outs": [
+       "n6.e3"
+      ],
+      "seq": 6.125
+     },
+     "n6.n4": {
+      "id": "n6.n4",
+      "op": "circle",
+      "ins": [
+       "e2",
+       "e1"
+      ],
+      "outs": [
+       "n6.e4"
+      ],
+      "seq": 6.25
+     },
+     "n6.n6": {
+      "id": "n6.n6",
+      "op": "isect",
+      "ins": [
+       "n6.e3",
+       "n6.e4",
+       "n6.e5"
+      ],
+      "outs": [
+       "n6.e6"
+      ],
+      "seq": 6.5
+     },
+     "n6.n8": {
+      "id": "n6.n8",
+      "op": "line",
+      "ins": [
+       "e1",
+       "e2"
+      ],
+      "outs": [
+       "n6.e8"
+      ],
+      "seq": 6.75
+     },
+     "n9": {
+      "op": "isect",
+      "ins": [
+       "e7",
+       "e8"
+      ],
+      "which": 0,
+      "id": "n9",
+      "seq": 9,
+      "outs": [
+       "e9"
+      ]
+     },
+     "n7": {
+      "op": "circle",
+      "ins": [
+       "e2",
+       "e1"
+      ],
+      "id": "n7",
+      "seq": 7,
+      "outs": [
+       "e7"
+      ]
+     },
+     "n8.n12": {
+      "id": "n8.n12",
+      "op": "line",
+      "ins": [
+       "n8.e10",
+       "n8.e11"
+      ],
+      "outs": [
+       "e8"
+      ],
+      "seq": 8.88888888888889
+     },
+     "n8.n10": {
+      "id": "n8.n10",
+      "op": "isect",
+      "ins": [
+       "n8.e8",
+       "n8.e9"
+      ],
+      "outs": [
+       "n8.e10"
+      ],
+      "seq": 8.666666666666666,
+      "which": 1
+     },
+     "n8.n8": {
+      "id": "n8.n8",
+      "op": "circle",
+      "ins": [
+       "n8.e5",
+       "n8.e7"
+      ],
+      "outs": [
+       "n8.e8"
+      ],
+      "seq": 8.444444444444445
+     },
+     "n8.n5": {
+      "id": "n8.n5",
+      "op": "point",
+      "ins": [
+       "e3"
+      ],
+      "outs": [
+       "n8.e5"
+      ],
+      "seq": 8.11111111111111,
+      "t": 0.25
+     },
+     "n8.n7": {
+      "id": "n8.n7",
+      "op": "isect",
+      "ins": [
+       "e3",
+       "n8.e6",
+       "n8.e5"
+      ],
+      "outs": [
+       "n8.e7"
+      ],
+      "seq": 8.333333333333334
+     },
+     "n8.n6": {
+      "id": "n8.n6",
+      "op": "circle",
+      "ins": [
+       "e2",
+       "n8.e5"
+      ],
+      "outs": [
+       "n8.e6"
+      ],
+      "seq": 8.222222222222221
+     },
+     "n8.n9": {
+      "id": "n8.n9",
+      "op": "circle",
+      "ins": [
+       "n8.e7",
+       "n8.e5"
+      ],
+      "outs": [
+       "n8.e9"
+      ],
+      "seq": 8.555555555555555
+     },
+     "n8.n11": {
+      "id": "n8.n11",
+      "op": "isect",
+      "ins": [
+       "n8.e8",
+       "n8.e9",
+       "n8.e10"
+      ],
+      "outs": [
+       "n8.e11"
+      ],
+      "seq": 8.777777777777779
+     }
+    },
+    "elems": {
+     "e3": {
+      "id": "e3",
+      "node": "n3",
+      "kind": "line",
+      "label": "ℓ"
+     },
+     "e1": {
+      "id": "e1",
+      "node": "n1",
+      "kind": "point",
+      "label": "O"
+     },
+     "e2": {
+      "id": "e2",
+      "node": "n2",
+      "kind": "point",
+      "label": "U"
+     },
+     "e11": {
+      "id": "e11",
+      "node": "n11",
+      "kind": "point",
+      "label": ""
+     },
+     "e10": {
+      "id": "e10",
+      "node": "n10",
+      "kind": "circle",
+      "label": ""
+     },
+     "e6": {
+      "id": "e6",
+      "node": "n6.n9",
+      "kind": "point",
+      "label": ""
+     },
+     "n6.e7": {
+      "id": "n6.e7",
+      "node": "n6.n7",
+      "kind": "line",
+      "label": ""
+     },
+     "n6.e5": {
+      "id": "n6.e5",
+      "node": "n6.n5",
+      "kind": "point",
+      "label": ""
+     },
+     "n6.e3": {
+      "id": "n6.e3",
+      "node": "n6.n3",
+      "kind": "circle",
+      "label": ""
+     },
+     "n6.e4": {
+      "id": "n6.e4",
+      "node": "n6.n4",
+      "kind": "circle",
+      "label": ""
+     },
+     "n6.e6": {
+      "id": "n6.e6",
+      "node": "n6.n6",
+      "kind": "point",
+      "label": ""
+     },
+     "n6.e8": {
+      "id": "n6.e8",
+      "node": "n6.n8",
+      "kind": "line",
+      "label": ""
+     },
+     "e9": {
+      "id": "e9",
+      "node": "n9",
+      "kind": "point",
+      "label": ""
+     },
+     "e7": {
+      "id": "e7",
+      "node": "n7",
+      "kind": "circle",
+      "label": ""
+     },
+     "e8": {
+      "id": "e8",
+      "node": "n8.n12",
+      "kind": "line",
+      "label": ""
+     },
+     "n8.e10": {
+      "id": "n8.e10",
+      "node": "n8.n10",
+      "kind": "point",
+      "label": ""
+     },
+     "n8.e8": {
+      "id": "n8.e8",
+      "node": "n8.n8",
+      "kind": "circle",
+      "label": ""
+     },
+     "n8.e5": {
+      "id": "n8.e5",
+      "node": "n8.n5",
+      "kind": "point",
+      "label": ""
+     },
+     "n8.e7": {
+      "id": "n8.e7",
+      "node": "n8.n7",
+      "kind": "point",
+      "label": ""
+     },
+     "n8.e6": {
+      "id": "n8.e6",
+      "node": "n8.n6",
+      "kind": "circle",
+      "label": ""
+     },
+     "n8.e9": {
+      "id": "n8.e9",
+      "node": "n8.n9",
+      "kind": "circle",
+      "label": ""
+     },
+     "n8.e11": {
+      "id": "n8.e11",
+      "node": "n8.n11",
+      "kind": "point",
+      "label": ""
+     }
+    },
+    "seq": 11
+   },
+   "givens": [
+    "e3",
+    "e1",
+    "e2"
+   ],
+   "scaffold": [],
+   "goals": [
+    "e11"
+   ],
+   "elaboration": [],
+   "tier": 2
+  }
+ ]
+}

@@ -1,0 +1,5 @@
+# Lessons are kept as the app downloads them.
+site/lessons/
+node_modules/
+package-lock.json
+tests/*.json
