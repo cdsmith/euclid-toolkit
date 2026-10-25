@@ -19,7 +19,7 @@ account.
 ## About this project
 
 This is an entirely AI-coded project: all of its code was written by AI. I'm not accepting pull
-requests.
+requests, but feel free to open issues.
 
 ## Running it locally
 
