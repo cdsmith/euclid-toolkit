@@ -45,7 +45,9 @@ is in localStorage, and the only outside requests are marked and KaTeX from jsde
 
 - The site is on Firebase Hosting, project `euclid-toolkit`: https://euclid-toolkit.web.app. `firebase.json` serves
   `site/` as it is, with `Cache-Control: no-cache` so a deploy shows up on the next load.
-- Deploy with `npx firebase-tools deploy --only hosting`, logged in to an account with access to the project.
+- CI (`.github/workflows/ci.yml`) runs lint, format checks and every test on each push and pull request, and
+  deploys to Firebase when they pass on `main`, with the `github-deploy` service account (its key is the repo secret
+  `FIREBASE_SERVICE_ACCOUNT`). By hand: `npx firebase-tools deploy --only hosting`.
 
 ## Tests
 

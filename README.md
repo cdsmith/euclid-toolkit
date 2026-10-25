@@ -38,7 +38,7 @@ You'll need Node and Python 3. To set up:
 
 ```
 npm install
-pip install playwright black pyflakes
+pip install -r requirements-dev.txt
 playwright install chromium
 ```
 

@@ -1,0 +1,4 @@
+# Python tools for the tests and formatting (pip install -r requirements-dev.txt).
+playwright==1.55.0
+black==25.9.0
+pyflakes==4.0.3
