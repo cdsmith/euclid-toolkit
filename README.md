@@ -16,6 +16,11 @@ use in the next one.
 Everything runs in the browser and is saved there, in local storage. There's no server and no
 account.
 
+## About this project
+
+This is an entirely AI-coded project: all of its code was written by AI. I'm not accepting pull
+requests.
+
 ## Running it locally
 
 The site is static files in `site/`, with no build step. The page fetches its lessons, so it has to
