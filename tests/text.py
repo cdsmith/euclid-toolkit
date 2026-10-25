@@ -1,7 +1,7 @@
 # A diagram's text: Markdown with TeX, under its title, written in place on a notebook diagram, and
 # carried into a lesson, where its diagrams and problems show theirs (and a problem's hints) the
 # same way.
-from harness import URL, check, run, saved_state, seed, serve_libs, watch
+from harness import URL, check, run, saved_state, seed, serve_libs, settle, watch
 
 APEX_TEXT = (
     'Find $C$, with $AC = AB$.\n\n' '::: Hint\nEach circle goes through the other’s *center*.\n:::'
@@ -73,7 +73,7 @@ async def main(b):
     await pg.goto(URL)
     await pg.evaluate('localStorage.clear()')
     await pg.reload()
-    await pg.wait_for_timeout(300)
+    await settle(pg)
     S = lambda: saved_state(pg)
 
     async def text():
@@ -81,7 +81,7 @@ async def main(b):
 
     # ---- a new diagram has no text, and no Text tool
     await pg.click('[data-act=notebook-new]')
-    await pg.wait_for_timeout(150)
+    await settle(pg)
     check(
         await pg.locator('#titleblock [data-act=write][data-id=text]').inner_text() == 'Add text',
         'a new diagram offers to add text under its title',
@@ -93,12 +93,12 @@ async def main(b):
         'and there is no Text tool',
     )
     await pg.keyboard.press('t')
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     check(await pg.locator('#prompt').is_hidden(), 'T arms nothing')
 
     # ---- writing it
     await pg.click('[data-act=write][data-id=text]')
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     check(
         await pg.evaluate("document.activeElement.id") == 'writeField',
         'Add text opens a field to write in, under the title',
@@ -114,7 +114,7 @@ async def main(b):
         'typing types, without picking tools',
     )
     await pg.keyboard.press('Escape')
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     inner = await pg.locator('#titleblock .tb-text').inner_html()
     check(
         '<strong>Circle</strong>' in inner
@@ -138,14 +138,14 @@ async def main(b):
     )
     # editing it again, finished with Ctrl+Enter; emptying it takes it away
     await pg.click('[data-act=write][data-id=text]')
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     check(
         (await pg.locator('#writeField').input_value()).startswith('**Circle**'),
         'editing starts from the text',
     )
     await pg.fill('#writeField', 'Just $A$.')
     await pg.keyboard.press('Control+Enter')
-    await pg.wait_for_timeout(80)
+    await settle(pg)
     check(
         await text() == 'Just $A$.' and await pg.locator('#titleblock .tb-text math').count() == 1,
         'Ctrl+Enter finishes too',
@@ -158,7 +158,7 @@ async def main(b):
         '::: Warning\nCareful.\n:::\n\nAfter.',
     )
     await pg.keyboard.press('Escape')
-    await pg.wait_for_timeout(80)
+    await settle(pg)
     folds = lambda: pg.evaluate(
         """[...document.querySelectorAll('#titleblock details.fold')].map((d) => [
             d.querySelector('summary').textContent.trim(),
@@ -184,7 +184,7 @@ async def main(b):
     await pg.click('[data-act=write][data-id=text]')
     await pg.fill('#writeField', '  ')
     await pg.keyboard.press('Escape')
-    await pg.wait_for_timeout(80)
+    await settle(pg)
     check(
         await text() is None
         and await pg.locator('#titleblock [data-act=write][data-id=text]').inner_text()
@@ -204,7 +204,7 @@ async def main(b):
     await pg.click('[data-act=write][data-id=subtitle]')
     await pg.keyboard.type('After Euclid I.1')
     await pg.keyboard.press('Enter')
-    await pg.wait_for_timeout(80)
+    await settle(pg)
     check(
         await sub() == 'After Euclid I.1'
         and await pg.locator('#titleblock .tb-subbtn').inner_text() == 'After Euclid I.1',
@@ -213,7 +213,7 @@ async def main(b):
     await pg.click('[data-act=write][data-id=subtitle]')
     await pg.fill('#writeField', '')
     await pg.keyboard.press('Escape')
-    await pg.wait_for_timeout(80)
+    await settle(pg)
     check(
         await sub() is None
         and await pg.locator('#titleblock .tb-subbtn').inner_text() == 'Add subtitle',
@@ -223,7 +223,7 @@ async def main(b):
     await pg.click('[data-act=write][data-id=text]')
     await pg.keyboard.type('Then $B$.')
     await pg.click('[data-act=exercise-mark]')
-    await pg.wait_for_timeout(80)
+    await settle(pg)
     check(
         await text() == 'Then $B$.' and await pg.locator('#defSec').is_visible(),
         'clicking Make exercise while writing keeps the text and makes the exercise: '
@@ -235,10 +235,10 @@ async def main(b):
     # same way
     await seed(pg, state, work)
     await pg.click('[data-act=card-open][data-id=nb1]')
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     await pg.click('[data-act=notebook-export]')
     await pg.click('#exportForm [type=submit]')
-    await pg.wait_for_timeout(150)
+    await settle(pg)
     L = (await S())['lessons'][0]
     check(
         [it.get('text') for it in L['items']]
@@ -250,15 +250,15 @@ async def main(b):
         'the lesson has the texts',
     )
     await pg.click(f"[data-act=card-open][data-id={L['id']}]")
-    await pg.wait_for_timeout(150)
+    await settle(pg)
     await pg.click(f"[data-act=sheet-open][data-id='{L['id']}.dgI']")
-    await pg.wait_for_timeout(150)
+    await settle(pg)
     check(
         '<strong>each</strong>' in await pg.locator('#titleblock .tb-text').inner_html(),
         "the lesson's diagram shows its text",
     )
     await pg.click(f"[data-act=sheet-open][data-id='{L['id']}.dgE']")
-    await pg.wait_for_timeout(150)
+    await settle(pg)
     check(
         await pg.locator('#titleblock .tb-text > p math').count() == 2
         and await pg.locator('[data-act=write]').count() == 0
@@ -266,7 +266,7 @@ async def main(b):
         'the problem shows its subtitle and text, not to be edited',
     )
     await pg.click('#titleblock details.fold summary')
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     check(
         '<em>center</em>' in await pg.locator('.fold-body').inner_html(),
         'and its hint, folded until opened, in Markdown',
@@ -274,7 +274,7 @@ async def main(b):
     st = await pg.locator('#stage').bounding_box()
     await pg.keyboard.press('1')
     await pg.mouse.click(st['x'] + 200, st['y'] + 200)
-    await pg.wait_for_timeout(80)
+    await settle(pg)
     check(
         await pg.locator('#log li').count() == 1
         and await pg.evaluate("document.querySelector('#titleblock details.fold').open"),
@@ -304,7 +304,7 @@ async def main(b):
     await pg2.goto(URL)
     await seed(pg2, plain, work)
     await pg2.click('[data-act=card-open][data-id=nb1]')
-    await pg2.wait_for_timeout(100)
+    await settle(pg2)
     h = await pg2.locator('#titleblock .tb-text').inner_html()
     check(
         h == '<p>Before.</p><details class="fold"><summary>Note &lt;b&gt;</summary>'

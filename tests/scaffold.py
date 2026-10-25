@@ -2,7 +2,7 @@
 # from the givens alone, the scaffold not from a goal. Trying it, the scaffold is there to build on,
 # and the elaboration appears once it's solved.
 import json, math
-from harness import URL, check, run, saved_work, serve_libs, watch, saved_state
+from harness import URL, check, run, saved_state, saved_work, serve_libs, settle, watch
 
 # green pixels on the canvas: solved goals and the elaboration are drawn in --ok
 GREEN = """(() => {
@@ -27,16 +27,16 @@ async def main(b):
     await pg.goto(URL)
     await pg.evaluate('localStorage.clear()')
     await pg.reload()
-    await pg.wait_for_timeout(300)
+    await settle(pg)
     await pg.click('[data-act=notebook-new]')
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     st = await pg.locator('#stage').bounding_box()
     at = lambda q: (st['x'] + q[0], st['y'] + q[1])
 
     async def clicks(*ps):
         for q in ps:
             await pg.mouse.click(*at(q))
-            await pg.wait_for_timeout(40)
+            await settle(pg)
 
     async def S():
 
@@ -64,7 +64,7 @@ async def main(b):
     await pg.keyboard.press('2')
     await clicks(F, A)
     await pg.keyboard.press('Escape')
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     onA, onB, around, onFA = (
         (A[0] - r, A[1]),
         (B[0] + r, B[1]),
@@ -74,7 +74,7 @@ async def main(b):
 
     # ---- making it an exercise
     await pg.click('[data-act=exercise-mark]')
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     names = []
     for k in range(5):
         names.append(
@@ -98,10 +98,10 @@ async def main(b):
     )
     await pg.click('[data-act=def-cancel]')
     await pg.click('[data-act=exercise-mark]')
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     await clicks(A, B)
     await pg.click('[data-act=def-next]')
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     check(
         'scaffold' in (await pg.locator('#prompt').inner_text())
         and 'SCAFFOLD' in (await pg.locator('.def-step b').inner_text()).upper(),
@@ -109,7 +109,7 @@ async def main(b):
     )
     await clicks(onFA)
     await pg.click('[data-act=def-next]')
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     check(
         "isn't built from the givens alone" in await err(),
         'a scaffold not built from the givens is refused: ' + await err(),
@@ -117,7 +117,7 @@ async def main(b):
     await pg.click('[data-act=def-drop][data-id]  >> nth=-1')
     await clicks(onA, onB, around)
     await pg.click('[data-act=def-next]')
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     await clicks(A)
     check(
         (await pg.locator('.toast').last.inner_text()).endswith('is already a given.'),
@@ -125,30 +125,30 @@ async def main(b):
     )
     await clicks(C)
     await pg.click('[data-act=def-next]')
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     check(
         'built from the goal' in await err(),
         'a scaffold built from a goal is refused: ' + await err(),
     )
     await pg.click('[data-act=def-back]')
     await pg.click('[data-act=def-drop][data-id]  >> nth=-1')
-    await pg.wait_for_timeout(30)
+    await settle(pg)
     check(
         await pg.locator('#defSec .chip').count() == 2,
         'back at the scaffold, the circle about C is dropped',
     )
     await pg.click('[data-act=def-next]')
     await pg.click('[data-act=def-next]')
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     check(
         'ELABORATION' in (await pg.locator('.def-step b').inner_text()).upper(),
         'the goal kept, on to the elaboration',
     )
     await clicks(around)
     await pg.click('[data-act=def-next]')
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     await pg.click('[data-act=def-save]')
-    await pg.wait_for_timeout(80)
+    await settle(pg)
     ex = (await S())['exercise']
     check(
         [len(ex[k]) for k in ('givens', 'scaffold', 'goals', 'elaboration')] == [2, 2, 1, 1]
@@ -156,9 +156,9 @@ async def main(b):
         'saved: ' + json.dumps(ex),
     )
     await pg.click('[data-act=exercise-mark]')
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     await pg.click('[data-act=def-next]')
-    await pg.wait_for_timeout(30)
+    await settle(pg)
     check(await pg.locator('#defSec .chip').count() == 2, 'editing it keeps the scaffold')
     await pg.click('[data-act=def-cancel]')
 
@@ -167,7 +167,7 @@ async def main(b):
     doc = await saved_work(pg, dg)
     wA, wB = [doc['nodes'][doc['elems'][e]['node']] for e in ex['givens']]
     await pg.click('[data-act=exercise-try]')
-    await pg.wait_for_timeout(200)
+    await settle(pg)
     t = await pg.locator('#stage').bounding_box()
     W, H = t['width'], t['height']
     R = math.dist((wA['x'], wA['y']), (wB['x'], wB['y']))
@@ -185,7 +185,7 @@ async def main(b):
     await pg.keyboard.press('1')
     await pg.mouse.click(*sC)
     await pg.keyboard.press('Escape')
-    await pg.wait_for_timeout(1000)
+    await pg.wait_for_timeout(800)  # the elaboration fades in
     tb = await pg.locator('#titleblock').inner_text()
     g1 = await pg.evaluate(GREEN)
     check(
@@ -195,10 +195,10 @@ async def main(b):
     check(g1 > 500, 'and the elaboration appears with it: ' + str(g1) + ' green pixels')
     await pg.screenshot(path='scaffold-solved.png')
     await pg.click('[data-act=undo]')
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     check(await pg.evaluate(GREEN) < 30, 'undone, it goes again')
     await pg.click('[data-act=try-end]')
-    await pg.wait_for_timeout(100)
+    await settle(pg)
 
 
 run(main)

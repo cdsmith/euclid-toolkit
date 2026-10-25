@@ -1,7 +1,7 @@
 # A tool keeps the relations its inputs had where it was made (O the center of ω, P on ℓ), says so,
 # and takes only inputs that keep them; a point clicked for P goes on ℓ. Editing it keeps them too.
 import json
-from harness import URL, check, run, saved_state, saved_work, serve_libs, watch
+from harness import URL, check, run, saved_state, saved_work, serve_libs, settle, watch
 
 
 async def main(b):
@@ -11,16 +11,16 @@ async def main(b):
     await pg.goto(URL)
     await pg.evaluate('localStorage.clear()')
     await pg.reload()
-    await pg.wait_for_timeout(300)
+    await settle(pg)
     await pg.click('[data-act=notebook-new]')
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     st = await pg.locator('#stage').bounding_box()
     at = lambda x, y: (st['x'] + x, st['y'] + y)
 
     async def clicks(*ps):
         for q in ps:
             await pg.mouse.click(*at(*q))
-            await pg.wait_for_timeout(40)
+            await settle(pg)
 
     prompt = lambda: pg.locator('#prompt .pt-text').inner_text()
     toast = lambda: pg.locator('.toast').last.inner_text()
@@ -44,7 +44,7 @@ async def main(b):
     await pg.click('[data-act=def-next]')
     await clicks((400, 350))
     await pg.click('[data-act=def-next]')
-    await pg.wait_for_timeout(80)
+    await settle(pg)
     notes = await pg.locator('#defSec .rel').all_inner_texts()
     check(
         notes == ['B is the center of ω₁.', 'E is on ℓ₁.']
@@ -55,7 +55,7 @@ async def main(b):
     )
     await pg.fill('#toolName', 'Mark')
     await pg.click('[data-act=def-save]')
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     t = next(x for x in (await S())['tools'] if x['name'] == 'Mark')
     check(
         [x.get('on', []) for x in t['ins']] == [[], [], [], [2]]
@@ -63,7 +63,7 @@ async def main(b):
         'it keeps them: ' + json.dumps(t['ins']),
     )
     await pg.click(f'[data-act=tool-more][data-id="{t["id"]}"]')
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     rel = await pg.locator('.tdetail .recipe li.rel').all_inner_texts()
     check(
         len(rel) == 2 and 'center of' in rel[0] and ' is on ' in rel[1],
@@ -73,7 +73,7 @@ async def main(b):
 
     # ---- using it on a new diagram
     await pg.click('[data-act=diagram-new]')
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     F = (450, 380)
     await pg.keyboard.press('1')
     await clicks(O, R, A, B, F)
@@ -83,7 +83,7 @@ async def main(b):
     await clicks(A, B)
     await pg.keyboard.press('Escape')
     await pg.keyboard.press('5')
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     check(
         (await prompt()).startswith('Pick circle '), 'first it asks for a circle: ' + await prompt()
     )
@@ -128,16 +128,16 @@ async def main(b):
     # ---- editing it keeps them
     await pg.click(f'[data-act=tool-more][data-id="{t["id"]}"]')
     await pg.click(f'[data-act=tool-edit][data-id="{t["id"]}"]')
-    await pg.wait_for_timeout(150)
+    await settle(pg)
     await pg.click('[data-act=edit-save]')
-    await pg.wait_for_timeout(80)
+    await settle(pg)
     notes = await pg.locator('#defSec .rel').all_inner_texts()
     check(
         len(notes) == 2 and 'center of' in notes[0] and ' is on ' in notes[1],
         'on its edit sheet, the inputs keep their relations: ' + str(notes),
     )
     await pg.click('[data-act=def-save]')
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     check(
         (await toast()).startswith('Updated “Mark”'),
         'and it saves back as itself: ' + await toast(),

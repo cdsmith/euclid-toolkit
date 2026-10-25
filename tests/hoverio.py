@@ -1,12 +1,12 @@
 # Pointing at a row in the construction list highlights what it takes as well as what it makes, in
 # another color.
-from harness import check, open_page, run
+from harness import check, open_page, run, settle
 
 
 async def main(b):
     pg = await open_page(b)
     await pg.click('[data-act=notebook-new]')
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     st = await pg.locator('#stage').bounding_box()
     x, y = st['x'] + st['width'] / 2, st['y'] + st['height'] / 2
     A, B = (x - 80, y), (x + 80, y)
@@ -17,7 +17,7 @@ async def main(b):
     await pg.mouse.click(*A)
     await pg.mouse.click(*B)
     await pg.keyboard.press('Escape')
-    await pg.wait_for_timeout(80)
+    await settle(pg)
     row = pg.locator('#log li >> nth=2')
     check(
         await row.get_attribute('data-in')
@@ -39,7 +39,7 @@ async def main(b):
     )
     before = await px(A)
     await row.hover()
-    await pg.wait_for_timeout(80)
+    await settle(pg)
     a, bb = await px(A), await px(B)
     blueish = lambda c: c[2] > c[0] + 20
     check(

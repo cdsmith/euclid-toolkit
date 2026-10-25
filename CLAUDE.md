@@ -29,7 +29,10 @@ is in localStorage, and the only outside requests are marked and KaTeX from jsde
   `tests/engine.js`, which loads the lessons from `site/lessons/`.
 - `tests/*.py`: browser suites (Playwright, headless Chromium), one file each, built on `tests/harness.py`:
   `run(main)`, `check()`, `open_page()` (a fresh page on a local `serve.py` server, with marked and KaTeX served
-  from `node_modules`), `seed()` and `saved_state()`. Suites write their screenshots and files in `tests/`.
+  from `node_modules`), `seed()`, `saved_state()` and `settle()`. Suites write their screenshots and files in
+  `tests/`.
+- After input, wait with `settle()` (the app has started, and two frames have passed), not a fixed time: the app
+  responds to input at once. Wait a fixed time only for what's timed (a fade, a toast going away).
 - `tests/solvedwork.js` + `tests/revealshot.py`: screenshots of solved problems (to look at elaborations).
 
 ## Setup

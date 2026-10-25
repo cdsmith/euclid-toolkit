@@ -1,5 +1,5 @@
 import os, json
-from harness import URL, check, run, saved_state, seed, watch
+from harness import URL, check, run, saved_state, seed, settle, watch
 
 
 def equilateral(ax=-70):
@@ -88,12 +88,12 @@ async def main(b):
     await seed(pg, state, work)
     S = lambda: saved_state(pg)
     await pg.click('[data-act=card-open][data-id=nb1]')
-    await pg.wait_for_timeout(150)
+    await settle(pg)
     check(
         await pg.locator('.diagram-row .ex-mark').count() == 2, 'two exercise diagrams are marked'
     )
     await pg.click('[data-act=notebook-export]')
-    await pg.wait_for_timeout(80)
+    await settle(pg)
     form = await pg.locator('#exportForm').inner_text()
     check(
         'with 2 problems, 1 other diagram and 3 tools' in form
@@ -103,7 +103,7 @@ async def main(b):
     await pg.fill('#lessonBlurb', 'Two warm-ups.')
     await pg.locator('.card.is-open').screenshot(path='lesson-form.png')
     await pg.click('#exportForm [type=submit]')
-    await pg.wait_for_timeout(150)
+    await settle(pg)
     s = await S()
     L = s['lessons'][0] if s['lessons'] else {}
     check(
@@ -133,7 +133,7 @@ async def main(b):
     check('Made the lesson “Basics”' in await pg.locator('.toast').inner_text(), 'toast')
     # the lesson
     await pg.click(f"[data-act=card-open][data-id={L['id']}]")
-    await pg.wait_for_timeout(150)
+    await settle(pg)
     card = await pg.locator('.card.is-open').inner_text()
     check(
         'TRIANGLES' in card.upper()
@@ -156,7 +156,7 @@ async def main(b):
         'its toolbox: ' + str(await pg.locator('.tname').all_inner_texts()),
     )
     await pg.click(f"[data-act=tool-more][data-id='{L['tools'][0]['id']}']")
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     check(
         await pg.locator('[data-act=tool-edit]').count() == 0
         and await pg.locator('[data-act=tool-remove]').count() == 1,
@@ -181,15 +181,15 @@ async def main(b):
           }"""
     )
     await pg.reload()
-    await pg.wait_for_timeout(300)
+    await settle(pg)
     await pg.click('[data-act=card-open][data-id=nb1]')
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     await pg.click('.diagram-row [data-act=sheet-open][data-id=dgW]')
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     await pg.click('[data-act=write][data-id=text]')
     await pg.fill('#writeField', 'Find the apex $C$.')
     await pg.keyboard.press('Escape')
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     await pg.evaluate(
         """() => {
             const k = 'euclid-toolkit:work:dgE',
@@ -200,7 +200,7 @@ async def main(b):
     )
     await pg.click('[data-act=notebook-export]')
     await pg.click('#exportForm [type=submit]')
-    await pg.wait_for_timeout(150)
+    await settle(pg)
     s = await S()
     check(
         s['solved'] == {L['id'] + '.dgW': True}
@@ -211,11 +211,11 @@ async def main(b):
     )
     # a broken exercise stops the export
     await pg.click('.diagram-row [data-act=sheet-open][data-id=dgE]')
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     await pg.locator('#log li >> nth=-1 >> [data-act=row-del]').click()
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     await pg.click('[data-act=notebook-export]')
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     check(
         'Equilateral needs fixing' in await pg.locator('#exportForm').inner_text()
         and await pg.locator('#exportForm [type=submit]').is_disabled(),
@@ -223,10 +223,10 @@ async def main(b):
     )
     await pg.click('[data-act=form-cancel]')
     await pg.click('[data-act=undo]')
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     # download, delete, import
     await pg.click(f"[data-act=card-open][data-id={L['id']}]")
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     async with pg.expect_download() as dl:
         await pg.click('[data-act=lesson-download]')
     d = await dl.value
@@ -238,7 +238,7 @@ async def main(b):
     )
     await pg.click('[data-act=lesson-delete]')
     await pg.click('[data-act=confirm-yes]')
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     s = await S()
     check(
         s['lessons'] == []
@@ -249,7 +249,7 @@ async def main(b):
     bad = os.path.abspath('bad-lesson.json')
     json.dump({'id': 'x', 'title': 'Nope'}, open(bad, 'w'))
     await pg.set_input_files('#lessonFile', bad)
-    await pg.wait_for_timeout(150)
+    await settle(pg)
     check(
         "isn't a lesson" in await pg.locator('.toast').inner_text(),
         'a file that is not a lesson is refused',
@@ -258,7 +258,7 @@ async def main(b):
     broken['items'][0]['goals'] = ['e99']
     json.dump(broken, open(bad, 'w'))
     await pg.set_input_files('#lessonFile', bad)
-    await pg.wait_for_timeout(150)
+    await settle(pg)
     check(
         "isn't a lesson" in await pg.locator('.toast').inner_text()
         and (await S())['lessons'] == [],
@@ -269,16 +269,16 @@ async def main(b):
     clash['toolbox'][2] = 'tSame'
     json.dump(clash, open(bad, 'w'))
     await pg.set_input_files('#lessonFile', bad)
-    await pg.wait_for_timeout(150)
+    await settle(pg)
     check((await S())['lessons'] == [], "nor one whose tool would take the place of one of yours")
     clash = json.load(open(path))
     clash['items'][0]['id'] = 'dgS'
     json.dump(clash, open(bad, 'w'))
     await pg.set_input_files('#lessonFile', bad)
-    await pg.wait_for_timeout(150)
+    await settle(pg)
     check((await S())['lessons'] == [], "nor one whose problem has a diagram's id")
     await pg.set_input_files('#lessonFile', path)
-    await pg.wait_for_timeout(200)
+    await settle(pg)
     s = await S()
     check(
         len(s['lessons']) == 1

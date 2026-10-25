@@ -2,7 +2,7 @@
 # from it: a given circle about O keeps its radius, and Rotate's ℓ through O keeps its direction. A
 # visible point stays put.
 import json, subprocess, math
-from harness import check, open_page, run, saved_state, saved_work
+from harness import check, open_page, run, saved_state, saved_work, settle
 
 
 def at(n):
@@ -12,11 +12,11 @@ def at(n):
 async def main(b):
     pg = await open_page(b)
     await pg.click('[data-act=card-open][data-id=straightedge]')
-    await pg.wait_for_timeout(150)
+    await settle(pg)
 
     async def drag_on(pid, frm, to):
         await pg.click(f".card.is-open [data-act=sheet-open][data-id='{pid}']")
-        await pg.wait_for_timeout(200)
+        await settle(pg)
         f = json.loads(
             subprocess.run(['node', 'fit.js', pid], capture_output=True, text=True).stdout
         )
@@ -34,7 +34,7 @@ async def main(b):
                 *S((frm[0] + (to[0] - frm[0]) * k / 10, frm[1] + (to[1] - frm[1]) * k / 10))
             )
         await pg.mouse.up()
-        await pg.wait_for_timeout(100)
+        await settle(pg)
         return await saved_work(pg, pid)
 
     # Parallel: ω is about O, through a hidden point
@@ -48,7 +48,7 @@ async def main(b):
     )
     # Rotate: ℓ goes through O and a hidden point, and keeps its direction
     await pg.click(".card.is-open [data-act=sheet-open][data-id='straightedge.rotate']")
-    await pg.wait_for_timeout(200)
+    await settle(pg)
     d = await drag_on('straightedge.rotate', (-170, -110), (-130, -150))
     ln = next(
         n
@@ -64,7 +64,7 @@ async def main(b):
     )
     # Undo puts both back
     await pg.keyboard.press('Control+z')
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     d = json.loads(
         await pg.evaluate("localStorage.getItem('euclid-toolkit:work:straightedge.rotate')")
     )['doc']
@@ -72,7 +72,7 @@ async def main(b):
     check(at(o) == (-170, -110) and at(h) == (-185, -62), 'Undo puts O and the hidden point back')
     # A circle through a visible point changes size: the point stays put
     await pg.click('[data-act=notebook-new]')
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     st = await pg.locator('#stage').bounding_box()
     q = lambda x, y: (st['x'] + x, st['y'] + y)
     await pg.keyboard.press('1')
@@ -93,7 +93,7 @@ async def main(b):
     await pg.mouse.down()
     await pg.mouse.move(*q(330, 320), steps=5)
     await pg.mouse.up()
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     after = pts(await doc())
     check(
         after[1] == before[1] and after[0] != before[0],

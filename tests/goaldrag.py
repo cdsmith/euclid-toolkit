@@ -3,15 +3,15 @@
 # around, so the crossing picked by index moves to the other end of the diameter. Afterwards the
 # saved construction is as it was, apart from where Y is.
 import json, subprocess, math
-from harness import check, open_page, run
+from harness import check, open_page, run, settle
 
 
 async def main(b):
     pg = await open_page(b)
     await pg.click('[data-act=card-open][data-id=straightedge]')
-    await pg.wait_for_timeout(150)
+    await settle(pg)
     await pg.click(".card.is-open [data-act=sheet-open][data-id='straightedge.copy']")
-    await pg.wait_for_timeout(200)
+    await settle(pg)
     f = json.loads(
         subprocess.run(
             ['node', 'fit.js', 'straightedge.copy'], capture_output=True, text=True
@@ -39,7 +39,7 @@ async def main(b):
     async def clicks(*ps):
         for q in ps:
             await pg.mouse.click(*S(q))
-            await pg.wait_for_timeout(40)
+            await settle(pg)
 
     await pg.click('[data-act=tool-use][data-id=point]')
     await clicks(Y)
@@ -52,7 +52,7 @@ async def main(b):
     await pg.click('[data-act=tool-use][data-id=point]')
     await clicks(V)
     await pg.keyboard.press('Escape')
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     work = lambda: pg.evaluate(
         'JSON.parse(localStorage.getItem("euclid-toolkit:work:straightedge.copy")).doc'
     )
@@ -68,7 +68,7 @@ async def main(b):
         a = a0 + k * math.pi / 180
         await pg.mouse.move(*S((A[0] + r0 * math.cos(a), A[1] + r0 * math.sin(a))))
     await pg.mouse.up()
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     after = await work()
     yid = next(
         n['id']

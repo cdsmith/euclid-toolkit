@@ -1,11 +1,11 @@
 # Duplicating a diagram copies its construction, the one you're on or another.
-from harness import check, open_page, run
+from harness import check, open_page, run, settle
 
 
 async def main(b):
     pg = await open_page(b)
     await pg.click('[data-act=notebook-new]')
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     st = await pg.locator('#stage').bounding_box()
     await pg.click('[data-act=tool-use][data-id=point]')
     await pg.mouse.click(st['x'] + 300, st['y'] + 300)
@@ -19,7 +19,7 @@ async def main(b):
     log = lambda: pg.locator('#log').inner_text()
     before = await log()
     await pg.click('.diagram-row >> nth=0 >> [data-act=diagram-duplicate]')
-    await pg.wait_for_timeout(150)
+    await settle(pg)
     check(
         await rows() == ['Diagram 1', 'Diagram 1 (copy)']
         and await pg.locator('.tb-title h1').inner_text() == 'Diagram 1 (copy)'
@@ -33,13 +33,13 @@ async def main(b):
     await pg.mouse.click(st['x'] + 400, st['y'] + 300)
     await pg.keyboard.press('Escape')
     await pg.click('.diagrams .item >> nth=0')
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     check(await log() == before, 'changing the copy leaves the original as it was')
     # duplicate a diagram you're not on
     await pg.click('.diagrams .item >> nth=1')
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     await pg.click('.diagram-row >> nth=0 >> [data-act=diagram-duplicate]')
-    await pg.wait_for_timeout(150)
+    await settle(pg)
     check(
         await rows() == ['Diagram 1', 'Diagram 1 (copy)', 'Diagram 1 (copy)']
         and await log() == before,

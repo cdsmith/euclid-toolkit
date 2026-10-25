@@ -2,7 +2,7 @@
 # their text, tools (hidden ones hidden), all under new ids; the setup behind givens comes in
 # hidden. It exports again.
 import os, json
-from harness import URL, check, run, saved_state, saved_work, serve_libs, watch
+from harness import URL, check, run, saved_state, saved_work, serve_libs, settle, watch
 
 
 async def main(b):
@@ -12,14 +12,14 @@ async def main(b):
     await pg.goto(URL)
     await pg.evaluate('localStorage.clear()')
     await pg.reload()
-    await pg.wait_for_timeout(300)
+    await settle(pg)
     S = lambda: saved_state(pg)
     work = lambda i: saved_work(pg, i)
     toast = lambda: pg.locator('.toast').last.inner_text()
 
     # ---- Straightedge Only, downloaded, opened as a notebook
     await pg.click('[data-act=card-open][data-id=straightedge]')
-    await pg.wait_for_timeout(150)
+    await settle(pg)
     async with pg.expect_download() as dl:
         await pg.click('[data-act=lesson-download]')
     d = await dl.value
@@ -27,7 +27,7 @@ async def main(b):
     await d.save_as(path)
     L = json.load(open(path))
     await pg.set_input_files('#notebookFile', path)
-    await pg.wait_for_timeout(300)
+    await settle(pg)
     s = await S()
     nb = s['notebooks'][0] if s['notebooks'] else {}
     secs = [q['name'] for q in nb.get('diagrams', []) if q.get('section')]
@@ -73,7 +73,7 @@ async def main(b):
     check(len(g['nodes']) == len(it['diagram']['nodes']), 'the exercise has its solution')
     # it exports again
     await pg.click('[data-act=notebook-export]')
-    await pg.wait_for_timeout(80)
+    await settle(pg)
     form = await pg.locator('#exportForm').inner_text()
     check(
         not await pg.locator('#exportForm [type=submit]').is_disabled()
@@ -81,7 +81,7 @@ async def main(b):
         'every exercise is sound, so it exports: ' + form.split('\n')[0],
     )
     await pg.click('#exportForm [type=submit]')
-    await pg.wait_for_timeout(200)
+    await settle(pg)
     s = await S()
     check(
         len(s['lessons']) == 1
@@ -92,7 +92,7 @@ async def main(b):
 
     # ---- a lesson with tools: the one Midpoint uses comes in out of sight
     await pg.set_input_files('#notebookFile', os.path.abspath('deps-lesson.json'))
-    await pg.wait_for_timeout(300)
+    await settle(pg)
     s = await S()
     nb = s['notebooks'][-1]
     DL = json.load(open('deps-lesson.json'))
@@ -121,7 +121,7 @@ async def main(b):
     json.dump({'id': 'x', 'title': 'Nope'}, open(bad, 'w'))
     n0 = len((await S())['notebooks'])
     await pg.set_input_files('#notebookFile', bad)
-    await pg.wait_for_timeout(150)
+    await settle(pg)
     check(
         await toast() == "That file isn't a lesson." and len((await S())['notebooks']) == n0,
         'a file that is not a lesson is refused, and nothing changes',

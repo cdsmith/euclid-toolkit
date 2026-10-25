@@ -1,7 +1,7 @@
 # Tools that use other tools: they keep the use, and wherever they go (imported, or into a lesson),
 # the tools they use come along out of sight. A tool can't be used in itself.
 import os, json, copy
-from harness import URL, check, import_groups, run, saved_state, seed, serve_libs, watch
+from harness import URL, check, import_groups, run, saved_state, seed, serve_libs, settle, watch
 
 pb, mid = json.load(
     open('deps-tools.json')
@@ -72,13 +72,13 @@ async def main(b):
 
     # ---- Alpha: Midpoint works, though the bisector it uses isn't shown
     await pg.click('[data-act=card-open][data-id=nb1]')
-    await pg.wait_for_timeout(150)
+    await settle(pg)
     check(
         await tools() == ['Point', 'Line', 'Circle', 'Midpoint'],
         'Alpha shows Midpoint only: ' + str(await tools()),
     )
     await pg.click('[data-act=tool-more][data-id=tMid]')
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     recipe = await pg.locator('.tdetail .recipe').inner_text()
     check(
         'Perpendicular bisector(' in recipe,
@@ -88,16 +88,16 @@ async def main(b):
 
     # ---- Beta: importing Midpoint brings the bisector along, out of sight
     await pg.click('[data-act=card-open][data-id=nb2]')
-    await pg.wait_for_timeout(150)
+    await settle(pg)
     await pg.click('[data-act=tool-import]')
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     g = await groups()
     check(
         'Alpha: Midpoint' in g and 'Gamma: Perpendicular bisector' in g,
         'Alpha offers Midpoint, Gamma its bisector: ' + str(g),
     )
     await pg.click('[data-act=tool-import-pick][data-id=tMid]')
-    await pg.wait_for_timeout(80)
+    await settle(pg)
     s = await S()
     mine = [t for t in s['tools'] if t['box'] == 'nb2']
     mc = next((t for t in mine if t['name'] == 'Midpoint'), None)
@@ -117,12 +117,12 @@ async def main(b):
     await pg.keyboard.press('4')
     await pg.mouse.click(*at(300, 300))
     await pg.mouse.click(*at(500, 300))
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     r = await rows()
     check(any(x.startswith('Midpoint(') for x in r), 'and it works there: ' + str(r))
     await pg.keyboard.press('Escape')
     await pg.locator('#log li:not(.inside) >> nth=2 >> [data-act=row-detail]').click()
-    await pg.wait_for_timeout(80)
+    await settle(pg)
     inner = await pg.locator('#log li.inside .txt').all_inner_texts()
     check(
         len(inner) == 3 and inner[0].startswith('ℓ₁: Perpendicular bisector('),
@@ -143,7 +143,7 @@ async def main(b):
         + str(await modes()),
     )
     await step(0, 'detail').click()
-    await pg.wait_for_timeout(80)
+    await settle(pg)
     inner = await pg.locator('#log li.inside .txt').all_inner_texts()
     deep = await pg.evaluate(
         """[...document.querySelectorAll('#log li.inside')].map((li) =>
@@ -160,14 +160,14 @@ async def main(b):
     check((await modes())[0] == 'detail+', 'and its detail button shows it open')
     await pg.screenshot(path='deps-inside.png')
     await step(1, 'hide').click()
-    await pg.wait_for_timeout(80)
+    await settle(pg)
     check(
         (await modes())[1] == 'hide'
         and 'is-hidden' in await pg.locator('#log li.inside >> nth=1').get_attribute('class'),
         'a step can be hidden',
     )
     await step(0, 'hide').click()
-    await pg.wait_for_timeout(80)
+    await settle(pg)
     check(await modes() == ['hide+', 'show', 'show'], 'hiding the bisector step closes it')
     s2 = await S()
     w = await pg.evaluate(
@@ -178,7 +178,7 @@ async def main(b):
     )
     check('"open"' not in w and 'step' not in json.dumps(s2), "none of that is saved")
     await pg.keyboard.press('Control+z')
-    await pg.wait_for_timeout(80)
+    await settle(pg)
     check(
         await pg.locator('#log li.inside').count() == 0,
         "or undone: Undo takes back the use's own detail",
@@ -186,14 +186,14 @@ async def main(b):
 
     # ---- importing the bisector too shows the copy that's there, rather than copying it again
     await pg.click('[data-act=tool-import]')
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     g = await groups()
     check(
         not any(x.startswith('Alpha') for x in g),
         "a tool built the same way as one that's shown isn't offered: " + str(g),
     )
     await pg.click('[data-act=tool-import-pick][data-id=tPBg]')
-    await pg.wait_for_timeout(80)
+    await settle(pg)
     s = await S()
     check(
         len([t for t in s['tools'] if t['box'] == 'nb2']) == 2
@@ -205,7 +205,7 @@ async def main(b):
     # ---- a tool can't be used in itself, directly or not
     await pg.click(f'[data-act=tool-more][data-id="{mc["id"]}"]')
     await pg.click(f'[data-act=tool-edit][data-id="{mc["id"]}"]')
-    await pg.wait_for_timeout(150)
+    await settle(pg)
     t = await tools()
     check(
         'Midpoint' not in t and 'Perpendicular bisector' in t,
@@ -217,16 +217,16 @@ async def main(b):
         'and its construction keeps the bisector as one step: ' + str(r),
     )
     await pg.click('[data-act=edit-cancel]')
-    await pg.wait_for_timeout(150)
+    await settle(pg)
 
     # ---- into a lesson: the bisector comes along, out of sight
     await pg.click('[data-act=card-open][data-id=nb1]')
-    await pg.wait_for_timeout(150)
+    await settle(pg)
     await pg.click('[data-act=notebook-export]')
-    await pg.wait_for_timeout(80)
+    await settle(pg)
     await pg.fill('#lessonBlurb', 'One.')
     await pg.click('#exportForm [type=submit]')
-    await pg.wait_for_timeout(150)
+    await settle(pg)
     s = await S()
     L = s['lessons'][0]
     lt = {t['name']: t for t in L['tools']}
@@ -241,9 +241,9 @@ async def main(b):
         "the lesson's Midpoint uses the lesson's bisector",
     )
     await pg.click(f"[data-act=card-open][data-id={L['id']}]")
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     await pg.click(f"[data-act=sheet-open][data-id='{L['id']}.dgW']")
-    await pg.wait_for_timeout(150)
+    await settle(pg)
     check(
         await tools() == ['Point', 'Line', 'Circle', 'Midpoint'],
         "the lesson's problem shows Midpoint only: " + str(await tools()),
@@ -256,29 +256,29 @@ async def main(b):
     await d.save_as(path)
     await pg.click('[data-act=lesson-delete]')
     await pg.click('[data-act=confirm-yes]')
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     bad = os.path.abspath('deps-bad.json')
     swapped = json.load(open(path))
     swapped['tools'].reverse()
     json.dump(swapped, open(bad, 'w'))
     await pg.set_input_files('#lessonFile', bad)
-    await pg.wait_for_timeout(150)
+    await settle(pg)
     check((await S())['lessons'] == [], 'a lesson whose tool uses one listed after it is refused')
     missing = json.load(open(path))
     missing['tools'] = missing['tools'][1:]
     json.dump(missing, open(bad, 'w'))
     await pg.set_input_files('#lessonFile', bad)
-    await pg.wait_for_timeout(150)
+    await settle(pg)
     check((await S())['lessons'] == [], 'and one whose tool uses one it lacks')
     await pg.set_input_files('#lessonFile', path)
-    await pg.wait_for_timeout(200)
+    await settle(pg)
     s = await S()
     check(
         len(s['lessons']) == 1 and len(s['lessons'][0]['tools']) == 2,
         'the downloaded lesson imports',
     )
     await pg.click(f"[data-act=sheet-open][data-id='{L['id']}.dgW']")
-    await pg.wait_for_timeout(150)
+    await settle(pg)
     await pg.click(f'[data-act=tool-use][data-id="{lt["Midpoint"]["id"]}"]')
     check(
         await pg.locator('#prompt').is_visible(), "the imported lesson's Midpoint can be picked up"

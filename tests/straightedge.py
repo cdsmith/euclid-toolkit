@@ -1,5 +1,5 @@
 import json, subprocess
-from harness import check, open_page, run
+from harness import check, open_page, run, settle
 
 
 def cross(p1, p2, q1, q2):
@@ -23,7 +23,7 @@ async def main(b):
         'the lessons: ' + str(names),
     )
     await pg.click('[data-act=card-open][data-id=straightedge]')
-    await pg.wait_for_timeout(150)
+    await settle(pg)
     heads = [h.strip() for h in await pg.locator('.card.is-open .tier h4').all_text_contents()]
     check(
         heads == ['ILines Alone', 'IIOne Circle', 'IIITransformations', 'IVThe Missing Compass']
@@ -38,7 +38,7 @@ async def main(b):
     )
     await pg.screenshot(path='straightedge-trapezoid.png')
     await pg.click('[data-act=next]')
-    await pg.wait_for_timeout(150)
+    await settle(pg)
     check(
         await pg.locator('#tools .tname').all_inner_texts() == ['Point', 'Line'],
         'its toolbox is Point and Line',
@@ -49,7 +49,7 @@ async def main(b):
     )
     # Midpoint from a Parallel, by hand
     await pg.click(".card.is-open [data-act=sheet-open][data-id='straightedge.midpoint-parallel']")
-    await pg.wait_for_timeout(150)
+    await settle(pg)
     f = json.loads(
         subprocess.run(
             ['node', 'fit.js', 'straightedge.midpoint-parallel'], capture_output=True, text=True
@@ -72,14 +72,14 @@ async def main(b):
     async def clicks(*ps):
         for q in ps:
             await pg.mouse.click(*S(q))
-            await pg.wait_for_timeout(40)
+            await settle(pg)
 
     await pg.click('[data-act=tool-use][data-id=line]')
     await clicks(Sp, A, Sp, B, A, B2, A2, B, Sp, X, A, B)
     await pg.click('[data-act=tool-use][data-id=point]')
     await clicks(M)
     await pg.keyboard.press('Escape')
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     check(
         'SOLVED' in await pg.locator('#titleblock').inner_text(),
         'Midpoint from a Parallel solved by hand: '
@@ -88,7 +88,7 @@ async def main(b):
     )
     await pg.screenshot(path='straightedge-midpoint.png')
     await pg.click(".card.is-open [data-act=sheet-open][data-id='straightedge.line-circle']")
-    await pg.wait_for_timeout(150)
+    await settle(pg)
     check('isn’t drawn' in await pg.locator('#titleblock').inner_text(), 'Line Meets Circle opens')
     await pg.screenshot(path='straightedge-last.png')
 

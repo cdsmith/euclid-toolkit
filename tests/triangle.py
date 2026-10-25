@@ -1,4 +1,4 @@
-from harness import check, open_page, run
+from harness import check, open_page, run, settle
 
 
 def foot(p, a, b):
@@ -21,7 +21,7 @@ async def main(b):
         'it comes second among the lessons: ' + str(names),
     )
     await pg.click('[data-act=card-open][data-id=triangle]')
-    await pg.wait_for_timeout(150)
+    await settle(pg)
     heads = [h.strip() for h in await pg.locator('.card.is-open .tier h4').all_text_contents()]
     check(
         heads == ['IThe Four Centers', 'IILines and Circles', 'IIIMore Centers']
@@ -35,7 +35,7 @@ async def main(b):
     )
     # Orthocenter, by hand: two altitudes with Perpendicular, and a point where they cross
     await pg.click('.card.is-open [data-act=sheet-open] >> nth=3')
-    await pg.wait_for_timeout(150)
+    await settle(pg)
     st = await pg.locator('#stage').bounding_box()
     W, H = st['width'], st['height']
     s = min((W - 40) / (200 * 1.75), (H - 70) / (180 * 1.75))
@@ -46,7 +46,7 @@ async def main(b):
     async def clicks(*ps):
         for q in ps:
             await pg.mouse.click(*S(q))
-            await pg.wait_for_timeout(40)
+            await settle(pg)
 
     await pg.click('[data-act=tool-use][data-id=line]')
     await clicks(B, C, C, A)
@@ -56,18 +56,18 @@ async def main(b):
     await pg.click('[data-act=tool-use][data-id=point]')
     await clicks(Hh)
     await pg.keyboard.press('Escape')
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     check(
         'SOLVED' in await pg.locator('#titleblock').inner_text(),
         'Orthocenter solved by hand: ' + str(await pg.locator('#log li').all_inner_texts()),
     )
     await pg.click('[data-act=solution-save]')
     await pg.click('[data-act=def-save]')
-    await pg.wait_for_timeout(80)
+    await settle(pg)
     check('Orthocenter' in await pg.locator('.tname').all_inner_texts(), 'and earns Orthocenter')
     await pg.screenshot(path='triangle-ortho.png')
     await pg.click('.card.is-open [data-act=sheet-open] >> nth=10')
-    await pg.wait_for_timeout(150)
+    await settle(pg)
     await pg.screenshot(path='triangle-feuerbach.png')
     check('Feuerbach' in await pg.locator('#titleblock').inner_text(), 'the last problem opens')
 

@@ -28,6 +28,13 @@ def check(ok, message):
         fails.append(message)
 
 
+async def settle(page):
+    """Waits for the app to have started (it fetches its lessons first), then for two frames: what
+    it does on input is done by then, and drawn."""
+    await page.wait_for_function("document.querySelector('#home').childElementCount > 0")
+    await page.evaluate('new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)))')
+
+
 def watch(page):
     """Keeps the errors thrown on a page, to fail the suite."""
     page.on('pageerror', lambda e: errors.append(str(e)))
@@ -50,7 +57,7 @@ async def open_page(browser, width=1440, height=900, fresh=True, **options):
     if fresh:
         await page.evaluate('localStorage.clear()')
         await page.reload()
-    await page.wait_for_timeout(300)
+    await settle(page)
     return page
 
 
@@ -68,7 +75,7 @@ async def seed(page, state, work=None):
         [state, work or {}],
     )
     await page.reload()
-    await page.wait_for_timeout(300)
+    await settle(page)
 
 
 async def saved_state(page):

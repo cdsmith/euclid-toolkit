@@ -1,12 +1,12 @@
 from reorder import drag
-from harness import check, open_page, run
+from harness import check, open_page, run, settle
 
 
 async def main(b):
     pg = await open_page(b)
     await pg.click('[data-act=notebook-new]')
     await pg.click('[data-act=diagram-new]')
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     rows = lambda: pg.evaluate(
         """[...document.querySelectorAll('.diagrams > li')].map((li) =>
             li.classList.contains('section-row')
@@ -16,7 +16,7 @@ async def main(b):
     )
     await pg.click('[data-act=section-new]')
     await pg.click('[data-act=section-new]')
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     check(
         await rows() == ['Diagram 1', 'Diagram 2', '# Section 1', '# Section 2'],
         'two headings at the end: ' + str(await rows()),
@@ -38,20 +38,20 @@ async def main(b):
     await pg.click('[data-act=section-rename] >> nth=1')
     await pg.fill('#nameInput', 'Circles')
     await pg.keyboard.press('Enter')
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     check(
         await rows() == ['# Section 1', 'Diagram 1', '# Circles', 'Diagram 2'],
         'renamed: ' + str(await rows()),
     )
     await pg.click('[data-act=section-delete] >> nth=0')
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     check(
         await rows() == ['Diagram 1', '# Circles', 'Diagram 2'],
         'deleted a heading, its diagram stays: ' + str(await rows()),
     )
     await pg.click('[data-act=diagram-delete] >> nth=1')
     await pg.click('[data-act=confirm-yes]')
-    await pg.wait_for_timeout(80)
+    await settle(pg)
     check(
         await rows() == ['Diagram 1', '# Circles']
         and await pg.locator('.tb-title h1').inner_text() == 'Diagram 1',
@@ -62,9 +62,9 @@ async def main(b):
         "the only diagram can't be deleted, headings aside",
     )
     await pg.reload()
-    await pg.wait_for_timeout(300)
+    await settle(pg)
     await pg.click('[data-act=card-open] >> nth=0')
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     check(await rows() == ['Diagram 1', '# Circles'], 'kept after reload')
     await pg.locator('.card.is-open').screenshot(path='sections.png')
 

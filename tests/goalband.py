@@ -1,7 +1,7 @@
 # The goal is a soft band, and nothing else. On Parallel Line, with a large sheet (where a line
 # drawn just off the sheet used to reach back onto it), what showing the goal changes is a band
 # along one line: every changed pixel is near the line fitted through them.
-from harness import check, run, watch, URL
+from harness import URL, check, run, settle, watch
 
 
 async def main(b):
@@ -10,21 +10,21 @@ async def main(b):
         await pg.goto(URL)
         await pg.evaluate('localStorage.clear()')
         await pg.reload()
-        await pg.wait_for_timeout(300)
+        await settle(pg)
         await pg.click('[data-act=card-open][data-id=euclid]')
-        await pg.wait_for_timeout(150)
+        await settle(pg)
         await pg.click('.card.is-open [data-act=sheet-open] >> nth=5')
-        await pg.wait_for_timeout(200)
+        await settle(pg)
         await pg.evaluate('document.fonts.ready')
         await pg.click('[data-act=goal-toggle]')
         await pg.click('[data-act=goal-toggle]')
-        await pg.wait_for_timeout(100)
+        await settle(pg)
         await pg.evaluate(
             """const c = document.querySelector('#stage canvas')
               window.__on = c.getContext('2d').getImageData(0, 0, c.width, c.height).data"""
         )
         await pg.click('[data-act=goal-toggle]')
-        await pg.wait_for_timeout(100)
+        await settle(pg)
         # the pixels showing the goal changed, the line through them, and how far the farthest is
         # from it
         n, far = await pg.evaluate(

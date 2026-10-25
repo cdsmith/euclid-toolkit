@@ -1,12 +1,12 @@
 # Two fixed bugs: a label typed just before clicking a swatch was lost, and a tool being edited lost
 # its output when that was deleted and brought back with Undo.
-from harness import check, open_page, run, saved_state
+from harness import check, open_page, run, saved_state, settle
 
 
 async def main(b):
     pg = await open_page(b)
     await pg.click('[data-act=notebook-new]')
-    await pg.wait_for_timeout(150)
+    await settle(pg)
     st = await pg.locator('#stage').bounding_box()
     P1, P2 = (st['x'] + 300, st['y'] + 300), (st['x'] + 460, st['y'] + 340)
     await pg.click('[data-act=tool-use][data-id=point]')
@@ -21,7 +21,7 @@ async def main(b):
     await pg.click('.log li >> nth=0 >> .txt')
     await pg.fill('#selLabel', 'Q')
     await pg.click('[data-act=sel-color][data-id=red]')
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     e = await pg.evaluate(
         """() => {
             const w = JSON.parse(
@@ -49,16 +49,16 @@ async def main(b):
     await pg.click('[data-act=def-next]')
     await pg.fill('#toolName', 'Join')
     await pg.click('[data-act=def-save]')
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     tid = (await saved_state(pg))['tools'][0]['id']
     await pg.click(f'[data-act=tool-more][data-id="{tid}"]')
     await pg.click(f'[data-act=tool-edit][data-id="{tid}"]')
-    await pg.wait_for_timeout(150)
+    await settle(pg)
     await pg.click('.log li >> nth=0 >> [data-act=row-del]')
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     await pg.click('[data-act=undo]')
     await pg.click('[data-act=edit-save]')
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     check(
         await pg.locator('#defSec .sig').count() == 1
         and await pg.locator('#defSec .err').count() == 0,

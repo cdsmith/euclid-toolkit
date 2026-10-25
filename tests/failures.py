@@ -1,7 +1,7 @@
 # When things outside the app fail, it says so. If the lessons can't be fetched, the page says they
 # didn't load. If saving fails (the browser's storage is full), it says your work isn't being saved,
 # once, not on every change. Fills localStorage to the last byte.
-from harness import check, open_page, run, watch, URL
+from harness import URL, check, open_page, run, settle, watch
 
 FILL = """() => {
     let i = 0
@@ -18,7 +18,7 @@ async def main(b):
     pg = watch(await b.new_page(viewport={'width': 1440, 'height': 900}))
     await pg.route('**/lessons/**', lambda r: r.abort())
     await pg.goto(URL)
-    await pg.wait_for_timeout(300)
+    await settle(pg)
     check(
         await pg.locator('#home').is_visible()
         and "The lessons didn’t load" in await pg.locator('#home').inner_text(),
@@ -27,7 +27,7 @@ async def main(b):
     await pg.unroute('**/lessons/**')
     await pg.route('**/lessons/euclid.json', lambda r: r.fulfill(status=404, body='not found'))
     await pg.reload()
-    await pg.wait_for_timeout(300)
+    await settle(pg)
     check(
         "The lessons didn’t load" in await pg.locator('#home').inner_text(),
         'and so does one that is missing',
@@ -36,22 +36,22 @@ async def main(b):
 
     pg = await open_page(b)
     await pg.click('[data-act=notebook-new]')
-    await pg.wait_for_timeout(150)
+    await settle(pg)
     st = await pg.locator('#stage').bounding_box()
     await pg.click('[data-act=tool-use][data-id=point]')
     await pg.mouse.click(st['x'] + 300, st['y'] + 300)
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     check(await pg.locator('#toast').is_hidden(), 'while saving works, nothing is said')
     await pg.evaluate(FILL)
     await pg.mouse.click(st['x'] + 400, st['y'] + 300)
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     check(
         "isn't being saved" in await pg.locator('#toast').inner_text(),
         'when saving fails, the page says so',
     )
-    await pg.wait_for_timeout(3000)
+    await pg.wait_for_timeout(3000)  # the message goes away
     await pg.mouse.click(st['x'] + 500, st['y'] + 300)
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     check(await pg.locator('#toast').is_hidden(), 'and not again on every change after that')
     await pg.evaluate(
         """Object.keys(localStorage)
@@ -59,11 +59,11 @@ async def main(b):
             .forEach((k) => localStorage.removeItem(k))"""
     )
     await pg.mouse.click(st['x'] + 600, st['y'] + 300)
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     await pg.reload()
-    await pg.wait_for_timeout(300)
+    await settle(pg)
     await pg.click('[data-act=card-open] >> nth=0')
-    await pg.wait_for_timeout(200)
+    await settle(pg)
     check(
         len(await pg.locator('#log li').all()) == 4,
         'once there is room again, the next change saves all the work: '

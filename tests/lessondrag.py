@@ -1,12 +1,12 @@
 # A lesson's toolbox can be reordered by dragging, and resetting the lesson puts it back.
 from reorder import drag
-from harness import check, open_page, run
+from harness import check, open_page, run, settle
 
 
 async def main(b):
     pg = await open_page(b)
     await pg.click('[data-act=card-open][data-id=euclid]')
-    await pg.wait_for_timeout(150)
+    await settle(pg)
     tools = lambda: pg.locator('.tname').all_inner_texts()
     check(
         await tools() == ['Point', 'Line', 'Circle'], 'the lesson starts with Point, Line, Circle'
@@ -18,7 +18,7 @@ async def main(b):
     )
     await pg.click('[data-act=lesson-reset]')
     await pg.click('[data-act=confirm-yes]')
-    await pg.wait_for_timeout(150)
+    await settle(pg)
     check(
         await tools() == ['Point', 'Line', 'Circle'],
         'resetting the lesson puts its tools back in order: ' + str(await tools()),

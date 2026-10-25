@@ -1,4 +1,4 @@
-from harness import URL, check, import_groups, run, saved_state, seed, watch
+from harness import URL, check, import_groups, run, saved_state, seed, settle, watch
 
 inp = {'in0': {'id': 'in0', 'op': 'input', 'idx': 0, 'ins': [], 'outs': ['a'], 'seq': -1000}}
 el = {'a': {'id': 'a', 'node': 'in0', 'kind': 'point', 'label': 'A'}}
@@ -66,10 +66,10 @@ async def main(b):
         'notebook cards count the tools their toolboxes show',
     )
     await pg.click('[data-act=card-open][data-id=nb1]')
-    await pg.wait_for_timeout(150)
+    await settle(pg)
     check(await tools() == ['Point', 'Circle'], 'Alpha has Point and Circle: ' + str(await tools()))
     await pg.click('[data-act=tool-import]')
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     check(
         await groups()
         == [
@@ -83,7 +83,7 @@ async def main(b):
     )
     await pg.locator('.import').screenshot(path='import-list.png')
     await pg.click('[data-act=tool-import-pick][data-id=line]')
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     check(
         await tools() == ['Point', 'Circle', 'Line'] and await toast() == 'Imported “Line”.',
         'imported Line: ' + str(await tools()),
@@ -100,7 +100,7 @@ async def main(b):
         'the list stays open, without Line',
     )
     await pg.click('[data-act=tool-import-pick][data-id=tTwice]')
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     check(
         await tools() == ['Point', 'Circle', 'Line', 'Twice']
         and await toast() == 'Imported “Twice”.',
@@ -119,17 +119,17 @@ async def main(b):
     )
     await pg.click('[data-act=tool-import-pick][data-id=tSame]')
     await pg.click('[data-act=tool-import-pick][data-id=tShown]')
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     s = await saved_state(pg)
     check(
         sorted(t['name'] for t in s['tools'] if t['box'] == 'nb1') == ['Same', 'Shown', 'Twice'],
         'copies are in Alpha',
     )
     await pg.click('[data-act=tool-import-pick][data-id=tBee]')
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     while await pg.locator('.import-item').count():
         await pg.click('.import-item >> nth=0')
-        await pg.wait_for_timeout(50)
+        await settle(pg)
     check(await pg.locator('.import').count() == 0, 'the list closes when nothing is left')
     check(
         await pg.locator('#tools .tname').all_inner_texts()
@@ -152,7 +152,7 @@ async def main(b):
         'once: ' + str(await pg.locator('#tools .tname').all_inner_texts()),
     )
     await pg.click('[data-act=tool-import]')
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     check(
         'nothing left to import' in await pg.locator('.import').inner_text(),
         'and says so if opened',
@@ -160,16 +160,16 @@ async def main(b):
     await pg.click('[data-act=form-cancel]')
     await pg.click('[data-act=tool-more][data-id=line]')
     await pg.click('[data-act=tool-remove][data-id=line]')
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     check(
         'you can import it again' in await pg.locator('.tdetail .confirm').inner_text(),
         'removing Line asks: ' + await pg.locator('.tdetail .confirm').inner_text(),
     )
     await pg.click('[data-act=confirm-yes]')
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     check('Line' not in await tools(), 'Line removed from Alpha')
     await pg.click('[data-act=tool-import]')
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     check(await groups() == ['Built in: Line'], 'and importable again: ' + str(await groups()))
     await pg.click('[data-act=form-cancel]')
     tw = next(t['id'] for t in s['tools'] if t['box'] == 'nb1' and t['name'] == 'Twice')
@@ -177,17 +177,17 @@ async def main(b):
     x, y = box['x'] + box['width'] / 2, box['y'] + box['height'] / 2
     await pg.click('[data-act=tool-use][data-id=point]')
     await pg.mouse.click(x, y)
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     await pg.click(f'[data-act=tool-use][data-id={tw}]')
     await pg.mouse.click(x, y)
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     check(
         'Twice(A) → B' in ' '.join(await pg.locator('.log li').all_inner_texts()),
         'the import works: ' + str(await pg.locator('.log li').all_inner_texts()),
     )
     # a lesson: Import appears only once a starting tool is gone, and offers only those
     await pg.click('[data-act=card-open][data-id=euclid]')
-    await pg.wait_for_timeout(150)
+    await settle(pg)
     check(
         await pg.locator('[data-act=tool-import]').count() == 0,
         'a lesson with all its tools has no Import',
@@ -195,15 +195,15 @@ async def main(b):
     await pg.click('[data-act=tool-more][data-id=circle]')
     await pg.click('[data-act=tool-remove][data-id=circle]')
     await pg.click('[data-act=confirm-yes]')
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     await pg.click('[data-act=tool-import]')
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     check(
         await groups() == ['Starting tools: Circle'],
         'the lesson offers back only its own tools: ' + str(await groups()),
     )
     await pg.click('[data-act=tool-import-pick][data-id=circle]')
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     check(
         await tools() == ['Point', 'Line', 'Same', 'Twice', 'Shown', 'Circle']
         and await pg.locator('[data-act=tool-import]').count() == 0,
@@ -211,13 +211,13 @@ async def main(b):
     )
     await pg.click('[data-act=lesson-reset]')
     await pg.click('[data-act=confirm-yes]')
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     check(
         await tools() == ['Point', 'Line', 'Circle'],
         'reset gives the lesson its starting tools: ' + str(await tools()),
     )
     await pg.click('[data-act=notebook-new]')
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     check(
         await tools() == ['Point', 'Line', 'Circle', 'Segment'],
         'a new notebook starts with Point, Line, Circle and Segment',

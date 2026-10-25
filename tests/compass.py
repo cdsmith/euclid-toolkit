@@ -1,4 +1,4 @@
-from harness import check, open_page, run
+from harness import check, open_page, run, settle
 
 
 def reflect(p, a, b):
@@ -16,7 +16,7 @@ async def main(b):
         'the lesson is listed',
     )
     await pg.click('[data-act=card-open][data-id=compass]')
-    await pg.wait_for_timeout(150)
+    await settle(pg)
     check(
         await pg.locator('.tname').all_inner_texts() == ['Point', 'Circle'],
         'its toolbox is Point and Circle: ' + str(await pg.locator('.tname').all_inner_texts()),
@@ -40,15 +40,15 @@ async def main(b):
     await pg.click('[data-act=tool-use][data-id=circle]')
     for q in [A, P, B, P]:
         await pg.mouse.click(*S(q))
-        await pg.wait_for_timeout(30)
+        await settle(pg)
     await pg.click('[data-act=tool-use][data-id=point]')
     await pg.mouse.click(*S(reflect(P, A, B)))
     await pg.keyboard.press('Escape')
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     check('SOLVED' in await pg.locator('#titleblock').inner_text(), 'Mirror solved by hand')
     await pg.click('[data-act=solution-save]')
     await pg.click('[data-act=def-save]')
-    await pg.wait_for_timeout(80)
+    await settle(pg)
     check(
         await pg.locator('.tname').all_inner_texts() == ['Point', 'Circle', 'Reflect across a line']
         and await pg.locator('.tsig >> nth=2').inner_text() == 'A, B, P → C',
@@ -57,10 +57,10 @@ async def main(b):
     await pg.screenshot(path='compass-mirror.png')
     # a later problem's hints
     await pg.click('.card.is-open [data-act=sheet-open][data-id="compass.line-circle"]')
-    await pg.wait_for_timeout(150)
+    await settle(pg)
     await pg.click('#titleblock details.fold >> nth=0 >> summary')
     await pg.click('#titleblock details.fold >> nth=1 >> summary')
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     check(
         await pg.locator('.fold-body >> nth=1').inner_text()
         == 'A circle is fixed by its center and one of its points.',
@@ -68,7 +68,7 @@ async def main(b):
     )
     await pg.screenshot(path='compass-line-circle.png')
     await pg.click(".card.is-open [data-act=sheet-open][data-id='compass.center']")
-    await pg.wait_for_timeout(150)
+    await settle(pg)
     check(
         'Napoleon' in await pg.locator('#titleblock').inner_text(),
         'Find the Center is Napoleon’s problem',

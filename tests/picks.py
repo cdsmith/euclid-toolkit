@@ -1,11 +1,11 @@
 import math
-from harness import check, open_page, run
+from harness import check, open_page, run, settle
 
 
 async def main(b):
     pg = await open_page(b)
     await pg.click('[data-act=notebook-new]')
-    await pg.wait_for_timeout(150)
+    await settle(pg)
     st = await pg.locator('#stage').bounding_box()
     A, B = (st['x'] + 330, st['y'] + 330), (st['x'] + 490, st['y'] + 330)
     rows = lambda: pg.locator('.log li .txt').all_inner_texts()
@@ -19,10 +19,10 @@ async def main(b):
     # a helper point picked and then abandoned with Esc
     await pg.click('[data-act=tool-use][data-id=circle]')
     await pg.mouse.click(st['x'] + 600, st['y'] + 200)
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     await pg.screenshot(path='pick-pending.png')
     await pg.keyboard.press('Escape')
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     check(await rows() == base, 'Esc drops the picked point')
     # abandoned by choosing another tool
     await pg.click('[data-act=tool-use][data-id=circle]')
@@ -41,13 +41,13 @@ async def main(b):
         'circle with helpers: ' + str(r),
     )
     await pg.click('[data-act=undo]')
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     check(await rows() == base, 'one undo removes the circle and its helpers')
     # picking the same new point twice
     await pg.click('[data-act=tool-use][data-id=line]')
     await pg.mouse.click(st['x'] + 600, st['y'] + 200)
     await pg.mouse.click(st['x'] + 600, st['y'] + 200)
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     check(
         await rows() == base and 'two different points' in await pg.locator('#toast').inner_text(),
         'same pick twice: refused, nothing left',
@@ -65,7 +65,7 @@ async def main(b):
     await pg.mouse.click(mx, my - h)
     await pg.mouse.click(mx, my + h)
     await pg.keyboard.press('Escape')
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     r = await rows()
     check(
         len(r) == 7
@@ -78,7 +78,7 @@ async def main(b):
     await pg.click('[data-act=tool-use][data-id=circle]')
     await pg.mouse.click(st['x'] + 700, st['y'] + 450)
     await pg.mouse.move(st['x'] + 700, st['y'] + 451)
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     await pg.keyboard.press('Escape')
     check(len(await rows()) == 7, 'nothing left behind after hovering and Esc')
 

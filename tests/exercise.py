@@ -1,4 +1,4 @@
-from harness import check, folds, open_page, run, saved_state
+from harness import check, folds, open_page, run, saved_state, settle
 
 # An exercise's text, with two hints
 TEXT = (
@@ -10,7 +10,7 @@ TEXT = (
 async def main(b):
     pg = await open_page(b)
     await pg.click('[data-act=notebook-new]')
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     st = await pg.locator('#stage').bounding_box()
     x, y = st['x'] + st['width'] / 2, st['y'] + st['height'] / 2
     A, B, C, F = (x - 80, y + 40), (x + 80, y + 40), (x, y + 40 - 138.564), (x + 150, y - 120)
@@ -19,7 +19,7 @@ async def main(b):
     async def clicks(*ps):
         for q in ps:
             await pg.mouse.click(*q)
-            await pg.wait_for_timeout(30)
+            await settle(pg)
 
     await use('point')
     await clicks(A, B)
@@ -36,7 +36,7 @@ async def main(b):
     await pg.click('[data-act=write][data-id=name]')
     await pg.fill('#writeField', 'Equilateral')
     await pg.keyboard.press('Enter')
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     check(
         await pg.locator('.tb-title h1').inner_text() == 'Equilateral'
         and 'Equilateral' in await pg.locator('.diagram-row').first.inner_text(),
@@ -45,13 +45,13 @@ async def main(b):
     await pg.click('[data-act=write][data-id=name]')
     await pg.fill('#writeField', '  ')
     await pg.keyboard.press('Escape')
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     check(
         await pg.locator('.tb-title h1').inner_text() == 'Equilateral',
         'an empty name leaves it as it was',
     )
     await pg.click('[data-act=exercise-mark]')
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     check(
         'MAKE AN EXERCISE' in (await pg.locator('#defSec').inner_text()).upper()
         and 'GIVENS' in (await pg.locator('.def-step').inner_text()).upper(),
@@ -62,7 +62,7 @@ async def main(b):
     await pg.click('[data-act=def-next]')
     await clicks(F)
     await pg.click('[data-act=def-next]')
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     err = await pg.locator('#defSec .err').inner_text()
     check(
         'goals shift' in err and 'Make it a given' in err,
@@ -72,7 +72,7 @@ async def main(b):
     await clicks(C)
     await pg.click('[data-act=def-next]')
     await pg.click('[data-act=def-next]')
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     check(
         await pg.locator('#def-title').count() == 0
         and await pg.locator('#def-toolName').get_attribute('placeholder') == 'Equilateral',
@@ -86,7 +86,7 @@ async def main(b):
     )
     await pg.fill('#def-toolName', 'Apex')
     await pg.keyboard.press('1')
-    await pg.wait_for_timeout(30)
+    await settle(pg)
     check(
         await pg.locator('#def-toolName').input_value() == 'Apex1'
         and await pg.locator('.tcard.is-active').count() == 0,
@@ -94,7 +94,7 @@ async def main(b):
     )
     await pg.fill('#def-toolName', '')
     await pg.click('[data-act=def-save]')
-    await pg.wait_for_timeout(80)
+    await settle(pg)
     s = await S()
     check(
         s['name'] == 'Equilateral'
@@ -107,14 +107,14 @@ async def main(b):
     await pg.click('[data-act=write][data-id=subtitle]')
     await pg.keyboard.type('Euclid I.1')
     await pg.keyboard.press('Enter')
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     await pg.click('[data-act=write][data-id=text]')
     await pg.fill(
         '#writeField',
         TEXT,
     )
     await pg.keyboard.press('Escape')
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     tb = await pg.locator('#titleblock').inner_text()
     check(
         'EXERCISE' in tb.upper()
@@ -131,10 +131,10 @@ async def main(b):
     await pg.screenshot(path='ex-page.png')
     # deleting the goal breaks it; undo mends it
     await pg.locator('#log li >> nth=-2 >> [data-act=row-del]').click()
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     if await pg.locator('[data-act=confirm-yes]').count():
         await pg.click('[data-act=confirm-yes]')
-        await pg.wait_for_timeout(50)
+        await settle(pg)
     check(
         'Needs fixing' in await pg.locator('#titleblock').inner_text()
         and await pg.locator('.ex-mark.bad').count() == 1
@@ -142,7 +142,7 @@ async def main(b):
         'deleting its goal breaks it: ' + await pg.locator('#titleblock').inner_text(),
     )
     await pg.click('[data-act=undo]')
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     check(
         await pg.locator('.ex-mark.bad').count() == 0
         and 'Needs fixing' not in await pg.locator('#titleblock').inner_text(),
@@ -150,7 +150,7 @@ async def main(b):
     )
     # trying it
     await pg.click('[data-act=exercise-try]')
-    await pg.wait_for_timeout(150)
+    await settle(pg)
     tb = await pg.locator('#titleblock').inner_text()
     check(
         'TRYING' in tb.upper()
@@ -165,17 +165,17 @@ async def main(b):
     hints = lambda: folds(pg)
     opens = lambda k: pg.click(f'#titleblock details.fold >> nth={k} >> summary')
     await opens(0)
-    await pg.wait_for_timeout(30)
+    await settle(pg)
     h = await hints()
     check(
         h[0][2:] == [True, 'Use two circles.'] and h[1][:3] == ['Hint', True, False],
         'the first hint opens, the second stays folded: ' + str(h),
     )
     await opens(1)
-    await pg.wait_for_timeout(30)
+    await settle(pg)
     check((await hints())[1][2:] == [True, 'Then their crossing.'], 'then the second')
     await opens(0)
-    await pg.wait_for_timeout(30)
+    await settle(pg)
     h = await hints()
     check(not h[0][2] and h[1][1] and h[1][2], 'folding the first leaves the second open')
     await pg.screenshot(path='ex-try.png')
@@ -200,7 +200,7 @@ async def main(b):
     await use('point')
     await clicks(C2)
     await pg.keyboard.press('Escape')
-    await pg.wait_for_timeout(80)
+    await settle(pg)
     tb = await pg.locator('#titleblock').inner_text()
     check(
         'SOLVED' in tb and 'Save as tool' not in tb and 'Back to the diagram' in tb,
@@ -214,20 +214,20 @@ async def main(b):
         'trying records nothing',
     )
     await pg.click('[data-act=try-end]')
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     check(
         await pg.locator('.tb-title h1').inner_text() == 'Equilateral'
         and await pg.locator('#log li').count() == 6,
         'back to the diagram, as it was',
     )
     await pg.click('[data-act=exercise-try]')
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     check(await pg.locator('#log li').count() == 1, 'trying again starts fresh')
     await pg.click('[data-act=try-end]')
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     # editing keeps what was picked
     await pg.click('[data-act=exercise-mark]')
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     check(
         await pg.locator('#defSec .chip').count() == 2
         and 'EDIT EXERCISE' in (await pg.locator('#defSec').inner_text()).upper(),
@@ -235,7 +235,7 @@ async def main(b):
     )
     await pg.click('[data-act=def-cancel]')
     await pg.click('[data-act=diagram-duplicate]')
-    await pg.wait_for_timeout(80)
+    await settle(pg)
     s2 = (await saved_state(pg))['notebooks'][0]['diagrams'][1]
     check(
         s2.get('text') == TEXT and s2.get('exercise', {}).get('toolName') == 'Equilateral',
@@ -243,7 +243,7 @@ async def main(b):
     )
     await pg.click('[data-act=exercise-remove]')
     await pg.click('[data-act=confirm-yes]')
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     check(
         await pg.locator('[data-act=exercise-mark]').inner_text() == 'Make exercise'
         and await pg.locator('.ex-mark').count() == 1,

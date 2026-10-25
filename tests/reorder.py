@@ -1,4 +1,4 @@
-from harness import run, check, open_page, watch, URL
+from harness import URL, check, open_page, run, settle, watch
 
 
 async def drag(pg, src, dst, after=False):
@@ -12,7 +12,7 @@ async def drag(pg, src, dst, after=False):
             a['x'] + 30, a['y'] + a['height'] / 2 + (ty - a['y'] - a['height'] / 2) * k / 8
         )
     await pg.mouse.up()
-    await pg.wait_for_timeout(100)
+    await settle(pg)
 
 
 async def main(b):
@@ -20,7 +20,7 @@ async def main(b):
     await pg.click('[data-act=notebook-new]')
     for _ in range(3):
         await pg.click('[data-act=diagram-new]')
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     rows = lambda: pg.locator('.diagrams .item').all_inner_texts()
     h1 = lambda: pg.locator('.tb-title h1').inner_text()
     check(
@@ -41,7 +41,7 @@ async def main(b):
     )
     # a plain click still opens the diagram
     await pg.click('.diagrams .item >> nth=2')
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     check(await h1() == 'Diagram 3', 'a click still opens a diagram')
     # Esc cancels a drag
     a = await pg.locator('.diagram-row >> nth=0').bounding_box()
@@ -53,22 +53,22 @@ async def main(b):
     )
     await pg.keyboard.press('Escape')
     await pg.mouse.up()
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     check(
         await rows() == ['Diagram 4', 'Diagram 2', 'Diagram 3', 'Diagram 1'], 'Esc cancels a drag'
     )
     # duplicate lands right after its original
     await pg.click('.diagram-row >> nth=1 >> [data-act=diagram-duplicate]')
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     check(
         await rows() == ['Diagram 4', 'Diagram 2', 'Diagram 2 (copy)', 'Diagram 3', 'Diagram 1'],
         'a duplicate goes right after its original: ' + str(await rows()),
     )
     # the order survives a reload
     await pg.reload()
-    await pg.wait_for_timeout(300)
+    await settle(pg)
     await pg.click('[data-act=card-open] >> nth=0')
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     check(
         await rows() == ['Diagram 4', 'Diagram 2', 'Diagram 2 (copy)', 'Diagram 3', 'Diagram 1'],
         'order kept after reload',
@@ -93,7 +93,7 @@ async def main(b):
         await pg.click('[data-act=def-next]')
         await pg.fill('#toolName', nm)
         await pg.click('[data-act=def-save]')
-        await pg.wait_for_timeout(80)
+        await settle(pg)
     tools = lambda: pg.locator('#tools .tname').all_inner_texts()
     check(
         await tools() == ['Point', 'Line', 'Circle', 'Segment', 'First', 'Second', 'Third'],
@@ -116,15 +116,15 @@ async def main(b):
         'a saved tool can go above them: ' + str(await tools()),
     )
     await pg.reload()
-    await pg.wait_for_timeout(300)
+    await settle(pg)
     await pg.click('[data-act=card-open] >> nth=0')
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     check(
         await tools() == ['First', 'Line', 'Circle', 'Point', 'Segment', 'Third', 'Second'],
         'tool order kept after reload',
     )
     await pg.keyboard.press('1')
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     check(
         await pg.locator('.pt-name').inner_text() == 'FIRST',
         'shortcut 1 follows the new order: ' + await pg.locator('.pt-name').inner_text(),
@@ -138,13 +138,13 @@ async def main(b):
         await b.new_page(viewport={'width': 400, 'height': 860}, has_touch=True, is_mobile=True)
     )
     await ph.goto(URL)
-    await ph.wait_for_timeout(300)
+    await settle(ph)
     await ph.click('#navToggle')
-    await ph.wait_for_timeout(300)
+    await settle(ph)
     await ph.click('[data-act=notebook-new]')
-    await ph.wait_for_timeout(300)
+    await settle(ph)
     await ph.click('#navToggle')
-    await ph.wait_for_timeout(300)
+    await settle(ph)
     check(
         await ph.locator('.diagram-row .grip >> nth=0').is_visible(), 'grips show on a touch screen'
     )

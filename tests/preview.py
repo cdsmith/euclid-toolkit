@@ -3,15 +3,15 @@
 # centered at P through its point on BC (a quarter of the way from B to C), and the rest. With P
 # exactly that point (built as the midpoint of B and the midpoint of BC), that circle would have no
 # radius, so Perpendicular puts its point elsewhere, and works.
-from harness import check, open_page, run
+from harness import check, open_page, run, settle
 
 
 async def main(b):
     pg = await open_page(b)
     await pg.click('[data-act=card-open][data-id=triangle]')
-    await pg.wait_for_timeout(150)
+    await settle(pg)
     await pg.click('.card.is-open [data-act=sheet-open] >> nth=3')
-    await pg.wait_for_timeout(150)
+    await settle(pg)
     st = await pg.locator('#stage').bounding_box()
     W, H = st['width'], st['height']
     s = min((W - 40) / (200 * 1.75), (H - 70) / (180 * 1.75))
@@ -44,17 +44,17 @@ async def main(b):
     await pg.click('[data-act=tool-use][data-id=line]')
     for q in (B, C):
         await pg.mouse.click(*S(q))
-        await pg.wait_for_timeout(40)
+        await settle(pg)
     await pg.click('[data-act=tool-use][data-id="triangle.perpendicular"]')
     away, X = (-60, -40), (B[0] + (C[0] - B[0]) * 0.25, B[1] + (C[1] - B[1]) * 0.25)
     circle = (S(away), s * ((away[0] - X[0]) ** 2 + (away[1] - X[1]) ** 2) ** 0.5)
     await pg.mouse.move(*S(away))
-    await pg.wait_for_timeout(60)
+    await settle(pg)
     before = await inked(*circle)
     await pg.mouse.click(*S((B[0] + (C[0] - B[0]) * 0.6, B[1] + (C[1] - B[1]) * 0.6)))
-    await pg.wait_for_timeout(60)
+    await settle(pg)
     await pg.mouse.move(*S(away))
-    await pg.wait_for_timeout(60)
+    await settle(pg)
     after = await inked(*circle)
     darker = sum(a < b - 30 for a, b in zip(after, before))
     check(
@@ -68,15 +68,15 @@ async def main(b):
     await pg.click('[data-act=tool-use][data-id="triangle.midpoint"]')
     for q in (B, C, B, M):
         await pg.mouse.click(*S(q))
-        await pg.wait_for_timeout(40)
+        await settle(pg)
     await pg.click('[data-act=tool-use][data-id="triangle.perpendicular"]')
     await pg.mouse.click(*S((B[0] + (C[0] - B[0]) * 0.6, B[1] + (C[1] - B[1]) * 0.6)))
-    await pg.wait_for_timeout(40)
+    await settle(pg)
     await pg.mouse.move(*S(X))
-    await pg.wait_for_timeout(60)
+    await settle(pg)
     await pg.screenshot(path='preview-moved.png')
     await pg.mouse.click(*S(X))
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     log = await pg.locator('#log').inner_text()
     check(
         'Perpendicular(' in log and await pg.locator('#toast').is_hidden(),

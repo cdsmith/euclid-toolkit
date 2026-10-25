@@ -1,6 +1,6 @@
 # The Segment tool in a notebook: drawn between its ends, met only where it's drawn, points on it
 # stay on it.
-from harness import URL, check, run, saved_state, saved_work, serve_libs, watch
+from harness import URL, check, run, saved_state, saved_work, serve_libs, settle, watch
 
 
 async def main(b):
@@ -10,9 +10,9 @@ async def main(b):
     await pg.goto(URL)
     await pg.evaluate('localStorage.clear()')
     await pg.reload()
-    await pg.wait_for_timeout(300)
+    await settle(pg)
     await pg.click('[data-act=notebook-new]')
-    await pg.wait_for_timeout(150)
+    await settle(pg)
     st = await pg.locator('#stage').bounding_box()
     at = lambda x, y: (st['x'] + x, st['y'] + y)
 
@@ -37,7 +37,7 @@ async def main(b):
     await pg.keyboard.press('4')
     await pg.mouse.click(*at(300, 300))
     await pg.mouse.click(*at(500, 300))
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     d = await doc()
     segs = [n for n in d['nodes'].values() if n['op'] == 'segment']
     check(
@@ -50,7 +50,7 @@ async def main(b):
     )
     await pg.mouse.click(*at(300, 300))
     await pg.mouse.click(*at(500, 300))
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     check(
         await pg.locator('#toast').inner_text() == 'That segment is already drawn.',
         'the same segment twice is refused',
@@ -62,12 +62,12 @@ async def main(b):
     await pg.keyboard.press('3')
     await pg.mouse.click(*at(500, 360))
     await pg.mouse.click(*at(500, 260))
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     await pg.keyboard.press('1')
     await pg.mouse.click(*at(420, 300))
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     await pg.mouse.click(*at(580, 300))
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     r = await rows()
     check(
         any('meets' in x for x in r[-2:-1]) and 'meets' not in r[-1] and ' on ' in r[-1],
@@ -76,7 +76,7 @@ async def main(b):
 
     # A point on the segment, dragged past an end, stops at the end.
     await pg.mouse.click(*at(350, 300))
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     d = await doc()
     on = [
         n
@@ -92,7 +92,7 @@ async def main(b):
     await pg.mouse.move(*at(300, 320), steps=4)
     await pg.mouse.move(*at(220, 300), steps=4)
     await pg.mouse.up()
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     d = await doc()
     on = [
         n
@@ -107,7 +107,7 @@ async def main(b):
     await pg.keyboard.press('2')
     await pg.mouse.click(*at(300, 300))
     await pg.mouse.click(*at(500, 300))
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     d = await doc()
     check(
         any(n['op'] == 'line' for n in d['nodes'].values()),

@@ -1,4 +1,4 @@
-from harness import URL, check, folds, run, serve_libs, watch
+from harness import URL, check, folds, run, serve_libs, settle, watch
 
 
 async def main(b):
@@ -7,14 +7,14 @@ async def main(b):
     await pg.goto(URL)
     await pg.evaluate('localStorage.clear()')
     await pg.reload()
-    await pg.wait_for_timeout(300)
+    await settle(pg)
     check(
         'Arithmetic' in await pg.locator('#nav').inner_text()
         and '13 problems' in await pg.locator('#nav').inner_text(),
         'the lesson is listed',
     )
     await pg.click('[data-act=card-open][data-id=arithmetic]')
-    await pg.wait_for_timeout(150)
+    await settle(pg)
     heads = [h.strip() for h in await pg.locator('.card.is-open .tier h4').all_text_contents()]
     check(heads == ['IAdding', 'IIMultiplying', 'IIIRoots'], 'its sections: ' + str(heads))
     check(
@@ -57,38 +57,38 @@ async def main(b):
     h = await hints()
     check(len(h) == 1 and h[0][:3] == ['Hint', True, False], 'one hint, folded: ' + str(h))
     await opens(0)
-    await pg.wait_for_timeout(30)
+    await settle(pg)
     check((await hints())[0][2], 'it opens')
     await opens(0)
-    await pg.wait_for_timeout(30)
+    await settle(pg)
     check(not (await hints())[0][2], 'and folds again')
     await pg.click('.card.is-open [data-act=sheet-open] >> nth=9')
-    await pg.wait_for_timeout(150)
+    await settle(pg)
     h = await hints()
     check(
         [x[:3] for x in h] == [['Hint', True, False], ['Hint', True, False]],
         'Square Root: two hints, both folded: ' + str(h),
     )
     await opens(0)
-    await pg.wait_for_timeout(30)
+    await settle(pg)
     h = await hints()
     check(
         'The perpendicular from the hypotenuse' in h[0][3] and h[1][:3] == ['Hint', True, False],
         'the first opens on its own: ' + str(h),
     )
     await opens(1)
-    await pg.wait_for_timeout(30)
+    await settle(pg)
     check(
         (await hints())[1][3] == 'A right angle lying on a circle subtends a diameter.',
         'then the second opens',
     )
     await pg.screenshot(path='arithmetic-hints.png')
     await pg.click('.card.is-open [data-act=sheet-open] >> nth=0')
-    await pg.wait_for_timeout(150)
+    await settle(pg)
     # Negatives, solved by clicking: a circle at O through A, and a point where it meets ℓ on the
     # far side
     await pg.click('.card.is-open [data-act=sheet-open] >> nth=1')
-    await pg.wait_for_timeout(150)
+    await settle(pg)
     st = await pg.locator('#stage').bounding_box()
     W, H = st['width'], st['height']
     s = min((W - 40) / 315, (H - 70) / 315)
@@ -99,18 +99,18 @@ async def main(b):
     await pg.click('[data-act=tool-use][data-id=point]')
     await pg.mouse.click(*S(-156, 50))
     await pg.keyboard.press('Escape')
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     check('SOLVED' in await pg.locator('#titleblock').inner_text(), 'Negatives solved by hand')
     await pg.click('[data-act=solution-save]')
     await pg.click('[data-act=def-save]')
-    await pg.wait_for_timeout(80)
+    await settle(pg)
     check(
         'Negate' in await pg.locator('.tname').all_inner_texts(),
         'and saved as a tool alongside the given ones',
     )
     # Perpendicular at a point on the line, in Root Two
     await pg.click('.card.is-open [data-act=sheet-open] >> nth=8')
-    await pg.wait_for_timeout(150)
+    await settle(pg)
     check('Root Two' in await pg.locator('#titleblock').inner_text(), 'Root Two opens')
     st = await pg.locator('#stage').bounding_box()
     W, H = st['width'], st['height']
@@ -119,7 +119,7 @@ async def main(b):
     await pg.click('[data-act=tool-use][data-id="arithmetic.perpendicular"]')
     await pg.mouse.click(*S(40, 50))
     await pg.mouse.click(*S(-20, 50))
-    await pg.wait_for_timeout(100)
+    await settle(pg)
     check(
         any('Perpendicular(ℓ, U)' in r for r in await pg.locator('#log li').all_inner_texts()),
         'the perpendicular at U on ℓ: ' + str(await pg.locator('#log li').all_inner_texts()),
@@ -130,14 +130,14 @@ async def main(b):
     # names are math: in Euclid's first problem, A, B and C; in the perpendicular problem's hint, P
     # and ℓ, the article A not
     await pg.click('[data-act=card-open][data-id=euclid]')
-    await pg.wait_for_timeout(150)
+    await settle(pg)
     check(
         await pg.locator('.tb-text > p math').count() == 5,
         'point names are math: ' + str(await pg.locator('.tb-text > p math').count()),
     )
     await pg.click('.card.is-open [data-act=sheet-open] >> nth=3')
     await opens(0)
-    await pg.wait_for_timeout(50)
+    await settle(pg)
     check(
         (await pg.locator('.fold-body').inner_text()).startswith('A circle centered at')
         and await pg.locator('.fold-body math').count() == 3,
